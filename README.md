@@ -18,3 +18,4 @@
 - [Mustafa ATAY](https://github.com/bounswe/bounswe2022group1/wiki/Mustafa-Atay)
 - [Ömer ÖZDEMİR](https://github.com/bounswe/bounswe2022group1/wiki/Ömer-Özdemir)
 - [Ahmet YAZICI](https://github.com/bounswe/bounswe2022group1/wiki/Ahmet-Yazici)
+- [Osman Fehmi Albayrak](https://github.com/bounswe/bounswe2022group1/wiki/Osman-Fehmi-Albayrak)
