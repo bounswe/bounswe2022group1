@@ -36,6 +36,7 @@ Tools that support the development of software products will be used and the stu
 expected to learn how to effectively use them
 
 ### Instructor & Teaching Assistants
+
 - (Instructor)Suzan Üsküdarlı (suzan.uskudarli@boun.edu.tr)
 - Gözde Aslantaş gozde.aslantas@boun.edu.tr
 - Egemen İşgüder egemen.isguder@boun.edu.tr
