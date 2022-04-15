@@ -3,18 +3,29 @@
 Welcome to our project repository for CMPE 352 course held in Spring 2022.You can find our meeting notes, contributors' home pages and other stuff about our work on the <a href="https://github.com/bounswe/bounswe2022group1/wiki">Wiki</a> page of the repository. 
 ## Team Members
 
-- [Harun ERKURT](https://github.com/bounswe/bounswe2022group1/wiki/Harun-Erkurt)
-- [Ege Onur TAĞA](https://github.com/bounswe/bounswe2022group1/wiki/Ege-Onur-Taga)
-- [Ece SARKIN](https://github.com/bounswe/bounswe2022group1/wiki/Ece-Sarkın)
-- [Elif Nur AKALIN](https://github.com/bounswe/bounswe2022group1/wiki/Elif-Nur-Akalın)
-- [Efekan KAVALCI](https://github.com/bounswe/bounswe2022group1/wiki/Efekan-Kavalci)
-- [Harun SAMİ](https://github.com/bounswe/bounswe2022group1/wiki/Harun-Sami)
-- [Kadir Gökhan SEZER](https://github.com/bounswe/bounswe2022group1/wiki/Kadir-Gokhan-Sezer)
-- [Kamil KORKUT](https://github.com/bounswe/bounswe2022group1/wiki/Kamil-Korkut)
-- [Mustafa ATAY](https://github.com/bounswe/bounswe2022group1/wiki/Mustafa-Atay)
-- [Ömer ÖZDEMİR](https://github.com/bounswe/bounswe2022group1/wiki/Ömer-Özdemir)
-- [Ahmet YAZICI](https://github.com/bounswe/bounswe2022group1/wiki/Ahmet-Yazici)
-- [Osman Fehmi Albayrak](https://github.com/bounswe/bounswe2022group1/wiki/Osman-Fehmi-Albayrak)
+1- [Harun ERKURT](https://github.com/bounswe/bounswe2022group1/wiki/Harun-Erkurt)
+
+2- [Ege Onur TAĞA](https://github.com/bounswe/bounswe2022group1/wiki/Ege-Onur-Taga)
+
+3- [Ece SARKIN](https://github.com/bounswe/bounswe2022group1/wiki/Ece-Sarkın)
+
+4- [Efekan KAVALCI](https://github.com/bounswe/bounswe2022group1/wiki/Efekan-Kavalci)
+
+5- [Kadir Gökhan SEZER](https://github.com/bounswe/bounswe2022group1/wiki/Kadir-Gokhan-Sezer)
+
+6- [Kamil KORKUT](https://github.com/bounswe/bounswe2022group1/wiki/Kamil-Korkut)
+
+7- [Mustafa ATAY](https://github.com/bounswe/bounswe2022group1/wiki/Mustafa-Atay)
+
+8- [Ömer ÖZDEMİR](https://github.com/bounswe/bounswe2022group1/wiki/Ömer-Özdemir)
+
+9- [Ahmet YAZICI](https://github.com/bounswe/bounswe2022group1/wiki/Ahmet-Yazici)
+
+10- [Osman Fehmi Albayrak](https://github.com/bounswe/bounswe2022group1/wiki/Osman-Fehmi-Albayrak)
+
+11- [Elif Nur AKALIN](https://github.com/bounswe/bounswe2022group1/wiki/Elif-Nur-Akalın)
+
+12- [Harun SAMİ](https://github.com/bounswe/bounswe2022group1/wiki/Harun-Sami)
 
 ## About CMPE352
 In this course we will address the issues, methods, and tools related to developing software
