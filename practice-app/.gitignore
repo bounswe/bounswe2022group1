@@ -1,0 +1,8 @@
+practiceapp/.env
+practiceapp/practiceapp/__pycache__/*
+practiceapp/learningPlatform/migrations/*
+practiceapp/learningPlatform/__pycache__/*
+practiceapp/.env
+venv
+**/__pycache__/
+.env
