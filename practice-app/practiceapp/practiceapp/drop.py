@@ -1,0 +1,3 @@
+DROP TABLE Users;
+DROP TABLE Courses;
+DROP TABLE Enrolls;
