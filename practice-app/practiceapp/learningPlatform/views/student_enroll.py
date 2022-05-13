@@ -8,7 +8,7 @@ from ..guards import guestGuard
 
 #@studentGuard
 def student_enroll(req):
-        return your_student_enroll.html
+        return student_enroll.html
 
 
 def student_enroll_entered(req):
