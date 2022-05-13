@@ -6,7 +6,12 @@ from ..db_utils import run_statement
 from ..guards import guestGuard
 
 
+
 def teacher_delete_course(req):
+   return render(req,'teacher_delete_course.html')
+
+
+def teacher_delete_course_entered(req):
    ##############
    ## your code ##
    ##############
