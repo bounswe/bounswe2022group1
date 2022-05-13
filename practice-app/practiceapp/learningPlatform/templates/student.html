@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Learning Platform</title>
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <link
+      href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+    <link href="{% static 'styles.css' %}" rel="stylesheet" />
+  </head>
+  <body class="full-height">
+    <div class="center-layout container control-panel-layout">
+      <h1 style="text-align: center; margin-top: 0; margin-bottom: 50px">
+        STUDENT PANEL
+      </h1>
+      <div class="row" style="width: 100%">
+        <div class="col-xs-3">Enroll</div>
+        <div class="col-xs-3">Give Rate</div>
+        <div class="col-xs-3">My Courses</div>
+        <div class="col-xs-3">Search Course</div>
+      </div>
+      <form method="POST" action="/logout/">
+        <input type="button" value="Log out" />
+      </form>
+    </div>
+  </body>
+</html>

@@ -46,3 +46,12 @@ input {
   border-right: 2px solid var(--primary);
   padding: 32px 64px;
 }
+
+.control-panel-layout {
+  flex-direction: column;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 32px;
+  max-width: 1000px;
+}
