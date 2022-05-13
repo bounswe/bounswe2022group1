@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>SimpleBoun</title>
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <link
+      href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+    <link href="{% static 'styles.css' %}" rel="stylesheet" />
+  </head>
+  <body class="full-height">
+    <div class="center-layout">
+      <div style="max-width: 500px">
+        <h1 style="text-align: center; margin-top: 0; margin-bottom: 100px">
+          Welcome to Simple Boun
+        </h1>
+        <div class="row">
+          <div class="col-xs-4">
+            <a class="btn btn-default card" href="studentLogin" type="submit">
+              Login as Student
+            </a>
+          </div>
+          <div class="col-xs-4">
+            <a
+              class="btn btn-default card"
+              href="instructorLogin"
+              type="submit"
+            >
+              Login as Teacher
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
