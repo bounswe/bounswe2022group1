@@ -1,1 +1,1 @@
-from . import main, teacher, authentication, student, views
+from . import teacher, authentication, student
