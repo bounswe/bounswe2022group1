@@ -8,6 +8,10 @@ urlpatterns = [
     path('login/query/', views.authentication.loginQuery, name="loginQuery"),
     path('logout/query/', views.authentication.logoutQuery, name="logoutQuery")
     
+    ##signup
+    path('sign_up',views.sign_up.sign_up,name="sign_up"),
+    path('sign_up_entered',views.sign_up.sign_up_entered,name="sign_up_entered"),
+    
     ## student pages
     path('student/',views.student.student, name="student"),
     path('student/student_enroll',views.student_enroll.student_enroll, name="student_enroll"),
