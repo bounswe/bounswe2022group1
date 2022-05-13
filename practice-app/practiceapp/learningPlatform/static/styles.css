@@ -1,1 +1,48 @@
+:root {
+  --primary: #0077b6;
+  --secondary: #00b4d8;
+  --dark: #070a89;
+  --light: #90e0ef;
+  --light2: #caf0f8;
+  --radius: 24px;
+  --input-height: 26px;
+}
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--primary);
+}
+
+label,
+input {
+  color: var(--dark);
+}
+
+input {
+  height: var(--input-height);
+  border-color: var(--dark);
+  border-radius: calc(var(--input-height) / 2);
+  padding: 0 10px;
+}
+
+.full-height {
+  height: 100vh;
+}
+
+.center-layout {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.round-bordered-box {
+  border-radius: var(--radius);
+  border-left: 2px solid var(--primary);
+  border-right: 2px solid var(--primary);
+  padding: 32px 64px;
+}
