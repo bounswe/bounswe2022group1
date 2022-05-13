@@ -8,6 +8,10 @@ from ..guards import guestGuard
 
 #@studentGuard
 def student_enroll(req):
+        return your_student_enroll.html
+
+
+def student_enroll_entered(req):
         username=req.session["username"] #Retrieve the username of the logged-in user
         course_name = req.POST.get("course_name") #Retrieve the name of the course from the html file
         run_statement(f"INSERT INTO Enrolls VALUES ( '{username}','{course_name}') ") # insert data into DB
