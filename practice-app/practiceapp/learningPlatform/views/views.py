@@ -1,7 +1,7 @@
 from asyncio.windows_events import NULL
 from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect
-from db import run_statement
+from ..db_utils import run_statement
 from django.views.decorators.http import require_http_methods
 from ..guards import studentGuard, teacherGuard, guestGuard
 
