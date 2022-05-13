@@ -6,7 +6,13 @@ from ..db_utils import run_statement
 from ..guards import guestGuard
 
 
+
 def teacher_add_course(req):
+   return render(req,'teacher_add_course.html')
+   
+   
+
+def teacher_add_course_entered(req):
    ##############
    ## your code ##
    ##############
