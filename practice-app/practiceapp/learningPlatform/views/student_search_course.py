@@ -6,6 +6,11 @@ from ..db_utils import run_statement
 from ..guards import guestGuard
 
 
+##################
+### Ege Onur Taga ###
+##################
+
+
 
 def student_search_course(req):
    return render(req,'student_search_course.html')
