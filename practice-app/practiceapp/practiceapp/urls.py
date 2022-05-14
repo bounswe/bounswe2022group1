@@ -18,7 +18,6 @@ from django.shortcuts import redirect
 from django.urls import path, include
 
 urlpatterns = [
-    path('learningPlatform/', include('learningPlatform.urls')),
-    path('admin/', admin.site.urls),
-    path('',lambda req : redirect('learningPlatform/'))
+    path('', include('learningPlatform.urls')),
+    path('',lambda req : redirect('/login'))
 ]

@@ -1,8 +1,9 @@
+<!-- Mustafa Atay -->
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>SimpleBoun</title>
+    <title>Learning Platform</title>
 
     <link
       rel="stylesheet"
@@ -17,26 +18,20 @@
   </head>
   <body class="full-height">
     <div class="center-layout">
-      <div style="max-width: 500px">
+      <div class="round-bordered-box" style="max-width: 500px">
         <h1 style="text-align: center; margin-top: 0; margin-bottom: 100px">
-          Welcome to Simple Boun
+          LOGIN
         </h1>
-        <div class="row">
-          <div class="col-xs-4">
-            <a class="btn btn-default card" href="studentLogin" type="submit">
-              Login as Student
-            </a>
-          </div>
-          <div class="col-xs-4">
-            <a
-              class="btn btn-default card"
-              href="instructorLogin"
-              type="submit"
-            >
-              Login as Teacher
-            </a>
-          </div>
-        </div>
+        <form method="POST" action="/login/query/">
+          {% csrf_token %}
+          <label for="username">Username:</label><br />
+          <input type="text" id="username" name="username" />
+          <br /><br />
+          <label for="password">Password:</label><br />
+          <input type="password" id="password" name="password" />
+          <br /><br />
+          <input type="submit" value="Login" />
+        </form>
       </div>
     </div>
   </body>
