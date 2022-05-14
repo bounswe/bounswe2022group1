@@ -10,7 +10,7 @@ from ..guards import guestGuard
 ##################
 
 
-#@studentGuard
+@studentGuard
 def student_enroll(req):
         return render(req,'student_enroll.html')
 
