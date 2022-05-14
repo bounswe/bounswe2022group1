@@ -6,7 +6,7 @@ urlpatterns = [
     ##login and logout pages
     path('login/', views.authentication.login, name="index"),
     path('login/query/', views.authentication.loginQuery, name="loginQuery"),
-    path('logout/query/', views.authentication.logoutQuery, name="logoutQuery")
+    path('logout/query/', views.authentication.logoutQuery, name="logoutQuery"),
     
     ##sign-up
     path('sign_up',views.sign_up.sign_up,name="sign_up"),
