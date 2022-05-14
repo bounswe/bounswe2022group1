@@ -7,6 +7,10 @@ from ..guards import guestGuard
 
 
 
+##################
+### Kadir Gökhan Sezer ###
+##################
+
 def teacher_delete_course(req):
    return render(req,'teacher_delete_course.html')
 
