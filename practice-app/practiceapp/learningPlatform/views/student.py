@@ -12,7 +12,7 @@ from ..guards import studentGuard
 ##################
 
 
-#@studentGuard
+@studentGuard
 @require_http_methods(["GET"])
 def student(req):
     return render(req, 'student.html', {})

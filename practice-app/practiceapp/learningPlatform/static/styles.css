@@ -27,6 +27,14 @@ input {
   border-color: var(--dark);
   border-radius: calc(var(--input-height) / 2);
   padding: 0 10px;
+  background: white;
+  transition: background-color 0.2s ease-in-out;
+}
+
+input:hover[type="submit"] {
+  background-color: var(--dark);
+  color: white;
+  transition: background-color 0.2s ease-in-out;
 }
 
 .full-height {
@@ -54,4 +62,23 @@ input {
   align-items: center;
   padding: 0 32px;
   max-width: 1000px;
+}
+
+.button-box {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid var(--primary) 2px;
+  border-radius: var(--radius);
+  transition: background-color 0.2s ease-in-out;
+  margin-bottom: 30px;
+}
+
+.button-box:hover {
+  background-color: var(--dark);
+  border-color: var(--dark);
+  color: white;
+
+  transition: background-color 0.2s ease-in-out;
 }

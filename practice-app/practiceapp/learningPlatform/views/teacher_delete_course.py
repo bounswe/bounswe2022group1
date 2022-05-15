@@ -16,6 +16,7 @@ def teacher_delete_course(req):
 
 
 def teacher_delete_course_entered(req):
+   pass
    ##############
    ## your code ##
    ##############

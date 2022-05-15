@@ -12,6 +12,7 @@ from ..guards import guestGuard
 
 
 def teacher_course_statistics(req):
+   pass
    ##############
    ## your code ##
    ##############

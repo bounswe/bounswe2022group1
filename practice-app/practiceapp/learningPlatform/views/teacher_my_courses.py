@@ -13,6 +13,7 @@ from ..guards import guestGuard
 
 
 def teacher_my_courses(req):
+   pass
    ##############
    ## your code ##
    ##############

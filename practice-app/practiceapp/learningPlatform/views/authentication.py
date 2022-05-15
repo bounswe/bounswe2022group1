@@ -37,6 +37,7 @@ def loginQuery(req):
     else:
         return HttpResponseRedirect("/login/?fail=true")
 
+@require_http_methods(["POST"])
 def logoutQuery(req):
-    req.session.clear()
+    req.session.flush()
     return HttpResponseRedirect("/")
