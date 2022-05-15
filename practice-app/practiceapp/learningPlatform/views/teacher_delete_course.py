@@ -7,11 +7,16 @@ from ..guards import guestGuard
 
 
 
+##################
+### Kadir Gökhan Sezer ###
+##################
+
 def teacher_delete_course(req):
    return render(req,'teacher_delete_course.html')
 
 
 def teacher_delete_course_entered(req):
+   pass
    ##############
    ## your code ##
    ##############
