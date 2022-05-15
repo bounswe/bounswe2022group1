@@ -16,6 +16,7 @@ def teacher_add_course(req):
    
 
 def teacher_add_course_entered(req):
+   pass
    ##############
    ## your code ##
    ##############
