@@ -9,7 +9,7 @@ urlpatterns = [
     path('logout/query/', views.authentication.logoutQuery, name="logoutQuery"),
     
     ##sign-up
-    path('sign_up',views.sign_up.sign_up,name="sign_up"),
+    path('sign_up/',views.sign_up.sign_up,name="sign_up"),
     path('sign_up_entered',views.sign_up.sign_up_entered,name="sign_up_entered"),
     
     ## student pages

@@ -1,107 +1,80 @@
-<!-- Ömer Özdemir -->
-{% load crispy_forms_tags %}
+<!-- Mustafa Atay -->
+{% load crispy_forms_tags %} {% load static %}
 <!DOCTYPE html>
-<html>
-<style>
-body {font-family: Arial, Helvetica, sans-serif;}
-* {box-sizing: border-box}
+<html lang="en">
+  <head>
+    <title>Learning Platform</title>
 
-/* Full-width input fields */
-input[type=text], input[type=password] {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  display: inline-block;
-  border: none;
-  background: #f1f1f1;
-}
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <link
+      href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+    <link href="{% static 'styles.css' %}" rel="stylesheet" />
+  </head>
+  <body class="full-height">
+    <div class="center-layout">
+      <div class="round-bordered-box" style="max-width: 500px">
+        <h1 style="text-align: center; margin-top: 0; margin-bottom: 50px">
+          SIGN UP
+        </h1>
+        <form method="POST" action="{% url 'sign_up_entered' %}">
+          {{form|crispy}}{% csrf_token %}
+          <label><b>Name and Surname</b></label> <br />
+          <input
+            type="text"
+            placeholder="Enter Name and Surname"
+            name="post_name_surname"
+            required
+          />
+          <br />
+          <br />
 
-input[type=text]:focus, input[type=password]:focus {
-  background-color: #ddd;
-  outline: none;
-}
+          <label><b>Username</b></label> <br />
+          <input
+            type="text"
+            placeholder="Enter Username"
+            name="post_username"
+            required
+          />
+          <br />
+          <br />
 
-hr {
-  border: 1px solid #f1f1f1;
-  margin-bottom: 25px;
-}
+          <label><b>Password</b></label> <br />
+          <input
+            type="password"
+            placeholder="Enter Password"
+            name="post_password"
+            required
+          />
+          <br />
+          <br />
 
-/* Set a style for all buttons */
-button {
-  background-color: #04AA6D;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  opacity: 0.9;
-}
+          <div style="display: flex; align-items: center">
+            <label> I am a teacher </label>
+            <input
+              type="checkbox"
+              name="post_is_teacher"
+              value="True"
+              style="margin: 0 0 5px 10px"
+            />
+          </div>
 
-button:hover {
-  opacity:1;
-}
+          <br />
 
-/* Extra styles for the cancel button */
-.cancelbtn {
-  padding: 14px 20px;
-  background-color: #f44336;
-}
-
-/* Float cancel and signup buttons and add an equal width */
-.cancelbtn, .signupbtn {
-  float: left;
-  width: 50%;
-}
-
-/* Add padding to container elements */
-.container {
-  padding: 16px;
-}
-
-/* Clear floats */
-.clearfix::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-/* Change styles for cancel button and signup button on extra small screens */
-@media screen and (max-width: 300px) {
-  .cancelbtn, .signupbtn {
-     width: 100%;
-  }
-}
-</style>
-<body>
- 
-<form action="{% url 'sign_up_entered' %}" method="POST" style="border:1px solid #ccc">
-  {{form|crispy}} {% csrf_token %}
-  <div class="container">
-    <h1>Sign Up</h1>
-    <hr>
-
-	  <label><b>Name and Surname</b></label>
-    <input type="text" placeholder="Enter Name and Surname" name="post_name_surname" required>
-    
-    <label><b>Username</b></label>
-    <input  type="text" placeholder="Enter Username" name="post_username" required>
-	
-     <label><b>Password</b></label>
-    <input type="text" placeholder="Enter Password" name="post_password" required>
-    
-     <label>
-      <input type="checkbox" name="post_is_teacher" style="margin-bottom:15px" value="True"> I am a teacher
-    </label>
-    
-  
-
-    <div class="clearfix">
-      <button type="reset" class="cancelbtn">Cancel</button>
-      <button type="submit" class="signupbtn">Sign Up</button>
+          <div class="clearfix">
+            <input type="reset" value="Cancel" class="cancelbtn" />
+            <input type="submit" value="Sign Up" class="signupbtn" />
+          </div>
+        </form>
+        <p style="margin-top: 20px">
+          Do you have an account? <a href="/login/">Login</a>
+        </p>
+      </div>
     </div>
-  </div>
-</form>
-
-</body>
+  </body>
 </html>
