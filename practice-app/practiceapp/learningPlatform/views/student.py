@@ -12,8 +12,9 @@ from ..guards import studentGuard
 ##################
 
 
-#@studentGuard
+@studentGuard
 @require_http_methods(["GET"])
 def student(req):
+    print(req.session['user'])
     return render(req, 'student.html', {})
 
