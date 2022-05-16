@@ -9,7 +9,9 @@ In order to prevent any possible conflicts, you can set up a virtual environment
 
 ## Deployment
 
-First, create an .env file in "practiceapp" folder (folder with the settings.py file), and insert:
+First, Create a database on a sql ide (mysql) with <YOUR_DB_NAME>
+
+Second, create an .env file in "practiceapp" folder (folder with the settings.py file), and insert:
 
 ```
 MYSQL_DATABASE=<YOUR_DB_NAME>
