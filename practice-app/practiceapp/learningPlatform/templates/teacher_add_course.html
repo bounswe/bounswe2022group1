@@ -1,1 +1,52 @@
 <!-- Ahmet Yazıcı -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Add new Course</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <link
+      href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+    <link href="{% static 'styles.css' %}" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row" style="margin-bottom: 50px">
+        <h1>Add New Course</h1>
+        <p>Please give the details of the new course.</p>
+        <div class="d-flex justify-content-around" style="margin-top: 20px">
+          <form method="POST" action="query/">
+            {% csrf_token %}
+
+            <label for="course_name">Course Name:</label><br />
+            <input type="text" name="course_name" required /><br /><br />
+
+            <input type="submit" value="Submit" />
+          </form>
+
+          <p>
+            <br />
+            You must add a course id that does not already exists on system.
+          </p>
+
+          <form method="GET" novalidate action="..">
+            {% csrf_token %}
+            <button
+              type="submit"
+              style="margin-top: 10px"
+              class="btn btn-default"
+            >
+              return
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

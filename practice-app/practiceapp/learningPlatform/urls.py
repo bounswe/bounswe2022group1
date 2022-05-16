@@ -24,7 +24,7 @@ urlpatterns = [
     
     ## teacher pages
     path('teacher/',views.teacher.teacher, name="teacher"),
-    path('teacher/teacher_add_course',views.teacher_add_course.teacher_add_course, name="teacher_add_course"),
+    path('teacher/teacher_add_course/',views.teacher_add_course.teacher_add_course, name="teacher_add_course"),
     path('teacher/teacher_add_course_entered',views.teacher_add_course.teacher_add_course_entered, name="teacher_add_course_entered"),
     path('teacher/teacher_course_statistics',views.teacher_course_statistics.teacher_course_statistics, name="teacher_course_statistics"),
     path('teacher/teacher_delete_course',views.teacher_delete_course.teacher_delete_course, name="teacher_delete_course"),
