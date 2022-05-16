@@ -1,0 +1,18 @@
+#is_teacher is 1 if that user is a teacher. Otherwise, 0.
+#	Users(username:TEXT	,name_surname:TEXT,	is_teacher:BOOLEAN,	password:TEXT)
+#	  PRIMARY KEY: username
+
+
+
+## rating is the sum of all ratings
+## rate_count is the number of raters
+#	  Courses(course_name:TEXT	,teacher_username:TEXT,	  rating:FLOAT,	   rate_count:INT)
+#	    PRIMARY KEY: course_name
+#	    FOREIGN KEY(teacher_username) REFERENCES Users(username)
+
+
+
+#	Enrolls(student_username:TEXT,	course_name:TEXT)
+#	  PRIMARY KEY: (student_username,course_name)
+#	  FOREIGN KEY(student_username) REFERENCES Users(username)
+#	  FOREIGN KEY(course_name) REFERENCES Courses(course_name)
