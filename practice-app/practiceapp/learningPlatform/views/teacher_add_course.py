@@ -17,7 +17,12 @@ def teacher_add_course(req):
    
 @teacherGuard
 def teacher_add_course_entered(req):
-   pass
-   ##############
-   ## your code ##
-   ##############
+   username=req.session["username"] #Get the username of the current session
+   is_teacher = req.session["is_teacher"] #Get is_teacher of the current session
+
+   if is_teacher == True:
+      course_name = req.POST["course_name"] #Get the course_name chosen
+      run_statement(f"INSERT INTO Courses VALUES ( '{username}','{course_name}',0,0)" ) # insert data into DB
+      return render(req,'teacher.html') # redirect it to the teacher page
+   else:
+      return render(req,'teacher.html') # redirect it to the teacher page
