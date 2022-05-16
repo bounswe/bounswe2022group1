@@ -6,7 +6,8 @@ urlpatterns = [
     ##login and logout pages
     path('login/', views.authentication.login, name="index"),
     path('login/query/', views.authentication.loginQuery, name="loginQuery"),
-    path('logout/query/', views.authentication.logoutQuery, name="logoutQuery")
+    
+    path('logout/query/', views.authentication.logoutQuery, name="logoutQuery"),
     
     ##sign-up
     path('sign_up',views.sign_up.sign_up,name="sign_up"),
@@ -18,7 +19,8 @@ urlpatterns = [
     path('student/student_enroll_entered',views.student_enroll.student_enroll_entered, name="student_enroll_entered"),
     path('student/student_give_rate',views.student_give_rate.student_give_rate, name="student_give_rate"),
     path('student/student_give_rate_entered',views.student_give_rate.student_give_rate_entered, name="student_give_rate_entered"),
-    path('student/student_my_courses',views.student_my_courses.student_my_courses, name=" student_my_courses"),
+    path('student/student_my_courses/', views.student_my_courses.student_my_courses, name="student_my_courses"),
+    path('student/student_my_courses_back/', views.student_my_courses.student_my_courses_back, name="student_my_courses_back"),
     path('student/student_search_course',views.student_search_course.student_search_course, name="student_search_course"),
     path('student/student_search_course_entered',views.student_search_course.student_search_course_entered, name="student_search_course_entered"),
     

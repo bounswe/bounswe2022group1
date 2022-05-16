@@ -1,1 +1,1 @@
-from . import teacher, authentication, student
+from . import teacher, authentication, student, student_my_courses
