@@ -50,7 +50,4 @@ def get_all_courses(req):
    for i in result:
          finalResult.append(i[0])
    # Passing result JSON to html
-   return render(req, 'json.html', {"json": json.dumps(finalResult)})
-
-
- 
+   return render(req, 'json.html', {"jsonResult": json.dumps(finalResult)})
