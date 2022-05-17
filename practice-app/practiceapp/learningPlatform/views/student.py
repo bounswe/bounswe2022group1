@@ -1,5 +1,3 @@
-from asyncio.windows_events import NULL
-from types import NoneType
 from unittest import result
 from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect
