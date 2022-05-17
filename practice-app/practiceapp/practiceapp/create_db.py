@@ -20,6 +20,11 @@ username varchar(200),
 name_surname varchar(200),
 is_teacher BOOL,
 password varchar(200) NOT NULL,
+last_login_time INT Default NULL,
+last_search_time INT Default NULL,
+last_course_view_time INT Default NULL,
+last_statistics_view_time INT Default NULL,
+last_teacher_view_time INT Default NULL,
 PRIMARY KEY(username)
 );""")
 
@@ -47,23 +52,23 @@ FOREIGN KEY(course_name) REFERENCES Courses(course_name) ON UPDATE CASCADE ON DE
 
 connection.commit()
 
-cursor.execute('INSERT INTO Users VALUES("quanex1","Mustafa Atay",true,"123123a");')
+cursor.execute('INSERT INTO Users (username, name_surname, is_teacher, password) VALUES("quanex1","Mustafa Atay",true,"123123a");')
 connection.commit()
-cursor.execute('INSERT INTO Users VALUES("quanex2","Ömer Özdemir",true,"123123b");')
+cursor.execute('INSERT INTO Users (username, name_surname, is_teacher, password) VALUES("quanex2","Ömer Özdemir",true,"123123b");')
 connection.commit()
-cursor.execute('INSERT INTO Users VALUES("quanex3","Ahmet Yazıcı",true,"123123c");')
+cursor.execute('INSERT INTO Users (username, name_surname, is_teacher, password) VALUES("quanex3","Ahmet Yazıcı",true,"123123c");')
 connection.commit()
-cursor.execute('INSERT INTO Users VALUES("quanex4","Ege Onur Taga",false,"123123d");')
+cursor.execute('INSERT INTO Users (username, name_surname, is_teacher, password) VALUES("quanex4","Ege Onur Taga",false,"123123d");')
 connection.commit()
-cursor.execute('INSERT INTO Users VALUES("quanex5","Efekan Kavalcı",false,"123123e");')
+cursor.execute('INSERT INTO Users (username, name_surname, is_teacher, password) VALUES("quanex5","Efekan Kavalcı",false,"123123e");')
 connection.commit()
-cursor.execute('INSERT INTO Users VALUES("quanex6","Ece Sarkın",false,"123123f");')
+cursor.execute('INSERT INTO Users (username, name_surname, is_teacher, password) VALUES("quanex6","Ece Sarkın",false,"123123f");')
 connection.commit()
-cursor.execute('INSERT INTO Users VALUES("quanex7","Kadir Gökhan Sezer",false,"123123g");')
+cursor.execute('INSERT INTO Users (username, name_surname, is_teacher, password) VALUES("quanex7","Kadir Gökhan Sezer",false,"123123g");')
 connection.commit()
-cursor.execute('INSERT INTO Users VALUES("quanex8","Harun Erkurt",false,"123123h");')
+cursor.execute('INSERT INTO Users (username, name_surname, is_teacher, password) VALUES("quanex8","Harun Erkurt",false,"123123h");')
 connection.commit()
-cursor.execute('INSERT INTO Users VALUES("quanex9","Kamil Korkut",false,"123123j");')
+cursor.execute('INSERT INTO Users (username, name_surname, is_teacher, password) VALUES("quanex9","Kamil Korkut",false,"123123j");')
 connection.commit()
 
 
