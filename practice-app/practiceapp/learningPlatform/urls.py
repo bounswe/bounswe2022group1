@@ -19,6 +19,9 @@ urlpatterns = [
     path('student/student_give_rate/',views.student_give_rate.student_give_rate, name="student_give_rate"),
     path('student/student_give_rate_entered/',views.student_give_rate.student_give_rate_entered, name="student_give_rate_entered"),
     path('student/student_my_courses/',views.student_my_courses.student_my_courses, name=" student_my_courses"),
+    path('student/student_my_courses_back/', views.student_my_courses.student_my_courses_back, name="student_my_courses_back"),
+    ### JSON Get page
+    path('student/student_my_courses/get/', views.student_my_courses.get_all_courses, name="json"),
     path('student/student_search_course/',views.student_search_course.student_search_course, name="student_search_course"),
     path('student/student_search_course_entered/',views.student_search_course.student_search_course_entered, name="student_search_course_entered"),
     
