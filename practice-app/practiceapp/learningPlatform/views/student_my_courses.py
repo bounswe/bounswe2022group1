@@ -10,6 +10,7 @@ from ..db_utils import run_statement
 from ..guards import guestGuard, studentGuard
 import json
 import requests
+from django.http import JsonResponse
 
 ## Holding API KEY
 import environ
@@ -52,4 +53,4 @@ def get_all_courses(req):
    for i in result:
          finalResult.append(i[0])
    # Passing result JSON to html
-   return render(req, 'json.html', {"jsonResult": json.dumps(finalResult)})
+   return JsonResponse({'data': finalResult})
