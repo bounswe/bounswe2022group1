@@ -24,7 +24,9 @@ urlpatterns = [
     path('student/student_my_courses/get/', views.student_my_courses.get_all_courses, name="json"),
     path('student/student_search_course/',views.student_search_course.student_search_course, name="student_search_course"),
     path('student/student_search_course_entered/',views.student_search_course.student_search_course_entered, name="student_search_course_entered"),
-    
+    path('student/student_give_rate/get/', views.student_give_rate.student_get_rate, name="json"),
+    path('student/student_give_rate/post/',views.student_give_rate.student_post_rate, name="json"),
+
     ## teacher pages
     path('teacher/',views.teacher.teacher, name="teacher"),
     path('teacher/teacher_add_course/',views.teacher_add_course.teacher_add_course, name="teacher_add_course"),

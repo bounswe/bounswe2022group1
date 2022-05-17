@@ -52,3 +52,33 @@ def student_give_rate_entered(req):
    run_statement(upt)
    return HttpResponseRedirect("/student")
    #return JsonResponse({'Status':'true'})
+
+#Will be updated
+#student/student_give_rate/get/?course_name=<course_name>
+#GET operation for API
+def student_get_rate(req):
+   course_name = req.GET.get("course_name", "")
+   # SQL query
+   query = f"SELECT rating FROM courses WHERE course_name='{course_name}'"
+   result = run_statement(query)
+   # Passing result JSON to html
+   return JsonResponse({'Course Rate': result[0][0]})
+
+#Will be updated
+#student/student_give_rate/post/?course_name=<course_name>&rate=<rate>
+#POST operation for API
+def student_post_rate(req):
+   rate = int(req.GET.get("rate", ""))
+   course_name = req.GET.get("course_name", "")
+   query =f"SELECT rating, rate_count FROM courses WHERE course_name='{course_name}'"
+   result=run_statement(query)
+   cur_rate = result[0][0]
+   cur_rate_count = result[0][1]
+
+   new_rate_count = cur_rate_count+1
+   new_rate = (cur_rate*cur_rate_count + rate) / new_rate_count
+
+   upt = f"UPDATE courses SET rating='{new_rate}', rate_count='{new_rate_count}' WHERE course_name='{course_name}'" 
+   run_statement(upt)
+   # Passing result JSON to html
+   return JsonResponse({'New Course Rate': new_rate,'New Rate Count':new_rate_count})
