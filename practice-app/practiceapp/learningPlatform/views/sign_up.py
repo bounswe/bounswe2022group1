@@ -9,6 +9,7 @@ from ..guards import guestGuard
 ##################
 
 def sign_up(req):
+    #deneme
     return render(req,'sign_up.html')
 
 def sign_up_entered(req):
