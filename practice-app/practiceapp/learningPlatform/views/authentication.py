@@ -1,3 +1,4 @@
+from urllib import request
 from django.shortcuts import render
 from django.http import HttpRequest, HttpResponse,HttpResponseRedirect
 from django.views.decorators.http import require_http_methods
@@ -7,6 +8,7 @@ from django.http import JsonResponse
 import json
 import time
 from django.views.decorators.csrf import csrf_exempt
+import requests
 
 
 ##################
@@ -61,7 +63,13 @@ def login(req):
     fail=req.GET.get("fail",False)
     error=req.GET.get("error","")
 
-    return render(req, 'login.html',{"fail": fail, "error": error})
+    response = requests.get('https://goquotes-api.herokuapp.com/api/v1/random?count=1')
+    content = json.loads(response.content)
+
+    quote = content.get('quotes', [''])[0].get('text', '')
+    author = content.get('quotes', [''])[0].get('author', '')
+
+    return render(req, 'login.html',{"fail": fail, "error": error, "quote": quote, "author": author})
 
 @guestGuard
 @require_http_methods(["POST"])
