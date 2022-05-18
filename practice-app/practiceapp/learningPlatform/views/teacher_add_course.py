@@ -29,6 +29,7 @@ def callExternalAPI():
    else:
       return "You are trying to generate too often, please retry in a few seconds."
 
+#GET METHOD
 @teacherGuard
 @require_http_methods(["POST","GET"])
 def teacher_add_course(req):
@@ -38,15 +39,16 @@ def teacher_add_course(req):
    fail = req.GET.get('fail', False)
    return render(req,'teacher_add_course.html',{'success': success, 'fail': fail, 'random_sentence_generated': random_sentence_generated})
 
+#POST METHOD
 @teacherGuard
 @require_http_methods(["POST","GET"])
 def teacher_add_course_entered(req):
 
-   # GET Method   
+   # Using GET   
    username = req.session.get('user').get('username') #Get the username of the current session
    is_teacher = req.session.get('user').get('role') #Get is_teacher of the current session
 
-   # POST Method
+   # Using POST
    try:
       if is_teacher == "teacher":        
          course_name = req.POST["course_name"] #Post the course_name chosen
