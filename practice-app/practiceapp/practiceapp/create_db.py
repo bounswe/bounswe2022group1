@@ -47,6 +47,17 @@ PRIMARY KEY (student_username,course_name),
 FOREIGN KEY(student_username) REFERENCES Users(username) ON UPDATE CASCADE ON DELETE CASCADE,
 FOREIGN KEY(course_name) REFERENCES Courses(course_name) ON UPDATE CASCADE ON DELETE CASCADE
 );""")
+connection.commit()
+
+cursor.execute("""
+CREATE TABLE IF NOT EXISTS Preferences (
+student_username varchar(200) NOT NULL,
+topic varchar(200) NOT NULL,
+level varchar(200) NOT NULL,
+PRIMARY KEY (student_username,topic),
+FOREIGN KEY(student_username) REFERENCES Users(username) ON UPDATE CASCADE ON DELETE CASCADE
+);""")
+
 
 
 
@@ -118,5 +129,13 @@ cursor.execute('INSERT INTO Enrolls VALUES("quanex9","CMPE240" );')
 connection.commit()
 cursor.execute('INSERT INTO Enrolls VALUES("quanex9","CMPE250" );')
 
+connection.commit()
 
+cursor.execute('INSERT INTO Preferences VALUES("quanex7","Mathematics", "Intermediate" );')
+connection.commit()
+
+cursor.execute('INSERT INTO Preferences VALUES("quanex7","Physics", "Advanced" );')
+connection.commit()
+
+cursor.execute('INSERT INTO Preferences VALUES("quanex7","Topology", "Beginner" );')
 connection.commit()
