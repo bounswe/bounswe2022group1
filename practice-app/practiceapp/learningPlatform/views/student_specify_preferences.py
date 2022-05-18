@@ -11,11 +11,11 @@ from ..guards import studentGuard
 
 
 
-def student_search_course(req):
-   return render(req,'student_search_course.html')
+def student_specify_preferences(req):
+   return render(req,'student_specify_preferences.html')
 
 
-def student_search_course_entered(req):
+def student_specify_preferences_entered(req):
    pass
    ##############
    ## your code ##
