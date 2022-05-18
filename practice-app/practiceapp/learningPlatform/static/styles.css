@@ -82,3 +82,9 @@ input:hover[type="submit"] {
 
   transition: background-color 0.2s ease-in-out;
 }
+
+td,
+th {
+  padding: 5px 10px;
+  border: solid var(--light) 0.5px;
+}
