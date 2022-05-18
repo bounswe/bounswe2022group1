@@ -13,5 +13,21 @@ connection = mysql.connector.connect(
 )
 
 cursor= connection.cursor()
+#cursor.execute("DROP TABLE IF EXISTS Users, Courses, Enrolls")
 
-cursor.execute("DROP TABLE IF EXISTS Users, Courses, Enrolls")
+cursor.execute("DROP TABLE IF EXISTS Preferences;")
+connection.commit()
+
+cursor.execute("DROP TABLE IF EXISTS Enrolls;")
+connection.commit()
+
+
+cursor.execute("DROP TABLE IF EXISTS Courses;")
+connection.commit()
+
+
+cursor.execute("DROP TABLE IF EXISTS Users;")
+connection.commit()
+
+
+
