@@ -20,25 +20,23 @@ def teacher_add_course(req):
 @require_http_methods(["POST","GET"])
 def teacher_add_course_entered(req):
 
-   # GET Method
-   print("dene2")
+   # GET Method   
    username = req.session.get('user').get('username') #Get the username of the current session
    is_teacher = req.session.get('user').get('role') #Get is_teacher of the current session
 
    # POST Method
    try:
-      if is_teacher == "teacher":
-         print("dene3")
+      if is_teacher == "teacher":        
          course_name = req.POST["course_name"] #Post the course_name chosen
          run_statement(f"INSERT INTO Courses VALUES ( '{course_name}','{username}',0,0)" ) # insert data into DB 
          return HttpResponseRedirect("/teacher/teacher_add_course/?success=true")
       else:
-         print("dene4")
          return HttpResponseRedirect("/teacher/teacher_add_course/?fail=true")
    except:
       return HttpResponseRedirect("/teacher/teacher_add_course/?fail=true")
 
    # External API
+   
 
 
 
