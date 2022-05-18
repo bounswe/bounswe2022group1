@@ -10,29 +10,38 @@ from ..guards import guestGuard, teacherGuard
 #Ahmet Cemil YAZICI - Teacher adds courses to system.
 
 @teacherGuard
+@require_http_methods(["POST","GET"])
 def teacher_add_course(req):
-   return render(req,'teacher_add_course.html')
-   
+   success = req.GET.get('success', False)
+   fail = req.GET.get('fail', False)
+   return render(req,'teacher_add_course.html',{'success': success, 'fail': fail})
 
 @teacherGuard
-@require_http_methods(["POST"])
-@require_http_methods(["GET"])
+@require_http_methods(["POST","GET"])
 def teacher_add_course_entered(req):
 
    # GET Method
-
-   username=req.session["username"] #Get the username of the current session
-   is_teacher = req.session["is_teacher"] #Get is_teacher of the current session
+   print("dene2")
+   username = req.session.get('user').get('username') #Get the username of the current session
+   is_teacher = req.session.get('user').get('role') #Get is_teacher of the current session
 
    # POST Method
-
-   if is_teacher == True:
-      course_name = req.POST["course_name"] #Get the course_name chosen
-      run_statement(f"INSERT INTO Courses VALUES ( '{username}','{course_name}',0,0)" ) # insert data into DB
-      return render(req,'teacher.html') # redirect it to the teacher page
-   else:
-      return render(req,'teacher.html') # redirect it to the teacher page
+   try:
+      if is_teacher == "teacher":
+         print("dene3")
+         course_name = req.POST["course_name"] #Post the course_name chosen
+         run_statement(f"INSERT INTO Courses VALUES ( '{course_name}','{username}',0,0)" ) # insert data into DB 
+         return HttpResponseRedirect("/teacher/teacher_add_course/?success=true")
+      else:
+         print("dene4")
+         return HttpResponseRedirect("/teacher/teacher_add_course/?fail=true")
+   except:
+      return HttpResponseRedirect("/teacher/teacher_add_course/?fail=true")
 
    # External API
+
+
+
+
 
    

@@ -20,8 +20,18 @@
       <div class="row" style="margin-bottom: 50px">
         <h1>Add New Course</h1>
         <p>Please give the details of the new course.</p>
+        
+          {% if fail %}
+          <div class="error">
+            <p>Course Name should be unique or another error has been occured!</p>
+          </div>
+          {% endif %} {% if success %}
+          <div class="success">
+            <p>Course is added successfully!</p>
+          
+          {% endif %}
         <div class="d-flex justify-content-around" style="margin-top: 20px">
-          <form method="POST" action="">
+          <form method="POST" action="/teacher/teacher_add_course_entered/">
             {% csrf_token %}
 
             <label for="course_name">Course Name:</label><br />
