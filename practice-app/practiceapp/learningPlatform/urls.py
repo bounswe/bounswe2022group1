@@ -11,6 +11,7 @@ urlpatterns = [
     ##sign-up
     path('sign_up/',views.sign_up.sign_up,name="sign_up"),
     path('sign_up_entered/',views.sign_up.sign_up_entered,name="sign_up_entered"),
+    path('sign_up_check_username/',views.sign_up.sign_up_check_username,name="sign_up_check_username"),
     
     ## student pages
     path('student/',views.student.student, name="student"),
