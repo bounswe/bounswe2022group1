@@ -13,8 +13,11 @@ from ..guards import guestGuard, teacherGuard
 def teacher_add_course(req):
    return render(req,'teacher_add_course.html')
    
-   
+
+#Post Method
+
 @teacherGuard
+@require_http_methods(["POST"])
 def teacher_add_course_entered(req):
    username=req.session["username"] #Get the username of the current session
    is_teacher = req.session["is_teacher"] #Get is_teacher of the current session
