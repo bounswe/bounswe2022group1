@@ -10,17 +10,20 @@ from ..guards import guestGuard, studentGuard
 import json
 import requests
 from django.http import JsonResponse
-
-## Holding API KEY
-import environ
-
-env = environ.Env()
-environ.Env.read_env()
+import time
 
 ## DB Query for html
 @studentGuard
 def student_my_courses(req):
    username = req.session["user"]["username"]
+   
+   # POST REQUEST
+   # Last view
+   query = f"UPDATE Users SET last_course_view_time = {time.time()} WHERE username = '{username}';"
+   run_statement(query)
+
+   # GET REQUEST
+   # Enrolled courses
    query = f"SELECT course_name FROM Enrolls WHERE student_username='{username}'"
    result = run_statement(query)
    finalResult = []
