@@ -33,10 +33,10 @@
             <form method="POST" action="/student/student_specify_preferences_entered/">
                 {% csrf_token %}
                 <label for="topic">Topic:</label><br />
-                <input type="text" id="topic" name="topic" />
+                <input type="text" id="topic" name="topic" required />
                 <br /><br />
                 <label for="level">Level:</label><br />
-                <input type="level" id="level" name="level" />
+                <input type="level" id="level" name="level" required />
                 <br /><br />
                 <input type="submit" value="Submit" />
               </form>
@@ -59,7 +59,6 @@
                 {% for value in row %}
                 <td>  {{value}}  </td>
                 {% endfor %}
-                <td>About content</td>
               </tr>
               {% endfor %}
             </table>
