@@ -19,6 +19,8 @@ MYSQL_USER=<YOUR_USERNAME>
 MYSQL_ROOT_PASSWORD=<YOUR_PASSWORD>
 MYSQL_PASSWORD=<YOUR_PASSWORD>
 MYSQL_HOST="localhost"
+
+API_KEY_give_rate=<API_KEY_give_rate>
 ```
 
 After that, ensure that your database server is up and run these commands to set up the database to Django configurations:
