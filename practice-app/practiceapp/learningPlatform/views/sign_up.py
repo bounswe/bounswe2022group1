@@ -22,11 +22,12 @@ conn = http.client.HTTPSConnection("random-username-generate.p.rapidapi.com")
 
 headers = {
     'X-RapidAPI-Host': "random-username-generate.p.rapidapi.com",
-    'X-RapidAPI-Key': "768d5c5ca7msh0de1bf3500804cbp1b12f3jsn930da0c69205"
+    'X-RapidAPI-Key': env("RandomUsername_API_KEY")
     }
 
 
 def call_external_API():
+    
     conn.request("GET", "/?locale=en_US&minAge=18&maxAge=50&domain=ugener.com", headers=headers)
     res = conn.getresponse()
     data = res.read()
@@ -37,10 +38,6 @@ def call_external_API():
         return random_username
 
 ######################## EXTERNAL API RELATED ##################################
-    
-### To use JsonResponse ###
-from django.http import JsonResponse
-### To use JsonResponse ###
 
 ##################
 ### Ömer Özdemir ###
@@ -78,7 +75,9 @@ def sign_up_check_username(req):
     return render(req,'sign_up.html',{'is_first_time':is_first_time,'fail':has_failed,'check_username_not_available':check_username_not_available,'responseOfAPI':responseOfAPI})
 
 
+
 # http://127.0.0.1:8000/see_all_registered_users/
+from django.http import JsonResponse
 def see_all_registered_users_method(req):
     query=run_statement(f"SELECT username FROM Users")
     return JsonResponse({'RegisteredUsers':query})
