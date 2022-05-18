@@ -14,13 +14,17 @@ def teacher_add_course(req):
    return render(req,'teacher_add_course.html')
    
 
-#Post Method
-
 @teacherGuard
 @require_http_methods(["POST"])
+@require_http_methods(["GET"])
 def teacher_add_course_entered(req):
+
+   # GET Method
+
    username=req.session["username"] #Get the username of the current session
    is_teacher = req.session["is_teacher"] #Get is_teacher of the current session
+
+   # POST Method
 
    if is_teacher == True:
       course_name = req.POST["course_name"] #Get the course_name chosen
@@ -28,3 +32,7 @@ def teacher_add_course_entered(req):
       return render(req,'teacher.html') # redirect it to the teacher page
    else:
       return render(req,'teacher.html') # redirect it to the teacher page
+
+   # External API
+
+   
