@@ -71,9 +71,14 @@
             <input type="reset" value="Cancel" class="cancelbtn" />
             <input type="submit" value="Sign Up" class="signupbtn" />
           </div>
+
+          <p style="margin-top: 20px">
+            Do you have an account? <a href="/login/">Login</a>
+          </p>
+
           {% if fail %}
           <br />
-          <h5 style="border:2px solid DodgerBlue"><strong>Sorry! The username is not available.</strong></h5>
+          <h5 style="border:2px solid DodgerBlue"><strong>The entered username is not available.</strong></h5>
           {% endif %}
         </form>
 
@@ -86,7 +91,6 @@
             type="text"
             placeholder="Enter username"
             name="post_check_username"
-            required
           />
           <button type="submit"><i class="fa fa-search"></i></button>
           </form>
@@ -100,10 +104,11 @@
             <br />
             <h5 style="border:2px solid DodgerBlue"><strong>Yes! This username is available.</strong></h5>
             {% endif %}
+
+            <br>
+            
+            <h5> Available username: {{ responseOfAPI }} </h5>
         
-        <p style="margin-top: 20px">
-          Do you have an account? <a href="/login/">Login</a>
-        </p>
       </div>
     </div>
   </body>
