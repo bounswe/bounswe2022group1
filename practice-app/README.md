@@ -4,7 +4,7 @@
 - Python(>3.8) and pip module.
 
 If you have these, then run the following code:
-`pip install -r requirements.txt`
+``
 In order to prevent any possible conflicts, you can set up a virtual environment. You can learn more about virtual environments on [here](https://docs.python.org/3/library/venv.html#module-venv)
 
 ## Deployment
@@ -14,10 +14,10 @@ First, Create a database on a sql ide (mysql) with <YOUR_DB_NAME>
 Second, create an .env file in "practiceapp" folder (folder with the settings.py file), and insert:
 
 ```
-MYSQL_DATABASE=<YOUR_DB_NAME>
-MYSQL_USER=<YOUR_USERNAME>
-MYSQL_ROOT_PASSWORD=<YOUR_PASSWORD>
-MYSQL_PASSWORD=<YOUR_PASSWORD>
+MYSQL_DATABASE="MYSQL_DATABASE"
+MYSQL_USER="MYSQL_USER"
+MYSQL_ROOT_PASSWORD="MYSQL_PASSWORD"
+MYSQL_PASSWORD="MYSQL_PASSWORD"
 MYSQL_HOST="localhost"
 ```
 

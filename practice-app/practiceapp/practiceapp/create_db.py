@@ -58,9 +58,76 @@ PRIMARY KEY (student_username,topic),
 FOREIGN KEY(student_username) REFERENCES Users(username) ON UPDATE CASCADE ON DELETE CASCADE
 );""")
 
+connection.commit()
 
 
+"""
+Natively written mysql code to create historical course statistics table.
+"""
 
+cursor.execute("""
+  CREATE TABLE IF NOT EXISTS Course_Statistics_History (
+    historical_date DATETIME NOT NULL,
+    course_name VARCHAR(200) NOT NULL,
+    teacher_name VARCHAR(200) NOT NULL,
+    total_student INT DEFAULT 0,
+    rating FLOAT,
+    rate_count INT,
+    PRIMARY KEY(historical_date)
+  );""")
+connection.commit()
+
+"""
+Natively written mysql query code to get course statistics.
+"""
+
+cursor.execute("""DROP PROCEDURE IF EXISTS getStatistics;""")
+connection.commit()
+cursor.execute("""
+  CREATE PROCEDURE getStatistics(
+    IN courseName VARCHAR(200)
+  ) BEGIN
+  SELECT
+    Courses.course_name AS 'Course Name',
+    name_surname AS 'Teacher Name',
+    COUNT(Enrolls.course_name) AS 'Total Student',
+    rating AS 'Rating',
+    rate_count AS 'Rate Count',
+    Users.last_statistics_view_time AS 'Last Statistics View Time',
+    Users.last_course_view_time AS 'Last Course View Time'
+  From
+    Users
+    JOIN Courses on Users.username = Courses.teacher_username
+    JOIN Enrolls on Courses.course_name = Enrolls.course_name
+  WHERE
+    username = teacher_username
+    AND Courses.course_name = courseName
+    GROUP BY Courses.course_name;
+  END;
+  """)
+connection.commit()
+
+"""
+Natively written mysql query code to save course statistics.
+"""
+
+cursor.execute("""
+  CREATE PROCEDURE saveStatistics(
+  IN courseName VARCHAR(200)
+  ) BEGIN INSERT INTO Course_Statistics_History (
+  historical_date, course_name, teacher_name,
+  total_student, rating, rate_count
+  )
+  VALUES
+    (
+      (SELECT NOW()), courseName,
+     (SELECT name_surname FROM Users WHERE username = (SELECT teacher_username FROM Courses WHERE Courses.course_name = 'CMPE150')),
+     (SELECT COUNT(*) FROM Enrolls WHERE Enrolls.course_name = courseName),
+     (SELECT rating FROM Courses WHERE Courses.course_name = courseName),
+     (SELECT Courses.rate_count FROM Courses WHERE Courses.course_name = courseName)
+    );
+  END;
+""")
 connection.commit()
 
 cursor.execute('INSERT INTO Users (username, name_surname, is_teacher, password) VALUES("quanex1","Mustafa Atay",true,"123123a");')
