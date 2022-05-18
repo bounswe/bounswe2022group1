@@ -49,8 +49,6 @@ check_username_not_available=False
 
 
 def sign_up(req):
-    #print(env("OMER_API_KEY"))
-    
     responseOfAPI=call_external_API()
     return render(req,'sign_up.html',{'is_first_time':is_first_time,'fail':has_failed,'check_username_not_available':check_username_not_available,'responseOfAPI':responseOfAPI})
 
@@ -81,3 +79,6 @@ from django.http import JsonResponse
 def see_all_registered_users_method(req):
     query=run_statement(f"SELECT username FROM Users")
     return JsonResponse({'RegisteredUsers':query})
+
+
+
