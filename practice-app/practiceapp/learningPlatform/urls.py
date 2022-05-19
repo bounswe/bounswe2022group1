@@ -41,8 +41,13 @@ urlpatterns = [
     
     ## teacher pages
     path('teacher/',views.teacher.teacher, name="teacher"),
+
+    #teacher_add_course - Ahmet YAZICI
     path('teacher/teacher_add_course/',views.teacher_add_course.teacher_add_course, name="teacher_add_course"),
     path('teacher/teacher_add_course_entered/',views.teacher_add_course.teacher_add_course_entered, name="teacher_add_course_entered"),
+    path('teacher/can_add_course/',views.teacher_add_course.can_add_course, name="can_add_course"),
+    path('teacher/do_add_course/',views.teacher_add_course.do_add_course, name="do_add_course"),
+
     path('teacher/teacher_course_statistics/',views.teacher_course_statistics.teacher_course_statistics, name="teacher_course_statistics"),
     path('teacher/teacher_save_course_statistics/',views.teacher_course_statistics.teacher_save_course_statistics, name="teacher_save_course_statistics"),
     path('teacher/teacher_get_course_statistics/',views.teacher_course_statistics.teacher_get_course_statistics, name="teacher_get_course_statistics"),
@@ -54,4 +59,7 @@ urlpatterns = [
     path('teacher/teacher_my_courses_back/',views.teacher_my_courses.teacher_my_courses_back, name="teacher_my_courses_back"),
     path('teacher/teacher_get_courses/',views.teacher_my_courses.teacher_get_courses, name="teacher_get_courses"),
     path('teacher/teacher_update_course/',views.teacher_my_courses.teacher_update_course, name="teacher_update_course"),
+
+
+
 ]
