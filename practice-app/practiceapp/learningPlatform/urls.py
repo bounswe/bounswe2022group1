@@ -51,4 +51,5 @@ urlpatterns = [
     path('teacher/teacher_my_courses/',views.teacher_my_courses.teacher_my_courses, name="teacher_my_courses"),
     path('teacher/teacher_my_courses_back/',views.teacher_my_courses.teacher_my_courses_back, name="teacher_my_courses_back"),
     path('teacher/teacher_get_courses/',views.teacher_my_courses.teacher_get_courses, name="teacher_get_courses"),
+    path('teacher/teacher_update_course/',views.teacher_my_courses.teacher_update_course, name="teacher_update_course"),
 ]
