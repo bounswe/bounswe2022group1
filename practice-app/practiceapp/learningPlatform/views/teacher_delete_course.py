@@ -99,6 +99,7 @@ def teacher_delete_course_entered(req):
       return HttpResponseRedirect("/teacher/teacher_delete_course/?status=Success")
    return HttpResponseRedirect("/teacher/teacher_delete_course/?status=Fail")
 
+
 @teacherGuard
 @require_http_methods(["POST"])
 def teacher_delete_course_undo(req):
