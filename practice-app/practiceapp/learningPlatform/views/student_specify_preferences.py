@@ -88,7 +88,7 @@ def student_specify_preferences_entered(req):
    ##############
    ## your code ##
    ##############
-
+#student/preferences/get/?student_username=<name>
 @csrf_exempt
 @require_http_methods(["GET"])
 def student_preferences_get(req):
@@ -102,7 +102,8 @@ def student_preferences_get(req):
 
    j_response = JsonResponse(modified_result)
    return j_response
-
+#student/preferences/post/
+#send the JSON
 @csrf_exempt
 @require_http_methods(["POST"])
 def student_preferences_post(req):

@@ -22,3 +22,100 @@ def run_statement(statement):
     cursor= connection.cursor()
     cursor.execute(statement)
     return cursor.fetchall()
+
+
+env = environ.Env()
+
+class test_specify_prefrences(TestCase):
+    def setUp(self):
+        self.c = Client()
+        self.student_username = "quanex7"
+
+    #testing the get API
+    def test_student_preferences_get(self):
+        cust_req = HttpRequest()
+        cust_req.method = "GET"
+        cust_req.GET = {'student_username': self.student_username}
+
+        response_object = student_specify_preferences.student_preferences_get(cust_req)
+
+        self.assertEqual(response_object.status_code, 200)
+        returned_output = json.loads(response_object.content)
+
+        expected_out =  {
+        "preference_1": {
+        "topic": "Mathematics",
+        "level": "Intermediate"
+        },
+        "preference_2": {
+        "topic": "Physics",
+        "level": "Advanced"
+        },
+        "preference_3": {
+        "topic": "Topology",
+        "level": "Beginner"
+        }
+        }
+        self.assertEqual(returned_output, expected_out)
+
+        # now, try to check the data of the random username. We expect empty username.
+        cust_req = HttpRequest()
+        cust_req.method = "GET"
+        cust_req.GET = {'student_username': 'asdhefhmef'}
+
+        response_object = student_specify_preferences.student_preferences_get(cust_req)
+
+        self.assertEqual(response_object.status_code, 200)
+
+        returned_output = json.loads(response_object.content)
+        expected_out = dict()
+        self.assertEqual(returned_output, expected_out)
+
+    #testing the POST API
+    def test_student_preferences_post(self):
+        student_username = 'quanex7'
+        password = '123123g'
+        topic = 'Data Science'
+        level = 'Advanced'
+
+        cust_req = HttpRequest()
+        cust_req.method = "POST"
+        cust_req.POST = {'student_username': student_username, 'password': password, 'topic': topic, 'level':level}
+
+        response_object = student_specify_preferences.student_preferences_post(cust_req)
+
+        self.assertEqual(response_object.status_code, 200)
+
+        returned_output = json.loads(response_object.content)
+        expected_output = {'status':'true',  'student_username':student_username, 'topic':topic, 'level':level }
+
+        self.assertEqual(returned_output, expected_output)
+
+
+        # NOW, TRY TO SEND THE SAME REQUEST. WE expect to get an error from the API, since duplicate (username, topic) 
+        # pairs are not allowed.
+        cust_req = HttpRequest()
+        cust_req.method = "POST"
+        cust_req.POST = {'student_username': student_username, 'password': password, 'topic': topic, 'level':level}
+
+        response_object = student_specify_preferences.student_preferences_post(cust_req)
+
+        self.assertEqual(response_object.status_code, 200)
+
+        returned_output = json.loads(response_object.content)
+        expected_output = {'status': 'false', "error":"Error! Non-unique student_username-topic pair."}
+
+        self.assertEqual(returned_output, expected_output)
+
+
+
+
+
+
+
+
+
+
+
+
+
