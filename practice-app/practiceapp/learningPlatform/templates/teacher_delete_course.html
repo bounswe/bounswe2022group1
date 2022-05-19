@@ -1,1 +1,52 @@
 <!-- Kadir Gökhan Sezer -->
+{% load crispy_forms_tags %} {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Learning Platform</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="{% static 'styles.css' %}" rel="stylesheet" />
+</head>
+
+<body class="full-height">
+    <div class="center-layout container control-panel-layout" margin:auto>
+        <h1 style="text-align: center; margin-top: 0; margin-bottom: 50px">
+            Your courses:
+        </h1>
+        <div style="width: 100%;height: 20px;">
+             {% for course in my_teacher_courses_list %}
+            <div class="col-xs-3">{{ course }}</div>
+            {% endfor %}
+        <br>
+        <label><b>{{ enter_text }}</b></label> <br />
+        <form method="POST" action="/teacher/teacher_delete_course_entered/">
+            {{form|crispy}}{% csrf_token %}
+            <input
+              type="text"
+              placeholder="CMPEXXX"
+              id="coursename" 
+              name="coursename"
+            />
+            <input type="submit" value="Enter" />
+        </form>
+        </div>
+        <div>
+            <img width="200" src= {{ photo }}>
+        </div>
+        <div>
+        <form action="/teacher">
+            <input type="submit" value="Back" />
+        </form>
+        <form method="POST" action="/teacher/teacher_delete_course_undo/">
+            {{form|crispy}}{% csrf_token %}
+            <input type="submit" value="Undo Action" />
+        </form>
+    </div>
+    </div>
+</body>
+
+</html>
