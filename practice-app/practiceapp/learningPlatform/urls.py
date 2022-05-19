@@ -26,6 +26,9 @@ urlpatterns = [
     path('student/student_my_courses/get/', views.student_my_courses.get_all_courses, name="json"),
     path('student/student_specify_preferences/',views.student_specify_preferences.student_specify_preferences, name="student_specify_preferences"),
     path('student/student_specify_preferences_entered/',views.student_specify_preferences.student_specify_preferences_entered, name="student_specify_preferences_entered"),
+    path('student/student_give_rate/get/', views.student_give_rate.student_get_rate, name="json"),
+    path('student/student_give_rate/post/',views.student_give_rate.student_post_rate, name="json"),
+
     
     ## teacher pages
     path('teacher/',views.teacher.teacher, name="teacher"),
@@ -34,6 +37,9 @@ urlpatterns = [
     path('teacher/teacher_course_statistics/',views.teacher_course_statistics.teacher_course_statistics, name="teacher_course_statistics"),
     path('teacher/teacher_delete_course/',views.teacher_delete_course.teacher_delete_course, name="teacher_delete_course"),
     path('teacher/teacher_delete_course_entered/',views.teacher_delete_course.teacher_delete_course_entered, name="teacher_delete_course_entered"),
+    path('teacher/getCourses/',views.teacher_delete_course.getCourses, name="getCourses"),
+    path('teacher/teacher_delete_course_undo/',views.teacher_delete_course.teacher_delete_course_undo, name="teacher_delete_course_undo"),
     path('teacher/teacher_my_courses/',views.teacher_my_courses.teacher_my_courses, name="teacher_my_courses"),
-
+    path('teacher/teacher_my_courses_back/',views.teacher_my_courses.teacher_my_courses_back, name="teacher_my_courses_back"),
+    path('teacher/teacher_get_courses/',views.teacher_my_courses.teacher_get_courses, name="teacher_get_courses"),
 ]

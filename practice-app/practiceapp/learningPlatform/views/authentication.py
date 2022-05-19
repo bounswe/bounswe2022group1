@@ -15,7 +15,6 @@ env = environ.Env()
 environ.Env.read_env()
 dbname=env("MYSQL_DATABASE")
 
-
 ##################
 ### Mustafa Atay ###
 ##################
@@ -92,6 +91,7 @@ def loginQuery(req):
         if response_content.get('loggedIn', False):
             query=f"SELECT * FROM {dbname}.users WHERE username='{username}' AND password='{password}'"
             result=run_statement(query)
+
             req.session["user"]={
                 "username":username,
                 "name_surname": result[0][1],
