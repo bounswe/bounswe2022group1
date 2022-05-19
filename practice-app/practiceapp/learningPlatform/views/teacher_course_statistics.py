@@ -53,8 +53,18 @@ def teacher_save_course_statistics(req):
    try:
       if is_teacher == "teacher":        
          course_name = req.POST["course_name"] #Save the course statistics
-         run_statement(f"CALL saveStatistics('{course_name}')")
-         return HttpResponseRedirect("/teacher/teacher_course_statistics/?success=true")
+         if course_name == run_statement(f"SELECT course_name FROM Courses WHERE course_name = '{course_name}';")[0][0]:
+            news_elon_musk = callExternalAPI()
+            run_statement(f"CALL saveStatistics('{course_name}')")
+            response = run_statement(f"SELECT rating/rate_count AS 'Average Rating' FROM Courses WHERE course_name = '{course_name}';")[0][0]
+            print(response)
+            if response is None:
+               response = 0
+            result=run_statement(f"SELECT * FROM Course_Statistics_History;") #Run the query in DB
+            print(response)
+            return render(req,'teacher_course_statistics.html',{"response":response, "success":True,"results":result, 'news_elon_musk': news_elon_musk})
+         else:
+            return HttpResponseRedirect("/teacher/teacher_course_statistics/?fail=true")
       else:
          return HttpResponseRedirect("/teacher/teacher_course_statistics/?fail=true")
    except:
