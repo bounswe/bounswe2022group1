@@ -7,6 +7,9 @@ import http.client
 import json
 import random
 from django.http import JsonResponse
+import environ
+env = environ.Env()
+environ.Env.read_env()
 
 
 # EXTERNAL API
@@ -14,7 +17,7 @@ conn = http.client.HTTPSConnection("free-news.p.rapidapi.com")
 
 headers = {
     'X-RapidAPI-Host': "free-news.p.rapidapi.com",
-    'X-RapidAPI-Key': "e5e0aa9024mshdbd00e1fc1a3f31p14545ejsn9af52ee101e7"
+    'X-RapidAPI-Key': env("teacher_course_statistics_api")
     }
 
 def callExternalAPI():
