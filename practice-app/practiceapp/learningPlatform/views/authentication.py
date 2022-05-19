@@ -61,6 +61,10 @@ def doLogin(req):
     return JsonResponse({'loggedIn': False, 'error': response_content.get('error', 'Unknown error.')})
 
 
+
+
+
+
 @guestGuard
 @require_http_methods(["GET"])
 def login(req):

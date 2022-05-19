@@ -13,6 +13,8 @@ urlpatterns = [
     ##sign-up
     path('sign_up/',views.sign_up.sign_up,name="sign_up"),
     path('sign_up_entered/',views.sign_up.sign_up_entered,name="sign_up_entered"),
+    path('sign_up_check_username/',views.sign_up.sign_up_check_username,name="sign_up_check_username"),
+    path('see_all_registered_users/', views.sign_up.see_all_registered_users_method, name="see_all_registered_users_json"),
     
     ## student pages
     path('student/',views.student.student, name="student"),
