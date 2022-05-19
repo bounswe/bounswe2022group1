@@ -53,6 +53,9 @@ input:hover[type="submit"] {
   border-left: 2px solid var(--primary);
   border-right: 2px solid var(--primary);
   padding: 32px 64px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .control-panel-layout {
