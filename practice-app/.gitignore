@@ -1,5 +1,6 @@
 practiceapp/.env
 practiceapp/practiceapp/__pycache__/*
+practiceapp/practiceapp/.env
 practiceapp/learningPlatform/migrations/*
 practiceapp/learningPlatform/__pycache__/*
 practiceapp/.env
