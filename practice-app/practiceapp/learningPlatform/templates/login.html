@@ -22,6 +22,12 @@
         <h1 style="text-align: center; margin-top: 0; margin-bottom: 50px">
           LOGIN
         </h1>
+        {% if fail %}
+        <div class="alert alert-danger">{{ error }}</div>
+        {% endif %}
+        <h5>Random Quote Of This Login :)</h5>
+        <p style="font-style: italic">"{{ quote }}"</p>
+        <p style="text-align: right">{{ author }}</p>
         <form method="POST" action="/login/query/">
           {% csrf_token %}
           <label for="username">Username:</label><br />

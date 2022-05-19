@@ -19,6 +19,8 @@ MYSQL_USER=<YOUR_USERNAME>
 MYSQL_ROOT_PASSWORD=<YOUR_PASSWORD>
 MYSQL_PASSWORD=<YOUR_PASSWORD>
 MYSQL_HOST="localhost"
+
+API_KEY_give_rate=<API_KEY_give_rate>
 ```
 
 After that, ensure that your database server is up and run these commands to set up the database to Django configurations:
@@ -39,3 +41,7 @@ python practiceapp/create_db.py
 Finally, run the command:
 `python manage.py runserver`
 and check whether the website is accessible at: [http://127.0.0.1:8000/learningPlatform/](http://127.0.0.1:8000/learningPlatform/)
+
+You can test the system with the command
+`python manage.py tests/*`
+
