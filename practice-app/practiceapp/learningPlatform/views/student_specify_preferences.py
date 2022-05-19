@@ -8,7 +8,12 @@ import requests
 from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
 from django.views.decorators.csrf import csrf_exempt
+import environ
 
+
+env = environ.Env()
+environ.Env.read_env()
+dbname=env("MYSQL_DATABASE")
 
 ##################
 ### Ege Onur Taga ###
@@ -55,7 +60,7 @@ def student_specify_preferences_entered(req):
    password = ''
 
    try:
-      query=f"SELECT password FROM users WHERE username='{student_username}' AND is_teacher=False;"
+      query=f"SELECT password FROM {dbname}.users WHERE username='{student_username}' AND is_teacher=False;"
       return_result = run_statement(query)
       password = return_result[0][0]
    except:
@@ -88,7 +93,7 @@ def student_specify_preferences_entered(req):
 @require_http_methods(["GET"])
 def student_preferences_get(req):
    student_username = req.GET.get('student_username', "")
-   query = f"SELECT Preferences.topic, Preferences.level FROM Preferences WHERE student_username='{student_username}';"
+   query = f"SELECT Preferences.topic, Preferences.level FROM {dbname}.Preferences WHERE student_username='{student_username}';"
    result = run_statement(query)
    modified_result = dict()
    for i in range(len(result)):
@@ -110,7 +115,7 @@ def student_preferences_post(req):
       return JsonResponse({'status': 'false', 'error': 'Please specify student_username, password, topic and level.'})
 
    try:
-      query=f"SELECT * FROM users WHERE username='{student_username}' AND password='{password}' AND is_teacher=False;"
+      query=f"SELECT * FROM {dbname}.users WHERE username='{student_username}' AND password='{password}' AND is_teacher=False;"
       return_result = run_statement(query)
       if len(return_result) == 0:
          return JsonResponse({'status': 'false', "error":"There is no student with given username and password." })
@@ -124,11 +129,11 @@ def student_preferences_post(req):
 
    response = dict()
    try:
-      query = f"INSERT INTO Preferences VALUES('{student_username}', '{topic}','{level}');"
+      query = f"INSERT INTO {dbname}.Preferences VALUES('{student_username}', '{topic}','{level}');"
       run_statement(query)
       response = {'status':'true',  'student_username':student_username, 'topic':topic, 'level':level }
    except:
-      return JsonResponse({'status': 'false', "error":"An error occurred while performing the query. It maybe because non-unique student_username-topic pair. " })
+      return JsonResponse({'status': 'false', "error":"Error! Non-unique student_username-topic pair." })
    
    return JsonResponse(response)
 
