@@ -62,7 +62,7 @@ class test(TestCase):
         self.c.login(username="quanex"+str(i), password='123123'+chr(j))
         self.c.post("http://127.0.0.1:8000/login/query/",data={"username":"quanex"+str(i),"password":"123123"+chr(j)})
         response=self.c.get("http://127.0.0.1:8000/teacher/getCourses/")
-        self.assertEqual(response.json()["courses"],['CMPE240'])
+        self.assertEqual(response.json()["courses"],['CMPE240','CMPE250'])
         self.c.logout()
         j+=1
         i=4
@@ -207,7 +207,7 @@ class test(TestCase):
         self.c.post("http://127.0.0.1:8000/login/query/",data={"username":"quanex"+str(i),"password":"123123"+chr(j)})
         response=self.c.post("http://127.0.0.1:8000/teacher/teacher_delete_course_entered/",data={"coursename":"CMPE240"})
         self.assertEqual(response.url[39:],"Success")
-        response=self.c.post("http://127.0.0.1:8000/teacher/teacher_delete_course_entered/",data={"coursename":"CMPE250"})
+        response=self.c.post("http://127.0.0.1:8000/teacher/teacher_delete_course_entered/",data={"coursename":"CMPE260"})
         self.assertEqual(response.url[39:],"Fail")
         response=self.c.post("http://127.0.0.1:8000/teacher/teacher_delete_course_entered/",data={"coursename":"CMPE230"})
         self.assertEqual(response.url[39:],"Fail")
@@ -228,12 +228,13 @@ class test(TestCase):
         j,i=97,1
         self.c.login(username="quanex"+str(i), password='123123'+chr(j))
         self.c.post("http://127.0.0.1:8000/login/query/",data={"username":"quanex"+str(i),"password":"123123"+chr(j)})
-        response=self.c.post("http://127.0.0.1:8000/teacher/teacher_delete_course_undo/",data={"lastdeleted":"CMPE220"})
-        self.assertEqual(response.json()["Response"],'Failed.The course is already in the db.')
+        response=self.c.post("http://127.0.0.1:8000/teacher/teacher_delete_course_entered/",data={"coursename":"CMPE150"})
+        response=self.c.post("http://127.0.0.1:8000/teacher/teacher_delete_course_undo/",data={"lastdeleted":"CMPE150"})
+        self.assertEqual(response.status_code,204)
         response=self.c.post("http://127.0.0.1:8000/teacher/teacher_delete_course_undo/",data={"lastdeleted":"f"})
-        self.assertEqual(response.json()["Response"],'Success.You saved the course you deleted before.')
+        self.assertEqual(response.status_code,409)
         response=self.c.post("http://127.0.0.1:8000/teacher/teacher_delete_course_undo/",data={"lastdeleted":"CMPE290"})
-        self.assertEqual(response.json()["Response"],'Success.You saved the course you deleted before.')
+        self.assertEqual(response.status_code,409)
         self.c.logout()
 
         j+=1
@@ -241,16 +242,16 @@ class test(TestCase):
         self.c.login(username="quanex"+str(i), password='123123'+chr(j))
         self.c.post("http://127.0.0.1:8000/login/query/",data={"username":"quanex"+str(i),"password":"123123"+chr(j)})
         response=self.c.post("http://127.0.0.1:8000/teacher/teacher_delete_course_entered/",data={"coursename":"CMPE220"})
-        self.assertEqual(response.url[39:],"Success")
+        self.assertEqual(response.status_code,302)
         response=self.c.post("http://127.0.0.1:8000/teacher/teacher_delete_course_undo/",data={"lastdeleted":"CMPE220"})
-        self.assertEqual(response.json()["Response"],'Success.You saved the course you deleted before.')
+        self.assertEqual(response.status_code,204)
         self.c.logout()
         j+=1
         i=3
         self.c.login(username="quanex"+str(i), password='123123'+chr(j))
         self.c.post("http://127.0.0.1:8000/login/query/",data={"username":"quanex"+str(i),"password":"123123"+chr(j)})
         response=self.c.post("http://127.0.0.1:8000/teacher/teacher_delete_course_entered/",data={"coursename":"CMPE240"})
-        self.assertEqual(response.url[39:],"Success")
+        self.assertEqual(response.status_code,302)
         response=self.c.post("http://127.0.0.1:8000/teacher/teacher_delete_course_undo/",data={"lastdeleted":"CMPE240"})
-        self.assertEqual(response.json()["Response"],'Success.You saved the course you deleted before.')
+        self.assertEqual(response.status_code,204)
         self.c.logout()
