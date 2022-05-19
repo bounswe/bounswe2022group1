@@ -28,6 +28,7 @@ def run_statement(statement):
 env = environ.Env()
 #run_statement('use mydatabase')
 
+###
 class test(TestCase):
     def setUp(self):
         self.app=teacher_delete_course
@@ -227,16 +228,29 @@ class test(TestCase):
         j,i=97,1
         self.c.login(username="quanex"+str(i), password='123123'+chr(j))
         self.c.post("http://127.0.0.1:8000/login/query/",data={"username":"quanex"+str(i),"password":"123123"+chr(j)})
-        response=self.c.post("http://127.0.0.1:8000/teacher/teacher_delete_course_entered/",data={"coursename":"CMPE220"})
-        self.assertEqual(response.url[39:],"Fail")
-        response=self.c.post("http://127.0.0.1:8000/teacher/teacher_delete_course_entered/",data={"coursename":"CMPE250"})
-        self.assertEqual(response.url[39:],"Fail")
-        response=self.c.post("http://127.0.0.1:8000/teacher/teacher_delete_course_entered/",data={"coursename":"CMPE240"})
-        self.assertEqual(response.url[39:],"Fail")
-        response=self.c.post("http://127.0.0.1:8000/teacher/teacher_delete_course_entered/",data={"coursename":"CMPE150"})
-        self.assertEqual(response.url[39:],"Success")
-        response=self.c.post("http://127.0.0.1:8000/teacher/teacher_delete_course_entered/",data={"coursename":"CMPE160"})
-        self.assertEqual(response.url[39:],"Success")
+        response=self.c.post("http://127.0.0.1:8000/teacher/teacher_delete_course_undo/",data={"lastdeleted":"CMPE220"})
+        self.assertEqual(response.json()["Response"],'Failed.The course is already in the db.')
+        response=self.c.post("http://127.0.0.1:8000/teacher/teacher_delete_course_undo/",data={"lastdeleted":"f"})
+        self.assertEqual(response.json()["Response"],'Success.You saved the course you deleted before.')
+        response=self.c.post("http://127.0.0.1:8000/teacher/teacher_delete_course_undo/",data={"lastdeleted":"CMPE290"})
+        self.assertEqual(response.json()["Response"],'Success.You saved the course you deleted before.')
         self.c.logout()
+
         j+=1
         i=2
+        self.c.login(username="quanex"+str(i), password='123123'+chr(j))
+        self.c.post("http://127.0.0.1:8000/login/query/",data={"username":"quanex"+str(i),"password":"123123"+chr(j)})
+        response=self.c.post("http://127.0.0.1:8000/teacher/teacher_delete_course_entered/",data={"coursename":"CMPE220"})
+        self.assertEqual(response.url[39:],"Success")
+        response=self.c.post("http://127.0.0.1:8000/teacher/teacher_delete_course_undo/",data={"lastdeleted":"CMPE220"})
+        self.assertEqual(response.json()["Response"],'Success.You saved the course you deleted before.')
+        self.c.logout()
+        j+=1
+        i=3
+        self.c.login(username="quanex"+str(i), password='123123'+chr(j))
+        self.c.post("http://127.0.0.1:8000/login/query/",data={"username":"quanex"+str(i),"password":"123123"+chr(j)})
+        response=self.c.post("http://127.0.0.1:8000/teacher/teacher_delete_course_entered/",data={"coursename":"CMPE240"})
+        self.assertEqual(response.url[39:],"Success")
+        response=self.c.post("http://127.0.0.1:8000/teacher/teacher_delete_course_undo/",data={"lastdeleted":"CMPE240"})
+        self.assertEqual(response.json()["Response"],'Success.You saved the course you deleted before.')
+        self.c.logout()
