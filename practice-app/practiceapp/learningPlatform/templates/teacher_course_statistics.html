@@ -1,1 +1,94 @@
 <!-- Harun Erkurt -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Course Statistics</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <link
+      href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+    <link href="{% static 'styles.css' %}" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container">
+      <table class="center">
+          <colgroup>
+              <col span="1" style="width: 23%;">
+              <col span="1" style="width: 20%;">
+              <col span="1" style="width: 22%;">
+              <col span="1" style="width: 15%;">
+              <col span="1" style="width: 10%;">
+              <col span="1" style="width: 10%;">
+          </colgroup>
+          <tr>
+              <th>Date</th>
+              <th>Course Name</th>
+              <th>Teacher Name</th>
+              <th>Total Student</th>
+              <th>Rating</th>
+              <th>Rate Count</th>
+          </tr>
+          {% for row in results %}
+          <tr>
+              {% for value in row %}
+              <td>
+                  {{value}}
+              </td>
+              {% endfor %}
+          </tr>
+          {% endfor %}
+      </table>
+  </div>
+    <div class="container">
+      <div class="row" style="margin-bottom: 50px">
+        <h1>Course Statistics</h1>
+        <p>Please enter a course name for saving instant statistics.</p>
+        
+          {% if fail %}
+          <div class="error">
+            <p>This course is not available!</p>
+          </div>
+          {% endif %} {% if success %}
+          <div class="success">
+            <p>Course statistics is saved successfully!</p>
+            {{response}}
+          
+          {% endif %}
+        <div class="d-flex justify-content-around" style="margin-top: 20px">
+          <form method="POST" action="/teacher/teacher_save_course_statistics/">
+            {% csrf_token %}
+
+            <label for="course_name">Course Name:</label><br />
+            <input type="text" name="course_name" required /><br /><br />
+
+            <input type="submit" value="Submit" />
+          </form>
+          
+          <form method="GET" novalidate action="..">
+            {% csrf_token %}
+            <button
+              type="submit"
+              style="margin-top: 10px"
+              class="btn btn-default"
+            >
+              return
+            </button>
+          </form>
+          <br />
+          <p>
+            <br /><br /><br /><br /><br />
+            News About Elon Musk by External API:
+          </p>
+          <br />
+          {{news_elon_musk}}
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
