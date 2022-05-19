@@ -27,12 +27,12 @@ headers = {
 
 
 def call_external_API():
-    
     conn.request("GET", "/?locale=en_US&minAge=18&maxAge=50&domain=ugener.com", headers=headers)
     res = conn.getresponse()
     data = res.read()
     random_username=json.loads(data.decode("utf-8"))['items']['username']
-    if run_statement(f"SELECT username FROM Users WHERE '{random_username}'=username "): #check random_username does not exist in database
+    random_username_exist=run_statement(f"SELECT username FROM Users WHERE '{random_username}'=username ")
+    if random_username_exist: #check random_username does not exist in database
         call_external_API()
     else:
         return random_username
