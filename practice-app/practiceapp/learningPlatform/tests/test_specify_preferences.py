@@ -58,7 +58,7 @@ class test_specify_prefrences(TestCase):
         }
         self.assertEqual(returned_output, expected_out)
 
-        # now, try to check the data of the random username. We expect empty username.
+        # now, try to check the data of the non-existent username. We expect empty username.
         cust_req = HttpRequest()
         cust_req.method = "GET"
         cust_req.GET = {'student_username': 'asdhefhmef'}
@@ -107,12 +107,43 @@ class test_specify_prefrences(TestCase):
 
         self.assertEqual(returned_output, expected_output)
 
+     #testing the POST API with wrong password and with wrong username
+    def test_student_preferences_post_password(self):
+        #with wrong password
+        student_username = 'quanex7'
+        password = '1sdsdjhghsffge'
+        topic = 'Data Science'
+        level = 'Advanced'
+        cust_req = HttpRequest()
+        cust_req.method = "POST"
+        cust_req.POST = {'student_username': student_username, 'password': password, 'topic': topic, 'level':level}
+
+        response_object = student_specify_preferences.student_preferences_post(cust_req)
+
+        self.assertEqual(response_object.status_code, 200)
+
+        returned_output = json.loads(response_object.content)
+        expected_output = {'status': 'false', "error":"There is no student with given username and password."}
+        self.assertEqual(returned_output, expected_output)
+
+        #with wrong username
+        student_username = 'quaefefgcnex7'
+        cust_req = HttpRequest()
+        cust_req.method = "POST"
+        cust_req.POST = {'student_username': student_username, 'password': password, 'topic': topic, 'level':level}
+
+        response_object = student_specify_preferences.student_preferences_post(cust_req)
+
+        self.assertEqual(response_object.status_code, 200)
+
+        returned_output = json.loads(response_object.content)
+        expected_output = {'status': 'false', "error":"There is no student with given username and password."}
+        self.assertEqual(returned_output, expected_output)
 
 
 
-
-
-
+# Written by Ege Onur Taga
+# We test API's and not view functions because view functions are already tested in 
 
 
 

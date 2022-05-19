@@ -1,4 +1,3 @@
-from asyncio.windows_events import NULL
 from queue import Empty
 from urllib import response
 from django.shortcuts import render
