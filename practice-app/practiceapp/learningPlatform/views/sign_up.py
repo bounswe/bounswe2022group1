@@ -61,7 +61,7 @@ def sign_up_entered(req):
     if has_failed:
         return render(req,'sign_up.html',{'is_first_time':is_first_time,'fail':has_failed,'check_username_not_available':check_username_not_available,'responseOfAPI':responseOfAPI})
     else:
-        run_statement(f"INSERT INTO Users VALUES('{username}', '{name_surname}', {is_teacher}, '{password}' ) ;") #insert into Users table
+        run_statement(f"INSERT INTO Users (username, name_surname, is_teacher, password) VALUES('{username}', '{name_surname}', {is_teacher}, '{password}' ) ;") #insert into Users table
         return HttpResponseRedirect("/login/")  #redirect to login page
     
 def sign_up_check_username(req):

@@ -85,9 +85,6 @@ def student_specify_preferences_entered(req):
 
    
    
-   ##############
-   ## your code ##
-   ##############
 #student/preferences/get/?student_username=<name>
 @csrf_exempt
 @require_http_methods(["GET"])
