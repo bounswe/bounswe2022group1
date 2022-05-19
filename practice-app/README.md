@@ -41,3 +41,7 @@ python practiceapp/create_db.py
 Finally, run the command:
 `python manage.py runserver`
 and check whether the website is accessible at: [http://127.0.0.1:8000/learningPlatform/](http://127.0.0.1:8000/learningPlatform/)
+
+You can test the system with the command
+`python manage.py tests/*`
+
