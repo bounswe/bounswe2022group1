@@ -22,4 +22,7 @@ class sign_up_test(TestCase):
         }
 
         can_sign_up_response_object=sign_up.can_sign_up(my_req)
-    
+        
+        
+        
+        
