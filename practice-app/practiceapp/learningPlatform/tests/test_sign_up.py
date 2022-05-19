@@ -1,42 +1,25 @@
-from django.test import TestCase
-from learningPlatform.forms import *
-#from django.urls import reverse,resolve
-
 import json
+from django.test import TestCase
+from learningPlatform.views import sign_up
 from django.http import HttpRequest
 from django.test import TestCase
 from django.db import connection
 
 
-#merhaba!
-class sign_up(TestCase):
+
+class sign_up_test(TestCase):
       
 
-    def test_valid_sign_up(self):
+    def test_can_sign_up(self):
         my_req = HttpRequest()
-        my_req.method = "POST"
+        my_req.method = "GET"
         
-        my_req.POST={
-        'name_surname':'Ömer Özdemir',
-        'username':'quanex0000',
-        'password':'sifreyok',
-        'is_teacher':True
+        my_req.GET={
+        'post_name_surname':'Ömer Özdemir',
+        'post_username':'quanex0000',
+        'post_password':'sifreyok',
+        'post_is_teacher':True
         }
-        
-        valid_sign_up_response_object=sign_up.valid_sign_up(my_req)
-        self.assertEqual(valid_sign_up_response_object.status_code,405)
-        
-        
-    def test_no_data_sign_up(self):
-        form=signUpForm(data={})
-        self.assertFalse(form.is_valid())
-        self.assertEquals(len(form.errors),4)
+
+        can_sign_up_response_object=sign_up.can_sign_up(my_req)
     
-    
-    def test_check_username_exists(self):
-        form=signUpFormCheckUsername(data={'check_username':'any_username'})
-        self.assertTrue(form.is_valid())
-    
-    
-    
-    print("All tests are successful!")
