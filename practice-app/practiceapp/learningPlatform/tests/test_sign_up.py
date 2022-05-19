@@ -8,7 +8,7 @@ from django.test import TestCase
 from django.db import connection
 
 
-
+#merhaba!
 class sign_up(TestCase):
       
 
