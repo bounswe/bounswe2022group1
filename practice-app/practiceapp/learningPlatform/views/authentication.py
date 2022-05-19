@@ -3,10 +3,12 @@ from django.http import HttpResponse,HttpResponseRedirect
 from django.views.decorators.http import require_http_methods
 from ..db_utils import run_statement
 from ..guards import guestGuard
+import environ
 #Kadir:
 env = environ.Env()
 environ.Env.read_env()
 dbname=env("MYSQL_DATABASE")
+
 
 
 ##################
