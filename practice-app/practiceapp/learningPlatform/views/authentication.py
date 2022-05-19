@@ -9,6 +9,11 @@ import json
 import time
 from django.views.decorators.csrf import csrf_exempt
 import requests
+import environ
+
+env = environ.Env()
+environ.Env.read_env()
+dbname=env("MYSQL_DATABASE")
 
 
 ##################
@@ -21,7 +26,7 @@ def canLogin(req):
     username=req.GET.get("username",False)
     password=req.GET.get("password",False)
     if username and password:
-        query=f"SELECT * FROM users WHERE username='{username}' AND password='{password}'"
+        query=f"SELECT * FROM {dbname}.users WHERE username='{username}' AND password='{password}'"
         result=run_statement(query)
         if result:
             return JsonResponse({'canLogin': True})
@@ -46,7 +51,7 @@ def doLogin(req):
     if canLogin_response_object.status_code == 200:
         if response_content['canLogin']:
             try:
-                query=f"UPDATE users SET last_login_time = {time.time()} WHERE username='{username}'"
+                query=f"UPDATE {dbname}.users SET last_login_time = {time.time()} WHERE username='{username}'"
                 run_statement(query)
                 return JsonResponse({'loggedIn': True})
             except:
@@ -85,7 +90,7 @@ def loginQuery(req):
     if doLogin_response_object.status_code == 200:
         response_content = json.loads(doLogin_response_object.content)
         if response_content.get('loggedIn', False):
-            query=f"SELECT * FROM users WHERE username='{username}' AND password='{password}'"
+            query=f"SELECT * FROM {dbname}.users WHERE username='{username}' AND password='{password}'"
             result=run_statement(query)
             req.session["user"]={
                 "username":username,
