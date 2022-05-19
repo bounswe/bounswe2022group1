@@ -18,11 +18,11 @@ h6 {
 }
 
 label,
-input {
+input, select {
   color: var(--dark);
 }
 
-input {
+input, select {
   height: var(--input-height);
   border-color: var(--dark);
   border-radius: calc(var(--input-height) / 2);
@@ -84,4 +84,10 @@ input:hover[type="submit"] {
   color: white;
 
   transition: background-color 0.2s ease-in-out;
+}
+
+td,
+th {
+  padding: 5px 10px;
+  border: solid var(--light) 0.5px;
 }

@@ -26,8 +26,13 @@ urlpatterns = [
     path('student/student_my_courses/get/', views.student_my_courses.get_all_courses, name="json"),
     path('student/student_specify_preferences/',views.student_specify_preferences.student_specify_preferences, name="student_specify_preferences"),
     path('student/student_specify_preferences_entered/',views.student_specify_preferences.student_specify_preferences_entered, name="student_specify_preferences_entered"),
+
+    path('student/preferences/get/',views.student_specify_preferences.student_preferences_get, name="student_preferences_get_JSON"),
+    path('student/preferences/post/',views.student_specify_preferences.student_preferences_post, name="student_preferences_post_JSON"),
+
     path('student/student_give_rate/get/', views.student_give_rate.student_get_rate, name="json"),
     path('student/student_give_rate/post/',views.student_give_rate.student_post_rate, name="json"),
+
 
     
     ## teacher pages
