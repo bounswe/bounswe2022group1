@@ -20,17 +20,11 @@ def student_enroll(req):
 
         response = requests.get("https://shakespeare-quotes-generator.herokuapp.com/api/v1/quotes/single").json()
 
-
-        #print(response.text)
-        #return render(req,'student_enroll.html')
-
-
         finalResult = []
         for i in result:
-            finalResult.append(f"{i+1}.) ")
             finalResult.append(i[0])
 
-        return render(req, 'student_enroll.html', {"quotes_list": finalResult})
+        return render(req, 'student_enroll.html', {"enrolled_courses_list": finalResult, "quote": response["quote"]})
 
 
 ## return button
