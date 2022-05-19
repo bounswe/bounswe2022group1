@@ -111,19 +111,19 @@ def teacher_delete_course_undo(req):
       result = []
       for i in run_statement(query):
          result.append(i[0])
-      return render(req, 'teacher_delete_course.html', {"my_teacher_courses_list": result, "photo": get_funny_url(),"enter_text":"Failed.You never deleted a course or the last attemp was not valid."})
+      return render(req, 'teacher_delete_course.html', {"my_teacher_courses_list": result, "photo": get_funny_url(),"enter_text":"Failed.You never deleted a course or the last attemp was not valid."},status=408)
    else:
       query = f"SELECT course_name FROM {dbname}.Courses WHERE teacher_username='{username}'"
       result=[]
       for i in run_statement(query):
          result.append(i[0])
       if lastdeleted in result:
-         return render(req, 'teacher_delete_course.html', {"my_teacher_courses_list": result, "photo": get_funny_url(),"enter_text":"Failed.The course is already in the db."})
+         return render(req, 'teacher_delete_course.html', {"my_teacher_courses_list": result, "photo": get_funny_url(),"enter_text":"Failed.The course is already in the db."},status=409)
       query = f'INSERT INTO {dbname}.Courses VALUES("{lastdeleted}", "{username}", 0.0, 0);'
       run_statement(query)
       query = f"SELECT course_name FROM {dbname}.Courses WHERE teacher_username='{username}'"
       result = []
       for i in run_statement(query):
          result.append(i[0])
-      return render(req, 'teacher_delete_course.html', {"my_teacher_courses_list": result, "photo": get_funny_url(),"enter_text":"Success.You saved the course you deleted before."})
+      return render(req, 'teacher_delete_course.html', {"my_teacher_courses_list": result, "photo": get_funny_url(),"enter_text":"Success.You saved the course you deleted before."},status=204)
 
