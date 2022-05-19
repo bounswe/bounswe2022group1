@@ -57,7 +57,7 @@ def doLogin(req):
             except:
                 return JsonResponse({'loggedIn': False, 'error': 'An error occured while logging in.'})
         else:
-            return JsonResponse({'loggedIn': False, 'error': 'An error occured while logging in.'})
+            return JsonResponse({'loggedIn': False, 'error': response_content['error']})
         
     return JsonResponse({'loggedIn': False, 'error': response_content.get('error', 'Unknown error.')})
 
