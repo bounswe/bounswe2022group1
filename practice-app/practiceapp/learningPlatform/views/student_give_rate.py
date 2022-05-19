@@ -53,7 +53,7 @@ def student_give_rate_entered(req):
    return HttpResponseRedirect("/student")
    #return JsonResponse({'Status':'true'})
 
-#Will be updated
+
 #student/student_give_rate/get/?course_name=<course_name>
 #GET operation for API
 def student_get_rate(req):
@@ -64,7 +64,6 @@ def student_get_rate(req):
    # Passing result JSON to html
    return JsonResponse({'Course Rate': result[0][0]})
 
-#Will be updated
 #student/student_give_rate/post/?course_name=<course_name>&rate=<rate>
 #POST operation for API
 def student_post_rate(req):
