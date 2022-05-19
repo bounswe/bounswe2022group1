@@ -35,5 +35,6 @@ urlpatterns = [
     path('teacher/getCourses/',views.teacher_delete_course.getCourses, name="getCourses"),
     path('teacher/teacher_delete_course_undo/',views.teacher_delete_course.teacher_delete_course_undo, name="teacher_delete_course_undo"),
     path('teacher/teacher_my_courses/',views.teacher_my_courses.teacher_my_courses, name="teacher_my_courses"),
-
+    path('teacher/teacher_my_courses_back/',views.teacher_my_courses.teacher_my_courses_back, name="teacher_my_courses_back"),
+    path('teacher/teacher_get_courses/',views.teacher_my_courses.teacher_get_courses, name="teacher_get_courses"),
 ]
