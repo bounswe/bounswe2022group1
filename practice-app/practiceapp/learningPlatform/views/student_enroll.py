@@ -24,7 +24,7 @@ def student_enroll(req):
         for i in result:
             finalResult.append(i[0])
 
-        return render(req, 'student_enroll.html', {"enrolled_courses_list": finalResult, "quote": response["quote"]})
+        return render(req, 'student_enroll.html', {"enrolled_courses_list": finalResult, "quote": response["quote"], "play": response["play"]})
 
 
 ## return button
