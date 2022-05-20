@@ -95,7 +95,7 @@ def teacher_add_course_entered(req):
 
 @csrf_exempt
 def get_see_all_courses(req):
-    return run_statement(f"SELECT course_name FROM {dbname}.Courses")
+    return run_statement(f"SELECT course_name FROM Courses")
 
 
 # http://127.0.0.1:8000/see_all_registered_users/
