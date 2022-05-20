@@ -7,12 +7,11 @@ import http.client
 import json
 import random
 from django.http import JsonResponse
+from django.http import HttpRequest
 import environ
 env = environ.Env()
 environ.Env.read_env()
-from django.http import HttpRequest
 
-dbname=env("MYSQL_DATABASE")
 # EXTERNAL API
 conn = http.client.HTTPSConnection("free-news.p.rapidapi.com")
 
@@ -27,10 +26,7 @@ def callExternalAPI():
    res = conn.getresponse()
    data = res.read()
 
-   if "articles" in json.loads(data.decode("utf-8")):
-      return json.loads(data.decode("utf-8"))["articles"]
-   else:
-      return "You are trying to generate too often, please retry in a few seconds."
+   return json.loads(data.decode("utf-8"))["articles"]
 
 #GET METHOD
 @teacherGuard
@@ -46,9 +42,8 @@ def teacher_course_statistics(req):
 @require_http_methods(["POST","GET"])
 def can_save_course_statistics(req):
    course_name=req.POST.get("course_name",False)
-   is_teacher = req.session.get('user').get('role') #Get is_teacher of the current session
-   if course_name and is_teacher:
-      if run_statement(f"SELECT course_name FROM {dbname}.Courses WHERE '{course_name}'=course_name;"):
+   if course_name:
+      if run_statement(f"SELECT course_name FROM Courses WHERE '{course_name}'=course_name;"):
          return True
       else: # course_name does not exist in database
          return False
@@ -59,7 +54,8 @@ def can_save_course_statistics(req):
 @require_http_methods(["POST","GET"])
 def do_save_course_statistics(req):
    courseName=req.POST.get("course_name",False)#get course_name
-   if can_save_course_statistics(req):
+   is_teacher = req.session.get('user').get('role') #Get is_teacher of the current session
+   if can_save_course_statistics(req) and is_teacher:
       try:
          run_statement(f"CALL saveStatistics('{courseName}');") #insert into database.
          return True
@@ -86,13 +82,16 @@ def teacher_save_course_statistics(req):
 ## teacher/teacher_get_course_statistics/?coursename=<prm>
 def teacher_get_course_statistics(req):
    # getting parameter
-   courseName = req.GET.get("coursename", "")
+   courseName = req.get.get("coursename", "")
    # SQL query
    query = f"CALL getStatistics('{courseName}')"
    result = run_statement(query)
    # Converting it to array
-   finalResult = []
+   finalResult = [] 
    for i in result:
          finalResult.append(i)
-   # Passing result JSON to html
-   return JsonResponse({'data': finalResult})
+   if finalResult:
+      # Passing result JSON to html
+      return JsonResponse({'data': finalResult})
+   else:
+      return False
