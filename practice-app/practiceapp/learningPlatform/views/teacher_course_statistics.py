@@ -12,6 +12,11 @@ import environ
 env = environ.Env()
 environ.Env.read_env()
 
+##################
+### Harun ERKURT ###
+##################
+
+
 # EXTERNAL API
 conn = http.client.HTTPSConnection("free-news.p.rapidapi.com")
 
