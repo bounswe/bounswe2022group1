@@ -19,8 +19,6 @@ import environ
 env = environ.Env()
 environ.Env.read_env()
 
-dbname=env("MYSQL_DATABASE")
-
 ######################## EXTERNAL API RELATED ##################################
 import requests
 import json
