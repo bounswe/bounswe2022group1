@@ -111,6 +111,8 @@ connection.commit()
 Natively written mysql query code to save course statistics.
 """
 
+cursor.execute("""DROP PROCEDURE IF EXISTS saveStatistics;""")
+connection.commit()
 cursor.execute("""
   CREATE PROCEDURE saveStatistics(
   IN courseName VARCHAR(200)

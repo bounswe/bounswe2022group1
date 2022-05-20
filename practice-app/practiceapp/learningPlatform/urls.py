@@ -11,6 +11,9 @@ urlpatterns = [
     path('doLogin/', views.authentication.doLogin, name="doLogin"),
     
     ##sign-up
+    path('can_sign_up/', views.sign_up.can_sign_up, name="can_sign_up"),
+    path('do_sign_up/', views.sign_up.do_sign_up, name="do_sign_up"),
+    
     path('sign_up/',views.sign_up.sign_up,name="sign_up"),
     path('sign_up_entered/',views.sign_up.sign_up_entered,name="sign_up_entered"),
     path('sign_up_check_username/',views.sign_up.sign_up_check_username,name="sign_up_check_username"),
