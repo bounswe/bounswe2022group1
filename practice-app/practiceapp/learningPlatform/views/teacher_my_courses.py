@@ -9,7 +9,6 @@ import environ
 
 env = environ.Env()
 environ.Env.read_env()
-dbname=env("MYSQL_DATABASE")
 
 ##################
 ### Kamil Korkut ###
@@ -26,7 +25,7 @@ def teacher_my_courses_back(req):
 @teacherGuard
 def teacher_my_courses(req):
     username = req.session["user"]["username"]
-    result = run_statement(f"SELECT course_name FROM {dbname}.Courses WHERE teacher_username = '{username}' ")
+    result = run_statement(f"SELECT course_name FROM Courses WHERE teacher_username = '{username}' ")
     
     response = requests.get("https://api.coindesk.com/v1/bpi/currentprice.json").json()
     
@@ -40,7 +39,7 @@ def teacher_my_courses(req):
 #GET METHOD
 def teacher_get_courses(req):
     username = req.GET.get("username", "")
-    result = run_statement(f"SELECT course_name FROM {dbname}.Courses WHERE teacher_username = '{username}' ")
+    result = run_statement(f"SELECT course_name FROM Courses WHERE teacher_username = '{username}' ")
     
     if result:
         return JsonResponse({username:result}, status=200)
@@ -54,10 +53,10 @@ def teacher_update_course(req):
     username = req.session["user"]["username"]
     course_name=req.POST["course_name"]
     new_name=req.POST["new_name"]
-    check = run_statement(f"SELECT * FROM {dbname}.Courses WHERE course_name='{course_name}' and teacher_username='{username}'")
+    check = run_statement(f"SELECT * FROM Courses WHERE course_name='{course_name}' and teacher_username='{username}'")
     
     if check:
-        result = run_statement(f"UPDATE {dbname}.Courses SET course_name='{new_name}' WHERE course_name='{course_name}'")
+        result = run_statement(f"UPDATE Courses SET course_name='{new_name}' WHERE course_name='{course_name}'")
         return JsonResponse({username:"Success"}, status=200)
     else:
         return JsonResponse({username:"Error"}, status=404)

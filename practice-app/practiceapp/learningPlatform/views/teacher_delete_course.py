@@ -28,7 +28,6 @@ environ.Env.read_env()
          auth=(cfg.getPublicKey(), cfg.getPrivatKey())
    )
    '''
-dbname=env("MYSQL_DATABASE")
 lastdeleted=""
 entertext="Enter the course name that you want to delete"
 def get_funny_url():
@@ -55,8 +54,7 @@ def get_text(fail):
 @require_http_methods(["GET"])  
 def getCourses(req):
    username = req.session["user"]["username"]
-   dbname=env("MYSQL_DATABASE")
-   query = f"SELECT course_name FROM {dbname}.Courses WHERE teacher_username='{username}'"
+   query = f"SELECT course_name FROM Courses WHERE teacher_username='{username}'"
    result = []
    for i in run_statement(query):
          result.append(i[0])
@@ -70,7 +68,7 @@ def teacher_delete_course(req):
    user=req.session["user"]["username"]
    c  = Client()
    #username='quanex1', password='123123a'
-   passw=run_statement(f"select password from {dbname}.users where username='{user}'")[0][0]
+   passw=run_statement(f"select password from users where username='{user}'")[0][0]
    c.login(username=user,password=passw)
    c.post("http://127.0.0.1:8000/login/query/",data={"username":user,"password":passw})
    response=c.get("http://127.0.0.1:8000/teacher/getCourses/").json()
@@ -84,13 +82,13 @@ def teacher_delete_course_entered(req):
    coursename=""
    coursename=req.POST.get("coursename",False)
    username = req.session["user"]["username"]
-   query = f"SELECT course_name FROM {dbname}.Courses WHERE teacher_username='{username}'"
+   query = f"SELECT course_name FROM Courses WHERE teacher_username='{username}'"
    result = []
    for i in run_statement(query):
          result.append(i[0])
    if coursename in result:
-      run_statement(f"DELETE FROM {dbname}.Courses WHERE course_name='{coursename}'")
-      query = f"SELECT course_name FROM {dbname}.Courses WHERE teacher_username='{username}'"
+      run_statement(f"DELETE FROM Courses WHERE course_name='{coursename}'")
+      query = f"SELECT course_name FROM Courses WHERE teacher_username='{username}'"
       global lastdeleted
       lastdeleted=coursename
       result = []
@@ -107,21 +105,21 @@ def teacher_delete_course_undo(req):
    global lastdeleted
    username = req.session["user"]["username"]
    if lastdeleted=="":
-      query = f"SELECT course_name FROM {dbname}.Courses WHERE teacher_username='{username}'"
+      query = f"SELECT course_name FROM Courses WHERE teacher_username='{username}'"
       result = []
       for i in run_statement(query):
          result.append(i[0])
       return render(req, 'teacher_delete_course.html', {"my_teacher_courses_list": result, "photo": get_funny_url(),"enter_text":"Failed.You never deleted a course or the last attemp was not valid."},status=408)
    else:
-      query = f"SELECT course_name FROM {dbname}.Courses WHERE teacher_username='{username}'"
+      query = f"SELECT course_name FROM Courses WHERE teacher_username='{username}'"
       result=[]
       for i in run_statement(query):
          result.append(i[0])
       if lastdeleted in result:
          return render(req, 'teacher_delete_course.html', {"my_teacher_courses_list": result, "photo": get_funny_url(),"enter_text":"Failed.The course is already in the db."},status=409)
-      query = f'INSERT INTO {dbname}.Courses VALUES("{lastdeleted}", "{username}", 0.0, 0);'
+      query = f'INSERT INTO Courses VALUES("{lastdeleted}", "{username}", 0.0, 0);'
       run_statement(query)
-      query = f"SELECT course_name FROM {dbname}.Courses WHERE teacher_username='{username}'"
+      query = f"SELECT course_name FROM Courses WHERE teacher_username='{username}'"
       result = []
       for i in run_statement(query):
          result.append(i[0])
