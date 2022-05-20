@@ -5,8 +5,15 @@ from django.http import HttpRequest
 from django.test import TestCase
 from django.db import connection
 
+from ..db_utils import run_statement
+import environ
+env = environ.Env()
+environ.Env.read_env()
+dbname=env("MYSQL_DATABASE")
+
 class AuthenticationTest(TestCase):
     def test_canLogin(self):
+        run_statement(f"USE {dbname};")
         my_req = HttpRequest()
         my_req.method = "GET"
         my_req.GET = {'username': 'quanex1', 'password': '123123a'}
@@ -55,6 +62,7 @@ class AuthenticationTest(TestCase):
 
 
     def test_doLogin(self):
+        run_statement(f"USE {dbname};")
         my_req = HttpRequest()
         my_req.method = "POST"
         my_req.POST = {'username': 'quanex1', 'password': '123123a'}
