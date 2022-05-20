@@ -21,8 +21,7 @@ MYSQL_PASSWORD=<YOUR_PASSWORD>
 MYSQL_HOST="localhost"
 teacher_course_statistics_api="e5e0aa9024mshdbd00e1fc1a3f31p14545ejsn9af52ee101e7"
 RandomUsername_API_KEY=768d5c5ca7msh0de1bf3500804cbp1b12f3jsn930da0c69205
-
-API_KEY_give_rate=<API_KEY_give_rate>
+API_KEY_give_rate='UXzo3fo9cg3c3/V4CF17Jw==o9S0YYHLBairenXf'
 ```
 
 After that, ensure that your database server is up and run these commands to set up the database to Django configurations:
