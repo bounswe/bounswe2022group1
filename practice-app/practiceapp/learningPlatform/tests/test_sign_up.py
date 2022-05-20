@@ -73,6 +73,25 @@ class sign_up_test(TestCase):
         self.assertFalse(sign_up.do_sign_up(my_req))
     
     
+    
+    def test_check_username(self):
+        run_statement(f"USE {dbname};")
+        my_req = HttpRequest()
+        my_req.method = "POST"
+        
+        my_req.POST={
+        'post_check_username':'quanex1',
+        }
+        
+        self.assertTrue(sign_up.sign_up_does_check_username_exist(my_req))
+        
+        my_req.POST={
+        'post_check_username':'quanex15555555555555',
+        }
+        
+        self.assertFalse(sign_up.sign_up_does_check_username_exist(my_req))
+        
+    
     def test_all_registered_users(self):
         run_statement(f"USE {dbname};")
         self.assertTrue(sign_up.get_see_all_registered_users(HttpRequest()))
