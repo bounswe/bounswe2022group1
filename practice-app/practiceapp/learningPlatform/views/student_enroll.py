@@ -19,7 +19,6 @@ def student_enroll(req):
         result = run_statement(f"SELECT course_name FROM Enrolls WHERE student_username = '{username}' ")
 
         response = requests.get("https://cat-fact.herokuapp.com/facts/random")
-        print(response.json())
         finalResult = []
         for i in result:
             finalResult.append(i[0])
