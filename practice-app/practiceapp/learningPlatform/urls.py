@@ -40,15 +40,23 @@ urlpatterns = [
     path('student/student_give_rate/get/', views.student_give_rate.student_get_rate, name="json"),
     path('student/student_give_rate/post/',views.student_give_rate.student_post_rate, name="json"),
 
-
     
     ## teacher pages
     path('teacher/',views.teacher.teacher, name="teacher"),
+
+    #teacher_add_course - Ahmet YAZICI
     path('teacher/teacher_add_course/',views.teacher_add_course.teacher_add_course, name="teacher_add_course"),
     path('teacher/teacher_add_course_entered/',views.teacher_add_course.teacher_add_course_entered, name="teacher_add_course_entered"),
+    path('teacher/can_add_course/',views.teacher_add_course.can_add_course, name="can_add_course"),
+    path('teacher/do_add_course/',views.teacher_add_course.do_add_course, name="do_add_course"),
+
+    #teacher_course_statistics - Harun ERKURT
     path('teacher/teacher_course_statistics/',views.teacher_course_statistics.teacher_course_statistics, name="teacher_course_statistics"),
     path('teacher/teacher_save_course_statistics/',views.teacher_course_statistics.teacher_save_course_statistics, name="teacher_save_course_statistics"),
     path('teacher/teacher_get_course_statistics/',views.teacher_course_statistics.teacher_get_course_statistics, name="teacher_get_course_statistics"),
+    path('teacher/do_save_course_statistics/',views.teacher_course_statistics.do_save_course_statistics, name="do_save_course_statistics"),
+    path('teacher/can_save_course_statistics/',views.teacher_course_statistics.can_save_course_statistics, name="can_save_course_statistics"),
+
     path('teacher/teacher_delete_course/',views.teacher_delete_course.teacher_delete_course, name="teacher_delete_course"),
     path('teacher/teacher_delete_course_entered/',views.teacher_delete_course.teacher_delete_course_entered, name="teacher_delete_course_entered"),
     path('teacher/getCourses/',views.teacher_delete_course.getCourses, name="getCourses"),
@@ -56,4 +64,6 @@ urlpatterns = [
     path('teacher/teacher_my_courses/',views.teacher_my_courses.teacher_my_courses, name="teacher_my_courses"),
     path('teacher/teacher_my_courses_back/',views.teacher_my_courses.teacher_my_courses_back, name="teacher_my_courses_back"),
     path('teacher/teacher_get_courses/',views.teacher_my_courses.teacher_get_courses, name="teacher_get_courses"),
+    path('teacher/teacher_update_course/',views.teacher_my_courses.teacher_update_course, name="teacher_update_course"),
+
 ]
