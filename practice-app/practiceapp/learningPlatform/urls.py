@@ -20,6 +20,7 @@ urlpatterns = [
     path('student/',views.student.student, name="student"),
     path('student/student_enroll/',views.student_enroll.student_enroll, name="student_enroll"),
     path('student/student_enroll_entered/',views.student_enroll.student_enroll_entered, name="student_enroll_entered"),
+    path('student/student_enroll_back/',views.student_enroll.student_enroll_back, name="student_enroll_back"),
     path('student/student_give_rate/',views.student_give_rate.student_give_rate, name="student_give_rate"),
     path('student/student_give_rate_entered/',views.student_give_rate.student_give_rate_entered, name="student_give_rate_entered"),
     ### Student My Courses

@@ -18,14 +18,13 @@ def student_enroll(req):
         username = req.session["user"]["username"]
         result = run_statement(f"SELECT course_name FROM Enrolls WHERE student_username = '{username}' ")
 
-        response = requests.get("https://shakespeare-quotes-generator.herokuapp.com/api/v1/quotes/single").json()
-
+        response = requests.get("https://cat-fact.herokuapp.com/facts/random")
+        print(response.json())
         finalResult = []
         for i in result:
             finalResult.append(i[0])
 
-        return render(req, 'student_enroll.html', {"enrolled_courses_list": finalResult, "quote": response["quote"], "play": response["play"]})
-
+        return render(req, 'student_enroll.html', {"enrolled_courses_list": finalResult, "quote": response.json()["text"], "play": response.json()["text"]})
 
 ## return button
 @studentGuard
