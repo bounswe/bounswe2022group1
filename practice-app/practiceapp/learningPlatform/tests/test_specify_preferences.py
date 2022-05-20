@@ -25,6 +25,9 @@ def run_statement(statement):
 
 
 env = environ.Env()
+env = environ.Env()
+environ.Env.read_env()
+dbname=env("MYSQL_DATABASE")
 
 class test_specify_prefrences(TestCase):
     def setUp(self):
@@ -33,6 +36,7 @@ class test_specify_prefrences(TestCase):
 
     #testing the get API
     def test_student_preferences_get(self):
+        run_statement(f"USE {dbname}")
         cust_req = HttpRequest()
         cust_req.method = "GET"
         cust_req.GET = {'student_username': self.student_username}
@@ -73,6 +77,7 @@ class test_specify_prefrences(TestCase):
 
     #testing the POST API
     def test_student_preferences_post(self):
+        run_statement(f"USE {dbname}")
         student_username = 'quanex7'
         password = '123123g'
         topic = 'Data Science'
@@ -110,6 +115,7 @@ class test_specify_prefrences(TestCase):
      #testing the POST API with wrong password and with wrong username
     def test_student_preferences_post_password(self):
         #with wrong password
+        run_statement(f"USE {dbname}")
         student_username = 'quanex7'
         password = '1sdsdjhghsffge'
         topic = 'Data Science'
