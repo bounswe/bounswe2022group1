@@ -91,13 +91,6 @@ def sign_up_entered(req):
     username=req.POST.get("post_username") #get username
     password=req.POST.get("post_password") #get password
     is_teacher=req.POST.get('post_is_teacher',False) # get is_teacher
-    has_failed=run_statement(f"SELECT username FROM Users WHERE '{username}'=username ")
-    if has_failed:
-        return render(req,'sign_up.html',{'is_first_time':is_first_time,'fail':has_failed,'check_username_not_available':check_username_not_available,'responseOfAPI':responseOfAPI})
-    else:
-        run_statement(f"INSERT INTO Users (username, name_surname, is_teacher, password) VALUES('{username}', '{name_surname}', {is_teacher}, '{password}' ) ;") #insert into Users table
-        return HttpResponseRedirect("/login/")  #redirect to login page
-    
     if do_sign_up(req): # signed_up succeeds
         return HttpResponseRedirect("/login/")
     else: # signed_up fails
@@ -128,6 +121,3 @@ def get_see_all_registered_users(req):
 # http://127.0.0.1:8000/see_all_registered_users/
 def see_all_registered_users_method(req):
     return JsonResponse({'RegisteredUsers':get_see_all_registered_users(req)})
-
-
-
