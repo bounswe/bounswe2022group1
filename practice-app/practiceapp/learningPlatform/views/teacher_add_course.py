@@ -93,6 +93,16 @@ def teacher_add_course_entered(req):
          return HttpResponseRedirect("/teacher/teacher_add_course/?fail=true")
    except:
       return HttpResponseRedirect("/teacher/teacher_add_course/?fail=true")
+   
+
+@csrf_exempt
+def get_see_all_courses(req):
+    return run_statement(f"SELECT course_name FROM {dbname}.Courses")
+
+
+# http://127.0.0.1:8000/see_all_registered_users/
+def see_all_courses_method(req):
+    return JsonResponse({'Courses':get_see_all_courses(req)})
 
 
 
