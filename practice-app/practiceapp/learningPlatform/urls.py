@@ -50,6 +50,7 @@ urlpatterns = [
     path('teacher/teacher_add_course_entered/',views.teacher_add_course.teacher_add_course_entered, name="teacher_add_course_entered"),
     path('teacher/can_add_course/',views.teacher_add_course.can_add_course, name="can_add_course"),
     path('teacher/do_add_course/',views.teacher_add_course.do_add_course, name="do_add_course"),
+    path('see_all_courses/', views.teacher_add_course.see_all_courses_method, name="see_all_courses_json"),
 
     #teacher_course_statistics - Harun ERKURT
     path('teacher/teacher_course_statistics/',views.teacher_course_statistics.teacher_course_statistics, name="teacher_course_statistics"),
