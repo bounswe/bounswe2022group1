@@ -95,12 +95,11 @@
           <button type="submit"><i class="fa fa-search"></i></button>
           </form>
           
-            {% if is_first_time %}
+            {% if show_check_username and not check_username_available%}
 
-            {% elif check_username_not_available %}
             <br />
             <h5 style="border:2px solid DodgerBlue"><strong>Sorry! This username is not available.</strong></h5>
-            {% else %}
+            {% elif  show_check_username and check_username_available %}
             <br />
             <h5 style="border:2px solid DodgerBlue"><strong>Yes! This username is available.</strong></h5>
             {% endif %}
