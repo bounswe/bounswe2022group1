@@ -87,7 +87,7 @@ def teacher_save_course_statistics(req):
 ## teacher/teacher_get_course_statistics/?coursename=<prm>
 def teacher_get_course_statistics(req):
    # getting parameter
-   courseName = req.get.get("coursename", "")
+   courseName = req.GET.get("coursename", "")
    # SQL query
    query = f"CALL getStatistics('{courseName}')"
    result = run_statement(query)
