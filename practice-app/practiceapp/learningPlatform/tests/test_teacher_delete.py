@@ -24,9 +24,9 @@ def run_statement(statement):
     return cursor.fetchall()
 
 
-
 env = environ.Env()
-#run_statement('use mydatabase')
+environ.Env.read_env()
+dbname=env("MYSQL_DATABASE")
 
 ###
 class test(TestCase):
