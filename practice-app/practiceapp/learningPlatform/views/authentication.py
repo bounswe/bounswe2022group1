@@ -71,10 +71,14 @@ def login(req):
     error=req.GET.get("error","")
 
     response = requests.get('https://goquotes-api.herokuapp.com/api/v1/random?count=1')
-    content = json.loads(response.content)
 
-    quote = content.get('quotes', [''])[0].get('text', '')
-    author = content.get('quotes', [''])[0].get('author', '')
+    quote = "No quote."
+    author = "Go Quote API didn't respond successfully."
+    if response.status_code == "200":
+        content = json.loads(response.content)
+
+        quote = content.get('quotes', [''])[0].get('text', '')
+        author = content.get('quotes', [''])[0].get('author', '')
 
     return render(req, 'login.html',{"fail": fail, "error": error, "quote": quote, "author": author})
 
