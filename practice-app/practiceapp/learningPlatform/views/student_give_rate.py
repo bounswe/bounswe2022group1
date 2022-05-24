@@ -29,9 +29,14 @@ def student_give_rate(req):
    category = 'learning'
    api_url = 'https://api.api-ninjas.com/v1/quotes?category={}'.format(category)
    response = requests.get(api_url, headers={'X-Api-Key': env("API_KEY_give_rate")})
-   y = json.loads(response.text)
-   context['quote'] = y[0]['quote']
-   context['author'] = y[0]['author']
+   if response.status_code == requests.codes.ok:
+      y = json.loads(response.text)
+      context['quote'] = y[0]['quote']
+      context['author'] = y[0]['author']
+   else:
+      context['quote'] = '-'
+      context['author'] = '-'
+
    return render(req,'student_give_rate.html', context)
 
    
