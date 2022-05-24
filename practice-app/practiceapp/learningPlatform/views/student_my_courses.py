@@ -54,13 +54,13 @@ def student_my_courses_back(req):
 def get_all_courses(req):
    # getting parameter
    username = req.GET.get("username", "")
-   query = f"SELECT COUNT(1) FROM users WHERE username = '{username}' AND is_teacher = 0"
+   query = f"SELECT COUNT(1) FROM Users WHERE username = '{username}' AND is_teacher = 0"
    result = run_statement(query)[0][0]
    if result == 0:
       return JsonResponse({"error": "Student not found!"}, status=404)
 
    # SQL query
-   query = f"SELECT course_name FROM enrolls WHERE student_username = '{username}'"
+   query = f"SELECT course_name FROM Enrolls WHERE student_username = '{username}'"
    result = run_statement(query)
    # Since result is like -> (('CMPE150',), ('CMPE160',))
    # Converting it to array
@@ -77,12 +77,12 @@ def student_my_courses_seen_update(req):
    # getting parameter
    username = req.GET.get("username", "")
    # Check student exists
-   query = f"SELECT COUNT(1) FROM users WHERE username = '{username}' AND is_teacher = 0"
+   query = f"SELECT COUNT(1) FROM Users WHERE username = '{username}' AND is_teacher = 0"
    result = run_statement(query)[0][0]
    if result == 0:
       return JsonResponse({"message": "Student not found!"}, status=404)
 
    # Update
-   query = f"UPDATE users SET last_course_view_time = {time.time()} WHERE username = '{username}';"
+   query = f"UPDATE Users SET last_course_view_time = {time.time()} WHERE username = '{username}';"
    run_statement(query)
    return JsonResponse({"message": "Updated!"}, status=200)

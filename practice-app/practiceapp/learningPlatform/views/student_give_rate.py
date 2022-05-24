@@ -20,7 +20,7 @@ environ.Env.read_env()
 @studentGuard
 def student_give_rate(req):
    u = req.session.get('user')['username']
-   query =f"SELECT course_name FROM enrolls WHERE student_username='{u}'"
+   query =f"SELECT course_name FROM Enrolls WHERE student_username='{u}'"
    result=run_statement(query)
    arr = [i[0] for i in result]
    context = {}
@@ -41,7 +41,7 @@ def student_give_rate_entered(req):
    rate=int(req.POST['rate'])
    #if rate > 5 or rate < 0:
    #   return JsonResponse({'Status':'false'})
-   query =f"SELECT rating, rate_count FROM courses WHERE course_name='{course_name}'"
+   query =f"SELECT rating, rate_count FROM Courses WHERE course_name='{course_name}'"
    result=run_statement(query)
    cur_rate = result[0][0]
    cur_rate_count = result[0][1]
@@ -49,7 +49,7 @@ def student_give_rate_entered(req):
    new_rate_count = cur_rate_count+1
    new_rate = (cur_rate*cur_rate_count + rate) / new_rate_count
 
-   upt = f"UPDATE courses SET rating='{new_rate}', rate_count='{new_rate_count}' WHERE course_name='{course_name}'" 
+   upt = f"UPDATE Courses SET rating='{new_rate}', rate_count='{new_rate_count}' WHERE course_name='{course_name}'" 
    run_statement(upt)
    return HttpResponseRedirect("/student")
    #return JsonResponse({'Status':'true'})
@@ -61,7 +61,7 @@ def student_get_rate(req):
    try:
       course_name = req.GET.get("course_name", "")
       # SQL query
-      query = f"SELECT rating FROM courses WHERE course_name='{course_name}'"
+      query = f"SELECT rating FROM Courses WHERE course_name='{course_name}'"
       result = run_statement(query)
       # Passing result JSON to html
       return JsonResponse({'Course Rate': result[0][0]})
@@ -78,7 +78,7 @@ def student_post_rate(req):
       course_name = req.POST.get("course_name", "")
       if rate > 5 or rate < 0:
          return HttpResponseBadRequest()
-      query =f"SELECT rating, rate_count FROM courses WHERE course_name='{course_name}'"
+      query =f"SELECT rating, rate_count FROM Courses WHERE course_name='{course_name}'"
       result=run_statement(query)
       cur_rate = result[0][0]
       cur_rate_count = result[0][1]
@@ -86,7 +86,7 @@ def student_post_rate(req):
       new_rate_count = cur_rate_count+1
       new_rate = (cur_rate*cur_rate_count + rate) / new_rate_count
 
-      upt = f"UPDATE courses SET rating='{new_rate}', rate_count='{new_rate_count}' WHERE course_name='{course_name}'" 
+      upt = f"UPDATE Courses SET rating='{new_rate}', rate_count='{new_rate_count}' WHERE course_name='{course_name}'" 
       run_statement(upt)
       # Passing result JSON to html
       return JsonResponse({'New Course Rate': new_rate,'New Rate Count':new_rate_count})
