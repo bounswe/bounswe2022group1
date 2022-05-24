@@ -68,7 +68,7 @@ def teacher_delete_course(req):
    user=req.session["user"]["username"]
    c  = Client()
    #username='quanex1', password='123123a'
-   passw=run_statement(f"select password from users where username='{user}'")[0][0]
+   passw=run_statement(f"SELECT password FROM Users WHERE username='{user}'")[0][0]
    c.login(username=user,password=passw)
    c.post("http://127.0.0.1:8000/login/query/",data={"username":user,"password":passw})
    response=c.get("http://127.0.0.1:8000/teacher/getCourses/").json()
