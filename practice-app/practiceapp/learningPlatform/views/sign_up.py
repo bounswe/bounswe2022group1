@@ -1,3 +1,4 @@
+from multiprocessing import connection
 from queue import Empty
 from urllib import response
 from django.shortcuts import render
@@ -25,7 +26,7 @@ import json
 
 import http.client
 
-conn = http.client.HTTPSConnection("random-username-generate.p.rapidapi.com")
+
 
 headers = {
     'X-RapidAPI-Host': "random-username-generate.p.rapidapi.com",
@@ -34,11 +35,16 @@ headers = {
 
 
 def call_external_API():
+    conn = http.client.HTTPSConnection("random-username-generate.p.rapidapi.com")
     conn.request("GET", "/?locale=en_US&minAge=18&maxAge=50&domain=ugener.com", headers=headers)
     res = conn.getresponse()
     data = res.read()
-    random_username=json.loads(data.decode("utf-8"))['items']['username']
-    return random_username
+    conn.close()
+    if json.loads(data.decode("utf-8"))['code']==200:
+        random_username=json.loads(data.decode("utf-8"))['items']['username']
+        return random_username
+    else:
+        return "External API failed"
 
 ######################## EXTERNAL API RELATED ##################################
 
