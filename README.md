@@ -10,7 +10,7 @@ Welcome to our project repository for CMPE 415 course held in Fall 2022. You can
 
 3- [Ece SARKIN](https://github.com/bounswe/bounswe2022group1/wiki/Ece-Sarkın)
 
-4- [Efekan KAVALCI](https://github.com/bounswe/bounswe2022group1/wiki/Efekan-Kavalci)
+4- [Harun SAMİ](https://github.com/bounswe/bounswe2022group1/wiki/Harun-Sami)
 
 5- [Kadir Gökhan SEZER](https://github.com/bounswe/bounswe2022group1/wiki/Kadir-Gokhan-Sezer)
 
@@ -24,9 +24,9 @@ Welcome to our project repository for CMPE 415 course held in Fall 2022. You can
 
 10- [Osman Fehmi Albayrak](https://github.com/bounswe/bounswe2022group1/wiki/Osman-Fehmi-Albayrak)
 
-11- [Elif Nur AKALIN](https://github.com/bounswe/bounswe2022group1/wiki/Elif-Nur-Akalın)
+11- [Hüseyin Seyyid](https://github.com/bounswe/bounswe2022group1/wiki/H%C3%BCseyin-Seyyid)
 
-12- [Harun SAMİ](https://github.com/bounswe/bounswe2022group1/wiki/Harun-Sami)
+12- [Kadir Kalkan](https://github.com/bounswe/bounswe2022group1/wiki/Kadir-Kalkan)
 
 ## About CMPE451
 In this course we will address the issues, methods, and tools related to developing software
