@@ -28,7 +28,7 @@ Welcome to our project repository for CMPE 415 course held in Fall 2022. You can
 
 12- [Harun SAMİ](https://github.com/bounswe/bounswe2022group1/wiki/Harun-Sami)
 
-## About CMPE352
+## About CMPE451
 In this course we will address the issues, methods, and tools related to developing software
 products and teamwork.
 The following topics are among the major issues that will be covered:
