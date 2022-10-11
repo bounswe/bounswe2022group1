@@ -5,7 +5,7 @@ Welcome to our project repository for CMPE 352 course held in Spring 2022.You ca
 
 1- [Harun ERKURT](https://github.com/bounswe/bounswe2022group1/wiki/Harun-Erkurt)
 
-2- [Ege Onur TAĞA](https://github.com/bounswe/bounswe2022group1/wiki/Ege-Onur-Taga)
+2- [Ege Onur TAĞA](https://github.com/bounswe/bounswe2022group1/wiki/Ege-Onur-Taga) - (Communicator)
 
 3- [Ece SARKIN](https://github.com/bounswe/bounswe2022group1/wiki/Ece-Sarkın)
 
