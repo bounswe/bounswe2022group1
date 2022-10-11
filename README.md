@@ -1,11 +1,12 @@
-### CMPE 352 Group #1 
+### CMPE 451 Group #1 
   
-Welcome to our project repository for CMPE 352 course held in Spring 2022.You can find our meeting notes, contributors' home pages and other stuff about our work on the <a href="https://github.com/bounswe/bounswe2022group1/wiki">Wiki</a> page of the repository. 
+Welcome to our project repository for CMPE 415 course held in Fall 2022. You can find our meeting notes, contributors' home pages and other stuff about our work on the <a href="https://github.com/bounswe/bounswe2022group1/wiki">Wiki</a> page of the repository. 
 ## Team Members
 
-1- [Harun ERKURT](https://github.com/bounswe/bounswe2022group1/wiki/Harun-Erkurt)
 
-2- [Ege Onur TAĞA](https://github.com/bounswe/bounswe2022group1/wiki/Ege-Onur-Taga)
+1- [Ege Onur TAĞA](https://github.com/bounswe/bounswe2022group1/wiki/Ege-Onur-Taga) (Communicator)
+
+2- [Harun ERKURT](https://github.com/bounswe/bounswe2022group1/wiki/Harun-Erkurt)
 
 3- [Ece SARKIN](https://github.com/bounswe/bounswe2022group1/wiki/Ece-Sarkın)
 
@@ -27,7 +28,7 @@ Welcome to our project repository for CMPE 352 course held in Spring 2022.You ca
 
 12- [Harun SAMİ](https://github.com/bounswe/bounswe2022group1/wiki/Harun-Sami)
 
-## About CMPE352
+## About CMPE451
 In this course we will address the issues, methods, and tools related to developing software
 products and teamwork.
 The following topics are among the major issues that will be covered:
@@ -46,9 +47,7 @@ sequence diagrams, and action diagrams. Mockups,
 Tools that support the development of software products will be used and the students are
 expected to learn how to effectively use them
 
-### Instructor & Teaching Assistants
+### Instructor & Teaching Assistant
 
-- (Instructor)Suzan Üsküdarlı (suzan.uskudarli@boun.edu.tr)
-- Gözde Aslantaş gozde.aslantas@boun.edu.tr
-- Egemen İşgüder egemen.isguder@boun.edu.tr
-- Burak Suyunu burak.suyunu@boun.edu.tr
+- (Instructor)[Suzan Üsküdarlı](https://www.cmpe.boun.edu.tr/tr/people/suzan.uskudarli) suzan.uskudarli@boun.edu.tr
+- [Alper Ahmetoglu](https://www.cmpe.boun.edu.tr/tr/people/alper.ahmetoglu) ahmetoglu.alper@gmail.com
