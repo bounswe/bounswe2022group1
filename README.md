@@ -1,32 +1,17 @@
-### CMPE 451 Group #1 
+### CMPE 451 Android Team 
   
-Welcome to our project repository for CMPE 415 course held in Fall 2022. You can find our meeting notes, contributors' home pages and other stuff about our work on the <a href="https://github.com/bounswe/bounswe2022group1/wiki">Wiki</a> page of the repository. 
+Welcome to our project repository for CMPE 451 course held in Fall 2022. You can find our meeting notes, contributors' home pages and other stuff about our work on the <a href="https://github.com/bounswe/bounswe2022group1/wiki">Wiki</a> page of the repository. 
 ## Team Members
 
 
-1- [Ege Onur TAĞA](https://github.com/bounswe/bounswe2022group1/wiki/Ege-Onur-Taga) (Communicator)
+1- [Harun ERKURT](https://github.com/bounswe/bounswe2022group1/wiki/Harun-Erkurt)
 
-2- [Harun ERKURT](https://github.com/bounswe/bounswe2022group1/wiki/Harun-Erkurt)
+2- [Ömer ÖZDEMİR](https://github.com/bounswe/bounswe2022group1/wiki/Ömer-Özdemir)
 
-3- [Ece SARKIN](https://github.com/bounswe/bounswe2022group1/wiki/Ece-Sarkın)
+3- [Ahmet YAZICI](https://github.com/bounswe/bounswe2022group1/wiki/Ahmet-Yazici)
 
-4- [Efekan KAVALCI](https://github.com/bounswe/bounswe2022group1/wiki/Efekan-Kavalci)
+4- [Osman Fehmi Albayrak](https://github.com/bounswe/bounswe2022group1/wiki/Osman-Fehmi-Albayrak)
 
-5- [Kadir Gökhan SEZER](https://github.com/bounswe/bounswe2022group1/wiki/Kadir-Gokhan-Sezer)
-
-6- [Kamil KORKUT](https://github.com/bounswe/bounswe2022group1/wiki/Kamil-Korkut)
-
-7- [Mustafa ATAY](https://github.com/bounswe/bounswe2022group1/wiki/Mustafa-Atay)
-
-8- [Ömer ÖZDEMİR](https://github.com/bounswe/bounswe2022group1/wiki/Ömer-Özdemir)
-
-9- [Ahmet YAZICI](https://github.com/bounswe/bounswe2022group1/wiki/Ahmet-Yazici)
-
-10- [Osman Fehmi Albayrak](https://github.com/bounswe/bounswe2022group1/wiki/Osman-Fehmi-Albayrak)
-
-11- [Elif Nur AKALIN](https://github.com/bounswe/bounswe2022group1/wiki/Elif-Nur-Akalın)
-
-12- [Harun SAMİ](https://github.com/bounswe/bounswe2022group1/wiki/Harun-Sami)
 
 ## About CMPE451
 In this course we will address the issues, methods, and tools related to developing software
