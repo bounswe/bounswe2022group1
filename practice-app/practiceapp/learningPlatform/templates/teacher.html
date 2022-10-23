@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Learning Platform</title>
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <link
+      href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+    <link href="{% static 'styles.css' %}" rel="stylesheet" />
+  </head>
+  <body class="full-height">
+    <div class="center-layout container control-panel-layout">
+      <h1 style="text-align: center; margin-top: 0; margin-bottom: 50px">
+        TEACHER PANEL
+      </h1>
+      <div class="row" style="width: 100%">
+        <a href="/teacher/teacher_add_course/">
+          <div class="col-md-3 col-xs-6">
+            <div class="button-box">Add Course</div>
+          </div>
+        </a>
+        <a href="/teacher/teacher_course_statistics/">
+          <div class="col-md-3 col-xs-6">
+            <div class="button-box">Course Statistics</div>
+          </div>
+        </a>
+        <a href="/teacher/teacher_delete_course/">
+          <div class="col-md-3 col-xs-6">
+            <div class="button-box">Delete Course</div>
+          </div>
+        </a>
+        <a href="/teacher/teacher_my_courses/">
+          <div class="col-md-3 col-xs-6">
+            <div class="button-box">My Courses</div>
+          </div>
+        </a>
+      </div>
+      <form method="POST" action="/logout/query/">
+        {% csrf_token %}
+        <input type="submit" value="Log Out" />
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,93 @@
+:root {
+  --primary: #0077b6;
+  --secondary: #00b4d8;
+  --dark: #070a89;
+  --light: #90e0ef;
+  --light2: #caf0f8;
+  --radius: 24px;
+  --input-height: 26px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--primary);
+}
+
+label,
+input, select {
+  color: var(--dark);
+}
+
+input, select {
+  height: var(--input-height);
+  border-color: var(--dark);
+  border-radius: calc(var(--input-height) / 2);
+  padding: 0 10px;
+  background: white;
+  transition: background-color 0.2s ease-in-out;
+}
+
+input:hover[type="submit"] {
+  background-color: var(--dark);
+  color: white;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.full-height {
+  height: 100vh;
+}
+
+.center-layout {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.round-bordered-box {
+  border-radius: var(--radius);
+  border-left: 2px solid var(--primary);
+  border-right: 2px solid var(--primary);
+  padding: 32px 64px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.control-panel-layout {
+  flex-direction: column;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 32px;
+  max-width: 1000px;
+}
+
+.button-box {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid var(--primary) 2px;
+  border-radius: var(--radius);
+  transition: background-color 0.2s ease-in-out;
+  margin-bottom: 30px;
+}
+
+.button-box:hover {
+  background-color: var(--dark);
+  border-color: var(--dark);
+  color: white;
+
+  transition: background-color 0.2s ease-in-out;
+}
+
+td,
+th {
+  padding: 5px 10px;
+  border: solid var(--light) 0.5px;
+}
