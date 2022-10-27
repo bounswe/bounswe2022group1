@@ -22,7 +22,7 @@
             android:layout_marginBottom="176dp"
 
 
-
+            android:background="@drawable/circle_button"
             android:onClick="go_to_login_page"
             android:text="Sign Up"
             app:layout_constraintBottom_toBottomOf="parent"
