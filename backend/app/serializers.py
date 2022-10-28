@@ -16,5 +16,14 @@ class RegisterSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         user = User.objects.create_user(validated_data['username'], validated_data['email'], validated_data['password'])
-
         return user
+
+
+
+class ChangePasswordSerializer(serializers.Serializer):
+    model = User
+
+    old_pass = serializers.CharField(required=True)
+
+    new_pass = serializers.CharField(required=True)
+    
