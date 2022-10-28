@@ -10,7 +10,7 @@ services:
      
        
        MYSQL_DATABASE: 'budemi'
-       MYSQL_USER: "root"
+       MYSQL_USER: "admin"
        MYSQL_PASSWORD: '12345'
        MYSQL_ALLOW_EMPTY_PASSWORD: "True"
        
@@ -26,6 +26,7 @@ services:
       - |
           echo "sleep for 10sec"
           sleep 10 
+          python manage.py makemigrations
           python manage.py migrate
           python manage.py runserver 0.0.0.0:8000
           
