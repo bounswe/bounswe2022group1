@@ -50,6 +50,7 @@ export default class Login extends Component {
         if (data.token) {
           
           localStorage.setItem("token", data.token);
+          localStorage.setItem("username", this.state.username);
           window.location.href = "/profile";
           return;
         } else {

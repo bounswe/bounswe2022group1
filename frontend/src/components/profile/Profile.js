@@ -78,13 +78,23 @@ const theme = createTheme();
 
 export default function Profile() {
   const token = localStorage.getItem("token");
+  const username = localStorage.getItem("username");
   if (token) {
     return (
       <div className="all">
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Container maxWidth="lg">
-            <Header title="Welcome, Banu Balkan" sections={sections} />
+          <Typography component="h4"
+            variant="h3"
+            color="inherit"
+            align="center"
+            noWrap
+            sx={{
+              flex: 1,
+              fontFamily: "Fira Sans",
+              fontWeight: 500,
+            }}> Welcome {username} !</Typography>
             <main>
             
               

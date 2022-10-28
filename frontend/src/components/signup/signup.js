@@ -33,6 +33,15 @@ export default class SignUp extends Component {
       .then((response) => {
         console.log(response);
         alert(" Success " + response.token);
+        if (response.token) {
+          
+          localStorage.setItem("token", response.token);
+          localStorage.setItem("username", this.state.username);
+          window.location.href = "/profile";
+          return;
+        } else {
+          alert("Failed with status code " + response.status);
+        }
       })
       .catch((err) => {
         console.log(err);
