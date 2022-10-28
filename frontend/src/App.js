@@ -6,12 +6,8 @@ import Login from "./components/login/login";
 import SignUp from "./components/signup/signup";
 import Profile from "./components/profile/Profile";
 import Homepage from "./components/homepage/Homepage";
-<<<<<<< HEAD
-import Profile from "./components/profile/Profile"
-=======
 import Logout from "./components/logout/Logout";
 
->>>>>>> b2371ffc4ee8f94e72f80136e865793a8e0a1ef0
 import { ReactComponent as Logo } from "./BUdemi.svg";
 
 function App() {
@@ -59,10 +55,7 @@ function App() {
               <Route path="/sign-in" element={<Login />} />
               <Route path="/sign-up" element={<SignUp />} />
               <Route path="/profile" element={<Profile />} />
-<<<<<<< HEAD
-=======
               <Route path="/logout" element={<Logout />} />
->>>>>>> b2371ffc4ee8f94e72f80136e865793a8e0a1ef0
             </Routes>
           </div>
         </div>
