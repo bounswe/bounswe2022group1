@@ -75,42 +75,48 @@ const enrolledSpaces = [
 
 const theme = createTheme();
 
-export default function Profile() {
-  return (
-    <div className="all">
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Container maxWidth="lg">
-          <Header title="Welcome, Banu Balkan" sections={sections} />
-          <main>
-          
-            
-            <Grid container spacing={1} sx={{ mt: 3 }}>
-            <Main title="Last searched topics" posts={lastSearched} />
-            <Button variant="contained">Create a new learning space</Button>
-            </Grid>
-            <Typography component="h4"
-          variant="h5"
-          color="inherit"
-          align="center"
-          noWrap
-          sx={{
-            flex: 1,
-            fontFamily: "Fira Sans",
-            fontWeight: 500,
-          }}> Joined learning spaces </Typography>
 
-            <Grid container spacing={1} sx={{ mt: 3 }}>
+export default function Profile() {
+  const token = localStorage.getItem("token");
+  if (token) {
+    return (
+      <div className="all">
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Container maxWidth="lg">
+            <Header title="Welcome, Banu Balkan" sections={sections} />
+            <main>
             
-            {enrolledSpaces.map((post) => (
-                <EnrolledSpace key={post.title} post={post} />
-              ))}
-            </Grid>
-            
-          </main>
-        </Container>
-        <Footer title="BUDEMI" description="a company of bogazici university" />
-      </ThemeProvider>
-    </div>
-  );
+              
+              <Grid container spacing={1} sx={{ mt: 3 }}>
+              <Main title="Last searched topics" posts={lastSearched} />
+              <Button variant="contained">Create a new learning space</Button>
+              </Grid>
+              <Typography component="h4"
+            variant="h5"
+            color="inherit"
+            align="center"
+            noWrap
+            sx={{
+              flex: 1,
+              fontFamily: "Fira Sans",
+              fontWeight: 500,
+            }}> Joined learning spaces </Typography>
+  
+              <Grid container spacing={1} sx={{ mt: 3 }}>
+              
+              {enrolledSpaces.map((post) => (
+                  <EnrolledSpace key={post.title} post={post} />
+                ))}
+              </Grid>
+              
+            </main>
+          </Container>
+          <Footer title="BUDEMI" description="a company of bogazici university" />
+        </ThemeProvider>
+      </div>
+    );
+  } else {
+    return <div>User not logged in</div>;
+  }
 }

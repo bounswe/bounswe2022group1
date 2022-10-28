@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 export default class Login extends Component {
   constructor(props) {
     super(props);
@@ -48,10 +47,19 @@ export default class Login extends Component {
       })
       .then((data) => {
         console.log(data);
+        if (data.token) {
+          alert("adsad");
+          localStorage.setItem("token", data.token);
+          window.location.href = "/profile";
+          return;
+        } else {
+          alert("Failed with status code " + data.status);
+        }
       })
       .catch((err) => {
         console.log(err);
       });
+
     event.preventDefault();
   }
 
