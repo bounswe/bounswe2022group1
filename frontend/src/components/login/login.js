@@ -48,7 +48,7 @@ export default class Login extends Component {
       .then((data) => {
         console.log(data);
         if (data.token) {
-          alert("adsad");
+          
           localStorage.setItem("token", data.token);
           window.location.href = "/profile";
           return;
