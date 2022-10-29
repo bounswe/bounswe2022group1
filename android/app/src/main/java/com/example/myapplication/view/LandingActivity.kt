@@ -1,14 +1,11 @@
 package com.example.myapplication.view
 
-import android.content.ClipDescription
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.viewpager2.widget.ViewPager2
 import com.example.myapplication.R
-import com.example.myapplication.view.HomeActivity
-import com.example.myapplication.view.SignInActivity
 import me.relex.circleindicator.CircleIndicator3
 
 class LandingActivity : AppCompatActivity() {
@@ -49,9 +46,9 @@ class LandingActivity : AppCompatActivity() {
     }
 
     private fun postToList() {
-        addToList("Course Variety", "Enroll in a wide range of courses", R.drawable.email)
-        addToList("Share Your Knowledge", "Create courses and share with others", R.drawable.email)
-        addToList("Free Courses", "All for free", R.drawable.email)
+        addToList("Course Variety", "Enroll in a wide range of courses", R.drawable.variety)
+        addToList("Share Your Knowledge", "Create courses and share with others", R.drawable.scholar_hat)
+        addToList("Free Courses", "All for free", R.drawable.free)
     }
 
 }
