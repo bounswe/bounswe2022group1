@@ -23,7 +23,6 @@
         android:id="@+id/featured"
         android:layout_width="72dp"
         android:layout_height="62dp"
-        android:background="null"
         app:srcCompat="@android:drawable/btn_star_big_on"
         tools:layout_editor_absoluteX="32dp"
         tools:layout_editor_absoluteY="653dp" />
@@ -32,7 +31,6 @@
         android:id="@+id/search"
         android:layout_width="66dp"
         android:layout_height="66dp"
-        android:background="null"
         app:srcCompat="@android:drawable/ic_menu_search"
         tools:layout_editor_absoluteX="104dp"
         tools:layout_editor_absoluteY="653dp" />
@@ -41,7 +39,6 @@
         android:id="@+id/my_learning"
         android:layout_width="69dp"
         android:layout_height="63dp"
-        android:background="null"
         app:srcCompat="@android:drawable/ic_menu_info_details"
         tools:layout_editor_absoluteX="170dp"
         tools:layout_editor_absoluteY="653dp" />
@@ -50,7 +47,6 @@
         android:id="@+id/wishlist"
         android:layout_width="77dp"
         android:layout_height="62dp"
-        android:background="null"
         app:srcCompat="@android:drawable/ic_menu_view"
         tools:layout_editor_absoluteX="236dp"
         tools:layout_editor_absoluteY="653dp" />
@@ -59,7 +55,6 @@
         android:id="@+id/account"
         android:layout_width="87dp"
         android:layout_height="64dp"
-        android:background="null"
         app:srcCompat="@android:drawable/ic_menu_my_calendar"
         tools:layout_editor_absoluteX="300dp"
         tools:layout_editor_absoluteY="653dp" />
