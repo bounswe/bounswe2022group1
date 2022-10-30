@@ -37,11 +37,14 @@ class SignUpActivity : AppCompatActivity() {
         apiService.addUser(userInfo) {
 
             val success_message=findViewById(R.id.success_message) as TextView
+            success_message.setVisibility(View.VISIBLE)
             if(it?.token!=null){
                 success_message.text="Registration is successful!"
+                success_message.postDelayed({success_message.setVisibility(View.INVISIBLE)},2000)
             }
             else{
                 success_message.text="Registration is unsuccessful!"
+                success_message.postDelayed({success_message.setVisibility(View.INVISIBLE)},2000)
             }
         }
     }
