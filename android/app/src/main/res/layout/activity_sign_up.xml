@@ -46,10 +46,10 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout2"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="325dp"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
             app:counterEnabled="true"
-            app:counterMaxLength="26"
+            app:counterMaxLength="25"
             app:endIconMode="clear_text"
 
             app:helperText="Required*"
@@ -68,19 +68,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="ID"
-                android:maxLength="26" />
+                android:maxLength="25" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout3"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="325dp"
+            android:layout_width="350dp"
 
             android:layout_height="wrap_content"
 
             app:counterEnabled="true"
 
-            app:counterMaxLength="26"
+            app:counterMaxLength="25"
 
             app:endIconMode="password_toggle"
             app:helperText="Required*"
@@ -96,11 +96,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Password"
-                android:maxLength="26" />
+                android:maxLength="25" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="325dp"
+            android:layout_width="350dp"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_height="wrap_content"
 
@@ -113,7 +113,7 @@
 
             app:counterEnabled="true"
 
-            app:counterMaxLength="26"
+            app:counterMaxLength="25"
 
             app:layout_constraintBottom_toTopOf="@+id/textInputLayout3"
             app:layout_constraintEnd_toEndOf="parent"
@@ -126,7 +126,7 @@
 
                 android:layout_height="wrap_content"
                 android:hint="E-mail"
-                android:maxLength="26" />
+                android:maxLength="25" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <ImageView
@@ -174,8 +174,8 @@
 
         <TextView
             android:id="@+id/success_message"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="306dp"
+            android:layout_height="31dp"
             android:ems="10"
             android:shadowColor="#cf1d1d"
             android:shadowDx="0.0"
@@ -185,11 +185,14 @@
             android:textFontWeight="5"
             android:textIsSelectable="false"
             android:textSize="20sp"
+            android:textAlignment="center"
             android:textStyle="bold|italic"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button5" />
+            app:layout_constraintTop_toBottomOf="@+id/button5"
+            app:layout_constraintVertical_bias="0.439" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

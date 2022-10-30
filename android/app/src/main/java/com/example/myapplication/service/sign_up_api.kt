@@ -10,7 +10,7 @@ import retrofit2.http.POST
 
 interface sign_up_api {
 
-    @Headers("Content-Type: application/json")
+    //@Headers("Content-Type: application/json")
     @POST("register/")
-    fun addUser(@Body userData: sign_up_model):Call<sign_up_response_model>
+    fun addUser(@Body userData: sign_up_model): Call<sign_up_response_model>
 }
