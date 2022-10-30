@@ -9,6 +9,7 @@ import android.widget.TextView
 import com.example.myapplication.R
 import com.example.myapplication.model.sign_up_model
 import com.example.myapplication.service.RestApiService
+import com.google.android.material.textfield.TextInputEditText
 
 
 class SignUpActivity : AppCompatActivity() {
@@ -23,17 +24,28 @@ class SignUpActivity : AppCompatActivity() {
     }
 
      fun toSignUp(view: View){
+         val userIdView=findViewById(R.id.sign_up_id) as TextInputEditText
+         val emailView=findViewById(R.id.sign_up_email) as TextInputEditText
+         val passwordView=findViewById(R.id.sign_up_password) as TextInputEditText
+
         val apiService = RestApiService()
         val userInfo = sign_up_model(
-            username = "quanex1",
-            email = "alex@gmail.com",
-            password = "asd123asd123")
+            username = userIdView.text.toString(),
+            email = emailView.text.toString(),
+            password = passwordView.text.toString())
 
         apiService.addUser(userInfo) {
 
             val success_message=findViewById(R.id.success_message) as TextView
-            success_message.text=it?.toString()
-            println(it?.toString())
+            success_message.setVisibility(View.VISIBLE)
+            if(it?.token!=null){
+                success_message.text="Registration is successful!"
+                success_message.postDelayed({success_message.setVisibility(View.INVISIBLE)},2000)
+            }
+            else{
+                success_message.text="Registration is unsuccessful!"
+                success_message.postDelayed({success_message.setVisibility(View.INVISIBLE)},2000)
+            }
         }
     }
 
