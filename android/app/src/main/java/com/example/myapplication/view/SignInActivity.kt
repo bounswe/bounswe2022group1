@@ -28,13 +28,11 @@ class SignInActivity : AppCompatActivity() {
 
     fun toLogIn(view: View){
         val userIdView= findViewById<TextInputEditText>(R.id.sign_in_id)
-        val emailView= findViewById<TextInputEditText>(R.id.sign_in_email)
         val passwordView= findViewById<TextInputEditText>(R.id.sign_in_password)
 
         val apiService = SignInApiCall()
         val userInfo = sign_in_model(
             username = userIdView.text.toString(),
-            email = emailView.text.toString(),
             password = passwordView.text.toString())
 
         apiService.login(userInfo) {
@@ -43,6 +41,7 @@ class SignInActivity : AppCompatActivity() {
             successMessage.visibility = View.VISIBLE
             if(it?.token!=null){
                 successMessage.text="Login is successful!"
+                user_token = it?.token
                 successMessage.postDelayed({ successMessage.visibility = View.INVISIBLE },2000)
                 loggedIn(view);
             }

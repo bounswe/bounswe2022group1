@@ -32,16 +32,16 @@
 
         <Button
             android:id="@+id/button5"
-            android:layout_width="206dp"
-            android:layout_height="48dp"
+            android:layout_width="232dp"
+            android:layout_height="68dp"
             android:onClick="goToSignUp"
             android:text="Go to Registration Page"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.492"
+            app:layout_constraintHorizontal_bias="0.491"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout3"
-            app:layout_constraintVertical_bias="0.302" />
+            app:layout_constraintVertical_bias="0.397" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout2"
@@ -59,8 +59,10 @@
 
 
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.508"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.906"
             app:startIconDrawable="@drawable/userid">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -99,36 +101,6 @@
                 android:maxLength="25" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="350dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_height="wrap_content"
-
-            app:helperText="Required*"
-
-            app:endIconMode="clear_text"
-
-            app:startIconDrawable="@drawable/email"
-
-
-            app:counterEnabled="true"
-
-            app:counterMaxLength="25"
-
-            app:layout_constraintBottom_toTopOf="@+id/textInputLayout3"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/sign_in_email"
-                android:layout_width="match_parent"
-
-                android:layout_height="wrap_content"
-                android:hint="E-mail"
-                android:maxLength="25" />
-        </com.google.android.material.textfield.TextInputLayout>
-
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
@@ -161,7 +133,8 @@
             android:shadowDx="0.0"
             android:shadowDy="0.0"
             android:shadowRadius="8"
-            android:text="      Budemi Login"
+            android:text="Budemi Login"
+            android:textAlignment="center"
             android:textColor="#cf1d1d"
             android:textFontWeight="5"
             android:textIsSelectable="false"
