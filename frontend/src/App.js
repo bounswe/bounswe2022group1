@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Login from "./components/login/login";
 import SignUp from "./components/signup/signup";
 import Homepage from "./components/homepage/Homepage";
+import Profile from "./components/profile/Profile"
 import { ReactComponent as Logo } from "./BUdemi.svg";
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
               <Route path="/homepage" element={<Homepage />} />
               <Route path="/sign-in" element={<Login />} />
               <Route path="/sign-up" element={<SignUp />} />
+              <Route path="/profile" element={<Profile />} />
             </Routes>
           </div>
         </div>
