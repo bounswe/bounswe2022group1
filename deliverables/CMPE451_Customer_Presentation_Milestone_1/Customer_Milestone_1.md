@@ -135,6 +135,8 @@ I have assumed several roles on top of my own to implement and bugfix several pa
 
 **Pull Requests:** 
 * Budemi android main: https://github.com/bounswe/bounswe2022group1/pull/397
+* Bug fix for user logout (user_token is set to "") : https://github.com/bounswe/bounswe2022group1/pull/452
+* Milestone1 individual .md files are added : https://github.com/bounswe/bounswe2022group1/pull/451
 
 </details>
 <details>
