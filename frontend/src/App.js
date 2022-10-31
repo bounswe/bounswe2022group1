@@ -4,6 +4,8 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Login from "./components/login/login";
 import SignUp from "./components/signup/signup";
+import ForgotPassword from "./components/forgot-password/forgot-password";
+
 
 function App() {
   return (
@@ -36,6 +38,7 @@ function App() {
 							<Route exact path="/" element={<Login />} />
 							<Route path="/sign-in" element={<Login />} />
 							<Route path="/sign-up" element={<SignUp />} />
+							<Route path="/forgot-password" element={<ForgotPassword />} />
 						</Routes>
 					</div>
 				</div>
