@@ -38,13 +38,17 @@ class HomeActivity : AppCompatActivity() {
         signInButtonClicked.setOnClickListener{
             to_signIn()
         }
-        val logoffButtonClicked = findViewById<Button>(R.id.signinButton)
+        val logoffButtonClicked = findViewById<ImageButton>(R.id.logoffButton)
         logoffButtonClicked.setOnClickListener{
-            to_signIn()
+            toLanding()
         }
     }
     fun to_signIn() {
         var intent= Intent(applicationContext, SignInActivity::class.java)
+        startActivity(intent)
+    }
+    fun toLanding() {
+        var intent= Intent(applicationContext, LandingActivity::class.java)
         startActivity(intent)
     }
 }
