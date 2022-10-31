@@ -34,7 +34,7 @@ class LandingActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun logged_in(view: View) {
+    fun loggedIn(view: View) {
         var intent= Intent(applicationContext, HomeActivity::class.java)
         startActivity(intent)
     }
@@ -48,7 +48,7 @@ class LandingActivity : AppCompatActivity() {
     private fun postToList() {
         addToList("Course Variety", "Enroll in a wide range of courses", R.drawable.variety)
         addToList("Share Your Knowledge", "Create courses and share with others", R.drawable.scholar)
-        addToList("Free Courses", "All for free", R.drawable.free)
+        addToList("Communication Channels", "Ask and answer questions, discuss your ideas", R.drawable.discuss)
     }
 
 }

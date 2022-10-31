@@ -7,9 +7,8 @@ import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.POST
 
-interface sign_in_api {
+interface SignInApi {
 
-    //@Headers("Content-Type: application/json")
     @POST("login/")
     fun login(@Body userData: sign_in_model): Call<sign_in_response_model>
 }
