@@ -34,7 +34,7 @@ class LandingActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun loggedIn(view: View) {
+    fun logged_in(view: View) {
         var intent= Intent(applicationContext, HomeActivity::class.java)
         startActivity(intent)
     }
