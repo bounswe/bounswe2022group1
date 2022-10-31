@@ -21,7 +21,7 @@ class HomeActivity : AppCompatActivity() {
         var buttonLayout = findViewById(R.id.buttonLayout) as LinearLayout
         var logoffButton = findViewById(R.id.logoffButton) as ImageButton
         var signinButton = findViewById(R.id.signinButton) as Button
-        println(user_token)
+        
         if(user_token != "") {
             buttonLayout.visibility = View.VISIBLE
             logoffButton.visibility = View.VISIBLE
