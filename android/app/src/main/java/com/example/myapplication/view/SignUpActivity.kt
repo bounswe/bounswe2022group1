@@ -3,12 +3,11 @@ package com.example.myapplication.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.TextView
 import com.example.myapplication.R
-import com.example.myapplication.model.sign_up_model
-import com.example.myapplication.service.RestApiService
+import com.example.myapplication.model.sign_up_send_model
+import com.example.myapplication.service.sign_up_api_call
 import com.google.android.material.textfield.TextInputEditText
 
 var user_token=""
@@ -34,8 +33,8 @@ class SignUpActivity : AppCompatActivity() {
          val emailView=findViewById(R.id.sign_up_email) as TextInputEditText
          val passwordView=findViewById(R.id.sign_up_password) as TextInputEditText
 
-        val apiService = RestApiService()
-        val userInfo = sign_up_model(
+        val apiService = sign_up_api_call()
+        val userInfo = sign_up_send_model(
             username = userIdView.text.toString(),
             email = emailView.text.toString(),
             password = passwordView.text.toString())
@@ -49,8 +48,6 @@ class SignUpActivity : AppCompatActivity() {
                 success_message.text="Registration is successful!\n You are redirected to Homepage"
                 success_message.postDelayed({success_message.setVisibility(View.INVISIBLE)},2000)
                 success_message.postDelayed({goToHomePage()},2000)
-
-
             }
             else{
                 success_message.text="Registration is unsuccessful!"
