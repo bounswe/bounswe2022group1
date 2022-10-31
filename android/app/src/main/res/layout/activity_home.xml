@@ -120,8 +120,6 @@
             android:id="@+id/accountButton"
             android:layout_width="60dp"
             android:layout_height="60dp"
-
-
             android:contentDescription="@string/appbar_scrolling_view_behavior"
             app:srcCompat="@android:drawable/ic_menu_my_calendar"
             tools:ignore="MissingConstraints" />
