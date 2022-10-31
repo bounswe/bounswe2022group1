@@ -25,7 +25,9 @@
         android:layout_height="62dp"
         app:srcCompat="@android:drawable/btn_star_big_on"
         tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="653dp" />
+        tools:layout_editor_absoluteY="653dp"
+        android:background="null"
+        tools:ignore="MissingConstraints"/>
 
     <ImageButton
         android:id="@+id/search"
@@ -33,7 +35,9 @@
         android:layout_height="66dp"
         app:srcCompat="@android:drawable/ic_menu_search"
         tools:layout_editor_absoluteX="104dp"
-        tools:layout_editor_absoluteY="653dp" />
+        tools:layout_editor_absoluteY="653dp"
+        android:background="null"
+        tools:ignore="MissingConstraints"/>
 
     <ImageButton
         android:id="@+id/my_learning"
@@ -41,7 +45,9 @@
         android:layout_height="63dp"
         app:srcCompat="@android:drawable/ic_menu_info_details"
         tools:layout_editor_absoluteX="170dp"
-        tools:layout_editor_absoluteY="653dp" />
+        tools:layout_editor_absoluteY="653dp"
+        android:background="null"
+        tools:ignore="MissingConstraints"/>
 
     <ImageButton
         android:id="@+id/wishlist"
@@ -49,7 +55,9 @@
         android:layout_height="62dp"
         app:srcCompat="@android:drawable/ic_menu_view"
         tools:layout_editor_absoluteX="236dp"
-        tools:layout_editor_absoluteY="653dp" />
+        tools:layout_editor_absoluteY="653dp"
+        android:background="null"
+        tools:ignore="MissingConstraints"/>
 
     <ImageButton
         android:id="@+id/account"
@@ -57,7 +65,9 @@
         android:layout_height="64dp"
         app:srcCompat="@android:drawable/ic_menu_my_calendar"
         tools:layout_editor_absoluteX="300dp"
-        tools:layout_editor_absoluteY="653dp" />
+        tools:layout_editor_absoluteY="653dp"
+        android:background="null"
+        tools:ignore="MissingConstraints" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
