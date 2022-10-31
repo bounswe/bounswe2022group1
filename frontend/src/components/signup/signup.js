@@ -5,10 +5,18 @@ export default class SignUp extends Component {
     this.state = { username: "", email: "", password: "" };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+  handleChange(changeObject) {
+    this.setState(changeObject);
+  }
 
   handleSubmit(event) {
+    console.log("username: " + this.state.username);
+    console.log("password: " + this.state.password);
     fetch("http://3.89.218.253:8000/app/register/", {
       method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
       body: JSON.stringify({
         username: this.state.username,
         email: this.state.email,
@@ -16,12 +24,15 @@ export default class SignUp extends Component {
       }),
     })
       .then((response) => {
-        console.log(response);
-        response.json();
+        if (response.status === 200) {
+          return response.json();
+        } else {
+          alert("Failed with status code " + response.status);
+        }
       })
       .then((response) => {
         console.log(response);
-        alert(response);
+        alert(" Success " + response.token);
       })
       .catch((err) => {
         console.log(err);
@@ -35,7 +46,12 @@ export default class SignUp extends Component {
         <h3>Sign Up</h3>
         <div className="mb-3">
           <label>Username</label>
-          <input type="text" className="form-control" placeholder="Username" />
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Username"
+            onChange={(e) => this.handleChange({ username: e.target.value })}
+          />
         </div>
         <div className="mb-3">
           <label>Email address</label>
@@ -43,6 +59,7 @@ export default class SignUp extends Component {
             type="email"
             className="form-control"
             placeholder="Enter email"
+            onChange={(e) => this.handleChange({ email: e.target.value })}
           />
         </div>
         <div className="mb-3">
@@ -51,6 +68,7 @@ export default class SignUp extends Component {
             type="password"
             className="form-control"
             placeholder="Enter password"
+            onChange={(e) => this.handleChange({ password: e.target.value })}
           />
         </div>
         <div className="d-grid">
