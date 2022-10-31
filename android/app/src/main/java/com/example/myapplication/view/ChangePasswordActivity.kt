@@ -7,7 +7,7 @@ import android.view.View
 import android.widget.TextView
 import com.example.myapplication.R
 import com.example.myapplication.model.change_password_model
-import com.example.myapplication.service.RestApiService
+import com.example.myapplication.service.changePasswordApiCall
 import com.google.android.material.textfield.TextInputEditText
 
 class ChangePasswordActivity : AppCompatActivity() {
@@ -27,7 +27,7 @@ class ChangePasswordActivity : AppCompatActivity() {
         val oldPassword = findViewById(R.id.oldPassword) as TextInputEditText
         val newPassword = findViewById(R.id.newPassword) as TextInputEditText
 
-        val apiService = RestApiService()
+        val apiService = changePasswordApiCall()
         val passwordInfo = change_password_model(
             old_pass = oldPassword.text.toString(),
             new_pass = newPassword.text.toString())
