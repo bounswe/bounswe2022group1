@@ -50,6 +50,13 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".view.ChangePasswordActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".view.SignInActivity"
             android:exported="false">
             <meta-data
