@@ -8,20 +8,6 @@
     android:contentDescription="@string/appbar_scrolling_view_behavior"
     tools:context=".view.HomeActivity">
 
-
-    <!--    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="400dp"
-        android:layout_height="720dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/home_page_bg" />
--->
-
     <TextView
         android:id="@+id/textView5"
         android:layout_width="0dp"
@@ -54,7 +40,7 @@
         android:id="@+id/imageView5"
         android:layout_width="120dp"
         android:layout_height="80dp"
-        android:background="@null"
+
         android:contentDescription="TODO"
         android:src="@drawable/python_paint"
         app:layout_constraintBottom_toTopOf="@+id/textView5"
@@ -97,7 +83,7 @@
             android:id="@+id/searchButton"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:background="@null"
+
             android:contentDescription="@string/appbar_scrolling_view_behavior"
             app:srcCompat="@android:drawable/ic_menu_search"
             tools:ignore="MissingConstraints,DuplicateSpeakableTextCheck" />
@@ -106,7 +92,7 @@
             android:id="@+id/featuredButton"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:background="@null"
+
             android:contentDescription="@string/bottom_sheet_behavior"
             app:srcCompat="@android:drawable/btn_star_big_on"
             tools:ignore="MissingConstraints" />
@@ -115,7 +101,7 @@
             android:id="@+id/myLearningButton"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:background="@null"
+
             android:contentDescription="@string/appbar_scrolling_view_behavior"
             app:srcCompat="@android:drawable/ic_menu_info_details"
             tools:ignore="MissingConstraints" />
@@ -125,7 +111,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
 
-            android:background="@null"
+
             android:contentDescription="@string/appbar_scrolling_view_behavior"
             app:srcCompat="@android:drawable/ic_menu_view"
             tools:ignore="MissingConstraints" />
@@ -135,7 +121,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
 
-            android:background="@null"
+
             android:contentDescription="@string/appbar_scrolling_view_behavior"
             app:srcCompat="@android:drawable/ic_menu_my_calendar"
             tools:ignore="MissingConstraints" />
@@ -191,7 +177,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="18dp"
         android:layout_marginBottom="64dp"
-        android:background="@null"
+
         android:onClick="logoffToSignIn"
         android:scaleType="fitCenter"
         android:src="@drawable/logout"
