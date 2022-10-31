@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#CFD4F1"
-    tools:context=".LandingActivity">
+    tools:context=".view.LandingActivity">
 
     <Button
         android:id="@+id/button3"
