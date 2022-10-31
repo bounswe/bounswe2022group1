@@ -7,4 +7,5 @@ RUN pip install --upgrade pip && pip install -r requirements.txt
 RUN pip install mysqlclient
 RUN pip install djangorestframework
 RUN pip install django-rest-knox
+RUN pip install django-cors-headers
 COPY . /code/
