@@ -138,9 +138,51 @@ I have assumed several roles on top of my own to implement and bugfix several pa
 * After Implementing register functionality changing some paramater names:https://github.com/bounswe/bounswe2022group1/pull/469
 
 </details>
+
 <details>
 <summary>Hüseyin Seyyid KAPLAN</summary>
+
+**Member:** Hüseyin Seyyid KAPLAN, Group1, Online Learning Project (OLP), [Personal Page](https://github.com/bounswe/bounswe2022group1/wiki/H%C3%BCseyin-Seyyid-Kaplan)
+
+**Responsibilities:** 
+* Learning how to use React.js
+* Designing and implementing authentication pages: signin and signup
+* Showing the structure and how to install our authentication pages to teammates
+* Reviewing the changes that are made by my teammates
+
+**Main Contributions:** 
+* Determining which tools to use while doing the project. 
+* I have implemented authentication pages for our learning space. 
+* I enabled the user to login by sending a request to the back-end. 
+* I opened issues for my progress and tasks, made pull request for my own changes. 
+* I also solved the conflicts while merging two branches. 
+* I opened new branch to develop more stable codes. 
+* I added label to ease opening an issue. 
+* I met with my teammates to show up my changes on code several times.
+
+#### a. Code Related Significant Issues:
+
+* [Creating an Authentication Page with React.js](https://github.com/bounswe/bounswe2022group1/issues/336)
+* [Reorganizing Code Structure According to Last Changes](https://github.com/bounswe/bounswe2022group1/issues/392)
+* [Checking the Pull Request of react-authentication-page](https://github.com/bounswe/bounswe2022group1/issues/466)
+
+#### b. Management Related Significant Issues:
+
+* [Request to use Issue Panel](https://github.com/bounswe/bounswe2022group1/issues/361)
+* [Permission Request for Pushing Commits to GitHub](https://github.com/bounswe/bounswe2022group1/issues/363)
+* [We need a label named 'Meeting'](https://github.com/bounswe/bounswe2022group1/issues/390)
+* [Reviewing the Issues](https://github.com/bounswe/bounswe2022group1/issues/463)
+
+
+**Pull Requests:** 
+
+* [React authentication page](https://github.com/bounswe/bounswe2022group1/pull/395)
+
+**Additional Information:**
+I had some problems because I participated this group newly. I came from behind of my teammates and I may caused some lack of communication issues. So, to prevent this I took the communication responsibility behalf of frontend team both in teammate's issues and other teams' (android, backend) issues in our project group.
+
 </details>
+
 <details>
 <summary>Kamil Korkut</summary>
 
