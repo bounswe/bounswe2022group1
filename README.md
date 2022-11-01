@@ -50,7 +50,7 @@ expected to learn how to effectively use them
 ### Instructor & Teaching Assistant
 
 - (Instructor)[Suzan Üsküdarlı](https://www.cmpe.boun.edu.tr/tr/people/suzan.uskudarli) suzan.uskudarli@boun.edu.tr
-- [Alper Ahmetoglu](https://www.cmpe.boun.edu.tr/tr/people/alper.ahmetoglu) ahmetoglu.alper@gmail.com
+- [Alper Ahmetoglu](https://www.cmpe.boun.edu.tr/tr/people/alper.ahmetoglu) alper.ahmetoglu@boun.edu.tr
 
 ### For Building Backend App
 -> Enter into the directory "backend". 
