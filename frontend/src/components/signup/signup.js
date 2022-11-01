@@ -2,14 +2,21 @@ import React, { Component } from "react";
 export default class SignUp extends Component {
   constructor(props) {
     super(props);
-    this.state = { username: " ", email: " ", password: " " };
-    this.errors = {};
+    this.state = { username: "", email: "", password: "" };
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  handleChange(changeObject) {
+    this.setState(changeObject);
   }
 
   handleSubmit(event) {
+    console.log("username: " + this.state.username);
+    console.log("password: " + this.state.password);
     fetch("http://3.89.218.253:8000/app/register/", {
       method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
       body: JSON.stringify({
         username: this.state.username,
         email: this.state.email,
@@ -17,12 +24,15 @@ export default class SignUp extends Component {
       }),
     })
       .then((response) => {
-        console.log(response);
-        response.json();
+        if (response.status === 200) {
+          return response.json();
+        } else {
+          alert("Failed with status code " + response.status);
+        }
       })
       .then((response) => {
         console.log(response);
-        alert(response);
+        alert(" Success " + response.token);
       })
       .catch((err) => {
         console.log(err);

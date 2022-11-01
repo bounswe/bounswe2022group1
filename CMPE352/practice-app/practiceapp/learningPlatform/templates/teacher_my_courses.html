@@ -1,0 +1,59 @@
+<!-- Kamil Korkut -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Teacher My Courses</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="{% static 'styles.css' %}" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="center-layout control-panel-layout container">
+        <h2 style="text-align: center; margin-top: 20px; margin-bottom: 30px">
+            MY COURSES
+        </h2>
+        <div class="row">
+            
+            <h5 style="text-align: center; color: black; margin-top: 0; margin-bottom: 20px">
+            {% for course in teacher_courses_list %}
+            {{ course }}<br>
+            {% endfor %}
+            </h5>
+        </div>
+        
+        <form method="POST" action="/teacher/teacher_update_course/">
+            <h3>Update Course Name</h3>
+          {% csrf_token %}
+
+          <label for="course_name">Course Name:</label><br />
+          <input type="text" name="course_name" required /><br /><br />
+          <label for="course_name">New Course Name:</label><br />
+          <input type="text" name="new_name" required /><br /><br />
+
+          <input type="submit" value="Submit" />
+        </form>
+        
+        <div class="row" style="width: 100%">
+            <h3 style="text-align: center; margin-top: 30px; margin-bottom: 20px">
+                Bitcoin Price
+            </h3>
+            <br>
+            <h5 style="text-align: center; color: black; margin-top: 0; margin-bottom: 20px">
+                
+                Price: {{bpi}} $<br>
+                Last updated: {{time}}
+                
+            </h5>
+        </div>
+        <form action="/teacher/teacher_my_courses_back/">
+            <input type="submit" value="Back"/>
+        </form>
+    </div>
+</body>
+
+</html>

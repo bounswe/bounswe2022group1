@@ -1,0 +1,45 @@
+<!-- Ece Sarkın -->
+<!-- Kamil Korkut -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Student Enroll</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="{% static 'styles.css' %}" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="center-layout control-panel-layout container">
+        <h2 style="text-align: center; margin-top: 20px; margin-bottom: 30px">
+            ENROLL LIST
+        </h2>
+        <div class="row">
+
+            <h5 style="text-align: center; color: black; margin-top: 0; margin-bottom: 20px">
+            {% for course in enrolled_courses_list %}
+            {{ course }}<br>
+            {% endfor %}
+            </h5>
+        </div>
+        <div class="row" style="width: 100%">
+            <h3 style="text-align: center; margin-top: 30px; margin-bottom: 20px">
+                Shakespeare Quote
+            </h3>
+            <br>
+            <h5 style="text-align: center; color: black; margin-top: 0; margin-bottom: 20px">
+
+                " {{quote}} " from the play {{play}}
+            </h5>
+        </div>
+        <form action="/student/student_enroll_back/">
+            <input type="submit" value="Back"/>
+        </form>
+    </div>
+</body>
+
+</html>
