@@ -179,7 +179,7 @@ I have assumed several roles on top of my own to implement and bugfix several pa
 * [React authentication page](https://github.com/bounswe/bounswe2022group1/pull/395)
 
 **Additional Information:**
-I had some problems because I participated this group newly. I came from behind of my teammates and I may caused some lack of communication issues. So, to prevent this I took the communication responsibility behalf of frontend team both in teammate's issues and other teams' (android, backend) issues in our project group.
+I had some problems because I participated this group newly and also I had health issues during last 3 weeks. I came from behind of my teammates and I may caused some lack of communication issues. So, to prevent this I took the communication responsibility behalf of frontend team both in teammate's issues and other teams' (android, backend) issues in our project group.
 
 </details>
 
