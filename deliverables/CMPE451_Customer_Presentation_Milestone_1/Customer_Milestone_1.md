@@ -261,16 +261,13 @@ I have attended Lectures, Problem Sessions, all the team meetings and frontend t
 <details>
 <summary>Kadir Gökhan SEZER</summary>
 
-
 **Responsibilities:** 
+  
 * I was responsible for designing homepage page. 
-* I was responsible for deployment of the project.
 * I was responsible for reviewing my team member's work.
 * I was responsible for distribution of the work to be done each member. 
 * I was responsible to help my team if they needed.
 * I was responsible to follow what the rest of the team has done.
-
-
 
 
 **Main Contributions:** 
@@ -278,6 +275,8 @@ I have attended Lectures, Problem Sessions, all the team meetings and frontend t
 * I struggled with understanding the login and sign up part. I fixed them.
 * I made the api connections of the login,logout,register and sign up pages.
 * I did research to show my teammates beautiful website designs.
+* I did research on deployment of the project.
+* I created the Dockerfile.
 * I compared website designs and chose the most suitable one with my group friends.
 * I participated into the all group meetings both Frontend and overall team.
 * I built the Reactjs project structure. I designed the folder structure. I adjusted the project accordingly.
@@ -287,7 +286,8 @@ I have attended Lectures, Problem Sessions, all the team meetings and frontend t
 * I introduced Frontend,Android and Backend label to our repository.
 * I created the profile page. When I log in, I set it to go to the profile page with that token. With that token, I set it to logout and go to the homepage again. I set the profile page checking for the existence of the token. Ece filled out the profile part.
 * I made the necessary preparations for the deployment part. I worked it from this [site](https://jsramblings.com/dockerizing-a-react-app/). I asked my friends to fulfill their responsibilities. I waited for them to do it. If they won't, I told them to tell me that I would do the deployment part accordingly. There was no answer. I wrote the Dockerfile. @Ege did the deployment part. During this process, we had these problems because of my teammates not helping us.
-
+* Normally we would deploy as a team. Then when no one was interested, I wanted to do it. Last night, I told my friends to wait if they are going to fulfill their responsibilities, and if they are not, let's deploy now. None answered. So, the deployment is in trouble. 
+* In simple, I had to prepare homepage, profile, redirection between pages, folder structure, and token based authorization(login-logout system and related redirections).
 
 #### a. Code Related Significant Issues:
 * Know-how about Docker: https://github.com/bounswe/bounswe2022group1/issues/307
@@ -338,6 +338,7 @@ I have attended Lectures, Problem Sessions, all the team meetings and frontend t
 **Pull Requests:** 
 ** I created the frontend-v0.2 branch. The whole project is based on that brach. All of the team worked on that. 
 * 0.1.0-alpha #475: https://github.com/bounswe/bounswe2022group1/pull/475
+
 
 </details>
 <details>
