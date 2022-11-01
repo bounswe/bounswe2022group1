@@ -49,6 +49,7 @@ class HomeActivity : AppCompatActivity() {
         startActivity(intent)
     }
     fun toLanding() {
+        user_token=""
         var intent= Intent(applicationContext, LandingActivity::class.java)
         startActivity(intent)
     }
