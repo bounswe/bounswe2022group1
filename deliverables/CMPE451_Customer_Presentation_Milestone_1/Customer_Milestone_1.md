@@ -10,8 +10,11 @@
 [User mode](https://github.com/bounswe/bounswe2022group1/wiki/Student-User-Web-Scenario-and-Mockup)  
 [Guest mode](https://github.com/bounswe/bounswe2022group1/wiki/Guest-Web-Scenario-and-Mockup)  
 [Teacher mode](https://github.com/bounswe/bounswe2022group1/wiki/Teacher-User-Web-Scenario-and-Mockup)  
+
 ### Project Plan
-[Project Plan for Android Team](https://github.com/bounswe/bounswe2022group1/wiki/Project-Plan-for-Android-Team)
+[Project Plan for Android Team](https://github.com/bounswe/bounswe2022group1/wiki/Project-Plan-for-Android-Team)\
+[Project Plan for Backend Team](https://github.com/bounswe/bounswe2022group1/wiki/Project-Plan-for-Backend-Team)\
+[Project Plan for Frontend Team](https://github.com/bounswe/bounswe2022group1/wiki/Project-Plan-for-Frontend-Team)
 
 ### Individual Contribution Reports
 <details>
@@ -44,6 +47,34 @@
 </details>
 <details>
 <summary>Mustafa ATAY</summary>
+
+**Member:** Mustafa Atay, Group 1, Online Learning Project (OLP), [Personal Page](https://github.com/bounswe/bounswe2022group1/wiki/Mustafa-Atay)
+
+**Responsibilities:** I was responsible for creating the initial Django project. I took responsibility for dockerization. I organized the file structure so that all teams could work together. Also, I was responsible for updating the fundamental features page. I added some selected Udemy courses to the group's Udemy account. Moreover, I prepared the project plan for backend team and API documentation.
+
+**Main Contributions:** I have made further contributions while initializing the project. I dockerized the backend project. I took a role while selecting the tech stack we will use as a team. Moreover, I updated the fundamental features page, added Udemy courses to our group account, and prepared project plan and API documentation.
+
+#### a. Code Related Significant Issues:
+
+- Dockerization and Deployment into AWS EC2: https://github.com/bounswe/bounswe2022group1/issues/345
+- Initialization of project: https://github.com/bounswe/bounswe2022group1/issues/354
+- Organizing file structure: https://github.com/bounswe/bounswe2022group1/issues/352
+
+#### a. Management Related Significant Issues:
+
+- Checking and updating fundamental features page: https://github.com/bounswe/bounswe2022group1/issues/304
+- Adding courses to Udemy account: https://github.com/bounswe/bounswe2022group1/issues/328
+- Preparing project plan: https://github.com/bounswe/bounswe2022group1/issues/459
+- Preparing API documentation: https://github.com/bounswe/bounswe2022group1/issues/403
+
+**Pull Requests:**
+
+- Organize The Folder Structure : https://github.com/bounswe/bounswe2022group1/pull/350
+
+**Additional Information:**
+I had been working on this project and fulfilling my responsibilities as expected since the beginning of the class. I took further responsibility while creating initial Django project and application. However, I had a family-related urgency last week of the Milestone 1 deadline (27.10.2022 - 30.10.2022) and had to return to my family house. Unfortunately, I couldn't contribute a lot during that period.
+
+
 </details>
 <details>
 
@@ -88,7 +119,36 @@ I have assumed several roles on top of my own to implement and bugfix several pa
 <summary>Hüseyin Seyyid KAPLAN</summary>
 </details>
 <details>
-<summary>Kamil KORKUT</summary>
+<summary>Kamil Korkut</summary>
+
+**Member:** Kamil Korkut, Group 1, Online Learning Project (OLP), [Personal Page](https://github.com/bounswe/bounswe2022group1/wiki/Kamil-Korkut)
+
+**Responsibilities:** 
+* I was responsible for implementing form validations for sign-in and sign-up pages.
+* I was responsible for designing and implementing the forgot password page.
+* I was responsible for reviewing issues.
+
+
+**Main Contributions:** 
+* I have implemented form validations to sing-in and sign-up pages.
+* I have designed and implemented the forgot password page.
+* I have reviewed some issues.
+
+
+#### a. Code Related Significant Issues:
+* Frontend: Form Validation: [#396](https://github.com/bounswe/bounswe2022group1/issues/396)
+* Frontend: Creating Forgot Password Page: [#399](https://github.com/bounswe/bounswe2022group1/issues/399)
+
+
+#### a. Management Related Significant Issues: 
+* Updating Personal Wiki Page [#310](https://github.com/bounswe/bounswe2022group1/issues/310)
+* Kamil Korkut - Individual Contribution Report [#461](https://github.com/bounswe/bounswe2022group1/issues/461)
+
+
+**Pull Requests:** 
+* React authentication page [PR #395](https://github.com/bounswe/bounswe2022group1/pull/395)
+(This is Hüseyin’s pull request, but I have worked on his branch so I could not open a pull request. But my work is here.)
+
 </details>
 <details>
 <summary>Ömer ÖZDEMİR</summary>
@@ -141,6 +201,39 @@ I have assumed several roles on top of my own to implement and bugfix several pa
 </details>
 <details>
 <summary>Ece SARKIN</summary>
+
+**Member:** Ece Sarkın, Group 1, Online Learning Project (OLP), [Personal Page](https://github.com/bounswe/bounswe2022group1/wiki/Ece-Sarkın)
+
+**Responsibilities:** 
+* I was responsible for sharing meeting notes with my team.  
+* I was responsible for designing and implementing the profile page on Web.  
+* I was responsible for creating Milestone 1 report outline.
+* I was responsible for creating the project plan for the Front-end team.
+I have attended Lectures, Problem Sessions, all the team meetings and frontend team meetings.  
+
+
+
+**Main Contributions:** 
+* I have uploaded each week's meeting notes on our Wiki.
+* I have designed and implemented the profile page of the Web application.
+* I have created an outline for Customer Milestone 1 report.
+* I have revised last semester's Use case diagram.
+* I have reviewed my friends' issues.
+
+
+#### a. Code Related Significant Issues:
+* Profile page: [#450](https://github.com/bounswe/bounswe2022group1/issues/450)
+
+#### a. Management Related Significant Issues: 
+* Review Use case [#292](https://github.com/bounswe/bounswe2022group1/issues/292)
+* Meeting notes  [#291](https://github.com/bounswe/bounswe2022group1/issues/291), [#325](https://github.com/bounswe/bounswe2022group1/issues/325), [#326](https://github.com/bounswe/bounswe2022group1/issues/326), [#400](https://github.com/bounswe/bounswe2022group1/issues/400)
+* Frontend project plan [#458](https://github.com/bounswe/bounswe2022group1/issues/458)
+* Customer Milestone 1 report outline [#401](https://github.com/bounswe/bounswe2022group1/issues/401)
+
+
+**Pull Requests:** 
+* Profile page [PR #449](https://github.com/bounswe/bounswe2022group1/pull/449)
+
 </details>
 <details>
 <summary>Kadir Gökhan SEZER</summary>
