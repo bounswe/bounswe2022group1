@@ -33,28 +33,20 @@ export default class SignUp extends Component {
       .then((response) => {
         console.log(response);
         alert(" Success " + response.token);
+        if (response.token) {
+          
+          localStorage.setItem("token", response.token);
+          localStorage.setItem("username", this.state.username);
+          window.location.href = "/profile";
+          return;
+        } else {
+          alert("Failed with status code " + response.status);
+        }
       })
       .catch((err) => {
         console.log(err);
       });
     event.preventDefault();
-  }
-
-  handleChange(changeObject) {
-    this.setState(changeObject);
-  }
-
-  validate (values) {
-    this.errors = {};
-    if(!this.state.username){
-      this.errors.username = "Username is required.";
-    }
-    if(!this.state.password){
-      this.errors.password = "Password is required.";
-    }
-    if(!this.state.email){
-      this.errors.email = "Email is required.";
-    }
   }
 
   render() {
@@ -63,16 +55,13 @@ export default class SignUp extends Component {
         <h3>Sign Up</h3>
         <div className="mb-3">
           <label>Username</label>
-          <input type="text" 
-          className="form-control" 
-          placeholder="Username" 
-          onChange={(e) => this.handleChange({ username: e.target.value })}
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Username"
+            onChange={(e) => this.handleChange({ username: e.target.value })}
           />
         </div>
-
-        {this.setErrors=this.validate(this.state)}
-
-        <p>{ this.errors.username }</p>
         <div className="mb-3">
           <label>Email address</label>
           <input
@@ -82,7 +71,6 @@ export default class SignUp extends Component {
             onChange={(e) => this.handleChange({ email: e.target.value })}
           />
         </div>
-        <p>{ this.errors.email }</p>
         <div className="mb-3">
           <label>Password</label>
           <input
@@ -92,7 +80,6 @@ export default class SignUp extends Component {
             onChange={(e) => this.handleChange({ password: e.target.value })}
           />
         </div>
-        <p>{ this.errors.password }</p>
         <div className="d-grid">
           <button type="submit" className="btn btn-primary">
             Sign Up
