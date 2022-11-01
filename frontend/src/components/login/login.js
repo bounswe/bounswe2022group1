@@ -1,8 +1,12 @@
 import React, { Component } from "react";
+import {Link} from "react-router-dom";
+
+
 export default class Login extends Component {
   constructor(props) {
     super(props);
-    this.state = { username: "", password: "" };
+    this.state = { username: " ", password: " " };
+    this.errors = {};
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleClick = (e) => {
@@ -59,8 +63,17 @@ export default class Login extends Component {
       .catch((err) => {
         console.log(err);
       });
-
     event.preventDefault();
+  }
+
+  validate (values) {
+    this.errors = {};
+    if(!this.state.username){
+      this.errors.username = "Username is required.";
+    }
+    if(!this.state.password){
+      this.errors.password = "Password is required.";
+    }
   }
 
   render() {
@@ -76,6 +89,10 @@ export default class Login extends Component {
             onChange={(e) => this.handleChange({ username: e.target.value })}
           />
         </div>
+
+        {this.setErrors=this.validate(this.state)}
+
+        <p>{ this.errors.username }</p>
         <div className="password">
           <label>Password</label>
           <input
@@ -85,6 +102,7 @@ export default class Login extends Component {
             onChange={(e) => this.handleChange({ password: e.target.value })}
           />
         </div>
+        <p>{ this.errors.password }</p>
         <div className="mb-3">
           <div className="custom-control custom-checkbox">
             <input
@@ -104,9 +122,7 @@ export default class Login extends Component {
         </div>
         <p className="forgot-password text-right">
           Forgot{" "}
-          <a href="/" onClick={this.handleClick}>
-            password?
-          </a>
+          {<Link to="/forgot-password"> password? </Link>}
         </p>
       </form>
     );
