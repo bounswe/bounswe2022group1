@@ -458,3 +458,572 @@ I have assumed several roles on top of my own to implement and bugfix several pa
 </details>
 
 ### Customer Milestone 1 Group Review
+Note: To write more effectively in markdown, we have opened a wiki. To see how people contributed to this group review, please refer to the [wiki](https://github.com/bounswe/bounswe2022group1/wiki/CMPE451-Group-Review-(Milestone-1)).
+1. [Executive Summary](#executive-summary)
+2. [List and status of deliverables](#list-and-status-of-deliverables)
+3. [Evaluation of the status of deliverables and its impact on your project plan](#evaluation-of-deliverables)
+4. [Evaluation of tools and processes you have used to manage your team project](#evaluation-of-tools-and-processes)
+5. [The requirements addressed in this milestone](#requirements)
+6. [Overall description of responsibilities that are assigned to each member](#responsibilities)
+7. [A Summary of work performed by each team member (in tabular format)](#summary-of-individual-work)
+
+---------
+
+## Executive Summary
+
+The application, budemi is a non-conventional online learning platform, where the users learn and teach at their own will, separating the application from conventional learning platforms like udemy or coursera. The most basic thing to do at such a project is to first revise requirements, diagrams (UML class diagrams, sequence diagrams etc.) and plan the future of project accordingly by a project plan. Accordingly, we have created a project plan for each team as project plan for backend, project plan for frontend and project plan for mobile. The reason for 3 project plans is for giving autonomy to each team at their development. Moreover, backend team should be one step ahead to allow frontend and mobile teams to to experiment with their endpoints. This also creates a window where backend team can revise their endpoints in case of any problem realized in the frontend or android.
+
+For the first milestone, our aim was to implement and deploy basic authorization schemes and make the frontend and mobile applications and backend application communicate with each other. This aim is realized at a certain extend. Backend and mobile teams successfully deployed their product and made the communication with one another in a very efficient way. However, there were problems in frontend connection and deployment. Our application has registration, login, logout and change password functionalities.
+
+The frontend team has communicated with the rest of the team to explain the reasons for this. And the team has decided that giving more stricter and well-defined roles and deadlines to each member of the frontend team. For the second milestone, we as a team believe that we will be more efficient in our communication and deployment and support the frontend team as a whole.
+
+Although problems rise in real life, they are also informative and we should also feel lucky to learn from these problems rather than feel stucked or frustrated.
+
+---------
+
+## List and Status of Deliverables
+
+|Deliverable|Status|Date Delivered| 
+|-----|:--------:|:------:| 
+|[Software Requirements Specification](https://github.com/bounswe/bounswe2022group1/wiki/Requirements)| Delivered |01/11/2022 |
+|[Software Design (UML):Use-Case Diagram](https://github.com/bounswe/bounswe2022group1/wiki/Use-Case-Diagram)|Delivered|01/11/2022|
+|[Software Design (UML):Class Diagram](https://github.com/bounswe/bounswe2022group1/wiki/Class-Diagram)|Delivered|01/11/2022|
+|[Software Design (UML):Sequence Diagram](https://github.com/bounswe/bounswe2022group1/wiki/Sequence-Diagrams)|Delivered|01/11/2022|
+|Scenarios and Mockups ([Frontend-1](https://github.com/bounswe/bounswe2022group1/wiki/Student-User-Web-Scenario-and-Mockup),   [Frontend-2](https://github.com/bounswe/bounswe2022group1/wiki/Guest-Web-Scenario-and-Mockup),  [Frontend-3](https://github.com/bounswe/bounswe2022group1/wiki/Teacher-User-Web-Scenario-and-Mockup), [Android](https://github.com/bounswe/bounswe2022group1/wiki/Android-mockup-page-for-milestone1))| Delivered | 01/11/2022|
+|[Project Plan Android](https://github.com/bounswe/bounswe2022group1/wiki/Project-Plan-for-Android-Team)|Delivered|01/11/2022|
+|[Project Plan Frontend](https://github.com/bounswe/bounswe2022group1/wiki/Project-Plan-for-Frontend-Team)|Delivered|01/11/2022|
+|[Project Plan Backend](https://github.com/bounswe/bounswe2022group1/wiki/Project-Plan-for-Backend-Team)|Delivered|01/11/2022|
+|[Individual Contribution Reports](https://github.com/bounswe/bounswe2022group1/blob/master/deliverables/CMPE451_Customer_Presentation_Milestone_1/Customer_Milestone_1.md)|Delivered|01/11/2022|
+|[Android Software](https://github.com/bounswe/bounswe2022group1/tree/master/deliverables/CMPE451_Customer_Presentation_Milestone_1/android) | Delivered | 01/11/2022| 
+|[Backend Software](https://github.com/bounswe/bounswe2022group1/tree/master/deliverables/CMPE451_Customer_Presentation_Milestone_1/backend) | Delivered | 01/11/2022| 
+|[Frontend Software ](https://github.com/bounswe/bounswe2022group1/tree/master/frontend) | Delivered | 01/11/2022| 
+|Group Review (This Document) | Delivered | 04/11/2022|
+
+---------
+
+## Evaluation of Deliverables
+#### **Software Requirements Specification**
+We have done our software requirement specifications on the previous course (352). However, we needed to improve and change some of them as we go along with the new semester (451). Changes were necessarry because we added new features, deleted unnecessary information.
+
+#### **Software Design (UML):Use-Case Diagram, Class Diagram, Sequence Diagram**
+We also have done Use-Case Diagram, Class Diagram, Sequence Diagram before we started the implementation of the project to see which classes we need, how the interaction between the code, ui and user is going to be. We have improved the diagrams as we go on with the project and fixed some errors as our professor or TA suggested. 
+
+#### **Software Design (UML):Scenarios and Mockups**
+We had Scenarios and Mockups at the last semester. However, we needed to also make a new one because we now have an android app as well. Definitions, requirements have also changed and improved. We have created a new persona, showed it on presentation, and made a new mockup for the parts of the project we have finished for Milestone 1.
+
+#### **Project Plan Android**
+As Android team, we have created our project plan gradually instead of over a night. We first choose our communication channel which is discord. Secondly, we choose which language is best in slot for android studio. We decided on kotlin. We then started distributing tasks (main page, landing, logoff...). We made a plan for reviewing and bugfixing the code. And at last moving on to deliverables.
+#### *Project Plan Frontend*
+The first element in the project plan is the members responsible for the frontend development. Then, the responsibilities are assigned while keeping the development in other teams in mind. 
+#### *Project Plan Backend*
+We started by deciding who would be on the backend team. We conducted weekly meetings to finish the work in the project's backend. The tasks that needed to be completed were assigned to each group member. All group members completed their tasks up to now, and we created a deployed backend application.
+#### *Individual Contribution reports*
+Individual Contribution Reports have been completed with every one of our group members' efforts since the beginning of the semester. All the team members provided the necessary hyperlinks and references to their works including issues' links and pull requests' links. It includes a detailed summary of the work completed so far this semester.
+#### *Backend Software*
+As the backend team, we developed our project using Django. We have used the Django Rest Framework feature to create REST API. Additionally, we used Docker to containerize our backend application. Finally, we deployed the backend application using an AWS EC2 instance. 
+#### *Frontend Software*
+The frontend team has written their software using react. The docker is used to containerize the front end and then the frontend app is deployed into AWS EC2 instance. 
+#### *Android Software*
+As the Android team, we used kotlin as our main language for android development and android studio as our ide. We decided to use retrofit library for api calls. Each tool choice we have made was the best for us because we were able to develop our app without an issue.
+#### *Group Review*
+As a group, all of the subsections of this document are assumed by group members and filled accordingly. For the review, we have talked among ourselves and discussed the way of working after milestone 1, our inadequacies and how can we address them. Hence we hope that this document will be useful in evaluating our contributions to the project. 
+
+---------
+
+## Evaluation of Tools and Processes
+
+### Evaluation of Tools 
+This semester, the choice of communication and development tools gained significant importance since we develop a more comprehensive project. We are divided into sub-groups, the amount of code we delivered increased and features got more complicated. The tools and processes we adapted should meet our needs, or else it would have made our lives harder.
+
+#### **1. Discord**
+We used Discord as our main meeting platform. We have created text and voice channels for subgroups as well. Sometimes it helped us to hold concurrent meetings going on at different channels. Threads, the screen sharing feature, and easy file exchange were some of the reasons we chose it as a communication channel. Even though Zoom appears to be having an easier user interface, it does not meet our needs. Starting a call is faster and easier than Zoom without need any link to connect and waiting time, just with a one click you will be online in the meeting. Discord keeps messages and files organized and any team member can see what was posted on the channels. This causes easiness to reach archieved sources. So, no one doesn't need to spend his/her time to explain what was shared before to newcomers. In addition, Discord emphasizes while we would insert a code snippet and makes it easy-to-copy. Messages can be edited and pinned, this makes keep to meeting decisions up-to-date and well formed. Last but not least, messages can be edited just by who sent it, and this feature provides safeness of messages and prevents removing messages by accident. It could be mentioned as a drawback that its updates take too much time, especially when we are in a hurry.
+
+
+#### **2. WhatsApp**
+Even though we are all senior computer engineering students, we are not always online on our PCs. Most of the time we are mobile and we don't pay attention to our email notifications and Discord messages. Still, there are times we need an immediate response from our group members, especially when we are short on time for a deadline. For this kind of situations, we have used our WhatsApp group chat. It could be overwhelming to keep all conversations there. However, it is essential for emergencies or for deciding on a place&time for the next meeting, where everyone should tell their opinion and everyone should attend.
+
+#### **3. GitHub**
+GitHub is the most important tool for our project in so many aspects. First, we use GitHub repository to store the product source code, and the other deliverables. Also, we track our tasks via the issue system, which is working great for us because we are used to using it from CmpE 352 semester. We keep our meeting notes, diagrams, all related research, and old reports as Wiki pages. We develop on our own branches, commit, and then send pull requests to merge our code into a closer branch to the master branch. Committing mentality makes codes clear and more understandable to review what have been done so far. Commit message feauture is very essential at this point: if it is applied in a proper way, everything will be more clearer for contributors of same code. Merging is also need to be comprehend well because solving conflicts and giving feedbacks on code while merging is very crucial for code safety and compatibleness. Branching is also need to be handled well to develop partial and task-based developments on projects otherwise everything becomes confused. GitHub makes it easier to review code, reject/allow requests, and keep everything organized in short.
+
+#### **4. React.JS**
+As the frontend team, we decided to develop the Web application with React. The reasons were manyfold. Its simplicity allowed us to learn it in a short amount of time. None of us had experience in React before, but we were able to learn it following some courses on other learning platforms. Before jumping right into developing Budemi, we all prepared React demo project and told each other about the setup and development processes. It being component-based made it easy to comprehend as well. Since it is a widely-used library by the front-end community, there are many resources to learn, and also refer to, when we encounter a difficulty.
+
+#### **5. Django**
+As the backend team, we developed our project using Django. We made such a decision because we were overall more experienced in Django than in other frameworks. We knew that starting a project in Django requires more work than an average framework (we considered Flask mainly). However, because learning a new framework is a cost too, we selected Django. As we predicted, starting a new project and app in Django takes effort. However, Django's oficial documentation is very well written (while very long) and following the steps in documentation is enough to build the project without a problem. Since Django is written in Python, it is developer friendly. Adding a new functionality takes less lines, time and effort. Moreover, it is a pretty mature freamwork. It is less likely not to be able to do something in Django.
+
+#### **6. Docker**
+Docker is one of the must-be technologies for software development. In our project, it made our job easier while deploying the project. While initializing the project we used local development but after dockerize the project, we switched to Docker development. Docker development helps run the same project without unexpected problems on every (team member's and server) computer. That prevents lots of "it was working on my computer" kinds of problems and is very beneficial in the long run.
+
+### **7. Android Studio**
+Android is the best platform (IDE) to develop Android apps. Android Studio supported everything we need. To design our front-end, we sometimes pick and drop the views and sometimes we editted corresponding .xml file to give the design that we want. To make back-end connection we used retrofit library which is the most commonly industry proved used library for kotlin language. In the future, we plan to stick with the Android Studio.
+
+---------
+
+## Requirements
+
+For this milestone, we have focused on the authentication part of requirements and also run the app both on the backend, mobile and the frontend. We have implemented all of them except the password recovery, which is addressed in 1.1.1.4.2.  
+
+##### 1.1.1.1 Sign up
+* 1.1.1.1.1 Users shall sign up to enroll the courses on the online learning platform by specifying their username, password and an e-mail in the sign-up process.
+* 1.1.1.1.2 Guest user’s username should not be taken by another account beforehand.
+* 1.1.1.1.2 E-mail, password and username in the Android version can be at most 25 letters.
+* 1.1.1.1.3 When guest user signs up, it automatically signs-in with the information given at sign-up step.
+
+##### 1.1.1.2 Username, password
+* 1.1.1.2.1 A user shall select a unique username and a password containing at least 8 letters.
+* 1.1.1.2.2 A user shall be able to change her password.
+
+
+##### 1.1.1.4 Sign in
+* 1.1.1.4.1 A user shall enter her password correctly. If she fails to enter her password correctly six times, she shall be blocked from further retrying.
+* 1.1.1.4.2 A user shall recover her password if she is blocked from further retrying, for typing wrong password six times.
+
+
+## Responsibilities
+
+**Member:** Osman Fehmi ALBAYRAK
+
+- I was responsible for designing the android landing page.
+- I was responsible for preparing and keeping track of the project plan for the android team.
+- I was responsible for reviewing my teammates issues and pull requests.
+- I was responsible for attending overall and android team meetings.
+
+**Member:** Mustafa Atay
+
+* I was responsible for creating inital Django project
+* I was responsible for dockerization of project
+* I was responsible for organizing the file structure
+* I was responsible for reviewing my team member's work.
+* I was responsible for updating fundamental features page
+* I was responsible for adding Udemy coureses to group account
+* I was responsible for preparing project plan
+* I was responsible for preparing API Documentation
+* I was responsible for adding evaluation of Django and Docker
+
+**Member:** Harun ERKURT
+
+* I was responsible for creating inital Android Project
+* I was responsible for sign-in page of Android app.
+* I was responsible for determining the code standards, and the branches to be opened and how the development should be done
+* I was responsible for distribution of the work to be done each member. (sign-up,login,landing page,home page etc.)
+* I was responsible for learning retrofit library for POST/GET/PUT requests.
+* I was responsible for testing Android app.
+* I was responsible for organizing the file structure.
+* I was responsible for Scenario & Mockup of Android.
+* I was responsible for studying Kotlin and Android Studio.
+* I was responsible for setting up group meetings with Android team members.
+* I was responsible for reviewing my team member's work.
+* I was responsible for updating fundamental features page
+* I was responsible for researching documents and courses to learn android development
+* I was responsible for attending to the lectures.
+* I was responsible for updating my weekly effort each week.
+* I was responsible for both attending to the general group meetings and android group meetings.
+* I was responsible for the preparation of the milestone report, correcting typographical errors, completing incomplete texts, helping those who need help.
+
+**Member:** Kadir Kalkan
+* I was responsible for creating an issue template
+* I was reviewing the project briefing page
+* I was responsible for creating the inital Django project
+* I was responsible for the dockerization of the Django project
+* I was responsible for reviewing my team members' tasks
+* I was responsible for adding Django Rest Framework feature to the project
+* I was responsible for finding a tutorial to implement login, logout, and register functionalities
+* I was responsible for implementing register functionality to the application
+
+**Member:** Hüseyin Seyyid Kaplan
+
+> *a. Development Related Responsibilities:*
+* Setting up project related development tools(VSCode, Node, GitBash, etc.)
+* Researching documents and courses to learn ReactJS
+* Creating inital ReactJS project
+* Determining the code standards, the branches should be opened and how the development should be conducted
+* Organizing the file structure
+* Finding a tutorial to implement authentication pages
+* Implementing sign up and log in functionalities
+* Testing web page prepared by ReactJS
+* Introducing authentication pages of web page to my Frontend teammates
+* Merging pull request
+
+> *b. Other Responsibilities:*
+* Introducing a new label (Meeting)
+* Reviewing the project repository
+* Reviewing my team members' tasks
+* Creating issues for my tasks
+* Setting up group meetings with Frontend team members
+* Attending to the general group meetings and Ftontend team meetings
+* Attending to the lectures
+* Preparation of the milestone report, correcting typographical errors, completing incomplete texts, helping those who need help
+* Updating my weekly effort each week
+
+**Member:** Kamil KORKUT
+
+* I was responsible for implementing form validations for sign-in and sign-up pages.
+* I was responsible for designing and implementing the forgot password page.
+* I was responsible for reviewing issues.
+
+**Member:** Ömer Özdemir
+
+* I was responsible for designing sign-up page. 
+* I was responsible for setting up group meetings with Android team members.
+* I was responsible for reviewing my team member's work.
+* I was responsible for distribution of the work to be done each member. (sign-up,login,landing page,home page etc.)
+* I was responsible for Scenario & Mockup of Android.
+* I was responsible for sign-up page of Android app.
+* I was responsible for studying Kotlin.
+* I was responsible for introducing model/service/view design pattern.
+* I was responsible for introducing Android app of Online Learning Platform.
+* I was responsible for learning retrofit library for POST/GET/PUT requests.
+* I was responsible for Reviewing Semantic Search/Fundamentals of the Project/Project libre file.
+* I was responsible for introducing new labels (Android label).
+* I was responsible for attending to the lectures.
+* I was responsible for Initialization of Android Studio.
+* I was responsible for updating [my weekly effort](https://github.com/bounswe/bounswe2022group1/wiki/%C3%96mer-%C3%96zdemir) each week.
+* I was responsible for testing Android app.
+* I was responsible for reviewing the requirements and the semantic searching page. 
+* I was responsible for both attending to the general group meetings and android group meetings.
+* I was responsible for writing List and Status of Deliverables/Requirements/Android Software/My Responsibility/My Individual work parts of the group milestone report.
+* I was responsible for creating group meeting wiki template and adding it to the navigation bar.
+
+**Member:** Ece Sarkın
+
+* I was responsible for sharing meeting notes with my team.
+* I was responsible for designing and implementing the profile page on Web.
+* I was responsible for creating Milestone 1 report outline.
+* I was responsible for creating the project plan for the Front-end team. I have attended Lectures, Problem Sessions, all the team meetings and frontend team meetings.
+* I was responsible for doing the presentation of the Web application on customer presentations day. (November 1st, 2022)
+
+**Member:** Ege Onur Tağa
+* I was responsible for reviewing the requirements. 
+* I was responsible for reviewing the semantic searching page. 
+* I was responsible for preparing a presentation for the customer meeting
+* I was responsible for presenting the general outline on the customer presentations
+* I was responsible for implementing sign-in, sign-out and change password functionalities in the backend. 
+* I was responsible for implementing Django unit tests for register, login and change password functionalities. 
+* I was responsible for Dockerizing the backend application. 
+* I was responsible for Dockerizing the frontend application. 
+* I was responsible for deploying the backend application to AWS EC2 instance 
+* I was responsible for deploying the frontend application to AWS EC2 instance
+* I was responsible for reviewing and approving pull requests. 
+* I was responsible for reviewing and contributing to my group member's issues. 
+* I was responsible for writing the executive summary in the group review. 
+
+**Member:** Kadir Gökhan SEZER
+
+* I was responsible to attend all the meetings.
+* I was responsible for creating the project and configuring the routine methods between pages.
+* I was responsible for designing homepage page.
+* I was responsible for reviewing my team member's work.
+* I was responsible for distribution of the work to be done each member.
+* I was responsible to help my team if they needed.
+* I was responsible to follow what the rest of the team has done.
+
+**Member:** Ahmet Cemil YAZICI
+
+* I was responsible for android homepage design.
+* I was responsible for taking decisions over communication plan.
+* I was responsible for reviewing and improving my teammates work, issues and pull requests.
+* I was responsible for bugfixes of some of the commits.
+* I was responsible for Scenario & Mockups of Android part.
+
+---------
+
+## Summary of Individual Work
+
+* **Osman Fehmi Albayrak:**
+  |Issue Title|Link|
+  |-----|:--------:|
+  | Reviewing the UML Class Diagram | [Issue #290](https://github.com/bounswe/bounswe2022group1/issues/290) |
+  | Decided tools with team members | [Issue #315](https://github.com/bounswe/bounswe2022group1/issues/315) |
+  | Initial pages for android | [Issue #333](https://github.com/bounswe/bounswe2022group1/issues/333) |
+  | Organized our Kotlin Project folder | [Issue #341](https://github.com/bounswe/bounswe2022group1/issues/341) |
+  | Implemented the Landing Page for android | [Issue #339](https://github.com/bounswe/bounswe2022group1/issues/339) |
+  | Android team meeting - planning for Milestone1 | [Issue #356](https://github.com/bounswe/bounswe2022group1/issues/356) |
+  | Android team meeting - Kotlin backend connection | [Issue #385](https://github.com/bounswe/bounswe2022group1/issues/385) |
+  | Android team meeting - finalizing project for Milestone1 | [Issue #386](https://github.com/bounswe/bounswe2022group1/issues/386) |
+  | Implemented a swipe view for android | [Issue #391](https://github.com/bounswe/bounswe2022group1/issues/391) |
+  | Integrated the swipe view into the Landing Page | [Issue #393](https://github.com/bounswe/bounswe2022group1/issues/393) |
+  | Android team meeting - function implementations | [Issue #414](https://github.com/bounswe/bounswe2022group1/issues/414) |
+  | Designed a page for changing password | [Issue #422](https://github.com/bounswe/bounswe2022group1/issues/422) |
+  | Reviewed Sign-in page | [Issue #439](https://github.com/bounswe/bounswe2022group1/issues/439) |
+  | Prepared and updated Project Plan for android team | [Issue #441](https://github.com/bounswe/bounswe2022group1/issues/441) |
+  | Updated Scenario & Mockup for android | [Issue #443](https://github.com/bounswe/bounswe2022group1/issues/443) |
+  | Prepared Milestone1 deliverables for android | [Issue #446](https://github.com/bounswe/bounswe2022group1/issues/446) |
+  | Prepared structure for Milestone1 deliverables | [Issue #448](https://github.com/bounswe/bounswe2022group1/issues/448) |
+
+  | Pull Request Title                                  |                              Link                               |
+  | --------------------------------------------------- | :-------------------------------------------------------------: |
+  | Prepared folder for Milestone1 deliverables         | [PR#447](https://github.com/bounswe/bounswe2022group1/pull/447) |
+  | Initial setup and the landing page                  | [PR#337](https://github.com/bounswe/bounswe2022group1/pull/337) |
+  | Helped initial design of sign in and sign up pages: | [PR#353](https://github.com/bounswe/bounswe2022group1/pull/353) |
+
+
+- **Mustafa Atay:**
+  |Issue/Pull Request Title|Link|
+  |-----|:--------:|
+  |Review of Semantic Search, Fundamental Features of the Project and Project Libre File |[Link](https://github.com/bounswe/bounswe2022group1/issues/285)|
+  |Checking and updating fundamental features page|[Link](https://github.com/bounswe/bounswe2022group1/issues/304)|
+  |Adding courses to Udemy account|[Link](https://github.com/bounswe/bounswe2022group1/issues/328)|
+  |Learn Django - Mustafa Atay|[Link](https://github.com/bounswe/bounswe2022group1/issues/329)|
+  |Dockerization and deployment of project|[Link](https://github.com/bounswe/bounswe2022group1/issues/345)|
+  |Mustafa Atay - Learn dockerization|[Link](https://github.com/bounswe/bounswe2022group1/issues/347)|
+  |Organize The Folder Structure|[Link](https://github.com/bounswe/bounswe2022group1/pull/350)|
+  |Organizing file structure|[Link](https://github.com/bounswe/bounswe2022group1/issues/352)|
+  |Pushing initial Django proect|[Link](https://github.com/bounswe/bounswe2022group1/pull/354)|
+  |Preparing API documentation|[Link](https://github.com/bounswe/bounswe2022group1/issues/403)|
+  |Mustafa Atay - individual contribution report|[Link](https://github.com/bounswe/bounswe2022group1/issues/404)|
+  |Android team meeting - function implementations| [Issue #414](https://github.com/bounswe/bounswe2022group1/issues/414) |
+  | Updated Scenario & Mockup for android | [Issue #443](https://github.com/bounswe/bounswe2022group1/issues/443) |
+  |Preparing project plan|[Link](https://github.com/bounswe/bounswe2022group1/issues/459)|
+  |Evaluation of tools and processes: Django, Docker|[Link](https://github.com/bounswe/bounswe2022group1/issues/486)|
+  |Mustafa Atay - Individual contribution to group report (Customer Milestone 1)|[Link](https://github.com/bounswe/bounswe2022group1/issues/487)|
+
+
+* **Harun ERKURT:**
+  |Issue Title|Link|
+  |-----|:--------:|
+  | Defining and Creating New Branches For Android App | [Issue #334](https://github.com/bounswe/bounswe2022group1/issues/334) |
+  | Creating First Android Project and Branch | [Issue #335](https://github.com/bounswe/bounswe2022group1/issues/335) |
+  | Organized our Kotlin Project folder | [Issue #341](https://github.com/bounswe/bounswe2022group1/issues/341) |
+  | Android team meeting - Kotlin backend connection | [Issue #385](https://github.com/bounswe/bounswe2022group1/issues/385) |
+  | Initialization of Android Studio | [Issue #406](https://github.com/bounswe/bounswe2022group1/issues/406) |
+  | Learning Android Studio and Kotlin | [Issue #409](https://github.com/bounswe/bounswe2022group1/issues/409) |
+  | Sign in page for Android App | [Issue #439](https://github.com/bounswe/bounswe2022group1/issues/439) |
+  | Meeting with the Android team for milestone1 | [Issue #440](https://github.com/bounswe/bounswe2022group1/issues/440) |
+  | Signin Page Backend Connection and Design | [Issue #442](https://github.com/bounswe/bounswe2022group1/issues/442) |
+  | Group meeting with the Android Team | [Issue #445](https://github.com/bounswe/bounswe2022group1/issues/445) |
+  | Preparation of milestone 1 | [Issue #446](https://github.com/bounswe/bounswe2022group1/issues/446) |
+  |Android mockup and scenario for milestone1 |[Issue Link](https://github.com/bounswe/bounswe2022group1/issues/455)|
+
+
+  | Pull Request Title                                  |                              Link                               |
+  | --------------------------------------------------- | :-------------------------------------------------------------: |
+  | Android main - Branch pull request testing         | [PR#420](https://github.com/bounswe/bounswe2022group1/pull/420) |
+  | Adding Android Latest Files to Master               | [PR#436](https://github.com/bounswe/bounswe2022group1/pull/436) |
+  | Updating budemi_android_main from Android main | [PR#427](https://github.com/bounswe/bounswe2022group1/pull/427) |
+
+
+- **Kadir Kalkan:**
+  |Issue Title|Link|
+  |-----|:--------:|
+  |Reviewing the Project Briefing Page |[Issue Link](https://github.com/bounswe/bounswe2022group1/issues/287)|
+  |Create an Issue Template|[Issue Link](https://github.com/bounswe/bounswe2022group1/issues/288)|
+  |Learn Django |[Issue Link](https://github.com/bounswe/bounswe2022group1/issues/317)|
+  |Learn Dockerizing |[Issue Link](https://github.com/bounswe/bounswe2022group1/issues/331)|
+  |Using Django REST framework |[Issue Link](https://github.com/bounswe/bounswe2022group1/issues/343)|
+  |Find a Tutorial for Applicaiton Functionalities |[Issue Link](https://github.com/bounswe/bounswe2022group1/issues/454)|
+  |Implementing register functionality |[Issue Link](https://github.com/bounswe/bounswe2022group1/issues/370)|
+  |Individual Contribution Report|[Issue Link](https://github.com/bounswe/bounswe2022group1/issues/453)|
+  |Individual contribution to group report (Customer Milestone 1)|[Issue Link](https://github.com/bounswe/bounswe2022group1/issues/494)|
+  |Contribute to Evaluation of Deliverables part of Milestone 1)|[Issue Link](https://github.com/bounswe/bounswe2022group1/issues/497)|
+
+
+- **Hüseyin Seyyid Kaplan:**
+  |Issue Title|Link|
+  |-----|:--------:|
+  |Creating an Authentication Page with React.js|[#336](https://github.com/bounswe/bounswe2022group1/issues/336)|
+  |Request to use Issue Panel|[#361](https://github.com/bounswe/bounswe2022group1/issues/361)|
+  |Permission Request for Pushing Commits to GitHub|[#363](https://github.com/bounswe/bounswe2022group1/issues/363)|
+  |We need a label named 'Meeting'|[#390](https://github.com/bounswe/bounswe2022group1/issues/390)|
+  |Reorganizing Code Structure According to Last Changes|[#392](https://github.com/bounswe/bounswe2022group1/issues/392)|
+  |Reviewing the Issues|[#463](https://github.com/bounswe/bounswe2022group1/issues/463)|
+  |Checking the Pull Request of react-authentication-page|[#466](https://github.com/bounswe/bounswe2022group1/issues/466)|
+  |Group Review (Milestone 1) - Evaluation of Tools and Processes: Discord, GitHub|[#493](https://github.com/bounswe/bounswe2022group1/issues/493)|
+  |Group Review (Milestone 1) - Responsibilities and Summary of Individual Work|[#498](https://github.com/bounswe/bounswe2022group1/issues/498)|
+  |Group Review (Milestone 1) - Evaluation of Deliverables|[#499](https://github.com/bounswe/bounswe2022group1/issues/499)|
+
+  |Pull Request Title|Link|
+  |-----|:--------:|
+  |React authentication page|[PR#395](https://github.com/bounswe/bounswe2022group1/pull/395)|
+  |Update Customer_Milestone_1.md|[PR#481](https://github.com/bounswe/bounswe2022group1/pull/481)|
+  
+- **Kamil KORKUT:**
+  |Issue Title|Link|
+  |-----|:--------:|
+  |Frontend: Form Validation|[#396](https://github.com/bounswe/bounswe2022group1/issues/396)|
+  |Frontend: Creating Forgot Password Page|[#399](https://github.com/bounswe/bounswe2022group1/issues/399)|
+  |Updating Personal Wiki Page|[#310](https://github.com/bounswe/bounswe2022group1/issues/310)|
+  |Kamil Korkut - Individual Contribution Report|[#461](https://github.com/bounswe/bounswe2022group1/issues/461)|
+
+  |Pull Request Title|Link|
+  |-----|:--------:|
+  |React authentication page|[PR#395](https://github.com/bounswe/bounswe2022group1/pull/395)|
+
+- **Ömer Özdemir:**
+  |Issue Title|Link|
+  |-----|:--------:|
+  |Review of Semantic Search, Fundamental Features of the Project and Project Libre File |[Issue Link](https://github.com/bounswe/bounswe2022group1/issues/285)|
+  |Creating project plan|[Issue Link](https://github.com/bounswe/bounswe2022group1/issues/286)|
+  |Meeting with the Android team|[Issue Link](https://github.com/bounswe/bounswe2022group1/issues/311)|
+  |Initialization of Android Studio|[Issue Link](https://github.com/bounswe/bounswe2022group1/issues/316)|
+  |Creating Android label|[Issue Link](https://github.com/bounswe/bounswe2022group1/issues/332)|
+  |Sign-in and Sign-up pages for Android Application|[Issue Link](https://github.com/bounswe/bounswe2022group1/issues/333)|
+  |Sign up page for Android App|[Issue Link](https://github.com/bounswe/bounswe2022group1/issues/340)|
+  |Meeting with the Android team for milestone1|[Issue Link](https://github.com/bounswe/bounswe2022group1/issues/356)|
+  |Android Studio gradle not working|[Issue Link](https://github.com/bounswe/bounswe2022group1/issues/359)|
+  |Final design of sign-up page for Android |[Issue Link](https://github.com/bounswe/bounswe2022group1/issues/360)|
+  |Android Sign-up page back-end connection|[Issue Link](https://github.com/bounswe/bounswe2022group1/issues/384)|
+  |Android group meeting|[Issue Link](https://github.com/bounswe/bounswe2022group1/issues/385)|
+  |Group meeting with the Android Team.|[Issue Link](https://github.com/bounswe/bounswe2022group1/issues/386)|
+  |Android Sign-up page - Message disappears after 2000ms|[Issue Link](https://github.com/bounswe/bounswe2022group1/issues/388)|
+  |Studying Kotlin Retrofit- Ömer Özdemir |[Issue Link](https://github.com/bounswe/bounswe2022group1/issues/407)|
+  |Studying Kotlin Fundamentals - Ömer Özdemir |[Issue Link](https://github.com/bounswe/bounswe2022group1/issues/408)|
+  |Studying Kenny Catch Game Kotlin - Ömer Özdemir |[Issue Link](https://github.com/bounswe/bounswe2022group1/issues/410)|
+  |Studying OOP Kotlin - Ömer Özdemir |[Issue Link](https://github.com/bounswe/bounswe2022group1/issues/411)|
+  |Android mockup and scenario for milestone1 |[Issue Link](https://github.com/bounswe/bounswe2022group1/issues/455)|
+  |Adding Individual Report into the Customer Milestone 1 wiki.  |[Issue Link](https://github.com/bounswe/bounswe2022group1/issues/456)|
+  |Contributing to the group report of milestone1.  |[Issue Link](https://github.com/bounswe/bounswe2022group1/issues/483)|
+
+  |Pull Request Title|Link|
+  |-----|:--------:|
+  |Bug fix for user logout page. (user_token is set to "") |[#452](https://github.com/bounswe/bounswe2022group1/pull/452)|
+  |Milestone 1 report added) |[#451](https://github.com/bounswe/bounswe2022group1/pull/451)|
+  |Budemi Android partially completed.) |[#397](https://github.com/bounswe/bounswe2022group1/pull/397)|
+
+- **Ece Sarkın:**
+  |Issue Title|Link|
+  |-----|:--------:|
+  |Upload meeting notes #10|[#291](https://github.com/bounswe/bounswe2022group1/issues/291)|
+  |Upload meeting notes #11|[#325](https://github.com/bounswe/bounswe2022group1/issues/325)|
+  |Upload meeting notes #12|[#326](https://github.com/bounswe/bounswe2022group1/issues/326)|
+  |Upload meeting notes #13|[#400](https://github.com/bounswe/bounswe2022group1/issues/400)|
+  |Organize meeting notes links|[#293](https://github.com/bounswe/bounswe2022group1/issues/293)|
+  |Learn and practice React|[#319](https://github.com/bounswe/bounswe2022group1/issues/319)|
+  |Create outline for the Customer Milestone 1 report|[#401](https://github.com/bounswe/bounswe2022group1/issues/401)|
+  |Individual contribution to Customer Milestone report 1|[#402](https://github.com/bounswe/bounswe2022group1/issues/402)|
+  |Frontend - Profile Page implementation|[#450](https://github.com/bounswe/bounswe2022group1/issues/450)|
+  |Frontend - Project plan|[#458](https://github.com/bounswe/bounswe2022group1/issues/458)|
+  |Evaluation of tools and processes: Github, Discord, WhatsApp, and React.js|[#484](https://github.com/bounswe/bounswe2022group1/issues/484)|
+  |Individual contribution to group report (Customer Milestone 1)|[#485](https://github.com/bounswe/bounswe2022group1/issues/485)|
+
+
+
+  |Pull Request Title|Link|
+  |-----|:--------:|
+  |_Review:_ Milestone 1 report and approve pull request|[PR#476](https://github.com/bounswe/bounswe2022group1/issues/476)|
+  |Profile page is added|[PR#449](https://github.com/bounswe/bounswe2022group1/issues/449)|
+
+
+
+- **Ege Onur Tağa:**
+  |Issue Title|Link|
+  |-----|:--------:|
+  |Checking and updating Glossary/Requirements pages |[Issue Link](https://github.com/bounswe/bounswe2022group1/issues/297)|
+  |Reviewing Semantic Searching Page|[Issue Link](https://github.com/bounswe/bounswe2022group1/issues/298)|
+  |Adding communicator in the front page next to Ege Onur  Tağa |[Issue Link](https://github.com/bounswe/bounswe2022group1/issues/299)|
+  |Learning Django |[Issue Link](https://github.com/bounswe/bounswe2022group1/issues/320)|
+  |Meeting with the backend team |[Issue Link](https://github.com/bounswe/bounswe2022group1/issues/323)|
+  |Dockerization and deployment onto AWS EC2 (backend) |[Issue Link](https://github.com/bounswe/bounswe2022group1/issues/342)|
+  |Implementing login, logout and change password functionalities (backend)|[Issue Link](https://github.com/bounswe/bounswe2022group1/issues/368)|
+  |Implementing unit tests for register, login, logout |[Issue Link](https://github.com/bounswe/bounswe2022group1/issues/369)|
+  |Preparing a presentation and scenarios for Milestone 1 Customer Meeting #405 |[Issue link](https://github.com/bounswe/bounswe2022group1/issues/405)|
+  |Preparing individual contribution report|[Issue Link](https://github.com/bounswe/bounswe2022group1/issues/416)|
+  |Editing Requirements about authentication slightly|[Issue Link](https://github.com/bounswe/bounswe2022group1/issues/437)|
+  |Dockerization and deployment of the frontend app |[Issue Link](https://github.com/bounswe/bounswe2022group1/issues/462)|
+  |Writing the executive summary of our group review|[Issue Link](https://github.com/bounswe/bounswe2022group1/issues/495)|
+  |Explaining the meaning of requirements for Milestone 1 in group review|[Issue Link](https://github.com/bounswe/bounswe2022group1/issues/496)|
+
+
+
+  |Pull Request Title|Link|
+  |-----|:--------:|
+  |Added communicator in parentheses|[PR Link](https://github.com/bounswe/bounswe2022group1/pull/300)|
+  |Backend-dev login-logout functionalities |[PR Link](https://github.com/bounswe/bounswe2022group1/pull/364)|
+  |Added test cases for login, logout, register |[PR Link](https://github.com/bounswe/bounswe2022group1/pull/367)|
+  |Adding the latest version of docker-configure.yml and Dockerfile |[PR Link](https://github.com/bounswe/bounswe2022group1/pull/426)|
+  |Merging Backend-Development for the Customer Meeting |[PR Link](https://github.com/bounswe/bounswe2022group1/pull/431)|
+  |Added the deleted readme.md |[PR Link](https://github.com/bounswe/bounswe2022group1/pull/460)|
+
+
+
+
+
+
+- **Kadir Gökhan Sezer:**
+  |Issue Title|Link|
+  |-----|:--------:|
+  |Who checks what? #281|[#281](https://github.com/bounswe/bounswe2022group1/issues/281)|
+  |Repository Contributors #282|[#282](https://github.com/bounswe/bounswe2022group1/issues/282)|
+  |Reviewing GDPR Rules #294|[#294](https://github.com/bounswe/bounswe2022group1/issues/294)|
+  |Reviewing the KVKK Rules #295|[#295](https://github.com/bounswe/bounswe2022group1/issues/295)|
+  |Correcting the ambiguity on the issue #281 #296|[#296](https://github.com/bounswe/bounswe2022group1/issues/296)|
+  |Rewieving Communication Plan #301|[#301](https://github.com/bounswe/bounswe2022group1/issues/301)|
+  |Rewieving the Homepage #303|[#303](https://github.com/bounswe/bounswe2022group1/issues/303)|
+  |Know-How about Docker #307|[#307](https://github.com/bounswe/bounswe2022group1/issues/307)|
+  |Outcomes of the meeting on 11.10.2022: #308|[#308](https://github.com/bounswe/bounswe2022group1/issues/308)|
+  |Frontend Team Meeting #318|[#318](https://github.com/bounswe/bounswe2022group1/issues/318)|
+  |We need labels like Frontend,Backend, etc. #321|[#321](https://github.com/bounswe/bounswe2022group1/issues/321)|
+  |React Learning #322|[#322](https://github.com/bounswe/bounswe2022group1/issues/322)|
+  |Group Mail #324|[#324](https://github.com/bounswe/bounswe2022group1/issues/324)|
+  |Issue Template V2 #330|[#330](https://github.com/bounswe/bounswe2022group1/issues/330)|
+  |Meeting with the team #344|[#344](https://github.com/bounswe/bounswe2022group1/issues/344)|
+  |Frontend: Usage of Mui #374|[#374](https://github.com/bounswe/bounswe2022group1/issues/374)|
+  |Frontend: Sync with the Huseyyin Seyyid #375|[#375](https://github.com/bounswe/bounswe2022group1/issues/375)|
+  |Frontend: Onclick funtion over href #377|[#377](https://github.com/bounswe/bounswe2022group1/issues/377)|
+  |Frontend: What is API over ReactJS? #376|[#376](https://github.com/bounswe/bounswe2022group1/issues/376)|
+  |Frontend: How to run reactjs on other ports? #378|[#378](https://github.com/bounswe/bounswe2022group1/issues/378)|
+  |Frontend: Create temporary logo #379|[#379](https://github.com/bounswe/bounswe2022group1/issues/379)|
+  |Frontend: Research of the domain name #380|[#380](https://github.com/bounswe/bounswe2022group1/issues/380)|
+  |Frontend: What is CSS? #381|[#381](https://github.com/bounswe/bounswe2022group1/issues/381)|
+  |Frontend: Homepage v1 (template) #382|[#382](https://github.com/bounswe/bounswe2022group1/issues/382)|
+  |Frontend: API iplementations of sign-up and sign-in pages #383|[#383](https://github.com/bounswe/bounswe2022group1/issues/383)|
+  |Frontend: for the v0.2, needs #387|[#387](https://github.com/bounswe/bounswe2022group1/issues/387)|
+  |Frontend: Group meeting #389|[#389](https://github.com/bounswe/bounswe2022group1/issues/389)|
+  |Frontend: Content of the Homepage #394|[#394](https://github.com/bounswe/bounswe2022group1/issues/394)|
+  |Frontend: Profile Page #430|[#430](https://github.com/bounswe/bounswe2022group1/issues/430)|
+  |Frontend: Token on local storage #433|[#433](https://github.com/bounswe/bounswe2022group1/issues/433)|
+  |Frontend: Logout page #435|[#435](https://github.com/bounswe/bounswe2022group1/issues/435)|
+  |Frontend: with the help of @egetaga, Dockerfile #464|[#464](https://github.com/bounswe/bounswe2022group1/issues/464)|
+  |Frontend: Data structure of webpage #468|[#468](https://github.com/bounswe/bounswe2022group1/issues/468)|
+  |Frontend: Review of requirements #470|[#470](https://github.com/bounswe/bounswe2022group1/issues/470)|
+  |Frontend: Review of glossary #471|[#471](https://github.com/bounswe/bounswe2022group1/issues/471)|
+  |Frontend: Final version #472|[#472](https://github.com/bounswe/bounswe2022group1/issues/472)|
+  |Frontend: NPM #473|[#473](https://github.com/bounswe/bounswe2022group1/issues/473)|
+  |Frontend: Forgot password #474|[#474](https://github.com/bounswe/bounswe2022group1/issues/474)|
+  |Frontend: Open AWS account #488|[#488](https://github.com/bounswe/bounswe2022group1/issues/488)|
+  |Frontend: Learn how to decorize a react project #490|[#490](https://github.com/bounswe/bounswe2022group1/issues/490)|
+  |Frontend: How to deploy an dockerized project #491|[#491](https://github.com/bounswe/bounswe2022group1/issues/491)|
+  |Customer Milestone 1 : Individual work #492|[#492](https://github.com/bounswe/bounswe2022group1/issues/492)|
+
+
+  |Pull Request Title|Link|
+  |-----|:--------:|
+  |Changes according to the new term #302|[PR#302](https://github.com/bounswe/bounswe2022group1/pull/302)|
+  |addition of newcomers #305|[PR#305](https://github.com/bounswe/bounswe2022group1/pull/305)|
+  |0.1.0-alpha #475|[PR#475](https://github.com/bounswe/bounswe2022group1/pull/475)|
+  |All the contributions are added #476|[PR#476](https://github.com/bounswe/bounswe2022group1/pull/476)|
+  |Added my last issues #478|[PR#478](https://github.com/bounswe/bounswe2022group1/pull/478)|
+  |deliverables are okay now #480|[PR#480](https://github.com/bounswe/bounswe2022group1/pull/480)|
+
+
+
+- **Ahmet Cemil YAZICI:**
+  |Issue Title|Link|
+  |-----|:--------:|
+  |Fixing Wiki team members for 451|[Issue 283](https://github.com/bounswe/bounswe2022group1/issues/283)|
+  |Creating personal page of new members|[Issue 284](https://github.com/bounswe/bounswe2022group1/issues/284)|
+  |Reviewing and changing informal sequence diagrams|[Issue 309](https://github.com/bounswe/bounswe2022group1/issues/309)|
+  |Android Sub-group meeting|[Issue 312](https://github.com/bounswe/bounswe2022group1/issues/312)|
+  |Add issue labels|[Issue 313](https://github.com/bounswe/bounswe2022group1/issues/313)|
+  |Add related links|[Issue 314](https://github.com/bounswe/bounswe2022group1/issues/314)|
+  |Syncing Android Studio|[Issue 346](https://github.com/bounswe/bounswe2022group1/issues/346)|
+  |Committing homepage files - Android / Review needed|[Issue 349](https://github.com/bounswe/bounswe2022group1/issues/349)|
+  |Android Team Meeting|[Issue 357](https://github.com/bounswe/bounswe2022group1/issues/357)|
+  |View Binding on Android|[Issue 358](https://github.com/bounswe/bounswe2022group1/issues/358)|
+  |Android Studio Bug Resolve|[Issue 362](https://github.com/bounswe/bounswe2022group1/issues/362)|
+  |Adding buttons on homepage - Android|[Issue 366](https://github.com/bounswe/bounswe2022group1/issues/366)|
+  |Homepage Sign-In, Signed-Out difference - Android|[Issue 372](https://github.com/bounswe/bounswe2022group1/issues/372)|
+  |Android Team Meeting - 4 Hours|[Issue 414](https://github.com/bounswe/bounswe2022group1/issues/414)|
+  |Change Password - Android Team|[Issue 415](https://github.com/bounswe/bounswe2022group1/issues/415)|
+  |Homepage Design - Log situation dependent - Android Team|[Issue 417](https://github.com/bounswe/bounswe2022group1/issues/417)|
+  |Modifying requirements for Main Page - Android Team|[Issue 421](https://github.com/bounswe/bounswe2022group1/issues/421)|
+  |Creating Individual Report Template|[Issue 424](https://github.com/bounswe/bounswe2022group1/issues/424)|
+  |Scenario & Mockups - Android Team|[Issue 438](https://github.com/bounswe/bounswe2022group1/issues/438)|
+  |Milestone 1 Report Completed - Android Team|[Issue 457](https://github.com/bounswe/bounswe2022group1/issues/457)|
+
+  |Pull Request Title|Link|
+  |-----|:--------:|
+  |Budemi android main initialized) |[PR#348](https://github.com/bounswe/bounswe2022group1/pull/348)|
+  |Budemi android main changes) |[PR#365](https://github.com/bounswe/bounswe2022group1/pull/365)|
+  |Budemi android main completed - Android Team) |[PR#418](https://github.com/bounswe/bounswe2022group1/pull/418)|
+  |Android Main Page) |[PR#429](https://github.com/bounswe/bounswe2022group1/pull/429)|
+  |Deleting A bugged Page) |[PR#432](https://github.com/bounswe/bounswe2022group1/pull/432)|
