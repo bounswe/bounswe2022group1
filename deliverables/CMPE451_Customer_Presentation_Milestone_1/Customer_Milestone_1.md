@@ -511,20 +511,27 @@ We also have done Use-Case Diagram, Class Diagram, Sequence Diagram before we st
 #### **Software Design (UML):Scenarios and Mockups**
 We had Scenarios and Mockups at the last semester. However, we needed to also make a new one because we now have an android app as well. Definitions, requirements have also changed and improved. We have created a new persona, showed it on presentation, and made a new mockup for the parts of the project we have finished for Milestone 1.
 
-#### **Project Plan Android**
+#### *Project Plan Android*
 As Android team, we have created our project plan gradually instead of over a night. We first choose our communication channel which is discord. Secondly, we choose which language is best in slot for android studio. We decided on kotlin. We then started distributing tasks (main page, landing, logoff...). We made a plan for reviewing and bugfixing the code. And at last moving on to deliverables.
+
 #### *Project Plan Frontend*
-The first element in the project plan is the members responsible for the frontend development. Then, the responsibilities are assigned while keeping the development in other teams in mind. 
+Frontend team members determined, then we decided what language and means will we use. We conducted several meetings to finish the work in our team, this meetings were need based instead regular events. The tasks that needed to be completed were assigned to each teammates but we have some issues on this side because we didn't choose a presider for distributing and tracing the duties. We chose one of us for this responsibility.
+
 #### *Project Plan Backend*
 We started by deciding who would be on the backend team. We conducted weekly meetings to finish the work in the project's backend. The tasks that needed to be completed were assigned to each group member. All group members completed their tasks up to now, and we created a deployed backend application.
+
 #### *Individual Contribution reports*
 Individual Contribution Reports have been completed with every one of our group members' efforts since the beginning of the semester. All the team members provided the necessary hyperlinks and references to their works including issues' links and pull requests' links. It includes a detailed summary of the work completed so far this semester.
+
 #### *Backend Software*
 As the backend team, we developed our project using Django. We have used the Django Rest Framework feature to create REST API. Additionally, we used Docker to containerize our backend application. Finally, we deployed the backend application using an AWS EC2 instance. 
+
 #### *Frontend Software*
-The frontend team has written their software using react. The docker is used to containerize the front end and then the frontend app is deployed into AWS EC2 instance. 
+As the frontend team, we developed our project using ReactJS which is JavaScript based language and specified for front-end developments. We have used the Node Package Manager (npm) to install requirements of our ReactJS based web application. We selected VSCode means as development kit since its handy interface and adaptable with JavaScript language features. We use GitBash as a terminal to ease control of git branches and GitHub Desktop app to visualize code relevant changes better. This tools makes us flexible while developing codes. The docker is used to containerize the front end and then the frontend app is deployed into AWS EC2 instance. 
+
 #### *Android Software*
 As the Android team, we used kotlin as our main language for android development and android studio as our ide. We decided to use retrofit library for api calls. Each tool choice we have made was the best for us because we were able to develop our app without an issue.
+
 #### *Group Review*
 As a group, all of the subsections of this document are assumed by group members and filled accordingly. For the review, we have talked among ourselves and discussed the way of working after milestone 1, our inadequacies and how can we address them. Hence we hope that this document will be useful in evaluating our contributions to the project. 
 
