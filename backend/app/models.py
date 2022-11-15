@@ -4,13 +4,14 @@ from django.contrib.auth.models import User
 
 class LearningSpace(models.Model):
     name = models.CharField(max_length=30)
-    contributors = models.ManyToManyField(User, related_name='contributors')
+    #contributors = models.ManyToManyField(User, related_name='contributors')
 
     # implicitly existing fields:
     # contents
 
     # TODO: add chat
     # chat = models.ForeignKey(Chat, on_delete=models.CASCADE, related_name='chat')
+
 
 
 class Content(models.Model):

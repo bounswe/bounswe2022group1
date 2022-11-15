@@ -1,13 +1,17 @@
-from rest_framework import generics, permissions, status, generics
+from rest_framework import generics, permissions, status, generics, views
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated   
+from rest_framework.views import APIView
 from django.contrib.auth import login
 from django.contrib.auth.models import User
 from knox.models import AuthToken
 from knox.views import LoginView as KnoxLoginView
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from .serializers import UserSerializer, RegisterSerializer
-from .serializers import ChangePasswordSerializer
+from .serializers import ChangePasswordSerializer,LearningSpaceSer
+from .models import LearningSpace
+
+
 
 
 
@@ -84,3 +88,34 @@ class ChangePassword(generics.UpdateAPIView):
         else:
             return Response(serialization.errors, status=status.HTTP_400_BAD_REQUEST)
 
+class LearningSpaceApiView(APIView):
+    # add permission to check if user is authenticated
+    permission_classes = [permissions.IsAuthenticated]
+
+    
+    """
+    # 1. List all
+    def get(self, request, *args, **kwargs):
+        '''
+        List all the todo items for given requested user
+        '''
+        todos = Todo.objects.filter(user = request.user.id)
+        serializer = TodoSerializer(todos, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)"""
+
+   
+    def post(self, request, *args, **kwargs):
+        '''
+        Create the Todo with given todo data
+        '''
+        data = {
+            'name': request.data.get('name')
+        }
+    
+
+        serializer = LearningSpaceSer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

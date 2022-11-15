@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
+from .models import LearningSpace
 
 # User Serializer
 class UserSerializer(serializers.ModelSerializer):
@@ -26,4 +27,11 @@ class ChangePasswordSerializer(serializers.Serializer):
     old_pass = serializers.CharField(required=True)
 
     new_pass = serializers.CharField(required=True)
+
+class LearningSpaceSer(serializers.ModelSerializer):
+    class Meta:
+        model = LearningSpace
+        fields = ["name"]
+
+
     
