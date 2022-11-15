@@ -93,9 +93,9 @@ REST_FRAMEWORK = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'django_start',
+        'NAME': 'budemi',
         'USER': 'root',
-        'PASSWORD': 'root',
+        'PASSWORD': '12345',
         'HOST': 'db',
         'PORT': '3306',
         'OPTIONS': {
