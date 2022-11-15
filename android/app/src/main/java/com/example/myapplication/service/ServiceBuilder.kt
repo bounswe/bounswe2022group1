@@ -1,3 +1,4 @@
+
 package com.example.myapplication.service
 
 import okhttp3.OkHttpClient
@@ -16,5 +17,4 @@ object ServiceBuilder {
     fun<T> buildService(service: Class<T>): T{
         return retrofit.create(service)
     }
-
 }

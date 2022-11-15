@@ -1,3 +1,4 @@
+
 package com.example.myapplication.view
 
 import android.content.Intent
@@ -50,5 +51,4 @@ class LandingActivity : AppCompatActivity() {
         addToList("Share Your Knowledge", "Create courses and share with others", R.drawable.scholar)
         addToList("Communication Channels", "Ask and answer questions, discuss your ideas", R.drawable.discuss)
     }
-
 }

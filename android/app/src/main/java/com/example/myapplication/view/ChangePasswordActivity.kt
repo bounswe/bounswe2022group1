@@ -1,3 +1,4 @@
+
 package com.example.myapplication.view
 
 import android.content.Intent
@@ -18,8 +19,8 @@ class ChangePasswordActivity : AppCompatActivity() {
         //println("I am home"+user_token)
     }
 
-    fun goToHomePage(){
-        var intent= Intent(applicationContext, HomeActivity::class.java)
+    fun goToHomePage() {
+        var intent = Intent(applicationContext, HomeActivity::class.java)
         startActivity(intent)
     }
 
@@ -30,7 +31,8 @@ class ChangePasswordActivity : AppCompatActivity() {
         val apiService = changePasswordApiCall()
         val passwordInfo = change_password_model(
             old_pass = oldPassword.text.toString(),
-            new_pass = newPassword.text.toString())
+            new_pass = newPassword.text.toString()
+        )
 
         apiService.changePassword(passwordInfo) {
 

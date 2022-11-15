@@ -1,3 +1,4 @@
+
 package com.example.myapplication.service
 
 
@@ -13,4 +14,5 @@ interface change_password_api {
     @Headers("Content-Type: application/json")
     @PUT("change-password/")
     fun changePassword(@Body passwordInfo: change_password_model): Call<change_password_response_model>
+
 }

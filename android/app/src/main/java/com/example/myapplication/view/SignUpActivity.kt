@@ -1,3 +1,4 @@
+
 package com.example.myapplication.view
 
 import android.content.Intent
@@ -55,5 +56,5 @@ class SignUpActivity : AppCompatActivity() {
             }
         }
     }
-
 }
+
