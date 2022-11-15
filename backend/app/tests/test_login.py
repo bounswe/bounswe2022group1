@@ -23,5 +23,5 @@ class LoginTest(APITestCase):
                 response = self.client.post(url, data, format='json')
                 self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        print("Test: Correct registration API")
+        print("Test: Correct login API")
 

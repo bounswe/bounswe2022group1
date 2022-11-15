@@ -65,7 +65,7 @@ class ChangePassword(generics.UpdateAPIView):
         if serialization.is_valid():
             
             #controll the old password
-            if self.object.check_password(serialization.data.get("old_pass")):
+            if not self.object.check_password(serialization.data.get("old_pass")):
 
                 return Response({"old_pass": ["Wrong password."]}, status=status.HTTP_400_BAD_REQUEST)
             
