@@ -105,7 +105,7 @@ class LearningSpaceApiView(APIView):
             serializer = self.serializer_class(ls)
             return Response(serializer.data, status=status.HTTP_200_OK)
         except LearningSpace.DoesNotExist:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            return Response({"message": "given id doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
             
         
 
