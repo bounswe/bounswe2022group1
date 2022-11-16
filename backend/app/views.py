@@ -1,13 +1,17 @@
-from rest_framework import generics, permissions, status, generics
+from rest_framework import generics, permissions, status, generics, views
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated   
+from rest_framework.views import APIView
 from django.contrib.auth import login
 from django.contrib.auth.models import User
 from knox.models import AuthToken
 from knox.views import LoginView as KnoxLoginView
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from .serializers import UserSerializer, RegisterSerializer
-from .serializers import ChangePasswordSerializer
+from .serializers import ChangePasswordSerializer, LearningSpaceSerializer
+from .models import LearningSpace
+
+
 
 
 
@@ -84,3 +88,40 @@ class ChangePassword(generics.UpdateAPIView):
         else:
             return Response(serialization.errors, status=status.HTTP_400_BAD_REQUEST)
 
+class LearningSpaceApiView(APIView):
+    # add permission to check if user is authenticated
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = LearningSpaceSerializer
+    
+    
+    def get(self, request, *args, **kwargs):
+        try:
+            learning_space_id = int(request.GET.get('id'))
+        except ValueError:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            ls = LearningSpace.objects.get(id=learning_space_id)
+            serializer = self.serializer_class(ls)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except LearningSpace.DoesNotExist:
+            return Response({"message": "given id doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
+            
+        
+
+   
+    def post(self, request, *args, **kwargs):
+        '''
+        Create the Todo with given todo data
+        '''
+        data = {
+            'name': request.data.get('name')
+        }
+    
+
+        serializer = self.serializer_class(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

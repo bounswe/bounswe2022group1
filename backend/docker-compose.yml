@@ -6,9 +6,11 @@ services:
     ports:
       - "3306:3306"
     environment:
-      MYSQL_DATABASE: "django_start"
-      MYSQL_PASSWORD: "root"
-      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_DATABASE: "${MYSQL_DATABASE}"
+      MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
+      MYSQL_USER: "${MYSQL_USER}"
+      MYSQL_ALLOW_EMPTY_PASSWORD: "${MYSQL_ALLOW_EMPTY_PASSWORD}"
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
     volumes:
       - .setup.sql:/docker-entrypoint-initbd.d/setup.sql
 
@@ -21,6 +23,7 @@ services:
         echo "sleep for 10sec"
         sleep 10 
         python manage.py makemigrations
+        sleep 10
         python manage.py migrate
         python manage.py runserver 0.0.0.0:8000
 
