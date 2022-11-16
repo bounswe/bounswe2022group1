@@ -28,10 +28,10 @@ class ChangePasswordSerializer(serializers.Serializer):
 
     new_pass = serializers.CharField(required=True)
 
-class LearningSpaceSer(serializers.ModelSerializer):
+class LearningSpaceSerializer(serializers.ModelSerializer):
     class Meta:
         model = LearningSpace
-        fields = ["name"]
+        fields = ["id", "name"]
 
 
     

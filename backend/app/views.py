@@ -8,7 +8,7 @@ from knox.models import AuthToken
 from knox.views import LoginView as KnoxLoginView
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from .serializers import UserSerializer, RegisterSerializer
-from .serializers import ChangePasswordSerializer,LearningSpaceSer
+from .serializers import ChangePasswordSerializer, LearningSpaceSerializer
 from .models import LearningSpace
 
 
@@ -91,17 +91,23 @@ class ChangePassword(generics.UpdateAPIView):
 class LearningSpaceApiView(APIView):
     # add permission to check if user is authenticated
     permission_classes = [permissions.IsAuthenticated]
-
+    serializer_class = LearningSpaceSerializer
     
-    """
-    # 1. List all
+    
     def get(self, request, *args, **kwargs):
-        '''
-        List all the todo items for given requested user
-        '''
-        todos = Todo.objects.filter(user = request.user.id)
-        serializer = TodoSerializer(todos, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)"""
+        try:
+            learning_space_id = int(request.GET.get('id'))
+        except ValueError:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            ls = LearningSpace.objects.get(id=learning_space_id)
+            serializer = self.serializer_class(ls)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except LearningSpace.DoesNotExist:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            
+        
 
    
     def post(self, request, *args, **kwargs):
@@ -113,7 +119,7 @@ class LearningSpaceApiView(APIView):
         }
     
 
-        serializer = LearningSpaceSer(data=data)
+        serializer = self.serializer_class(data=data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
