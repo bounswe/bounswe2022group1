@@ -38,7 +38,7 @@ class HomeActivity : AppCompatActivity() {
         string2.setNavigationItemSelectedListener {
             when(it.itemId) {
                 R.id.miItem1 -> Toast.makeText(applicationContext, "Clicked Item 1", Toast.LENGTH_SHORT).show()
-                R.id.miItem2 -> Toast.makeText(applicationContext, "Clicked Item 2", Toast.LENGTH_SHORT).show()
+                R.id.miItem2 -> toLearningSpace()
                 R.id.miItem3 -> Toast.makeText(applicationContext, "Clicked Item 3", Toast.LENGTH_SHORT).show()
             }
             true
@@ -86,6 +86,10 @@ class HomeActivity : AppCompatActivity() {
     fun toLanding() {
         user_token=""
         var intent= Intent(applicationContext, LandingActivity::class.java)
+        startActivity(intent)
+    }
+    fun toLearningSpace() {
+        var intent= Intent(applicationContext, LearningSpace1::class.java)
         startActivity(intent)
     }
 }
