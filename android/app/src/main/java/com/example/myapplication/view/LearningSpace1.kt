@@ -1,13 +1,12 @@
 package com.example.myapplication.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.viewpager2.widget.ViewPager2
 import com.example.myapplication.R
-import me.relex.circleindicator.CircleIndicator3
 
 class LearningSpace1 : AppCompatActivity() {
 
@@ -15,8 +14,8 @@ class LearningSpace1 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.learning_space_1)
 
-        val listView = findViewById<ListView>(R.id.listView)
-        val names = arrayOf("Music", "Art", "Art", "Art", "Art", "Art", "Art", "Art","Art","Art")
+        val listView = findViewById<ListView>(R.id.Topics)
+        val names = arrayOf("Gitar", "Music", "Art", "Photography", "Dance")
 
         val arrayAdapter: ArrayAdapter<String> = ArrayAdapter(
             this, android.R.layout.simple_list_item_1, names
@@ -25,7 +24,14 @@ class LearningSpace1 : AppCompatActivity() {
         listView.adapter = arrayAdapter
 
         listView.setOnItemClickListener { adapterView, view, i, l ->
-            Toast.makeText(this, "Item selected " + names[i], Toast.LENGTH_LONG).show()
+            //Toast.makeText(this, "Item selected " + names[i], Toast.LENGTH_LONG).show()
+            goToLearningSpace2()
         }
+    }
+
+
+    fun goToLearningSpace2() {
+        var intent= Intent(applicationContext, LearningSpace2::class.java)
+        startActivity(intent)
     }
 }

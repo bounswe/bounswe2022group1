@@ -7,7 +7,7 @@
     android:background="#CFD4F1">
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/learning_topic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -32,12 +32,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
-        android:id="@+id/listView"
+        android:id="@+id/Topics"
         android:layout_width="342dp"
         android:layout_height="389dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+        app:layout_constraintTop_toBottomOf="@+id/learning_topic" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

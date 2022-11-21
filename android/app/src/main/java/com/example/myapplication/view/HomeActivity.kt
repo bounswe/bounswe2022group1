@@ -37,9 +37,12 @@ class HomeActivity : AppCompatActivity() {
 
         string2.setNavigationItemSelectedListener {
             when(it.itemId) {
-                R.id.miItem1 -> Toast.makeText(applicationContext, "Clicked Item 1", Toast.LENGTH_SHORT).show()
-                R.id.miItem2 -> toLearningSpace()
-                R.id.miItem3 -> Toast.makeText(applicationContext, "Clicked Item 3", Toast.LENGTH_SHORT).show()
+                R.id.miItem1 -> goToHomePage()
+                R.id.miItem2 -> goToLearningSpace1()
+                R.id.miItem3 -> goToLearningSpace1()
+                R.id.miItem4 -> goToLearningSpace1()
+                R.id.miItem5 -> goToLearningSpace1()
+                R.id.miItem6 -> goToLearningSpace1()
             }
             true
         }
@@ -88,8 +91,15 @@ class HomeActivity : AppCompatActivity() {
         var intent= Intent(applicationContext, LandingActivity::class.java)
         startActivity(intent)
     }
-    fun toLearningSpace() {
+
+    fun goToLearningSpace1() {
         var intent= Intent(applicationContext, LearningSpace1::class.java)
+        startActivity(intent)
+    }
+
+
+    fun goToHomePage() {
+        var intent= Intent(applicationContext, HomeActivity::class.java)
         startActivity(intent)
     }
 }

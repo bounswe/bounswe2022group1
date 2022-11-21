@@ -7,10 +7,20 @@
 
     <item
         android:id="@+id/miItem2"
-        android:title="Learning Space" />
+        android:title="Art" />
 
     <item
         android:id="@+id/miItem3"
-        android:title="Item 3" />
+        android:title="Science" />
+    <item
+        android:id="@+id/miItem4"
+        android:title="Math" />
+    <item
+        android:id="@+id/miItem5"
+        android:title="Technology" />
+    <item
+        android:id="@+id/miItem6"
+        android:title="Engineering" />
+
 
 </menu>

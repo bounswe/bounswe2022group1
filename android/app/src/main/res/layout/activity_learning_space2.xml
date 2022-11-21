@@ -4,6 +4,95 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.LearningSpace2">
+    android:background="#CFD4F1">
+
+
+    <TextView
+        android:id="@+id/learning_topic"
+        android:layout_width="55dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="1dp"
+        android:text="Gitar"
+        android:textColor="#6200EE"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/Topics"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.207"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ListView
+        android:id="@+id/Topics"
+        android:layout_width="190dp"
+        android:layout_height="527dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.072"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/learning_topic" />
+
+    <ListView
+        android:id="@+id/Owners"
+        android:layout_width="172dp"
+        android:layout_height="293dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/add_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/Topics"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        app:layout_constraintVertical_bias="0.509" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="15dp"
+        android:text="Contributors"
+        android:textColor="#6200EE"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/Owners"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.881"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/join_leave" />
+
+    <Button
+        android:id="@+id/join_leave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="75dp"
+        android:layout_marginBottom="10dp"
+        android:text="Join"
+        app:layout_constraintBottom_toTopOf="@+id/Owners"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/Topics"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/add_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="125dp"
+        android:text="Add Content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.718"
+        app:layout_constraintStart_toEndOf="@+id/Topics"
+        app:layout_constraintTop_toBottomOf="@+id/Owners" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

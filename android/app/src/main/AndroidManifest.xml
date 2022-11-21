@@ -16,6 +16,22 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".view.LearningSpace3"
+            android:configChanges="keyboardHidden|orientation"
+            android:windowSoftInputMode="adjustPan"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".view.LearningSpace2"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".view.LandingActivity"
             android:exported="true">
             <intent-filter>
