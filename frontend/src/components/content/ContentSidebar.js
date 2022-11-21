@@ -16,18 +16,14 @@ import TextField from '@mui/material/TextField';
 function ContentSidebar(props) {
     const { ownersList, userNote } = props;
 
-    const [value, setValue] = React.useState('Controlled');
-  
-    const handleChange = (event) => {
-      setValue(event.target.value);
-    };
+
 
     
 
 
 return(
 <Grid item xs={12}  md={4} rowSpacing={2}>
-      <Button variant= "contained">Edit Content</Button>
+      <Button variant= "contained">New Post</Button>
       <Card  variant="outlined" gutterBottom sx={{ mt: 3 }}>
       <Typography variant="h6">Contributors</Typography>
       {ownersList.map((owner) => (
