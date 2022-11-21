@@ -43,6 +43,10 @@ class HomeActivity : AppCompatActivity() {
         logoffButtonClicked.setOnClickListener{
             toLanding()
         }
+        val profileButtonClicked = findViewById<ImageButton>(R.id.profileButton)
+        logoffButtonClicked.setOnClickListener{
+            toProfilePage()
+        }
     }
     fun to_signIn() {
         var intent= Intent(applicationContext, SignInActivity::class.java)
@@ -50,6 +54,11 @@ class HomeActivity : AppCompatActivity() {
     }
     fun toLanding() {
         var intent= Intent(applicationContext, LandingActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun toProfilePage(){
+        var intent= Intent(applicationContext, ProfilePageActivity::class.java)
         startActivity(intent)
     }
 }
