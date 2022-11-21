@@ -22,7 +22,7 @@ function ContentSidebar(props) {
 
 
 return(
-<Grid item xs={12}  md={4} rowSpacing={2}>
+<Grid  rowSpacing={2}>
       <Button variant= "contained">New Post</Button>
       <Card  variant="outlined" gutterBottom sx={{ mt: 3 }}>
       <Typography variant="h6">Contributors</Typography>

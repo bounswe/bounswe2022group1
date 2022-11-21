@@ -44,40 +44,47 @@ const texts = {
 
 
 export default function TextContentsPage() {
-    return (
-      <div className="all">
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          <Container>
-            <ContentMain 
-            textContents={texts.textContents}
-            />
-          </Container>
-          <Container maxWidth="lg">
-          <Typography component="h4"
-            variant="h3"
-            color="inherit"
-            align="center"
-            noWrap
-            sx={{
-              flex: 1,
-              fontFamily: "Fira Sans",
-              fontWeight: 500,
-            }}> Learning Space for Guitar Enthuisasts</Typography>
-            <main>
-            
-            <Grid container spacing={5} sx={{ mt: 3 }}>
-              <ContentSidebar
-                ownersList={sidebar.ownersList}
-                userNote={sidebar.userNote}
-              />
+  return (
+    <div className="all">
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Grid container maxWidth="lg">
+            <Typography component="h4"
+              variant="h3"
+              color="inherit"
+              align="center"
+              noWrap
+              sx={{
+                flex: 1,
+                fontFamily: "Fira Sans",
+                fontWeight: 500,
+                mt: 5,
+                mb: 5
+              }}> Learning Space for Guitar Enthuisasts
+              </Typography>
+          <main>
+            <Container>
+            <Grid container spacing={2} columns={12}>
+                <Grid item xs={7} >
+                    <ContentMain textContents={texts.textContents}/>
+                </Grid>
+          
+               <Grid item xs={5}> 
+                <ContentSidebar
+                  ownersList={sidebar.ownersList}
+                  userNote={sidebar.userNote}
+                />
+                </Grid>
             </Grid>
-              
-              
-            </main>
-          </Container>
-          <Footer title="BUDEMI" description="a company of bogazici university" />
-        </ThemeProvider>
-      </div>
-    );
+            </Container>
+          </main>
+        </Grid>
+
+
+
+
+        <Footer title="BUDEMI" description="a company of bogazici university" />
+      </ThemeProvider>
+    </div>
+  );
 }
