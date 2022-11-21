@@ -37,7 +37,7 @@ function Discussion(props){
               </Stack>
               </Card>
             ))}
-            
+            <TextField id="standard-basic" label="Enter your comment" variant="standard" />
             
             </Paper>
         </Grid>
