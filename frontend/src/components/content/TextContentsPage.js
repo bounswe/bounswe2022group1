@@ -9,6 +9,8 @@ import { Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import ContentSidebar from "./ContentSidebar";
 import ContentMain from "./ContentMain";
+import Discussion from "./Discussion";
+import { format } from 'date-fns'
 
 
 
@@ -40,8 +42,24 @@ const texts = {
     ownerUsername: "banublkn",
     ownerAvatar: "https://www.avatarsinpixels.com/Public/images/previews/minipix2.png" ,
 },]
-}
+};
 
+const discussion = {
+  comments: [
+    {
+      username: "lanabanana",
+      avatar: "https://www.avatarsinpixels.com/Public/images/previews/minipix1.png",
+      date: format(new Date(2022, 11, 5), 'd MMMM, yyyy'),
+      body: "Great content",
+    },
+    {
+      username: "ghost-rider",
+      avatar: "https://www.avatarsinpixels.com/Public/images/previews/minipix3.png",
+      date: format(new Date(2022, 9, 20), 'd MMMM, yyyy'),
+      body: "Should I start with a classic guitar, or an electric one?",
+    },
+  ]
+};
 
 export default function TextContentsPage() {
   return (
@@ -67,6 +85,8 @@ export default function TextContentsPage() {
             <Grid container spacing={2} columns={12}>
                 <Grid item xs={7} >
                     <ContentMain textContents={texts.textContents}/>
+                    <Discussion
+                    comments = {discussion.comments}/>
                 </Grid>
           
                <Grid item xs={5}> 
