@@ -125,7 +125,7 @@
             tools:ignore="MissingConstraints" />
 
         <ImageButton
-            android:id="@+id/accountButton"
+            android:id="@+id/profileButton"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:background="@null"
@@ -141,7 +141,7 @@
         android:layout_marginBottom="304dp"
         android:foregroundGravity="center"
         android:gravity="center"
-        android:text="Welcome to Budemy"
+        android:text="Welcome to Budemi"
         android:textColor="#FFFFFF"
         android:textSize="34sp"
         app:layout_constraintBottom_toTopOf="@+id/buttonLayout"
