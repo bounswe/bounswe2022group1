@@ -46,26 +46,32 @@ class ContentSerializer(serializers.ModelSerializer):
     url = serializers.CharField(max_length=30, default="")
     upVoteCount = serializers.IntegerField(default=0)
 
+    def update(self, instance, validated_data):
+        instance.name = validated_data.get('name', instance.name)
+        instance.type = validated_data.get('type', instance.type)
+        instance.text = validated_data.get('text', instance.text)
+        instance.url = validated_data.get('url', instance.url)
+        instance.save()
+        return instance
+
     def validate(self, data):
         # TODO: fill each condition with the correct validations. (whether it is really a video, image, etc.)
         if data['type'] == "text":
-            if data['text'] == "" or data['url'] != "":
+            if data.get("text", "") == "" or data.get("url", "") != "":
                 raise serializers.ValidationError("Type doesn't match the content")
         elif data['type'] == "video":
-            if data['url'] == "" or data['text'] != "":
+            if data.get("url", "") == "" or data.get("text", "") != "":
                 raise serializers.ValidationError("Type doesn't match the content")
         elif data['type'] == "image":
-            if data['url'] == "" or data['text'] != "":
+            if data.get("url", "") == "" or data.get("text", "") != "":
                 raise serializers.ValidationError("Type doesn't match the content")
         elif data['type'] == "discussion":
-            if data['url'] != "" or data['text'] != "":
+            if data.get("url", "") != "" or data.get("text", "") != "":
                 raise serializers.ValidationError("Type doesn't match the content")
         elif data['type'] == "meeting":
-            if data['url'] != "" or data['text'] == "":
+            if data.get("url", "") != "" or data.get("text", "") == "":
                 raise serializers.ValidationError("Type doesn't match the content")
         else:
             raise serializers.ValidationError("Invalid type value")
         return data
-
-    
     

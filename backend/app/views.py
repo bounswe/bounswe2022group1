@@ -165,6 +165,38 @@ class contentApiView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+    def patch(self, request, *args, **kwargs):
+        data = request.data.copy()
+
+        try:
+            content_id = int(data['id'])
+        except ValueError:
+            return Response({"error": "given id is not an integer"}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            content = Content.objects.get(id=content_id)
+        except Content.DoesNotExist:
+            return Response({"error": "given id doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
+
+        if content.owner != request.user: 
+            return Response({"error": "you are not the owner of this content"}, status=status.HTTP_400_BAD_REQUEST)       
+
+        # Those fields are needed to validate data because Content exceptionally has a custom validate() function.
+        if 'type' not in data:
+            data['type'] = content.type
+        if 'text' not in data:
+            data['text'] = content.text
+        if 'url' not in data:
+            data['url'] = content.url
+
+        serializer = self.serializer_class(content, data=data, partial=True)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
 class contentListApiView(APIView):
     # add permission to check if user is authenticated
     permission_classes = [permissions.IsAuthenticated]
