@@ -91,13 +91,10 @@ class HomeActivity : AppCompatActivity() {
         var intent= Intent(applicationContext, LandingActivity::class.java)
         startActivity(intent)
     }
-
     fun goToLearningSpace1() {
         var intent= Intent(applicationContext, LearningSpace1::class.java)
         startActivity(intent)
     }
-
-
     fun goToHomePage() {
         var intent= Intent(applicationContext, HomeActivity::class.java)
         startActivity(intent)
