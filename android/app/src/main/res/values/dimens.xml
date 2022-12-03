@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_16">16dp</dimen>
+    <dimen name="padding_16">16dp</dimen>
+    <dimen name="padding_30">30dp</dimen>
+    <dimen name="padding_40">40dp</dimen>
+    <dimen name="margin_8">8dp</dimen>
+    <dimen name="margin_4">4dp</dimen>
+    <dimen name="margin_32">32dp</dimen>
+    <dimen name="margin_24">24dp</dimen>
+    <dimen name="padding_horizontal_btn">10dp</dimen>
+    <dimen name="btn_corner_radius">20dp</dimen>
+    <dimen name="edtx_height_size">58dp</dimen>
+    <dimen name="icon_default_size">30dp</dimen>
+    <dimen name="icon_size">25dp</dimen>
+    <dimen name="margin_40">40dp</dimen>
+    <dimen name="margin_50">50dp</dimen>
+    <dimen name="margin_10">10dp</dimen>
+    <dimen name="back_size">40dp</dimen>
+    <dimen name="clickable_ic_size">50dp</dimen>
+    <dimen name="clickable_ic_size_big">55dp</dimen>
+    <dimen name="clickable_ic_padding">15dp</dimen>
+    <dimen name="fab_img_size">25dp</dimen>
+    <dimen name="edtx_corner_size">10dp</dimen>
+    <dimen name="btn_height">58dp</dimen>
+    <dimen name="btn_height_no_inset">55dp</dimen>
+    <dimen name="bottom_sheet_handle_width">30dp</dimen>
+    <dimen name="bottom_sheet_handle_height">5dp</dimen>
+    <dimen name="bottom_sheet_handle_top_margin">8dp</dimen>
+    <dimen name="zero">0dp</dimen>
+    <dimen name="img_header_size">250dp</dimen>
+    <dimen name="card_corner_radius">20dp</dimen>
+    <dimen name="btn_height2">55dp</dimen>
+
+    <dimen name="textsize_9d">9dp</dimen>
+    <dimen name="textsize_11d">11dp</dimen>
+    <dimen name="textsize_14d">14dp</dimen>
+    <dimen name="textsize_15d">15dp</dimen>
+    <dimen name="textsize_20d">20dp</dimen>
+    <dimen name="textsize_23d">23dp</dimen>
+    <dimen name="textsize_28d">28dp</dimen>
+    <dimen name="padding_10">10dp</dimen>
+    <dimen name="margin_100">100dp</dimen>
+    <dimen name="margin_200">200dp</dimen>
+    <dimen name="textsize_12d">12dp</dimen>
+    <dimen name="textsize_35d">35dp</dimen>
+    <dimen name="textsize_18d">18dp</dimen>
+    <dimen name="textsize_13d">13dp</dimen>
+    <dimen name="textsize_16d">16dp</dimen>
+
+    <!--    <dimen name="textsize_10d">10dp</dimen>-->
+<!--    <dimen name="textsize_12d">12dp</dimen>-->
+<!--    <dimen name="textsize_14d">14dp</dimen>-->
+<!--    <dimen name="textsize_17d">17dp</dimen>-->
+<!--    <dimen name="textsize_22d">22dp</dimen>-->
+<!--    <dimen name="textsize_25d">25dp</dimen>-->
+<!--    <dimen name="textsize_32d">32dp</dimen>-->
+
+</resources>
