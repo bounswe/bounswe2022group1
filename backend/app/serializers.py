@@ -42,7 +42,7 @@ class ContentSerializer(serializers.ModelSerializer):
         model = Content
         fields = ["id", "name", "type", "text", "url", "owner", "learningSpace", "upVoteCount"]
 
-    text = serializers.CharField(max_length=30, default="")
+    text = serializers.CharField(max_length=500, default="")
     url = serializers.CharField(max_length=30, default="")
     upVoteCount = serializers.IntegerField(default=0)
 
@@ -54,8 +54,9 @@ class ContentSerializer(serializers.ModelSerializer):
         instance.save()
         return instance
 
+
     def validate(self, data):
-        # TODO: fill each condition with the correct validations. (whether it is really a video, image, etc.)
+        # TODO: fill each condition with the correct validations (whether it is really a video, image, etc.)
         if data['type'] == "text":
             if data.get("text", "") == "" or data.get("url", "") != "":
                 raise serializers.ValidationError("Type doesn't match the content")
@@ -89,7 +90,7 @@ class DiscussionPostSerializer(serializers.ModelSerializer):
         model = Discussion
         #fields = '__all__'
         fields = ["id", "content", "owner", "body", "created_on"]
-    
+
 
 
 
