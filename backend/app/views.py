@@ -349,7 +349,10 @@ class LearningSpaceSearchApiView(APIView):
     def get(self, request, *args, **kwargs):
         try:
             search_parameter = request.GET.get('search_parameter')
+        except ValueError:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
 
+        try:
             ls = LearningSpace.objects.filter(name__icontains=search_parameter)
             serializer = self.serializer_class(ls, many=True)
             return Response(serializer.data, status=status.HTTP_200_OK)
