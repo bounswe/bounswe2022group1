@@ -32,7 +32,7 @@ class ChangePasswordSerializer(serializers.Serializer):
 class LearningSpaceSerializer(serializers.ModelSerializer):
     class Meta:
         model = LearningSpace
-        fields = ["id", "name", "members"]
+        fields = ["id", "name", "members", "tag"]
     
     members = UserSerializer(many=True, read_only=True)
 
@@ -42,7 +42,7 @@ class ContentSerializer(serializers.ModelSerializer):
         model = Content
         fields = ["id", "name", "type", "text", "url", "owner", "learningSpace", "upVoteCount"]
 
-    text = serializers.CharField(max_length=500, default="")
+#    text = serializers.CharField(max_length=30 default="")
     url = serializers.CharField(max_length=30, default="")
     upVoteCount = serializers.IntegerField(default=0)
 

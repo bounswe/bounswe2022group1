@@ -5,6 +5,9 @@ from django.contrib.auth.models import User
 class LearningSpace(models.Model):
     name = models.CharField(max_length=30)
     members = models.ManyToManyField(User, related_name='members')
+    
+    tag = models.CharField(max_length=30)
+
 
     # TODO: add contributors field
     # I think contributors shouldn't be a field in the model, but rather a method
@@ -16,8 +19,6 @@ class LearningSpace(models.Model):
     # implicitly existing fields:
     # content_list
 
-    # TODO: add chat
-    # chat = models.ForeignKey(Chat, on_delete=models.CASCADE, related_name='chat')
 
 
 
@@ -38,10 +39,6 @@ class Content(models.Model):
 
     upVoteCount = models.IntegerField(default=0)
     
-    # TODO: add chat
-    # chat = models.ForeignKey(Chat, on_delete=models.CASCADE, related_name='chat')
-
-
 
 class Discussion(models.Model):
     content = models.ForeignKey(Content,on_delete=models.CASCADE, related_name='discussions')

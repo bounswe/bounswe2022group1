@@ -112,13 +112,17 @@ class LearningSpaceApiView(APIView):
         Create the Todo with given todo data
         '''
         data = {
-            'name': request.data.get('name')
+            'name': request.data.get('name'),
+            'tag' : request.data.get('tag')
         }
     
 
         serializer = self.serializer_class(data=data)
         if serializer.is_valid():
             serializer.save()
+            ls = LearningSpace.objects.get(id=serializer.data['id'])
+            ls.members.add(request.user)
+            serializer = self.serializer_class(ls)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
