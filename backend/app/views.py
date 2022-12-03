@@ -363,3 +363,23 @@ class LearningSpaceSearchApiView(APIView):
         except LearningSpace.DoesNotExist:
             return Response({"message": "given id doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
 
+
+
+class LearningSpaceTagSearchApiView(APIView):
+    # add permission to check if user is authenticated
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = LearningSpaceSerializer
+    
+    
+    def get(self, request, *args, **kwargs):
+        try:
+            tag = request.GET.get('tag')
+        except ValueError:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            ls = LearningSpace.objects.filter(tag__icontains=tag)
+            serializer = self.serializer_class(ls, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except LearningSpace.DoesNotExist:
+            return Response({"message": "given id doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
