@@ -9,8 +9,8 @@ from knox.models import AuthToken
 from knox.views import LoginView as KnoxLoginView
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from .serializers import ContentSerializer, UserSerializer, RegisterSerializer, DiscussionPostSerializer
-from .serializers import ChangePasswordSerializer, LearningSpaceSerializer, DiscussionSerializer
-from .models import Content, LearningSpace, Discussion
+from .serializers import ChangePasswordSerializer, LearningSpaceSerializer, DiscussionSerializer, ProfileSerializer,ProfilePostSerializer
+from .models import Content, LearningSpace, Discussion, Profile
 
 
 
@@ -282,6 +282,52 @@ class discussionApiListView(APIView):
             return Response({"message": "given content id doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
 
 
+class profileApiView(APIView):
+    # add permission to check if user is authenticated
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = ProfilePostSerializer
+    serializer_class1 = ProfileSerializer
+
+    def post(self, request, *args, **kwargs):
+        
+        data = request.data.copy()
+        
+
+        data['user'] = request.user.id
+        learningspaces=LearningSpace.objects.filter(members__id=request.user.id)
+        list=[]
+        for i in learningspaces:
+            list.append(i.id)
+
+        data["learningspaces"] = list
+        print(list)
+       
+
+        # TODO: check wheter the given learning space id exists and user is a member of it
+
+        serializer = self.serializer_class(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    def get(self, request, *args, **kwargs):
+        try:
+            user_id = request.user.id
+        except ValueError:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            profile = Profile.objects.get(user=user_id)
+            
+            serializer = self.serializer_class1(profile)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except LearningSpace.DoesNotExist:
+            return Response({"message": "given content id doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
+
+
 class LearningSpaceListApiView(APIView):
     # add permission to check if user is authenticated
     permission_classes = [permissions.IsAuthenticated]
@@ -316,3 +362,4 @@ class LearningSpaceSearchApiView(APIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
         except LearningSpace.DoesNotExist:
             return Response({"message": "given id doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
+
