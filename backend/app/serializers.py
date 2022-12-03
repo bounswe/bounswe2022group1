@@ -1,7 +1,7 @@
 from urllib import request
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from .models import LearningSpace, Content
+from .models import LearningSpace, Content, Discussion
 
 # User Serializer
 class UserSerializer(serializers.ModelSerializer):
@@ -74,4 +74,26 @@ class ContentSerializer(serializers.ModelSerializer):
         else:
             raise serializers.ValidationError("Invalid type value")
         return data
+
+
+class DiscussionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Discussion
+        #fields = '__all__'
+        fields = ["id", "content", "owner", "body", "created_on"]
+    owner =  UserSerializer()
+
+
+class DiscussionPostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Discussion
+        #fields = '__all__'
+        fields = ["id", "content", "owner", "body", "created_on"]
+    
+
+
+
+
+    
+
     

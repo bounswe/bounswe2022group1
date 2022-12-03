@@ -8,13 +8,9 @@ from django.contrib.auth.models import User
 from knox.models import AuthToken
 from knox.views import LoginView as KnoxLoginView
 from rest_framework.authtoken.serializers import AuthTokenSerializer
-from .serializers import ContentSerializer, UserSerializer, RegisterSerializer
-from .serializers import ChangePasswordSerializer, LearningSpaceSerializer
-from .models import Content, LearningSpace
-
-
-
-
+from .serializers import ContentSerializer, UserSerializer, RegisterSerializer, DiscussionPostSerializer
+from .serializers import ChangePasswordSerializer, LearningSpaceSerializer, DiscussionSerializer
+from .models import Content, LearningSpace, Discussion
 
 
 
@@ -237,3 +233,46 @@ class enrollApiView(APIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
         except LearningSpace.DoesNotExist:
             return Response({"message": "given learning space id doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
+
+
+class discussionApiView(APIView):
+    # add permission to check if user is authenticated
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = DiscussionPostSerializer
+
+    def post(self, request, *args, **kwargs):
+        
+        data = request.data.copy()
+        
+
+        data['owner'] = request.user.id
+       
+
+        # TODO: check wheter the given learning space id exists and user is a member of it
+
+        serializer = self.serializer_class(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+
+class discussionApiListView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = DiscussionSerializer
+
+    def get(self, request, *args, **kwargs):
+        try:
+            content_id = int(request.GET.get('content_id'))
+        except ValueError:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            content = Content.objects.get(id=content_id)
+            discussions = content.discussions.all()
+            serializer = self.serializer_class(discussions, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except LearningSpace.DoesNotExist:
+            return Response({"message": "given content id doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
