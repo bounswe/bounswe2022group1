@@ -3,7 +3,7 @@ from .views import Login, discussionApiView, discussionApiListView
 from django.urls import path
 from knox import views as knox_views
 from django.urls import path
-from .views import ChangePassword,LearningSpaceApiView
+from .views import ChangePassword,LearningSpaceApiView,profileApiView
 
 
 urlpatterns = [
@@ -18,6 +18,7 @@ urlpatterns = [
     path('app/enroll/', enrollApiView.as_view(), name='enroll'),
     path('app/discussion/', discussionApiView.as_view(), name='discussion'),
     path('app/discussion-list/', discussionApiListView.as_view(), name='discussion-list'),
+    path('app/profile/', profileApiView.as_view(), name='profile'),
 
 
 ]
