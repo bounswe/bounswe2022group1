@@ -1,7 +1,7 @@
 from urllib import request
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from .models import LearningSpace, Content, Discussion
+from .models import LearningSpace, Content, Discussion, Profile
 
 # User Serializer
 class UserSerializer(serializers.ModelSerializer):
@@ -91,7 +91,21 @@ class DiscussionPostSerializer(serializers.ModelSerializer):
         #fields = '__all__'
         fields = ["id", "content", "owner", "body", "created_on"]
 
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
+        #fields = '_all_'
+        fields = ["id", "about_me", "user","learningspaces"]
+    user =  UserSerializer()
+    #learningspaces = LearningSpaceSerializer(many=True, read_only=True)
 
+
+class ProfilePostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
+        #fields = '_all_'
+        fields = ["id", "about_me", "user", "learningspaces"]  
+    #learningspaces = LearningSpaceSerializer(many=True, read_only=True)
 
 
 
