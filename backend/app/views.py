@@ -277,6 +277,7 @@ class discussionApiListView(APIView):
         except LearningSpace.DoesNotExist:
             return Response({"message": "given content id doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
 
+
 class profileApiView(APIView):
     # add permission to check if user is authenticated
     permission_classes = [permissions.IsAuthenticated]
@@ -321,3 +322,37 @@ class profileApiView(APIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
         except LearningSpace.DoesNotExist:
             return Response({"message": "given content id doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
+
+
+class LearningSpaceListApiView(APIView):
+    # add permission to check if user is authenticated
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = LearningSpaceSerializer
+    
+    
+    def get(self, request, *args, **kwargs):
+        try:
+            ls = LearningSpace.objects.all()
+            serializer = self.serializer_class(ls, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except LearningSpace.DoesNotExist:
+            return Response({"message": "given id doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+class LearningSpaceSearchApiView(APIView):
+    # add permission to check if user is authenticated
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = LearningSpaceSerializer
+    
+    
+    def get(self, request, *args, **kwargs):
+        try:
+            search_parameter = request.GET.get('search_parameter')
+
+            ls = LearningSpace.objects.filter(name__icontains=search_parameter)
+            serializer = self.serializer_class(ls, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except LearningSpace.DoesNotExist:
+            return Response({"message": "given id doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
+
