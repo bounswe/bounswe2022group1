@@ -25,6 +25,7 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
+
         val string = findViewById<DrawerLayout>(R.id.drawerLayout)
         toggle = ActionBarDrawerToggle(this, string, R.string.open, R.string.close)
 

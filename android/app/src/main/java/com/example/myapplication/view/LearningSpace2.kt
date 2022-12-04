@@ -3,13 +3,20 @@ package com.example.myapplication.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.*
 import com.example.myapplication.R
+import com.example.myapplication.model.learningspace2Enroll_send_model
+import com.example.myapplication.service.learningSpace2Enroll_api_call
+
+val enrolledLearningSpaceIds=mutableSetOf<Int>()
+
 
 class LearningSpace2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_learning_space2)
+
 
         var learning_topic = findViewById(R.id.learning_topic) as TextView
 
@@ -21,12 +28,6 @@ class LearningSpace2 : AppCompatActivity() {
 
 
         var join_leave = findViewById(R.id.join_leave) as Button
-        if(user_token.isEmpty()){
-            join_leave.text="Join";
-        }
-        else{
-            join_leave.text="Leave";
-        }
 
         val namesAdapter: ArrayAdapter<String> = ArrayAdapter(
             this, android.R.layout.simple_list_item_1, names
@@ -40,17 +41,37 @@ class LearningSpace2 : AppCompatActivity() {
         contributorsListView.adapter=contributorsAdapter
 
         namesListView.setOnItemClickListener { parent, view, position, id ->
-            goToLearningSpace3()
+            goToLearningSpace3(position,id)
         }
 
-
+        val currentLearningSpaceId=0
         join_leave.setOnClickListener{
             if(join_leave.text=="Leave"){
-                join_leave.text="Join"
+                //join_leave.text="Enroll"
             }
-            else if(join_leave.text=="Join"){
+            else if(join_leave.text=="Enroll" && !enrolledLearningSpaceIds.contains(currentLearningSpaceId) ){
                 if(!user_token.isEmpty()){
                     join_leave.text="Leave"
+
+                    val apiService = learningSpace2Enroll_api_call()
+                    val userInfo = learningspace2Enroll_send_model(
+                        learning_space_id = currentLearningSpaceId
+                    )
+
+                    apiService.enrollUser(userInfo) {
+
+                        if(it?.id!=null){ // success
+                            enrolledLearningSpaceIds.add(it?.id)
+                            // it?.id id of the learning space
+                            // it?.name name of the learning space
+                            //it?.members [ {"id": id of the user, "username": "username of the user", "email": "email of the user" } ]
+                        }
+                        else{ // enroll is unsucess
+
+                        }
+
+                    }
+
                 }
             }
         }
@@ -61,7 +82,12 @@ class LearningSpace2 : AppCompatActivity() {
     }
 
 
-    fun goToLearningSpace3() {
+    fun addContent(view: View){
+
+    }
+
+
+    fun goToLearningSpace3(position:Int,id:Long) {
         var intent= Intent(applicationContext, LearningSpace3::class.java)
         startActivity(intent)
     }
