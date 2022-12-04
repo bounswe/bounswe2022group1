@@ -179,21 +179,21 @@
 
     </LinearLayout>
 
-    <ImageButton
-        android:id="@+id/logoffButton"
-        android:layout_width="50dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginBottom="64dp"
-        android:background="@null"
-        android:onClick="logoffToSignIn"
-        android:scaleType="fitCenter"
-        android:src="@drawable/logout"
-        app:layout_constraintBottom_toTopOf="@+id/textView6"
-        app:layout_constraintEnd_toEndOf="@+id/signinButton"
-        app:layout_constraintStart_toStartOf="@+id/signinButton"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+        <ImageButton
+            android:id="@+id/logoffButton"
+            android:layout_width="50dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="64dp"
+            android:background="@null"
+            android:onClick="logoffToLanding"
+            android:scaleType="fitCenter"
+            android:src="@drawable/logout"
+            app:layout_constraintBottom_toTopOf="@+id/textView6"
+            app:layout_constraintEnd_toEndOf="@+id/signinButton"
+            app:layout_constraintStart_toStartOf="@+id/signinButton"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
