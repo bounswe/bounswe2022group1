@@ -256,6 +256,11 @@ class enrollApiView(APIView):
             ls = LearningSpace.objects.get(id=learning_space_id)
             ls.members.add(request.user)
             serializer = self.serializer_class(ls)
+
+            if (Profile.objects.filter(user=request.user).exists()):
+                profile_obj=Profile.objects.get(user=request.user)
+                new_learningspaces = LearningSpace.objects.filter(members__id=request.user.id)
+                profile_obj.learningspaces.set(new_learningspaces)
             return Response(serializer.data, status=status.HTTP_200_OK)
         except LearningSpace.DoesNotExist:
             return Response({"message": "given learning space id doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
