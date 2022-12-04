@@ -235,7 +235,7 @@ class contentListApiView(APIView):
             ls = LearningSpace.objects.get(id=learning_space_id)
             contents = ls.content_set.all()
             serializer = self.serializer_class(contents, many=True)
-            return Response(serializer.data, status=status.HTTP_200_OK)
+            return Response({"data": serializer.data}, status=status.HTTP_200_OK)
         except LearningSpace.DoesNotExist:
             return Response({"message": "given learning space id doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -318,7 +318,7 @@ class discussionApiListView(APIView):
             content = Content.objects.get(id=content_id)
             discussions = content.discussions.all()
             serializer = self.serializer_class(discussions, many=True)
-            return Response(serializer.data, status=status.HTTP_200_OK)
+            return Response({"data": serializer.data}, status=status.HTTP_200_OK)
         except LearningSpace.DoesNotExist:
             return Response({"message": "given content id doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
 
