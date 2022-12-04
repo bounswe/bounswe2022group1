@@ -7,6 +7,7 @@ import { getCardContentUtilityClass } from "@mui/material";
 const ContentPage = () => {
 
     const [content, setContent] = useState([]);
+    const [comments, setComments] = useState([]);
     const params = useParams();
 
     useEffect(() => {
@@ -19,12 +20,23 @@ const ContentPage = () => {
         getContent()
     }, []);
 
+    useEffect(() => {
+        const getComments = async () => {
+            const baseURL = `http://3.89.218.253:8000/app/discussion-list/?content_id=${params.id}`;
+            const res = await axios.get(baseURL, { headers: {"Authorization" : `token ${localStorage.getItem("token")}`} })
+            setComments(res.data.data)
+            console.log(res.data)
+        }
+        getComments()
+    }, []);
+
+
 
 
     return (
         <>
             <div>
-                <TextContentsPage content={content} ownerUsername={content.owner}/>
+                <TextContentsPage content={content} ownerUsername={content.owner} comments = {comments}/>
             </div>
         </>
     )
