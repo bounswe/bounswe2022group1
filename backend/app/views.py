@@ -260,6 +260,25 @@ class enrollApiView(APIView):
         except LearningSpace.DoesNotExist:
             return Response({"message": "given learning space id doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
 
+class leaveApiView(APIView):
+    # add permission to check if user is authenticated
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = LearningSpaceSerializer
+
+    def post(self, request, *args, **kwargs):
+        try:
+            learning_space_id = int(request.data.get('learning_space_id'))
+        except ValueError:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            ls = LearningSpace.objects.get(id=learning_space_id)
+            ls.members.remove(request.user)
+            serializer = self.serializer_class(ls)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except LearningSpace.DoesNotExist:
+            return Response({"message": "given learning space id doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
+
 
 class discussionApiView(APIView):
     # add permission to check if user is authenticated
@@ -363,6 +382,21 @@ class LearningSpaceListApiView(APIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
         except LearningSpace.DoesNotExist:
             return Response({"message": "given id doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
+
+class EnrolledLearningSpaceApiView(APIView):
+    # add permission to check if user is authenticated
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = LearningSpaceSerializer
+    
+    
+    def get(self, request, *args, **kwargs):
+        
+        try:
+            ls=LearningSpace.objects.filter(members__id=request.user.id)
+            serializer = self.serializer_class(ls, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except LearningSpace.DoesNotExist:
+            return Response({"message": "given user doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
 
 
 
