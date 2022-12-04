@@ -2,19 +2,21 @@ package com.example.myapplication.model
 
 import com.google.gson.annotations.SerializedName
 
-data class learningSpace2AddContent_receive_model(
+data class learningSpace2GetContent_list_received_model(
     @SerializedName("id")
-    val id:Int,
+    val id: Int,
     @SerializedName("name")
-    val name:String,
+    val name: String,
     @SerializedName("type")
-    val type:String,
+    val type: String,
     @SerializedName("text")
-    val text:String,
+    val text: String,
+    @SerializedName("url")
+    val url: String,
     @SerializedName("owner")
-    val owner:String,
+    val owner: Int,
     @SerializedName("learningSpace")
-    val learningSpace:String,
+    val learningSpace: Int,
     @SerializedName("upVoteCount")
-    val upVoteCount:String
+    val upVoteCount: Int
 )

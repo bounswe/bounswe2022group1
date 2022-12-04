@@ -10,12 +10,32 @@ import com.example.myapplication.model.learningspace2Enroll_send_model
 import com.example.myapplication.service.learningSpace2Enroll_api_call
 
 val enrolledLearningSpaceIds=mutableSetOf<Int>()
-
+var currentLearningSpaceId=1
 
 class LearningSpace2 : AppCompatActivity() {
-    var currentLearningSpaceId=1
     var names = arrayOf("Yazı", "Video", "Resim", "Tartışma", "Buluşma")
     var contributors=arrayOf("Ömer Özdemir","Osman Fehmi Albayrak","Ahmet Yazıcı","Harun Erkurt","Ömer Özdemir","Osman Fehmi Albayrak","Ahmet Yazıcı","Harun Erkurt")
+
+    fun setContributorsAndTopics(){
+        val namesListView = findViewById<ListView>(R.id.Topics)
+        val contributorsListView = findViewById<ListView>(R.id.Owners)
+
+
+        var namesAdapter: ArrayAdapter<String> = ArrayAdapter(
+            this, android.R.layout.simple_list_item_1, names
+        )
+
+        var contributorsAdapter: ArrayAdapter<String> = ArrayAdapter(
+            this, android.R.layout.simple_list_item_1, contributors
+        )
+
+        namesListView.adapter=namesAdapter
+        contributorsListView.adapter=contributorsAdapter
+
+        namesListView.setOnItemClickListener { parent, view, position, id ->
+            goToLearningSpace3(position,id)
+        }
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,30 +53,12 @@ class LearningSpace2 : AppCompatActivity() {
             contributors= arrayOf("Hidden")
         }
 
+
+
         var learning_topic = findViewById(R.id.learning_topic) as TextView
-
+        setContributorsAndTopics()
     }
 
-    fun setContributorsAndTopics(){
-        val namesListView = findViewById<ListView>(R.id.Topics)
-        val contributorsListView = findViewById<ListView>(R.id.Owners)
-
-
-        val namesAdapter: ArrayAdapter<String> = ArrayAdapter(
-            this, android.R.layout.simple_list_item_1, names
-        )
-
-        val contributorsAdapter: ArrayAdapter<String> = ArrayAdapter(
-            this, android.R.layout.simple_list_item_1, contributors
-        )
-
-        namesListView.adapter=namesAdapter
-        contributorsListView.adapter=contributorsAdapter
-
-        namesListView.setOnItemClickListener { parent, view, position, id ->
-            goToLearningSpace3(position,id)
-        }
-    }
 
 
     fun addContent(view: View){
@@ -70,6 +72,7 @@ class LearningSpace2 : AppCompatActivity() {
                 join_leave.text="Enroll"
                 names= arrayOf("Hidden")
                 contributors= arrayOf("Hidden")
+                enrolledLearningSpaceIds.remove(currentLearningSpaceId)
             }
 
             else if(join_leave.text=="Enroll" && !enrolledLearningSpaceIds.contains(currentLearningSpaceId) ){
@@ -85,13 +88,20 @@ class LearningSpace2 : AppCompatActivity() {
 
                         if(it?.id!=null){ // success
                             enrolledLearningSpaceIds.add(it?.id)
-                            Toast.makeText(this, it?.name, Toast.LENGTH_LONG).show()
+                            Toast.makeText(this, it.members[0].toString(), Toast.LENGTH_LONG).show()
 
                             //contributors=it?.members
                             contributors= arrayOf("")
-                            for(eachMap in it?.members!!){
-                                contributors+=eachMap["username"].toString()
+                            for(i in 0..(it.members.size-1)){
+                                contributors+=it.members[i].toString()
                             }
+
+                            names= arrayOf("")
+                            for(i in 0..(it.members.size-1)){
+                                contributors+=it.members[i].toString()
+                            }
+
+
                             // it?.id id of the learning space
                             // it?.name name of the learning space
                             //it?.members [ {"id": id of the user, "username": "username of the user", "email": "email of the user" } ]
@@ -103,8 +113,9 @@ class LearningSpace2 : AppCompatActivity() {
                     }
 
                 }
-            }
 
+            }
+        setContributorsAndTopics()
     }
 
 
