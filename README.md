@@ -24,7 +24,7 @@ Welcome to our project repository for CMPE 415 course held in Fall 2022. You can
 
 10- [Osman Fehmi Albayrak](https://github.com/bounswe/bounswe2022group1/wiki/Osman-Fehmi-Albayrak)
 
-11- [Hüseyin Seyyid](https://github.com/bounswe/bounswe2022group1/wiki/H%C3%BCseyin-Seyyid)
+11- [Hüseyin Seyyid Kaplan](https://github.com/bounswe/bounswe2022group1/wiki/Huseyin-Seyyid-Kaplan)
 
 12- [Kadir Kalkan](https://github.com/bounswe/bounswe2022group1/wiki/Kadir-Kalkan)
 
