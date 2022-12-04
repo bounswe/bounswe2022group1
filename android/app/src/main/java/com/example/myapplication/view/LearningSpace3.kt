@@ -2,6 +2,7 @@ package com.example.myapplication.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.TextView
@@ -19,12 +20,11 @@ class LearningSpace3 : AppCompatActivity() {
         val apiService = learningSpace2GetContent_api_call()
 
         apiService.getContent(currentContentId) {
+            Toast.makeText(this, it?.toString(), Toast.LENGTH_SHORT).show()
+            Log.d("baba",user_token)
+            if(it?.id !=null){ //content success
 
-            var contentView = findViewById<TextView>(R.id.ContentText)
-            contentView.text=it?.data.toString()
-            if(it?.data?.get(0)?.id !=null){ //content success
-
-                val owners = arrayOf(it?.data?.get(0)?.owner)
+                val owners = arrayOf(it?.owner)
                 val ownersListView = findViewById<ListView>(R.id.Owners)
                 val ownersAdapter: ArrayAdapter<Int> = ArrayAdapter(
                     this, android.R.layout.simple_list_item_1, owners
@@ -32,14 +32,14 @@ class LearningSpace3 : AppCompatActivity() {
                 ownersListView.adapter=ownersAdapter
 
 
-
-                contentView.text=it?.data?.get(0)?.text
+                var contentView = findViewById<TextView>(R.id.ContentText)
+                contentView.text=it?.text
 
                 var learningTopic = findViewById<TextView>(R.id.learning_topic2)
-                learningTopic.text=it?.data?.get(0)?.name
+                learningTopic.text=it?.name
 
                 var numberOfUp = findViewById<TextView>(R.id.numberOfUp)
-                numberOfUp.text="+"+it?.data?.get(0)?.upVoteCount
+                numberOfUp.text="+"+it?.upVoteCount
 
             }
             else{ // content unsuccess
