@@ -11,15 +11,30 @@ from rest_framework.authtoken.serializers import AuthTokenSerializer
 from .serializers import ContentSerializer, UserSerializer, RegisterSerializer, DiscussionPostSerializer
 from .serializers import ChangePasswordSerializer, LearningSpaceSerializer, DiscussionSerializer, ProfileSerializer,ProfilePostSerializer
 from .models import Content, LearningSpace, Discussion, Profile
-
-
+from django.core.exceptions import ValidationError
+from django.core.validators import validate_email
 
 # Register API
 class Register(generics.GenericAPIView):
     serializer_class = RegisterSerializer
 
     def post(self, request, *args, **kwargs):
-        serialization = self.get_serializer(data=request.data)
+        
+
+        data=request.data
+
+        given_email= data["email"]
+
+        try:
+            validate_email(given_email)
+        except ValidationError as e:
+            print("Bad email, details:", e)
+        
+
+        if User.objects.filter(email=given_email).exists():
+            return Response({"message": "Given email has already been used. Please try another email"}, status=status.HTTP_400_BAD_REQUEST)
+
+        serialization = self.get_serializer(data=data)
         
         serialization.is_valid(raise_exception=True)
         
