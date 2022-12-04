@@ -379,7 +379,7 @@ class LearningSpaceListApiView(APIView):
         try:
             ls = LearningSpace.objects.all()
             serializer = self.serializer_class(ls, many=True)
-            return Response(serializer.data, status=status.HTTP_200_OK)
+            return Response({"data": serializer.data}, status=status.HTTP_200_OK)
         except LearningSpace.DoesNotExist:
             return Response({"message": "given id doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -394,7 +394,7 @@ class EnrolledLearningSpaceApiView(APIView):
         try:
             ls=LearningSpace.objects.filter(members__id=request.user.id)
             serializer = self.serializer_class(ls, many=True)
-            return Response(serializer.data, status=status.HTTP_200_OK)
+            return Response({"data": serializer.data}, status=status.HTTP_200_OK)
         except LearningSpace.DoesNotExist:
             return Response({"message": "given user doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -415,7 +415,7 @@ class LearningSpaceSearchApiView(APIView):
         try:
             ls = LearningSpace.objects.filter(name__icontains=search_parameter)
             serializer = self.serializer_class(ls, many=True)
-            return Response(serializer.data, status=status.HTTP_200_OK)
+            return Response({"data": serializer.data}, status=status.HTTP_200_OK)
         except LearningSpace.DoesNotExist:
             return Response({"message": "given id doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -436,7 +436,7 @@ class LearningSpaceTagSearchApiView(APIView):
         try:
             ls = LearningSpace.objects.filter(tag__icontains=tag)
             serializer = self.serializer_class(ls, many=True)
-            return Response(serializer.data, status=status.HTTP_200_OK)
+            return Response({"data": serializer.data}, status=status.HTTP_200_OK)
         except LearningSpace.DoesNotExist:
             return Response({"message": "given id doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
 
