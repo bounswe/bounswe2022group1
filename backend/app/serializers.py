@@ -95,8 +95,9 @@ class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
         #fields = '_all_'
-        fields = ["id", "about_me", "user","learningspaces"]
+        fields = ["id", "about_me", "user","learningspaces","image"]
     user =  UserSerializer()
+    image = serializers.FileField()
     #learningspaces = LearningSpaceSerializer(many=True, read_only=True)
 
 
@@ -104,7 +105,8 @@ class ProfilePostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
         #fields = '_all_'
-        fields = ["id", "about_me", "user", "learningspaces"]  
+        fields = ["id", "about_me", "user", "image"]  
+    image = serializers.FileField()
     #learningspaces = LearningSpaceSerializer(many=True, read_only=True)
 class ResetSerializer(serializers.Serializer):
     email = serializers.CharField(required=True)
