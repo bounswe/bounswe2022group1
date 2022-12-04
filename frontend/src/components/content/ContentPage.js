@@ -25,7 +25,7 @@ const ContentPage = () => {
             const baseURL = `http://3.89.218.253:8000/app/discussion-list/?content_id=${params.id}`;
             const res = await axios.get(baseURL, { headers: {"Authorization" : `token ${localStorage.getItem("token")}`} })
             setComments(res.data.data)
-            console.log(res.data)
+            console.log(res.data.data)
         }
         getComments()
     }, []);

@@ -22,7 +22,7 @@ export default class Discussion extends Component {
     
     constructor(props) {
       super(props);
-      this.state = { content_id: props.content_id, comment: "", comments: props.comments};
+      this.state = { content_id: props.content_id, comment: "", comments:[]};
       this.handleSubmit = this.handleSubmit.bind(this);
     }
   
@@ -35,8 +35,8 @@ export default class Discussion extends Component {
     }
 
     async getComments() {
-        const baseURL = `http://3.89.218.253:8000/app/discussion-list/?content_id=${this.state.content_id}`;
-        const res = await axios.get(baseURL, { headers: {"Authorization" : `token ${localStorage.getItem("token")}`} })
+        const baseURL = `http://3.89.218.253:8000/app/discussion-list/?content_id=${this.props.content_id}`;
+        const res = await axios.get(baseURL, { headers: {"Authorization" : `token ${localStorage.getItem("token")}`} });
         this.setState({ comments: res.data.data })
     }
 
