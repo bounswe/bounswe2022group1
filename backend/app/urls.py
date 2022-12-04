@@ -3,8 +3,8 @@ from .views import Login, discussionApiView, discussionApiListView
 from django.urls import path
 from knox import views as knox_views
 from django.urls import path
-from .views import ChangePassword,LearningSpaceApiView, LearningSpaceListApiView, LearningSpaceSearchApiView,profileApiView, LearningSpaceTagSearchApiView,forgetpasswordApiView
-
+from .views import ChangePassword,LearningSpaceApiView, LearningSpaceListApiView, LearningSpaceSearchApiView,profileApiView, LearningSpaceTagSearchApiView,forgetpasswordApiView,leaveApiView
+from .views import *
 
 
 urlpatterns = [
@@ -24,6 +24,9 @@ urlpatterns = [
     path('app/learning-space-search/', LearningSpaceSearchApiView.as_view(), name='learning-space-search'),
     path('app/learning-space-tag-search/', LearningSpaceTagSearchApiView.as_view(), name='learning-space-tag-search'),
     path('app/forget-password/' , forgetpasswordApiView.as_view() , name="forget_password"),
+    path('app/leave-learning-space/', leaveApiView.as_view(), name='leave-learning-space'),
+    path('app/enrolled-learning-spaces/', EnrolledLearningSpaceApiView.as_view(), name='enrolled-learning-spaces'),
+    
     
 
 
