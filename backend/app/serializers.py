@@ -106,6 +106,11 @@ class ProfilePostSerializer(serializers.ModelSerializer):
         #fields = '_all_'
         fields = ["id", "about_me", "user", "learningspaces"]  
     #learningspaces = LearningSpaceSerializer(many=True, read_only=True)
+class ResetSerializer(serializers.Serializer):
+    email = serializers.CharField(required=True)
+
+
+
 
 
 
