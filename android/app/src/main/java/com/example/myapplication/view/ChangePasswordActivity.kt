@@ -57,8 +57,7 @@ class ChangePasswordActivity : AppCompatActivity() {
 
             }
             else{
-                success_message.text="xxx"
-                Toast.makeText(this, it?.code.toString(), Toast.LENGTH_LONG).show()
+                success_message.text="Credentials are incorrect"
                 success_message.postDelayed({success_message.setVisibility(View.INVISIBLE)},2000)
             }
 
