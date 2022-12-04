@@ -42,7 +42,7 @@ class ContentSerializer(serializers.ModelSerializer):
         model = Content
         fields = ["id", "name", "type", "text", "url", "owner", "learningSpace", "upVoteCount"]
 
-#    text = serializers.CharField(max_length=30 default="")
+    text = serializers.CharField(default="")
     url = serializers.CharField(max_length=30, default="")
     upVoteCount = serializers.IntegerField(default=0)
 
