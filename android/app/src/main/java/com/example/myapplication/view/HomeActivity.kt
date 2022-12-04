@@ -99,4 +99,8 @@ class HomeActivity : AppCompatActivity() {
         var intent= Intent(applicationContext, HomeActivity::class.java)
         startActivity(intent)
     }
+    fun goToProfilePage(view: View){
+        var intent= Intent(applicationContext, ProfilePageActivity::class.java)
+        startActivity(intent)
+    }
 }
