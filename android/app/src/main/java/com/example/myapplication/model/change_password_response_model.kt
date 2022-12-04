@@ -5,11 +5,9 @@ import com.google.gson.annotations.SerializedName
 
 class change_password_response_model (
     @SerializedName("status")
-    val status:Integer,
+    val status:String,
     @SerializedName("code")
-    val code:String,
+    val code:Integer,
     @SerializedName("message")
-    val message:String,
-
-
+    val message:String
 )

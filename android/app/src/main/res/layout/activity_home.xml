@@ -130,6 +130,7 @@
             android:layout_height="60dp"
             android:background="@null"
             android:contentDescription="@string/appbar_scrolling_view_behavior"
+            android:onClick="goToProfilePage"
             app:srcCompat="@android:drawable/ic_menu_my_calendar"
             tools:ignore="MissingConstraints" />
     </LinearLayout>

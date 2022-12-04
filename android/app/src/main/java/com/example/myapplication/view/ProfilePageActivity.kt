@@ -16,4 +16,9 @@ class ProfilePageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profilepage)
     }
+
+    fun toChangePassword(view: View) {
+        var intent= Intent(applicationContext, ChangePasswordActivity::class.java)
+        startActivity(intent)
+    }
 }
