@@ -9,10 +9,17 @@ from knox.models import AuthToken
 from knox.views import LoginView as KnoxLoginView
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from .serializers import ContentSerializer, UserSerializer, RegisterSerializer, DiscussionPostSerializer
-from .serializers import ChangePasswordSerializer, LearningSpaceSerializer, DiscussionSerializer, ProfileSerializer,ProfilePostSerializer
+from .serializers import ChangePasswordSerializer, LearningSpaceSerializer, DiscussionSerializer, ProfileSerializer,ProfilePostSerializer,ResetSerializer
 from .models import Content, LearningSpace, Discussion, Profile
+
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
+
+from .helpers import send_forget_password_mail,get_random_string
+
+
+
+
 
 # Register API
 class Register(generics.GenericAPIView):
@@ -398,3 +405,34 @@ class LearningSpaceTagSearchApiView(APIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
         except LearningSpace.DoesNotExist:
             return Response({"message": "given id doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
+
+class forgetpasswordApiView(APIView):
+    # add permission to check if user is authenticated
+    serializer_class = ResetSerializer
+
+    def post(self, request, *args, **kwargs):
+        try:
+            
+            get_email= request.data.copy()
+            get_email=get_email["email"]
+        except ValueError:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+        
+        
+        if not User.objects.filter(email=get_email).exists():
+            return Response({"message": "given email doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
+        else: 
+            u= User.objects.get(email=get_email)
+            new_pass=get_random_string(10)
+            u.set_password(new_pass)
+            u.save()
+            #print(new_pass)
+            #print(get_email)
+            send_forget_password_mail(get_email, new_pass )
+            return Response({"message": "your password is sent to your email"}, status=status.HTTP_200_OK)
+
+
+
+
+       
