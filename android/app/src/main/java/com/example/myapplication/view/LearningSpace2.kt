@@ -13,21 +13,34 @@ val enrolledLearningSpaceIds=mutableSetOf<Int>()
 
 
 class LearningSpace2 : AppCompatActivity() {
+    var currentLearningSpaceId=1
+    var names = arrayOf("Yazı", "Video", "Resim", "Tartışma", "Buluşma")
+    var contributors=arrayOf("Ömer Özdemir","Osman Fehmi Albayrak","Ahmet Yazıcı","Harun Erkurt","Ömer Özdemir","Osman Fehmi Albayrak","Ahmet Yazıcı","Harun Erkurt")
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_learning_space2)
 
+        var join_leave = findViewById(R.id.join_leave) as Button
+
+        if(enrolledLearningSpaceIds.contains(currentLearningSpaceId)){
+            join_leave.text="Leave"
+        }
+        else{
+            join_leave.text="Enroll"
+            names= arrayOf("Hidden")
+            contributors= arrayOf("Hidden")
+        }
 
         var learning_topic = findViewById(R.id.learning_topic) as TextView
 
+    }
+
+    fun setContributorsAndTopics(){
         val namesListView = findViewById<ListView>(R.id.Topics)
         val contributorsListView = findViewById<ListView>(R.id.Owners)
 
-        val names = arrayOf("Yazı", "Video", "Resim", "Tartışma", "Buluşma")
-        val contributors=arrayOf("Ömer Özdemir","Osman Fehmi Albayrak","Ahmet Yazıcı","Harun Erkurt","Ömer Özdemir","Osman Fehmi Albayrak","Ahmet Yazıcı","Harun Erkurt")
-
-
-        var join_leave = findViewById(R.id.join_leave) as Button
 
         val namesAdapter: ArrayAdapter<String> = ArrayAdapter(
             this, android.R.layout.simple_list_item_1, names
@@ -43,12 +56,22 @@ class LearningSpace2 : AppCompatActivity() {
         namesListView.setOnItemClickListener { parent, view, position, id ->
             goToLearningSpace3(position,id)
         }
+    }
 
-        val currentLearningSpaceId=0
-        join_leave.setOnClickListener{
+
+    fun addContent(view: View){
+
+    }
+
+    fun enroll(view :View){
+            var join_leave = findViewById(R.id.join_leave) as Button
+
             if(join_leave.text=="Leave"){
-                //join_leave.text="Enroll"
+                join_leave.text="Enroll"
+                names= arrayOf("Hidden")
+                contributors= arrayOf("Hidden")
             }
+
             else if(join_leave.text=="Enroll" && !enrolledLearningSpaceIds.contains(currentLearningSpaceId) ){
                 if(!user_token.isEmpty()){
                     join_leave.text="Leave"
@@ -62,27 +85,25 @@ class LearningSpace2 : AppCompatActivity() {
 
                         if(it?.id!=null){ // success
                             enrolledLearningSpaceIds.add(it?.id)
+                            Toast.makeText(this, it?.name, Toast.LENGTH_LONG).show()
+
+                            //contributors=it?.members
+                            contributors= arrayOf("")
+                            for(eachMap in it?.members!!){
+                                contributors+=eachMap["username"].toString()
+                            }
                             // it?.id id of the learning space
                             // it?.name name of the learning space
                             //it?.members [ {"id": id of the user, "username": "username of the user", "email": "email of the user" } ]
                         }
                         else{ // enroll is unsucess
-
+                            Toast.makeText(this,"Hata var.", Toast.LENGTH_LONG).show()
                         }
 
                     }
 
                 }
             }
-        }
-
-
-
-
-    }
-
-
-    fun addContent(view: View){
 
     }
 
