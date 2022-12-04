@@ -7,6 +7,7 @@ import SignUp from "./components/signup/signup";
 import Profile from "./components/profile/Profile";
 import Homepage from "./components/homepage/Homepage";
 import Logout from "./components/logout/Logout";
+import Content from "./components/content/ContentPage";
 
 import { ReactComponent as Logo } from "./BUdemi.svg";
 
@@ -56,6 +57,7 @@ function App() {
               <Route path="/sign-up" element={<SignUp />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/logout" element={<Logout />} />
+              <Route path="/content/:id" element={<Content />} />
             </Routes>
           </div>
         </div>
