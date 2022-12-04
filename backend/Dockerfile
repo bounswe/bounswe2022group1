@@ -9,4 +9,5 @@ RUN pip install djangorestframework
 RUN pip install django-rest-knox
 RUN pip install django-cors-headers
 RUN pip install django-environ
+RUN pip install Pillow 
 COPY . /code/
