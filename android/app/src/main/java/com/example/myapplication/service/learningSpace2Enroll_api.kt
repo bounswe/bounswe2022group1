@@ -11,5 +11,5 @@ interface learningSpace2Enroll_api {
 
 
     @POST("enroll/")
-    fun enrollUser(@Header("Authorization")user_token:String , @Body enrollData: learningspace2Enroll_send_model): Call<learningspace2Enroll_receive_model>
+    fun enrollUser(@Header("Authorization")Token:String , @Body enrollData: learningspace2Enroll_send_model): Call<learningspace2Enroll_receive_model>
 }
