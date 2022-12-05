@@ -1,7 +1,30 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Budemi</string>
     <string name="todo">TODO</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="start_learning">Let\'s start learning!</string>
+    <string name="featured_contents">Featured Contents</string>
+    <string name="what_are_u_going_to_find">What are you going to find?</string>
+    <string name="newest_classes">Newest Contents</string>
+    <string name="view_all">View All</string>
+    <string name="newest_bundles">Newest Bundles</string>
+    <string name="best_rated">Best Rated</string>
+    <string name="reward_contents_mark">Reward Contents!</string>
+    <string name="by_spending_points">By spending points</string>
+    <string name="view">View</string>
+    <string name="best_selling">Best Selling</string>
+    <string name="discounted_classes">Discounted Contents</string>
+    <string name="free_classes">Free Contents</string>
+
+
+    <string name="type_menu">dropDownMenuExample</string>
+    <string-array name="type_choice">
+        <item>text</item>
+        <item>video</item>
+        <item>image</item>
+        <item>discussion</item>
+        <item>meeting</item>
+    </string-array>
 
 </resources>

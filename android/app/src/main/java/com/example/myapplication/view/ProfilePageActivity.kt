@@ -23,13 +23,17 @@ class ProfilePageActivity : AppCompatActivity() {
             editProfileButton()
         }
     }
-
     fun seeProfileButton() {
         var intent= Intent(applicationContext, ProfileSeeActivity::class.java)
         startActivity(intent)
     }
     fun editProfileButton() {
         var intent= Intent(applicationContext, ProfileCreateActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun toChangePassword(view: View) {
+        var intent= Intent(applicationContext, ChangePasswordActivity::class.java)
         startActivity(intent)
     }
 
