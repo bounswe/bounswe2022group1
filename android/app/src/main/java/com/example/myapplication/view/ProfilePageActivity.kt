@@ -3,6 +3,7 @@ package com.example.myapplication.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import com.example.myapplication.R
 
@@ -31,10 +32,9 @@ class ProfilePageActivity : AppCompatActivity() {
         var intent= Intent(applicationContext, ProfileCreateActivity::class.java)
         startActivity(intent)
     }
-/*
+
     fun toChangePassword(view: View) {
-        var intent= Intent(applicationContext, ChangePasswordActivity::class.java)
+        var intent = Intent(applicationContext, ChangePasswordActivity::class.java)
         startActivity(intent)
     }
-*/
 }
