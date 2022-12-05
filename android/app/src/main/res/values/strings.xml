@@ -17,4 +17,14 @@
     <string name="discounted_classes">Discounted Contents</string>
     <string name="free_classes">Free Contents</string>
 
+
+    <string name="type_menu">dropDownMenuExample</string>
+    <string-array name="type_choice">
+        <item>text</item>
+        <item>video</item>
+        <item>image</item>
+        <item>discussion</item>
+        <item>meeting</item>
+    </string-array>
+
 </resources>

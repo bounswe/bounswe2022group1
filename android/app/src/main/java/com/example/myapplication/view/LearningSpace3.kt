@@ -18,11 +18,9 @@ class LearningSpace3 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_learning_space3)
 
-
-        var currentContentId=1
         val apiService = learningSpace3GetContent_api_call()
 
-        apiService.getContent(currentContentId) {
+        apiService.getContent(currentContentID) {
 
             //Log.d("current user_token is",user_token)
             if(it?.id !=null){ //content success

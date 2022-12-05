@@ -5,8 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.EditText
-import android.widget.Toast
+import android.widget.*
 import com.example.myapplication.R
 import com.example.myapplication.model.learningSpace2AddContentText_send_model
 import com.example.myapplication.model.learningSpace2AddContentURL_send_model
@@ -17,25 +16,43 @@ class AddContent : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_content)
+
+        var typeEditText = findViewById(R.id.typeEditText) as Spinner
+
+        var textOrUrl=findViewById(R.id.textOrUrl) as TextView
+        typeEditText.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                var type=typeEditText.selectedItem.toString()
+                if(type.equals("text") || type.equals("meeting") || type.equals("discussion")){
+                    textOrUrl.text="Text:"
+                }
+                else{
+                    textOrUrl.text="URL:"
+                }
+            }
+
+        }
     }
 
 
     fun submitButtonClicked(view: View){
         var nameEditText = findViewById(R.id.NameEditText) as EditText
-        var typeEditText = findViewById(R.id.typeEditText) as EditText
+        var typeEditText = findViewById(R.id.typeEditText) as Spinner
         var textEditText = findViewById(R.id.textEditText) as EditText
-        var urlEditText = findViewById(R.id.urlEditText) as EditText
         var LearningSpaceIdEditText = findViewById(R.id.LearningSpaceIdEditText) as EditText
 
 
+
         var name=nameEditText.text.toString()
-        var type=typeEditText.text.toString()
+        var type=typeEditText.selectedItem.toString()
         var text=textEditText.text.toString()
-        var url=urlEditText.text.toString()
         var learningSpaceId=LearningSpaceIdEditText.text.toString()
 
-        if(type=="text" || type=="meeting"){
-            Log.d("texteyim",type)
+        if(type=="text" || type=="meeting" || type.equals("discussion")){
             val apiService = learningSpace2AddContentText_api_call()
             val userInfo = learningSpace2AddContentText_send_model(
                 name = name,
@@ -61,7 +78,7 @@ class AddContent : AppCompatActivity() {
             val userInfo = learningSpace2AddContentURL_send_model(
                 name = name,
                 type=type,
-                url=url,
+                url=text,
                 learningSpace=learningSpaceId.toInt()
             )
 

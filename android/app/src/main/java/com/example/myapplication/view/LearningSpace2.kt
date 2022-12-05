@@ -12,7 +12,9 @@ import com.example.myapplication.service.learningSpace2Enroll_api_call
 import com.example.myapplication.service.learningSpace2GetContentList_api_call
 
 val enrolledLearningSpaceIds=mutableSetOf<Int>()
-var currentLearningSpaceId=1
+
+var currentContentID=0
+var contentID_ContentName: HashMap<Int, Int> = HashMap<Int, Int>()
 
 class LearningSpace2 : AppCompatActivity() {
     var names = arrayOf("Yazı", "Video", "Resim", "Tartışma", "Buluşma")
@@ -35,7 +37,7 @@ class LearningSpace2 : AppCompatActivity() {
         contributorsListView.adapter=contributorsAdapter
 
         namesListView.setOnItemClickListener { parent, view, position, id ->
-            goToLearningSpace3(position,id)
+            goToLearningSpace3(position)
         }
     }
 
@@ -46,7 +48,7 @@ class LearningSpace2 : AppCompatActivity() {
 
         var join_leave = findViewById(R.id.join_leave) as Button
 
-        if(enrolledLearningSpaceIds.contains(currentLearningSpaceId)){
+        if(enrolledLearningSpaceIds.contains(learningSpaceID)){
             join_leave.text="Leave"
         }
         else{
@@ -73,16 +75,16 @@ class LearningSpace2 : AppCompatActivity() {
                 join_leave.text="Enroll"
                 names= arrayOf("Hidden")
                 contributors= arrayOf("Hidden")
-                enrolledLearningSpaceIds.remove(currentLearningSpaceId)
+                enrolledLearningSpaceIds.remove(learningSpaceID)
             }
 
-            else if(join_leave.text=="Enroll" && !enrolledLearningSpaceIds.contains(currentLearningSpaceId) ){
+            else if(join_leave.text=="Enroll" && !enrolledLearningSpaceIds.contains(learningSpaceID) ){
                 if(!user_token.isEmpty()){
                     join_leave.text="Leave"
 
                     val apiService = learningSpace2Enroll_api_call()
                     val userInfo = learningspace2Enroll_send_model(
-                        learning_space_id = currentLearningSpaceId
+                        learning_space_id = learningSpaceID
                     )
 
                     apiService.enrollUser(userInfo) {
@@ -109,20 +111,27 @@ class LearningSpace2 : AppCompatActivity() {
     }
 
 
-    fun goToLearningSpace3(position:Int,id:Long) {
-        Log.d("omer_baba",position.toString()+" "+id.toString())
-        var intent= Intent(applicationContext, LearningSpace3::class.java)
-        startActivity(intent)
+    fun goToLearningSpace3(position:Int) {
+        if(names[0].equals("Hidden")){
+            Log.d("omer_ababa","selam")
+        }
+        else {
+
+            currentContentID = contentID_ContentName[position-1]!!
+            Log.d("omer_baba_deneme", currentContentID.toString())
+            var intent = Intent(applicationContext, LearningSpace3::class.java)
+            startActivity(intent)
+        }
     }
 
 
 
     fun ShowContributorsAndTopics(){
         val apiService = learningSpace2GetContentList_api_call()
-        val userInfo = currentLearningSpaceId
+        val userInfo = learningSpaceID
 
         apiService.getContentList(userInfo) {
-            Toast.makeText(this,it?.data?.get(0).toString(), Toast.LENGTH_LONG).show()
+
             if(it?.data!=null){ // success
                 var receivedArr=it?.data
 
@@ -133,6 +142,7 @@ class LearningSpace2 : AppCompatActivity() {
                 for(i in 0..(receivedArr.size-1)){
                     contributors+=receivedArr[i].owner.toString()
                     names+=receivedArr[i].name.toString()
+                    contentID_ContentName.put(i,receivedArr[i].id)
                 }
 
                 setContributorsAndTopics()
