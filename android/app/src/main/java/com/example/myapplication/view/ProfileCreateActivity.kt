@@ -31,8 +31,7 @@ class ProfileCreateActivity : AppCompatActivity() {
         val _about_me = findViewById(R.id.about_me) as EditText
         val apiService = profile_edit_api_call()
         val userInfo = profile_edit_post_send_model(
-            about_me = _about_me.text.toString(),
-            image =  "LOREM IPSUM SELAM CANIM BEN AMCANIM")
+            about_me = _about_me.text.toString())
 
         apiService.createProfile(userInfo) {
 

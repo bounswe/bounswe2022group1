@@ -13,7 +13,7 @@
         android:layout_marginStart="52dp"
         android:layout_marginTop="84dp"
         android:layout_marginEnd="52dp"
-        android:layout_marginBottom="78dp"
+        android:layout_marginBottom="53dp"
         android:ems="10"
         android:shadowColor="#cf1d1d"
         android:shadowDx="0.0"
@@ -25,7 +25,7 @@
         android:textIsSelectable="false"
         android:textSize="20sp"
         android:textStyle="bold|italic"
-        app:layout_constraintBottom_toTopOf="@+id/about_me"
+        app:layout_constraintBottom_toTopOf="@+id/textViewAboutMe"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -34,7 +34,7 @@
         android:id="@+id/about_me"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="81dp"
+        android:layout_marginBottom="82dp"
         android:ems="10"
         android:gravity="center"
         android:hint="About Me"
@@ -43,18 +43,31 @@
         android:minHeight="48dp"
         app:layout_constraintBottom_toTopOf="@+id/editAboutMe"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/success_message_profile" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewAboutMe" />
 
     <Button
         android:id="@+id/editAboutMe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="37dp"
-        android:layout_marginBottom="174dp"
+        android:layout_marginBottom="175dp"
         android:onClick="editAboutMe"
         android:text="Edit Profile"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/about_me"
         app:layout_constraintTop_toBottomOf="@+id/about_me" />
+
+    <TextView
+        android:id="@+id/textViewAboutMe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginBottom="5dp"
+        android:text="About Me:"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/about_me"
+        app:layout_constraintStart_toStartOf="@+id/about_me"
+        app:layout_constraintTop_toBottomOf="@+id/success_message_profile" />
 </androidx.constraintlayout.widget.ConstraintLayout>
