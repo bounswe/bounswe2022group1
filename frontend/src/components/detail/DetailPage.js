@@ -22,7 +22,6 @@ const handleJoin = () => {
         .then((response) => {
             console.log(response.data);
 			alert("Successfully enrolled "+response.data.name+" for user "+localStorage.getItem("username"));
-			localStorage.setItem("enrolled", 1);
         }, (error) => {
             console.log(error);
      });
@@ -35,7 +34,7 @@ const sections = [
 	<Dropdown.Item href="#/action-2">Video</Dropdown.Item>
 	<Dropdown.Item href="#/action-3">Picture</Dropdown.Item>
 	</DropdownButton></div>, url: '#' },
-	{ title: <div class="dropdownZ"> <button type="submit" onClick={handleJoin} disabled={localStorage.getItem("enrolled")} className="btn btn-primary">Join</button></div>, url: '#' },
+	{ title: <div class="dropdownZ"> <button type="submit" onClick={handleJoin} className="btn btn-primary">Join</button></div>, url: '#' },
 ];
 
 
