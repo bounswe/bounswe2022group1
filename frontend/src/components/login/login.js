@@ -1,8 +1,11 @@
 import React, { Component } from "react";
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
 export default class Login extends Component {
   constructor(props) {
     super(props);
     this.state = { username: "", password: "" };
+    this.errors = {};
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleClick = (e) => {
@@ -64,6 +67,16 @@ export default class Login extends Component {
     event.preventDefault();
   }
 
+  validate (values) {
+    this.errors = {};
+    if(!this.state.username){
+      this.errors.username = "Username is required.";
+    }
+    if(!this.state.password){
+      this.errors.password = "Password is required.";
+    }
+  }
+
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
@@ -77,6 +90,8 @@ export default class Login extends Component {
             onChange={(e) => this.handleChange({ username: e.target.value })}
           />
         </div>
+        {this.setErrors=this.validate(this.state)}
+        <p>{ this.errors.username }</p>
         <div className="password">
           <label>Password</label>
           <input
@@ -86,6 +101,7 @@ export default class Login extends Component {
             onChange={(e) => this.handleChange({ password: e.target.value })}
           />
         </div>
+        <p>{ this.errors.password }</p>
         <div className="mb-3">
           <div className="custom-control custom-checkbox">
             <input
@@ -99,16 +115,17 @@ export default class Login extends Component {
           </div>
         </div>
         <div className="d-grid">
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn btn-primary" disabled={(this.state.username==="" || this.state.password==="")}>
             Submit
           </button>
         </div>
         <p className="forgot-password text-right">
           Forgot{" "}
-          <a href="/" onClick={this.handleClick}>
+          <a href="/forgot-password">
             password?
           </a>
         </p>
+
       </form>
     );
   }

@@ -1,4 +1,6 @@
 import * as React from 'react';
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
 import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
@@ -9,11 +11,32 @@ import WelcomePost from './WelcomePost';
 import Contents from './Content';
 import Sidebar from './Sidebar';
 import Footer from './Footer';
+import axios from "axios";
+
+const handleJoin = () => {
+    axios.post(`http://3.89.218.253:8000/app/enroll/`, {
+        learning_space_id: 1,
+        },{headers: {
+            'Authorization': `token ${localStorage.getItem("token")}`
+        }})
+        .then((response) => {
+            console.log(response.data);
+			alert("Successfully enrolled "+response.data.name+" for user "+localStorage.getItem("username"));
+        }, (error) => {
+            console.log(error);
+     });
+
+  }
 
 const sections = [
-	{ title: 'Add Content +', url: '#' },
-	{ title: 'Join +', url: '#' },
+	{ title: <div class="dropdownZ"> <DropdownButton id="dropdown-basic-button" title="Add Content">
+	<Dropdown.Item href="#/action-1">Text</Dropdown.Item>
+	<Dropdown.Item href="#/action-2">Video</Dropdown.Item>
+	<Dropdown.Item href="#/action-3">Picture</Dropdown.Item>
+	</DropdownButton></div>, url: '#' },
+	{ title: <div class="dropdownZ"> <button type="submit" onClick={handleJoin} className="btn btn-primary">Join</button></div>, url: '#' },
 ];
+
 
 const welcomePost = {
 	description:
@@ -64,7 +87,6 @@ const theme = createTheme();
 
 export default function DetailPage() {
 	return (
-		<div className="all">
 			<ThemeProvider theme={theme}>
 				<CssBaseline />
 				<Container maxWidth="lg">
@@ -88,6 +110,5 @@ export default function DetailPage() {
 					description="a company of bogazici university"
 				/>
 			</ThemeProvider>
-		</div>
 	);
 }
