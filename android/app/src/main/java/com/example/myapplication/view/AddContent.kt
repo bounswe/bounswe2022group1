@@ -43,14 +43,12 @@ class AddContent : AppCompatActivity() {
         var nameEditText = findViewById(R.id.NameEditText) as EditText
         var typeEditText = findViewById(R.id.typeEditText) as Spinner
         var textEditText = findViewById(R.id.textEditText) as EditText
-        var LearningSpaceIdEditText = findViewById(R.id.LearningSpaceIdEditText) as EditText
 
 
 
         var name=nameEditText.text.toString()
         var type=typeEditText.selectedItem.toString()
         var text=textEditText.text.toString()
-        var learningSpaceId=LearningSpaceIdEditText.text.toString()
 
         if(type=="text" || type=="meeting" || type.equals("discussion")){
             val apiService = learningSpace2AddContentText_api_call()
@@ -58,7 +56,7 @@ class AddContent : AppCompatActivity() {
                 name = name,
                 type=type,
                 text=text,
-                learningSpace=learningSpaceId.toInt()
+                learningSpace= learningSpaceID
             )
 
             apiService.addContent(userInfo){
@@ -79,7 +77,7 @@ class AddContent : AppCompatActivity() {
                 name = name,
                 type=type,
                 url=text,
-                learningSpace=learningSpaceId.toInt()
+                learningSpace=learningSpaceID
             )
 
             apiService.addContent(userInfo){
