@@ -8,9 +8,12 @@
 
     <TextView
         android:id="@+id/success_message_profile"
-        android:layout_width="306dp"
-        android:layout_height="90dp"
-        android:layout_marginBottom="480dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="78dp"
         android:ems="10"
         android:shadowColor="#cf1d1d"
         android:shadowDx="0.0"
@@ -22,35 +25,36 @@
         android:textIsSelectable="false"
         android:textSize="20sp"
         android:textStyle="bold|italic"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/about_me"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button5"
-        app:layout_constraintVertical_bias="0.515" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/about_me"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="252dp"
+        android:layout_marginBottom="81dp"
         android:ems="10"
         android:gravity="center"
         android:hint="About Me"
         android:importantForAutofill="no"
         android:inputType="textPersonName"
         android:minHeight="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/editAboutMe"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/success_message_profile" />
 
     <Button
         android:id="@+id/editAboutMe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="37dp"
+        android:layout_marginBottom="174dp"
         android:onClick="editAboutMe"
         android:text="Edit Profile"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="381dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/about_me"
+        app:layout_constraintTop_toBottomOf="@+id/about_me" />
 </androidx.constraintlayout.widget.ConstraintLayout>

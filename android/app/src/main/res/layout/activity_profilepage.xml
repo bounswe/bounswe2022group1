@@ -10,22 +10,35 @@
         android:id="@+id/editProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="184dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="51dp"
         android:onClick="editProfileButton"
         android:text="Edit Profile"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/seeProfile"
+        app:layout_constraintEnd_toEndOf="@+id/imageView6"
+        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
 
     <Button
         android:id="@+id/seeProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="244dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginBottom="169dp"
         android:onClick="seeProfileButton"
         android:text="See Profile"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/editProfile"
+        app:layout_constraintTop_toBottomOf="@+id/editProfile" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="180dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginBottom="47dp"
+        app:layout_constraintBottom_toTopOf="@+id/editProfile"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/vesika" />
 </androidx.constraintlayout.widget.ConstraintLayout>
