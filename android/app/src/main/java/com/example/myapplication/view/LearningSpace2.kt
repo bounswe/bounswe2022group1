@@ -47,7 +47,7 @@ class LearningSpace2 : AppCompatActivity() {
 
         var join_leave = findViewById(R.id.join_leave) as Button
 
-
+        Log.d("user token of the user is", user_token)
         if(join_leave.text.equals("ENROLL")){
             names= arrayOf("Hidden")
             contributors= arrayOf("Hidden")
@@ -55,6 +55,7 @@ class LearningSpace2 : AppCompatActivity() {
         else{
             ShowContributorsAndTopics()
         }
+
 
         var learning_topic = findViewById(R.id.learning_topic) as TextView
         learning_topic.text= learningSpaceNAME
@@ -103,7 +104,7 @@ class LearningSpace2 : AppCompatActivity() {
 
         }
         else {
-            currentContentID = contentID_ContentName[position-1]!!
+            currentContentID = contentID_ContentName[position]!!
             var intent = Intent(applicationContext, LearningSpace3::class.java)
             startActivity(intent)
         }
@@ -120,19 +121,18 @@ class LearningSpace2 : AppCompatActivity() {
             if(it?.data!=null){ // success
                 var receivedArr=it?.data
 
-                //enrolledLearningSpaceIds.add(receivedMap.id)
-
-                contributors= arrayOf("")
+                contributors= arrayOf<String>()
                 for (i in 0..(learningSpaceMEMBERS.size-1)){
                     contributors+= learningSpaceMEMBERS[i].name
                 }
 
-                names= arrayOf("")
+                names= arrayOf<String>()
                 for(i in 0..(receivedArr.size-1)){
                     //contributors+=receivedArr[i].owner.toString()
                     names+=receivedArr[i].name.toString()
                     contentID_ContentName.put(i,receivedArr[i].id)
                 }
+
                 setContributorsAndTopics()
             }
             else{ // showing contributors is unsucess
