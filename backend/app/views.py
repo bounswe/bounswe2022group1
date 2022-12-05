@@ -361,7 +361,7 @@ class profileApiView(APIView):
     
     def get(self, request, *args, **kwargs):
         try:
-            user_id = request.user.id
+            user_id = int(request.GET.get('user_id', request.user.id))
         except ValueError:
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
