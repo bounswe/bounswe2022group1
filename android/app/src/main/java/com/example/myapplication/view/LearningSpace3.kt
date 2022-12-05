@@ -6,10 +6,18 @@ import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.RelativeSizeSpan
 import android.text.style.SubscriptSpan
+import android.util.Log
 import android.view.View
 import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import com.example.myapplication.R
+import com.example.myapplication.model.learningSpace3GetDiscussionList_send_model
+import com.example.myapplication.model.learningSpace3PostDiscussion_send_model
+import com.example.myapplication.model.ls_create_model
 import com.example.myapplication.service.learningSpace3GetContent_api_call
+import com.example.myapplication.service.learningSpace3GetDiscussionList_api_call
+import com.example.myapplication.service.learningSpace3PostDiscussion_api_call
+import com.example.myapplication.service.ls_create_call
 
 class LearningSpace3 : AppCompatActivity() {
 
@@ -22,12 +30,20 @@ class LearningSpace3 : AppCompatActivity() {
 
         apiService.getContent(currentContentID) {
 
-            //Log.d("current user_token is",user_token)
-            if(it?.id !=null){ //content success
 
-                val owners = arrayOf(it?.owner)
+            if(it?.id !=null){ //content success
+                updateDiscussion()
+                var nameOfOwner=""
+                learningSpaceMEMBERS.forEach{
+                    l->
+                    if(l.id==it.owner){
+                        nameOfOwner=l.name
+                    }
+                }
+
+                val owners = arrayOf<String>(nameOfOwner)
                 val ownersListView = findViewById<ListView>(R.id.Owners)
-                val ownersAdapter: ArrayAdapter<Int> = ArrayAdapter(
+                val ownersAdapter: ArrayAdapter<String> = ArrayAdapter(
                     this, android.R.layout.simple_list_item_1, owners
                 )
                 ownersListView.adapter=ownersAdapter
@@ -72,6 +88,25 @@ class LearningSpace3 : AppCompatActivity() {
     }
 
 
+    fun updateDiscussion(){
+        val apiService = learningSpace3GetDiscussionList_api_call()
+
+        apiService.getDiscussionList(currentContentID){
+            if(it?.data!=null){
+                val Chatbox = findViewById<TextView>(R.id.Chatbox)
+                var temp=""
+                for(i in 0..(it.data.size-1)){
+                    temp+=it.data[i].owner.username.toString()+":\n"+it.data[i].body+"\n\n"
+                }
+                Chatbox.text=temp
+
+            }
+            else{
+                Log.d("updateDiscussion","update fail abi"+ currentContentID.toString())
+            }
+        }
+
+    }
 
 
     fun upClicked(view: View){
@@ -92,6 +127,38 @@ class LearningSpace3 : AppCompatActivity() {
         // span to TextView
         var numberOfUp = findViewById<Button>(R.id.UpButton)
         numberOfUp.text = mStringSpan
+    }
 
+    fun postClicked(view: View) {
+        val builder = AlertDialog.Builder(this)
+        val inflater = layoutInflater
+        val dialogLayout = inflater.inflate(R.layout.add_discussion_post, null)
+        val editText = dialogLayout.findViewById<EditText>(R.id.discussionPostText)
+
+        with(builder) {
+            setTitle("Create Discussion Post")
+            setPositiveButton("Send"){ dialog, which ->
+                val apiService = learningSpace3PostDiscussion_api_call()
+
+                val userData = learningSpace3PostDiscussion_send_model(
+                    content=currentContentID,
+                    body = editText.text.toString()
+                )
+
+                apiService.postDiscussion(userData)  {
+                    if(it?.created_on!=null){
+                        updateDiscussion()
+                    }
+                    else{
+                        Log.d("Post couldn't be created","omer")
+                    }
+                }
+            }
+            setNegativeButton("Cancel") {dialog, which ->
+
+            }
+            setView(dialogLayout)
+            show()
+        }
     }
 }
