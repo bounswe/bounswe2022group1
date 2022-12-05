@@ -16,6 +16,8 @@ import com.example.myapplication.R
 import com.google.android.material.navigation.NavigationView
 import java.nio.file.attribute.AttributeView
 
+var selectedTAG = ""
+
 class HomeActivity : AppCompatActivity() {
 
 
@@ -39,11 +41,26 @@ class HomeActivity : AppCompatActivity() {
         string2.setNavigationItemSelectedListener {
             when(it.itemId) {
                 R.id.miItem1 -> goToHomePage()
-                R.id.miItem2 -> goToLearningSpace1()
-                R.id.miItem3 -> goToLearningSpace1()
-                R.id.miItem4 -> goToLearningSpace1()
-                R.id.miItem5 -> goToLearningSpace1()
-                R.id.miItem6 -> goToLearningSpace1()
+                R.id.miItem2 -> {
+                    selectedTAG = "Art"
+                    goToLearningSpace1()
+                }
+                R.id.miItem3 -> {
+                    selectedTAG = "Science"
+                    goToLearningSpace1()
+                }
+                R.id.miItem4 -> {
+                    selectedTAG = "Math"
+                    goToLearningSpace1()
+                }
+                R.id.miItem5 -> {
+                    selectedTAG = "Technology"
+                    goToLearningSpace1()
+                }
+                R.id.miItem6 -> {
+                    selectedTAG = "Engineering"
+                    goToLearningSpace1()
+                }
             }
             true
         }
