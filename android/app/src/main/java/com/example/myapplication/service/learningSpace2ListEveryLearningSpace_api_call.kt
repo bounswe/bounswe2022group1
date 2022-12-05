@@ -10,7 +10,7 @@ import retrofit2.Response
 
 class learningSpace2ListEveryLearningSpace_api_call {
 
-    fun listEverySpace(userData: Void, onResult: (learningSpace2ListEveryLearningSpace_receive_model?) -> Unit){
+    fun listEverySpace(onResult: (learningSpace2ListEveryLearningSpace_receive_model?) -> Unit){
 
         val retrofit = ServiceBuilder.buildService(learningSpace2ListEveryLearningSpace_api::class.java)
 

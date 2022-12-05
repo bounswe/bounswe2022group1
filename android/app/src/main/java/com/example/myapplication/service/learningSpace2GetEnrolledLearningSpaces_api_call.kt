@@ -9,7 +9,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class learningSpace2GetEnrolledLearningSpaces_api_call {
-    fun getEnrolledSpaces(userData: Void, onResult: (learningSpace2GetEnrolledLearningSpaces_receive_model?) -> Unit){
+    fun getEnrolledSpaces( onResult: (learningSpace2GetEnrolledLearningSpaces_receive_model?) -> Unit){
 
         val retrofit = ServiceBuilder.buildService(learningSpace2GetEnrolledLearningSpaces_api::class.java)
 

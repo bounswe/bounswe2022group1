@@ -1,6 +1,8 @@
 package com.example.myapplication.service
 
+import android.util.Log
 import com.example.myapplication.model.learningSpace2Leave_response_model
+import com.example.myapplication.model.learningspace2Enroll_send_model
 import com.example.myapplication.view.user_token
 import retrofit2.Call
 import retrofit2.Callback
@@ -8,7 +10,7 @@ import retrofit2.Response
 
 class learningSpace2Leave_api_call {
 
-    fun leaveUser(learning_space_id: Int, onResult: (learningSpace2Leave_response_model?) -> Unit){
+    fun leaveUser(learning_space_id: learningspace2Enroll_send_model, onResult: (learningSpace2Leave_response_model?) -> Unit){
 
         val retrofit = ServiceBuilder.buildService(learningSpace2Leave_api::class.java)
 
