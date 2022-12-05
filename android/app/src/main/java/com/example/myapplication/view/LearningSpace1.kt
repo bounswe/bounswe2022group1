@@ -67,10 +67,12 @@ class LearningSpace1 : AppCompatActivity() {
                 learningSpaceID = ids[i]
                 learningSpaceNAME = spaceValues[i]
                 learningSpaceMEMBERS.clear()
-                learningSpaceMEMBERS = members[i]
+                learningSpaceMEMBERS = members[i].toMutableList()
+                //Toast.makeText(this, learningSpaceMEMBERS.toString(), Toast.LENGTH_LONG).show()
                 goToLearningSpace2()
             }
         }
+
     }
 
 
