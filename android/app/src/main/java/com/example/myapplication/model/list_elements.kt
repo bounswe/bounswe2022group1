@@ -5,9 +5,11 @@ import com.google.gson.annotations.SerializedName
 data class list_elements(
     @SerializedName("id")
     val id:Int,
-    @SerializedName("username")
-    val username:String,
-    @SerializedName("email")
-    val email:String
+    @SerializedName("name")
+    val name:String,
+    @SerializedName("members")
+    val members:Array<ls_members>,
+    @SerializedName("tag")
+    val tag:String
 )
 

@@ -31,10 +31,10 @@ class ProfilePageActivity : AppCompatActivity() {
         var intent= Intent(applicationContext, ProfileCreateActivity::class.java)
         startActivity(intent)
     }
-
+/*
     fun toChangePassword(view: View) {
         var intent= Intent(applicationContext, ChangePasswordActivity::class.java)
         startActivity(intent)
     }
-
+*/
 }
