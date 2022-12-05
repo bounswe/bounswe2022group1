@@ -11,7 +11,6 @@ import com.example.myapplication.model.learningspace2Enroll_send_model
 import com.example.myapplication.service.learningSpace2Enroll_api_call
 import com.example.myapplication.service.learningSpace2GetContentList_api_call
 
-val enrolledLearningSpaceIds=mutableSetOf<Int>()
 
 var currentContentID=0
 var contentID_ContentName: HashMap<Int, Int> = HashMap<Int, Int>()
@@ -48,39 +47,21 @@ class LearningSpace2 : AppCompatActivity() {
 
         var join_leave = findViewById(R.id.join_leave) as Button
 
-        if(enrolledLearningSpaceIds.contains(learningSpaceID)){
-            join_leave.text="Leave"
-        }
-        else{
-            join_leave.text="Enroll"
+
+        if(join_leave.text.equals("ENROLL")){
             names= arrayOf("Hidden")
             contributors= arrayOf("Hidden")
         }
+        else{
+            ShowContributorsAndTopics()
+        }
 
         var learning_topic = findViewById(R.id.learning_topic) as TextView
-        setContributorsAndTopics()
-    }
+        learning_topic.text= learningSpaceNAME
 
 
-
-    fun addContent(view: View){
-        var intent= Intent(applicationContext, AddContent::class.java)
-        startActivity(intent)
-    }
-
-    fun enroll(view :View){
-            var join_leave = findViewById(R.id.join_leave) as Button
-
-            if(join_leave.text=="Leave"){
-                join_leave.text="Enroll"
-                names= arrayOf("Hidden")
-                contributors= arrayOf("Hidden")
-                enrolledLearningSpaceIds.remove(learningSpaceID)
-            }
-
-            else if(join_leave.text=="Enroll" && !enrolledLearningSpaceIds.contains(learningSpaceID) ){
-                if(!user_token.isEmpty()){
-                    join_leave.text="Leave"
+        join_leave.setOnClickListener{
+            if(join_leave.text.equals("ENROLL") && !user_token.isEmpty()){
 
                     val apiService = learningSpace2Enroll_api_call()
                     val userInfo = learningspace2Enroll_send_model(
@@ -90,35 +71,39 @@ class LearningSpace2 : AppCompatActivity() {
                     apiService.enrollUser(userInfo) {
 
                         if(it?.id!=null){ // success
-                            //enrolledLearningSpaceIds.add(it?.id)
-
+                            join_leave.text="LEAVE"
                             ShowContributorsAndTopics()
-
-                            // it?.id id of the learning space
-                            // it?.name name of the learning space
-                            //it?.members [ {"id": id of the user, "username": "username of the user", "email": "email of the user" } ]
                         }
                         else{ // enroll is unsucess
-                            Toast.makeText(this,"Unsucess!.", Toast.LENGTH_LONG).show()
+                            Toast.makeText(this,"Unsucessful!.", Toast.LENGTH_LONG).show()
                         }
 
                     }
-
                 }
-
+            else{
+                names= arrayOf("Hidden")
+                contributors= arrayOf("Hidden")
+                join_leave.text="ENROLL"
             }
-        setContributorsAndTopics()
+        }
+
     }
 
 
+    fun addContent(view: View){
+        var join_leave = findViewById(R.id.join_leave) as Button
+        if(join_leave.text=="LEAVE"){
+            var intent= Intent(applicationContext, AddContent::class.java)
+            startActivity(intent)
+        }
+    }
+
     fun goToLearningSpace3(position:Int) {
         if(names[0].equals("Hidden")){
-            Log.d("omer_ababa","selam")
+
         }
         else {
-
             currentContentID = contentID_ContentName[position-1]!!
-            Log.d("omer_baba_deneme", currentContentID.toString())
             var intent = Intent(applicationContext, LearningSpace3::class.java)
             startActivity(intent)
         }
@@ -138,18 +123,17 @@ class LearningSpace2 : AppCompatActivity() {
                 //enrolledLearningSpaceIds.add(receivedMap.id)
 
                 contributors= arrayOf("")
+                for (i in 0..(learningSpaceMEMBERS.size-1)){
+                    contributors+= learningSpaceMEMBERS[i].name
+                }
+
                 names= arrayOf("")
                 for(i in 0..(receivedArr.size-1)){
-                    contributors+=receivedArr[i].owner.toString()
+                    //contributors+=receivedArr[i].owner.toString()
                     names+=receivedArr[i].name.toString()
                     contentID_ContentName.put(i,receivedArr[i].id)
                 }
-
                 setContributorsAndTopics()
-
-                // it?.id id of the learning space
-                // it?.name name of the learning space
-                //it?.members [ {"id": id of the user, "username": "username of the user", "email": "email of the user" } ]
             }
             else{ // showing contributors is unsucess
 
