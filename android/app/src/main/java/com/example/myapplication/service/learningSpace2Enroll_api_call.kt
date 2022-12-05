@@ -8,8 +8,6 @@ import retrofit2.Response
 
 
 class learningSpace2Enroll_api_call {
-
-
     fun enrollUser(userData: learningspace2Enroll_send_model, onResult: (learningspace2Enroll_receive_model?) -> Unit){
 
         val retrofit = ServiceBuilder.buildService(learningSpace2Enroll_api::class.java)
