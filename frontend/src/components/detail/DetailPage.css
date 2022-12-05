@@ -17,6 +17,12 @@
   font-family: "Fira Sans", sans-serif;
 }
 
+.dropdownZ{
+  z-index: 2;
+  position: relative;
+  height: 150px;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
