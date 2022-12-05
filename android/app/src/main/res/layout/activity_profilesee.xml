@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/placeHolder2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#03A9F4">
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="320dp"
+        android:layout_height="28dp"
+        android:text="SEE"
+        tools:layout_editor_absoluteX="55dp"
+        tools:layout_editor_absoluteY="135dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
