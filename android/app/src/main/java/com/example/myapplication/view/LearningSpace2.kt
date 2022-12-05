@@ -49,7 +49,10 @@ class LearningSpace2 : AppCompatActivity() {
 
         var join_leave = findViewById(R.id.join_leave) as Button
 
-        //Log.d("user token of the user is", user_token)
+        names= arrayOf("Hidden")
+        contributors= arrayOf("Hidden")
+        join_leave.text="ENROLL"
+        setContributorsAndTopics()
 
         val apiService = learningSpace2GetEnrolledLearningSpaces_api_call()
 
@@ -57,24 +60,14 @@ class LearningSpace2 : AppCompatActivity() {
         apiService.getEnrolledSpaces() {
             if(it?.data!=null){
                 for(i in 0..(it.data.size-1)){
+                    Log.d("Received:"+ learningSpaceID.toString(),it.data[i].toString())
                     if(it.data[i].id== learningSpaceID){
-                        isEnrolled=true
+                        join_leave.text="LEAVE"
+                        ShowContributorsAndTopics()
                         break
                     }
                 }
             }
-        }
-
-
-
-        if(!isEnrolled){
-            names= arrayOf("Hidden")
-            contributors= arrayOf("Hidden")
-            join_leave.text="ENROLL"
-        }
-        else{
-            join_leave.text="LEAVE"
-            ShowContributorsAndTopics()
         }
 
 
