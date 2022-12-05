@@ -10,6 +10,8 @@ import com.example.myapplication.R
 import com.example.myapplication.model.learningspace2Enroll_send_model
 import com.example.myapplication.service.learningSpace2Enroll_api_call
 import com.example.myapplication.service.learningSpace2GetContentList_api_call
+import com.example.myapplication.service.learningSpace2GetEnrolledLearningSpaces_api_call
+import com.example.myapplication.service.learningSpace2Leave_api_call
 
 
 var currentContentID=0
@@ -47,12 +49,31 @@ class LearningSpace2 : AppCompatActivity() {
 
         var join_leave = findViewById(R.id.join_leave) as Button
 
-        Log.d("user token of the user is", user_token)
-        if(join_leave.text.equals("ENROLL")){
+        //Log.d("user token of the user is", user_token)
+
+        val apiService = learningSpace2GetEnrolledLearningSpaces_api_call()
+
+        var isEnrolled=false
+        apiService.getEnrolledSpaces() {
+            if(it?.data!=null){
+                for(i in 0..(it.data.size-1)){
+                    if(it.data[i].id== learningSpaceID){
+                        isEnrolled=true
+                        break
+                    }
+                }
+            }
+        }
+
+
+
+        if(!isEnrolled){
             names= arrayOf("Hidden")
             contributors= arrayOf("Hidden")
+            join_leave.text="ENROLL"
         }
         else{
+            join_leave.text="LEAVE"
             ShowContributorsAndTopics()
         }
 
@@ -70,7 +91,7 @@ class LearningSpace2 : AppCompatActivity() {
                     )
 
                     apiService.enrollUser(userInfo) {
-
+                        //Log.d("omer enroll",it.toString())
                         if(it?.id!=null){ // success
                             join_leave.text="LEAVE"
                             ShowContributorsAndTopics()
@@ -82,9 +103,26 @@ class LearningSpace2 : AppCompatActivity() {
                     }
                 }
             else{
-                names= arrayOf("Hidden")
-                contributors= arrayOf("Hidden")
-                join_leave.text="ENROLL"
+                val apiService = learningSpace2Leave_api_call()
+                val userInfo = learningspace2Enroll_send_model(
+                    learning_space_id = learningSpaceID
+                )
+                apiService.leaveUser(userInfo){
+                    if(it?.id!=null){
+
+                        //update member array
+                        names= arrayOf("Hidden")
+                        contributors= arrayOf("Hidden")
+                        join_leave.text="ENROLL"
+
+                        setContributorsAndTopics()
+                    }
+                    else{ // leave did not work
+                        Log.d("omer", it.toString()+" "+learningSpaceID.toString()+"adam leave edemiyo"+ user_token)
+
+                    }
+                }
+
             }
         }
 
@@ -120,7 +158,7 @@ class LearningSpace2 : AppCompatActivity() {
 
             if(it?.data!=null){ // success
                 var receivedArr=it?.data
-
+                Log.d("showContributorsCalisiyor",".")
                 contributors= arrayOf<String>()
                 for (i in 0..(learningSpaceMEMBERS.size-1)){
                     contributors+= learningSpaceMEMBERS[i].name
