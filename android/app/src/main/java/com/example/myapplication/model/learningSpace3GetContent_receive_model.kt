@@ -2,7 +2,7 @@ package com.example.myapplication.model
 
 import com.google.gson.annotations.SerializedName
 
-data class learningSpace2GetContent_receive_model(
+data class learningSpace3GetContent_receive_model(
     @SerializedName("id")
     val id: Int,
     @SerializedName("name")

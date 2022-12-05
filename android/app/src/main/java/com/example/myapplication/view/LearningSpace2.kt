@@ -3,11 +3,13 @@ package com.example.myapplication.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
 import com.example.myapplication.R
 import com.example.myapplication.model.learningspace2Enroll_send_model
 import com.example.myapplication.service.learningSpace2Enroll_api_call
+import com.example.myapplication.service.learningSpace2GetContentList_api_call
 
 val enrolledLearningSpaceIds=mutableSetOf<Int>()
 var currentLearningSpaceId=1
@@ -53,8 +55,6 @@ class LearningSpace2 : AppCompatActivity() {
             contributors= arrayOf("Hidden")
         }
 
-
-
         var learning_topic = findViewById(R.id.learning_topic) as TextView
         setContributorsAndTopics()
     }
@@ -62,7 +62,8 @@ class LearningSpace2 : AppCompatActivity() {
 
 
     fun addContent(view: View){
-
+        var intent= Intent(applicationContext, AddContent::class.java)
+        startActivity(intent)
     }
 
     fun enroll(view :View){
@@ -87,27 +88,16 @@ class LearningSpace2 : AppCompatActivity() {
                     apiService.enrollUser(userInfo) {
 
                         if(it?.id!=null){ // success
-                            enrolledLearningSpaceIds.add(it?.id)
-                            Toast.makeText(this, it.members[0].toString(), Toast.LENGTH_LONG).show()
+                            //enrolledLearningSpaceIds.add(it?.id)
 
-                            //contributors=it?.members
-                            contributors= arrayOf("")
-                            for(i in 0..(it.members.size-1)){
-                                contributors+=it.members[i].toString()
-                            }
-
-                            names= arrayOf("")
-                            for(i in 0..(it.members.size-1)){
-                                contributors+=it.members[i].toString()
-                            }
-
+                            ShowContributorsAndTopics()
 
                             // it?.id id of the learning space
                             // it?.name name of the learning space
                             //it?.members [ {"id": id of the user, "username": "username of the user", "email": "email of the user" } ]
                         }
                         else{ // enroll is unsucess
-                            Toast.makeText(this,"Hata var.", Toast.LENGTH_LONG).show()
+                            Toast.makeText(this,"Unsucess!.", Toast.LENGTH_LONG).show()
                         }
 
                     }
@@ -120,7 +110,45 @@ class LearningSpace2 : AppCompatActivity() {
 
 
     fun goToLearningSpace3(position:Int,id:Long) {
+        Log.d("omer_baba",position.toString()+" "+id.toString())
         var intent= Intent(applicationContext, LearningSpace3::class.java)
         startActivity(intent)
     }
+
+
+
+    fun ShowContributorsAndTopics(){
+        val apiService = learningSpace2GetContentList_api_call()
+        val userInfo = currentLearningSpaceId
+
+        apiService.getContentList(userInfo) {
+            Toast.makeText(this,it?.data?.get(0).toString(), Toast.LENGTH_LONG).show()
+            if(it?.data!=null){ // success
+                var receivedArr=it?.data
+
+                //enrolledLearningSpaceIds.add(receivedMap.id)
+
+                contributors= arrayOf("")
+                names= arrayOf("")
+                for(i in 0..(receivedArr.size-1)){
+                    contributors+=receivedArr[i].owner.toString()
+                    names+=receivedArr[i].name.toString()
+                }
+
+                setContributorsAndTopics()
+
+                // it?.id id of the learning space
+                // it?.name name of the learning space
+                //it?.members [ {"id": id of the user, "username": "username of the user", "email": "email of the user" } ]
+            }
+            else{ // showing contributors is unsucess
+
+            }
+
+        }
+
+
+
+    }
+
 }

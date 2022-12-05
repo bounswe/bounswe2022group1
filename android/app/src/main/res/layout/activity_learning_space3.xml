@@ -138,28 +138,15 @@
         app:layout_constraintVertical_bias="0.957" />
 
     <Button
-        android:id="@+id/button4"
-        android:layout_width="59dp"
-        android:layout_height="42dp"
+        android:id="@+id/UpButton"
+        android:layout_width="87dp"
+        android:layout_height="53dp"
+        android:onClick="upClicked"
         android:text="UP"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.269"
+        app:layout_constraintHorizontal_bias="0.266"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.493" />
-
-    <TextView
-        android:id="@+id/numberOfUp"
-        android:layout_width="29dp"
-        android:layout_height="29dp"
-        android:text="+0"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.641"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.012" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
