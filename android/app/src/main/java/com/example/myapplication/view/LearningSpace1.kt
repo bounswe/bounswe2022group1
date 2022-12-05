@@ -12,16 +12,20 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.R
+import com.example.myapplication.model.list_elements
 import com.example.myapplication.model.ls_create_model
+import com.example.myapplication.model.ls_members
 import com.example.myapplication.service.ls_by_tag_call
 import com.example.myapplication.service.ls_create_call
 
 var learningSpaceID = 0
 var learningSpaceNAME = ""
+var learningSpaceMEMBERS = mutableListOf<ls_members>()
 
 class LearningSpace1 : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.learning_space_1)
 
@@ -34,15 +38,21 @@ class LearningSpace1 : AppCompatActivity() {
 
         val ids = mutableListOf<Int>()
         val spaceValues = mutableListOf<String>()
+        val currentMembers = mutableListOf<ls_members>()
+        val members = mutableListOf<MutableList<ls_members>>()
+        learningSpaceMEMBERS.clear()
         apiService.getLSpaces(selectedTAG, "Token " + user_token)  {
-
             it?.data?.forEach {
                 names.put(it.id, it.name)
                 ids.add(it.id)
                 spaceValues.add(it.name)
-            }
 
-            //Toast.makeText(this, names.toString(), Toast.LENGTH_LONG).show()
+                it.members.forEach { el ->
+                    currentMembers.add(el)
+                }
+                members.add(currentMembers.toMutableList())
+                currentMembers.clear()
+            }
 
             val spaceNames: MutableList<String> = ArrayList()
             names.values.forEach{
@@ -58,6 +68,8 @@ class LearningSpace1 : AppCompatActivity() {
             listView.setOnItemClickListener { adapterView, view, i, l ->
                 learningSpaceID = ids[i]
                 learningSpaceNAME = spaceValues[i]
+                learningSpaceMEMBERS.clear()
+                learningSpaceMEMBERS = members[i]
                 goToLearningSpace2()
             }
         }
@@ -96,7 +108,6 @@ class LearningSpace1 : AppCompatActivity() {
                         startActivity(getIntent());
                     }
                     else{
-                        //Toast.makeText(this, "An error occured", Toast.LENGTH_LONG).show()
                     }
                 }
             }
