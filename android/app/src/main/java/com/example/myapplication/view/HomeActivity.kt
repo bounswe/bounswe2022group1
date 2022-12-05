@@ -85,11 +85,15 @@ class HomeActivity : AppCompatActivity() {
         //here check if buttons are pressed and direct them to signIn
         val signInButtonClicked = findViewById<Button>(R.id.signinButton)
         signInButtonClicked.setOnClickListener{
-            to_signIn()
+            signInToSignIn()
         }
         val logoffButtonClicked = findViewById<ImageButton>(R.id.logoffButton)
         logoffButtonClicked.setOnClickListener{
-            toLanding()
+            logoffToLanding()
+        }
+        val profileButtonClicked = findViewById<ImageButton>(R.id.profileButton)
+        profileButtonClicked.setOnClickListener{
+            toProfile()
         }
     }
 
@@ -100,13 +104,17 @@ class HomeActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    fun to_signIn() {
+    fun signInToSignIn() {
         var intent= Intent(applicationContext, SignInActivity::class.java)
         startActivity(intent)
     }
-    fun toLanding() {
+    fun logoffToLanding() {
         user_token=""
         var intent= Intent(applicationContext, LandingActivity::class.java)
+        startActivity(intent)
+    }
+    fun toProfile() {
+        var intent= Intent(applicationContext, ProfilePageActivity::class.java)
         startActivity(intent)
     }
     fun goToLearningSpace1() {
