@@ -1,5 +1,6 @@
 package com.example.myapplication.service
 
+import android.util.Log
 import com.example.myapplication.model.*
 import com.example.myapplication.view.user_token
 import retrofit2.Call
@@ -11,12 +12,13 @@ class resetPassword_api_call {
 
         val retrofit = ServiceBuilder.buildService(resetPassword_api::class.java)
 
-        retrofit.resetPassword("Token "+ user_token,userData).enqueue(
+        retrofit.resetPassword(userData).enqueue(
             object : Callback<resetPassword_receive_model> {
                 override fun onResponse(
                     call: Call<resetPassword_receive_model>,
                     response: Response<resetPassword_receive_model>
                 ) {
+                    Log.d("osman", response.code().toString())
                     onResult(response.body())
                 }
 
