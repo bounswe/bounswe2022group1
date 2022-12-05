@@ -10,11 +10,11 @@ import retrofit2.Response
 class changePasswordApiCall {
 
 
-    fun changePassword(passwordInfo: change_password_model, Token: String, onResult: (change_password_response_model?) -> Unit){
+    fun changePassword(passwordInfo: change_password_model, onResult: (change_password_response_model?) -> Unit){
 
         val retrofit = ServiceBuilder.buildService(change_password_api::class.java)
 
-        retrofit.changePassword(passwordInfo, Token).enqueue(
+        retrofit.changePassword(passwordInfo).enqueue(
             object : Callback<change_password_response_model> {
                 override fun onResponse(
                     call: Call<change_password_response_model>,
@@ -26,6 +26,7 @@ class changePasswordApiCall {
                 override fun onFailure(call: Call<change_password_response_model>, t: Throwable) {
                     onResult(null)
                 }
+
             }
         )
     }

@@ -6,13 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import android.widget.Toast
 import com.example.myapplication.R
 import com.example.myapplication.model.change_password_model
 import com.example.myapplication.service.changePasswordApiCall
 import com.google.android.material.textfield.TextInputEditText
-import retrofit2.http.Header
-import retrofit2.http.Headers
 
 class ChangePasswordActivity : AppCompatActivity() {
 
@@ -27,14 +24,9 @@ class ChangePasswordActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun goToLanding(){
-        var intent= Intent(applicationContext, LandingActivity::class.java)
-        startActivity(intent)
-    }
-
     fun changePassword(view: View) {
-        val oldPassword = findViewById(R.id.newPassword) as TextInputEditText
-        val newPassword = findViewById(R.id.oldPassword) as TextInputEditText
+        val oldPassword = findViewById(R.id.oldPassword) as TextInputEditText
+        val newPassword = findViewById(R.id.newPassword) as TextInputEditText
 
         val apiService = changePasswordApiCall()
         val passwordInfo = change_password_model(
@@ -42,24 +34,25 @@ class ChangePasswordActivity : AppCompatActivity() {
             new_pass = newPassword.text.toString()
         )
 
-
-        apiService.changePassword(passwordInfo, "Token " + user_token)  {
+        apiService.changePassword(passwordInfo) {
 
             val success_message = findViewById(R.id.success_message) as TextView
             success_message.setVisibility(View.VISIBLE)
 
-            if(it?.code == Integer(200)){
+            /*
+            if(it?.token!=null){
+                user_token=it?.token
                 success_message.text="Password is changed succesfully\n You are redirected to Homepage"
-                user_token = ""
                 success_message.postDelayed({success_message.setVisibility(View.INVISIBLE)},2000)
-                success_message.postDelayed({goToLanding()},2000)
+                success_message.postDelayed({goToHomePage()},2000)
 
 
             }
             else{
-                success_message.text="Credentials are incorrect"
+                success_message.text="xxx"
                 success_message.postDelayed({success_message.setVisibility(View.INVISIBLE)},2000)
             }
+            */
 
         }
     }

@@ -20,7 +20,7 @@ class LandingViewPager(private var title: List<String>, private var details: Lis
         init {
             itemImage.setOnClickListener{ v: View ->
                 val position = adapterPosition
-                Toast.makeText(itemView.context, position.toString(), Toast.LENGTH_SHORT).show()
+                Toast.makeText(itemView.context, "You clicked", Toast.LENGTH_SHORT).show()
             }
         }
     }
