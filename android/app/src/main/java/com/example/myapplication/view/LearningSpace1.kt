@@ -28,6 +28,8 @@ class LearningSpace1 : AppCompatActivity() {
         val listView = findViewById<ListView>(R.id.Topics)
         val apiService = ls_by_tag_call()
 
+        // key=ID of Gitar
+        // Value=Gitar
         val names: HashMap<Int, String> = HashMap<Int, String>()
 
         val ids = mutableListOf<Int>()

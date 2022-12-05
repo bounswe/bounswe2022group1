@@ -23,13 +23,6 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".AddLearningSpaceActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".view.LearningSpace3"
             android:configChanges="keyboardHidden|orientation"
             android:exported="false"
