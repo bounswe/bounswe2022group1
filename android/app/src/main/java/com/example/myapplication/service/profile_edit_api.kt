@@ -11,7 +11,7 @@ import retrofit2.http.POST
 interface profile_edit_api {
 
     //@Headers("Content-Type: application/json")
-    @POST("/app/profile/")
+    @POST("profile/")
     //adduser will change
     fun createProfile(@Body userData: profile_edit_post_send_model): Call<profile_edit_post_receive_model>
 }
