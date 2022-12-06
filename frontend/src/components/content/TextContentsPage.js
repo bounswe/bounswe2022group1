@@ -24,7 +24,7 @@ const sidebar = {
     ownerUsername: "banublkn",
     avatarUrl: "https://www.avatarsinpixels.com/Public/images/previews/minipix2.png",
   }],
-  userNote: "I should practice these chords everyday."
+  userNote: " "
 };
 
 
