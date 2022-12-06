@@ -1,5 +1,5 @@
-from .views import Register, contentApiView, contentListApiView, enrollApiView
-from .views import Login, discussionApiView, discussionApiListView
+from .views import Register
+from .views import Login
 from django.urls import path
 from knox import views as knox_views
 from django.urls import path

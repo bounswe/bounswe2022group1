@@ -1,8 +1,6 @@
-from django.http import QueryDict
-from rest_framework import generics, permissions, status, generics, views
+from rest_framework import generics, permissions, status, generics
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated   
-from rest_framework.views import APIView
 from django.contrib.auth import login
 from django.contrib.auth.models import User
 from knox.models import AuthToken
@@ -88,7 +86,7 @@ class ChangePassword(generics.UpdateAPIView):
         if serialization.is_valid():
             
             #controll the old password
-            if not self.object.check_password(serialization.data.get("old_pass")):
+            if self.object.check_password(serialization.data.get("old_pass")):
 
                 return Response({"old_pass": ["Wrong password."]}, status=status.HTTP_400_BAD_REQUEST)
             

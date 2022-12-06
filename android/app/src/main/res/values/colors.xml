@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="white_opacity_30">#40FFFFFF</color>
+    <color name="accent">#43D477</color>
+    <color name="green">#43D477</color>
+    <color name="dark_green">#00BA63</color>
+    <color name="rippleColor">@color/lightGray</color>
+    <color name="lightGray">#F8F8F8</color>
+    <color name="text_color">#2f3133</color>
+    <color name="text_color2">#5E5E5E</color>
+    <color name="text_color3">#A5A5A5</color>
+    <color name="text_color4">#404243</color>
+    <color name="text_color5">#1D2D3A</color>
+    <color name="gray81">#CFCFCF</color>
+    <color name="pageBg">#FAFAFA</color>
+    <color name="gray">#E7E7E7</color>
+    <color name="gull_gray">#A9AEB2</color>
+    <color name="red">#FF4949</color>
+    <color name="lightGray2">#A5A5A5</color>
+    <color name="gold">#FFCD4C</color>
+    <color name="light_green">#8FBF50</color>
+    <color name="chartLightGreen">#7DE9A4</color>
+    <color name="orange">#FFC529</color>
+    <color name="blue">#5090FE</color>
+    <color name="darkBlue">#1F3B64</color>
+    <color name="darkBlue2">#2849A4</color>
+    <color name="lightRed">#FE7950</color>
+    <color name="lightGreen2">#50BF9D</color>
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="light_blue_900">#FF01579B</color>
+    <color name="light_blue_A200">#FF40C4FF</color>
+    <color name="light_blue_A400">#FF00B0FF</color>
+    <color name="black_overlay">#66000000</color>
+
+    <color name="default_status_bar_color">@color/gray</color>
+    <color name="primary_status_bar_color">@color/accent</color>
+
+    <color name="bottom_nav_start_color">#218F48</color>
+    <color name="bottom_nav_end_color">#43D477</color>
+    <color name="toolbar_drawer_open_color">#24EF9C</color>
+    
+    <color name="nav_drawer_icon_bg_gradient">#FF9EFFC1</color>
+    <color name="home_icon_bg_gradient">#FF9EFFC1</color>
+
+    <color name="splash_main_gradient_start">#43D477</color>
+    <color name="splash_main_gradient_end">#24EF9C</color>
+
+    <color name="bottom_nav_gradient_start">#218F48</color>
+    <color name="bottom_nav_gradient_end">#43D477</color>
+
+    <color name="home_icon_gradient_start">#9EFFC1</color>
+    <color name="home_icon_gradient_end">#43D477</color>
+
+</resources>
