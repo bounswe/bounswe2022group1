@@ -6,13 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import android.widget.Toast
 import com.example.myapplication.R
 import com.example.myapplication.model.change_password_model
 import com.example.myapplication.service.changePasswordApiCall
 import com.google.android.material.textfield.TextInputEditText
-import retrofit2.http.Header
-import retrofit2.http.Headers
 
 class ChangePasswordActivity : AppCompatActivity() {
 
@@ -34,7 +31,7 @@ class ChangePasswordActivity : AppCompatActivity() {
 
     fun changePassword(view: View) {
         val oldPassword = findViewById(R.id.newPassword) as TextInputEditText
-        val newPassword = findViewById(R.id.oldPassword) as TextInputEditText
+        val newPassword = findViewById(R.id.email) as TextInputEditText
 
         val apiService = changePasswordApiCall()
         val passwordInfo = change_password_model(

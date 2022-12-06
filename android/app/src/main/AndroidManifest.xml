@@ -16,6 +16,20 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".view.LsSearchActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".view.ForgotPasswordActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".view.AddContent"
             android:exported="false">
             <meta-data
@@ -94,7 +108,14 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".view.ProfilePageActivity"
+            android:name=".view.ProfileCreateActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".view.ProfileSeeActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

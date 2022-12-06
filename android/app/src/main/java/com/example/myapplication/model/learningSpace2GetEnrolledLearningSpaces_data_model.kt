@@ -8,7 +8,7 @@ data class learningSpace2GetEnrolledLearningSpaces_data_model(
     @SerializedName("name")
     val name:String,
     @SerializedName("members")
-    val members:ls_members,
+    val members:Array<ls_members>,
     @SerializedName("tag")
     val tag:String
 )

@@ -121,6 +121,10 @@ class HomeActivity : AppCompatActivity() {
         var intent= Intent(applicationContext, LearningSpace1::class.java)
         startActivity(intent)
     }
+    fun goToSearch(view: View) {
+        var intent= Intent(applicationContext, LsSearchActivity::class.java)
+        startActivity(intent)
+    }
     fun goToHomePage() {
         var intent= Intent(applicationContext, HomeActivity::class.java)
         startActivity(intent)

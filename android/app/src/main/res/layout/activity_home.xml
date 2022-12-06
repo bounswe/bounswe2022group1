@@ -93,6 +93,7 @@
             android:layout_height="60dp"
             android:background="@null"
             android:contentDescription="@string/appbar_scrolling_view_behavior"
+            android:onClick="goToSearch"
             app:srcCompat="@android:drawable/ic_menu_search"
             tools:ignore="MissingConstraints,DuplicateSpeakableTextCheck" />
 

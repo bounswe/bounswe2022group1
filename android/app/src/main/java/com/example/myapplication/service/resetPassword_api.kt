@@ -11,5 +11,5 @@ import retrofit2.http.POST
 
 interface resetPassword_api {
     @POST("forget-password/")
-    fun resetPassword(@Header("Authorization") Token: String,@Body data: resetPassword_send_model,): Call<resetPassword_receive_model>
+    fun resetPassword(@Body data: resetPassword_send_model): Call<resetPassword_receive_model>
 }

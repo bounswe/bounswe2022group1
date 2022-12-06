@@ -8,5 +8,7 @@ data class learningSpace2Leave_response_model(
     @SerializedName("name")
     val name:String,
     @SerializedName("members")
-    val members:Array<Map<String,String>>
+    val members:Array<ls_members>,
+    @SerializedName("tag")
+    val tag:String
 )
