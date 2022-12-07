@@ -12,7 +12,10 @@ import com.example.myapplication.model.sign_up_send_model
 import com.example.myapplication.service.profile_edit_api_call
 import com.example.myapplication.service.sign_up_api_call
 import com.google.android.material.textfield.TextInputEditText
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import org.w3c.dom.Text
+import java.io.File
 
 class ProfileCreateActivity : AppCompatActivity() {
     // change here for api's - post
@@ -27,6 +30,11 @@ class ProfileCreateActivity : AppCompatActivity() {
     }
 
     fun editAboutMe(view: View){
+
+        val filePhoto = File("strPhotoUrl") //For example "/storage path
+        val photoBody = filePhoto.asRequestBody("image/*".toMediaTypeOrNull())
+        var partPhoto = MultipartBody.Part.createFormData("imageFile", filePhoto.name, photoBody)
+
 
         val _about_me = findViewById(R.id.about_me) as EditText
         val apiService = profile_edit_api_call()
