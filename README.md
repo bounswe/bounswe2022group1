@@ -53,20 +53,35 @@ expected to learn how to effectively use them
 - [Alper Ahmetoglu](https://www.cmpe.boun.edu.tr/tr/people/alper.ahmetoglu) alper.ahmetoglu@boun.edu.tr
 
 ### For Building Backend App
+
 -> Checkout master branch
+
 -> Enter into the folder deliverables/CMPE451_Customer_Presentation_Milestone_X   where X can be 1,2 or 3.
+
 -> Enter into the directory "backend". 
+
 -> You should be in the same directory as docker-compose.yml and Dockerfile. Type:
+
 -> sudo docker-compose build
+
 -> sudo docker-compose up
 
 Now, your app shoould be running. Note that, if the docker app's ports are already taken, then you should update the ports in docker-compose.yml. 
 
+
+
 ##For Building Android App
+
 -> Checkout master branch
+
 -> Open Android Studio
+
 -> In Android Studio, do the followings
-1-Click on File
-2-Click on Open
-3-Choose the directory deliverables/CMPE451_Customer_Presentation_Milestone_X/android folder
-4-Click on Run
+
+       1-Click on File
+
+       2-Click on Open
+
+       3-Choose the directory deliverables/CMPE451_Customer_Presentation_Milestone_X/android folder
+
+       4-Click on Run
