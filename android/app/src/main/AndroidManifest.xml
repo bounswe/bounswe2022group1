@@ -14,7 +14,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true"
-        tools:targetApi="31">
+        tools:targetApi="33">
+        <activity
+            android:name=".jetpackDeneme"
+            android:exported="false"
+            android:label="@string/title_activity_jetpack_deneme"
+            android:theme="@style/Theme.MyApplication">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".view.LsSearchActivity"
             android:exported="false">
