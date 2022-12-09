@@ -123,6 +123,21 @@ Tabular format
 | Forget Password test                                                               | [641](https://github.com/bounswe/bounswe2022group1/pull/641) |
 
 
+#### Hüseyin Seyyid Kaplan
+  |Issue Title|Link|
+  |-----|:--------:|
+  |Checking the Pull Request of react-authentication-page| [#466](https://github.com/bounswe/bounswe2022group1/issues/466)
+  |Meeting for Learning Space Page Design| [#522](https://github.com/bounswe/bounswe2022group1/issues/522)
+  |Addition of New Branches| [#523](https://github.com/bounswe/bounswe2022group1/issues/523)
+  |Learning Space Detail Page Design| [#530](https://github.com/bounswe/bounswe2022group1/issues/530)
+  |Backend API Documents View| [#617](https://github.com/bounswe/bounswe2022group1/issues/617)
+  |Meeting for Milestone 2 Tasks| [#626](https://github.com/bounswe/bounswe2022group1/issues/626)
+  |Group Review (Milestone 2) Responsibilities and Summary of Individual Work| [#672](https://github.com/bounswe/bounswe2022group1/issues/672)
+
+  |Pull Request Title|Link|
+  |-----|:--------:|
+  |Adding addcontent dropdown and join button|[PR#612](https://github.com/bounswe/bounswe2022group1/pull/612)
+
 #### Kamil Korkut
   |Issue Title|Link|
   |-----|:--------:|
