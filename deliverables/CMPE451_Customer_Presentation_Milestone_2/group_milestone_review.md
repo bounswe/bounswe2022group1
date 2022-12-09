@@ -341,7 +341,7 @@ What we are planning to implement for final milestone:
 ▪ Three examples of API calls corresponding to core functionality of your application,
 with instructions to access the functionality
 
-  [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/7fca608d72b6bce4f53f?action=collection%2Fimport)
+  [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/c2722cc093bd32e096c2?action=collection%2Fimport)
 
 
 
