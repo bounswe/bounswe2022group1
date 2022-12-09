@@ -49,11 +49,11 @@
     <dimen name="textsize_16d">16dp</dimen>
 
     <!--    <dimen name="textsize_10d">10dp</dimen>-->
-<!--    <dimen name="textsize_12d">12dp</dimen>-->
-<!--    <dimen name="textsize_14d">14dp</dimen>-->
-<!--    <dimen name="textsize_17d">17dp</dimen>-->
-<!--    <dimen name="textsize_22d">22dp</dimen>-->
-<!--    <dimen name="textsize_25d">25dp</dimen>-->
-<!--    <dimen name="textsize_32d">32dp</dimen>-->
+    <!--    <dimen name="textsize_12d">12dp</dimen>-->
+    <!--    <dimen name="textsize_14d">14dp</dimen>-->
+    <!--    <dimen name="textsize_17d">17dp</dimen>-->
+    <!--    <dimen name="textsize_22d">22dp</dimen>-->
+    <!--    <dimen name="textsize_25d">25dp</dimen>-->
+    <!--    <dimen name="textsize_32d">32dp</dimen>-->
 
 </resources>
