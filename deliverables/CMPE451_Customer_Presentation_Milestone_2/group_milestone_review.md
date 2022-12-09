@@ -287,9 +287,9 @@ Tabular format
 
 
 
-## Status of deliverables of Milestone 1 (2 olsa daha mantıklı değil mi?)
+## Status of deliverables of Milestone 1 
 
-▪ Explain the changes you have made in Milestone 1 deliverables if you have made any  
+▪ We haven't made any changes. We will explain the progress below.  
 
 ## Progress according to requirements
 
@@ -341,7 +341,7 @@ What we are planning to implement for final milestone:
 ▪ Three examples of API calls corresponding to core functionality of your application,
 with instructions to access the functionality
 
-  [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/7fca608d72b6bce4f53f?action=collection%2Fimport)
+  [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/c2722cc093bd32e096c2?action=collection%2Fimport)
 
 
 
