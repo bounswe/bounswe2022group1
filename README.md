@@ -69,6 +69,28 @@ expected to learn how to effectively use them
 Now, your app shoould be running. Note that, if the docker app's ports are already taken, then you should update the ports in docker-compose.yml. 
 
 
+### For Running Frontend App in Development Mode
+
+-> Enter into the directory "frontend". 
+
+-> npm i
+
+-> npm run dev
+
+
+
+### For Running Frontend App in Development Mode
+
+-> Enter into the directory "frontend". 
+
+-> npm i
+
+-> npm run build
+
+-> npm run start (starts to serve)
+
+You can install npm via https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
+
 
 ##For Building Android App
 
