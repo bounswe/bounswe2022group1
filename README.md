@@ -54,21 +54,35 @@ expected to learn how to effectively use them
 
 ### For Building Backend App
 -> Enter into the directory "backend". 
+
 -> You should be in the same directory as docker-compose.yml and Dockerfile. Type:
+
 -> sudo docker-compose build
+
 -> sudo docker-compose up
+
 Now, your app shoould be running. Note that, if the docker app's ports are already taken, then you should update the ports in docker-compose.yml. 
 
+
 ### For Running Frontend App in Development Mode
+
 -> Enter into the directory "frontend". 
+
 -> npm i
+
 -> npm run dev
 
 
+
 ### For Running Frontend App in Development Mode
+
 -> Enter into the directory "frontend". 
+
 -> npm i
+
 -> npm run build
+
 -> npm run start (starts to serve)
+
 You can install npm via https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
 
