@@ -171,6 +171,7 @@ Tabular format
 | Frontend: AWS Instance - Docker  | [#509](https://github.com/bounswe/bounswe2022group1/issues/509) |
 | Frontend: Domain of the instance |  [#510](https://github.com/bounswe/bounswe2022group1/issues/510) |
 | Frontend: Deployment of Frontend | [583](https://github.com/bounswe/bounswe2022group1/issues/583)|
+| Frontend: Readme file fixed | [670](https://github.com/bounswe/bounswe2022group1/issues/670)|
 | Frontend: README |  [655](https://github.com/bounswe/bounswe2022group1/issues/655) |
 | Frontend: Dockerfile | [638](https://github.com/bounswe/bounswe2022group1/issues/638) |
 | Frontend: EC2 and Route53  |  [657](https://github.com/bounswe/bounswe2022group1/issues/657)|
@@ -524,30 +525,81 @@ I implemented the first models, serializers, update method, and image uploading 
 </details>
 
 <details>
-<summary>Kadir KALKAN</summary>
+<summary>Kadir Kalkan</summary>
 
-**Member:** 
+**Member:**
+Kadir Kalkan, Group1, Backend, Online Learning Project (OLP) - Budemi, [Personal Page](https://github.com/bounswe/bounswe2022group1/wiki/Kadir-Kalkan)
 
-**Responsibilities:** 
+**Responsibilities:**
 
-**Main Contributions:** 
+- I was responsible for implementing POST method for the learning space endpoint.
+- I was responsible for updating API document according to the endpoints I wrote and updated.
+- I was responsible for implementing profile page API.
+- I was responsible for implementing reset password API.
+- I was responsible for fixing email bug for reset password endpoint.
+- I was responsible for leave learning space API.
+- I was responsible for get enrolled learning spaces API.
+- I was responsible for writing unit tests for the endpoints that I implemented.
+- I was responsible for reviewing and approving the pull requests of the backend team members.
+- I was responsible for reviewing the issues of the backend team members.
+- I was responsible for writing API endpoints part of Milestone 2.
+
+**Main Contributions:**
+
+- I implemented POST method for the learning space endpoint.
+- I implemented get enrolled learning spaces, leave learning space, profile, forget password endpoints . Profile endpoint provides POST and GET methods. Leave learning space and forget password endpoints only provide POST method.
+- I fixed a bug about forget password endpoint. To use this endpoint the given emil should be unique and valid.
+- I fixed a bug about profile endpoint. If a user enroll to a learning space after he/she created his/her profile learning space also should be seen in profile page.
+- I updated API documentation for the endpoints that I implemented.
+- I wrote unit tests for the endpoints that I implemented.
+- I reviewed  and approved pull requests of backend team members
+- I reviewed  the issues of backend team members
+- I created a Postman collection and write API endpoints part of Milestone 2
 
 #### a. Code Related Significant Issues:
 
-
+* [Create serializer and POST method for LearningSpace model ](https://github.com/bounswe/bounswe2022group1/issues/514) 
+* [Profile Page API](https://github.com/bounswe/bounswe2022group1/issues/558) 
+* [Reset Password Feature](https://github.com/bounswe/bounswe2022group1/issues/565) 
+* [Backend- Unique and Valid Email ](https://github.com/bounswe/bounswe2022group1/issues/567) 
+* [Leave Learning Space and Get Enrolled Learning Spaces](https://github.com/bounswe/bounswe2022group1/issues/570) 
+* [Unit Tests for APIs ](https://github.com/bounswe/bounswe2022group1/issues/620) 
 
 #### a. Management Related Significant Issues:
 
 
+* [API documentation for created APIs](https://github.com/bounswe/bounswe2022group1/issues/564) 
+* [Individual report](https://github.com/bounswe/bounswe2022group1/issues/664) 
+* [API Endpoints Part of Milestone 2](https://github.com/bounswe/bounswe2022group1/issues/665) 
+* [Update API Documentation](https://github.com/bounswe/bounswe2022group1/issues/537) 
 
 **Pull Requests:**
 
+* [Change password unit test is added](https://github.com/bounswe/bounswe2022group1/pull/505) 
+* [Profile Page](https://github.com/bounswe/bounswe2022group1/pull/554) 
+* [Password reset ](https://github.com/bounswe/bounswe2022group1/pull/562) 
+* [Bug fix: valid and unique email ](https://github.com/bounswe/bounswe2022group1/pull/566) 
+* [Leave learning space and get enrolled learning spaces ](https://github.com/bounswe/bounswe2022group1/pull/569) 
+* [Bug Fix: Profile Page Update Learning Spaces ](https://github.com/bounswe/bounswe2022group1/pull/574) 
+* [Enrolled learning spaces and leave learning space tests are written](https://github.com/bounswe/bounswe2022group1/pull/634) 
+* [Forget Password test ](https://github.com/bounswe/bounswe2022group1/pull/641) 
+
 **Unit Tests:**
 
-**Additional Information:**
+* [Enrolled learning spaces and leave learning space tests are written](https://github.com/bounswe/bounswe2022group1/pull/634) 
+* [Change password unit test is added](https://github.com/bounswe/bounswe2022group1/pull/505) 
+* [Forget Password test ](https://github.com/bounswe/bounswe2022group1/pull/641) 
 
+- I implemented unit tests for reset password
+- I implemented unit tests for change password
+- I implemented unit tests for ger enrolled learning spaces
+- I implemented unit tests for leave learning space
+
+**Additional Information:**
+I was in active communication with other teams and implemented the necessary endpoints when there were extra endpoint requests.
 
 </details>
+
 
 <details>
 <summary>Hüseyin Seyyid KAPLAN</summary>
