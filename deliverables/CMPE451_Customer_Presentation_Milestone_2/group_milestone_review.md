@@ -600,31 +600,43 @@ I was in active communication with other teams and implemented the necessary end
 
 </details>
 
-
 <details>
 <summary>Hüseyin Seyyid KAPLAN</summary>
 
 **Member:** 
 
 **Responsibilities:** 
+* To develop Learning Space page with its contents
+* Reviewing the changes that are made by my teammates
+* Participating and setting meetings
 
-**Main Contributions:** 
+**Main Contributions:**
+* I have implemented basic template of learning space detail page.
+* I opened issues for my progress and tasks, made pull request for my own changes.
+* I also solved the conflicts while merging two branches. 
+* I opened new branch to develop more stable codes.
+* I added label to ease opening an issue. 
+* I met with my teammates to show up my changes on code several times.
+
 
 #### a. Code Related Significant Issues:
+* Checking the Pull Request of react-authentication-page [#466](https://github.com/bounswe/bounswe2022group1/issues/466)
+* Addition of New Branches [#523](https://github.com/bounswe/bounswe2022group1/issues/523)
+* Learning Space Detail Page Design [#530](https://github.com/bounswe/bounswe2022group1/issues/530)
+* Backend API Documents View [#617](https://github.com/bounswe/bounswe2022group1/issues/617)
 
+#### b. Management Related Significant Issues:
+* Meeting for Learning Space Page Design [#522](https://github.com/bounswe/bounswe2022group1/issues/522)
+* Meeting for Milestone 2 Tasks [#626](https://github.com/bounswe/bounswe2022group1/issues/626)
+* Group Review (Milestone 2) [#672](Responsibilities and Summary of Individual Work(https://github.com/bounswe/bounswe2022group1/issues/672)
 
+**Pull Requests:** 
+* Adding addcontent dropdown and join button [PR #612](https://github.com/bounswe/bounswe2022group1/pull/612)
 
-#### a. Management Related Significant Issues:
+**Unit Tests:** I haven't implemented any unit tests.
 
-
-
-**Pull Requests:**
-
-**Unit Tests:**
-
-**Additional Information:**
-
-
+**Additional Information:** After the Milestone 1, I decided to take more active role on project development on frontend side. I pioneered to set meetings and until a certain point we went well with our team but after that I couldn't manage my tasks because of accumulation of other school related responsibilities. I will focus on my deficiencies and develop rational solutions to overcome such issues.
+  
 </details>
 
 <details>
