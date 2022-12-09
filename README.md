@@ -56,8 +56,6 @@ expected to learn how to effectively use them
 
 -> Checkout master branch
 
--> Enter into the folder deliverables/CMPE451_Customer_Presentation_Milestone_X   where X can be 1,2 or 3.
-
 -> Enter into the directory "backend". 
 
 -> You should be in the same directory as docker-compose.yml and Dockerfile. Type:
@@ -66,7 +64,8 @@ expected to learn how to effectively use them
 
 -> sudo docker-compose up
 
-Now, your app shoould be running. Note that, if the docker app's ports are already taken, then you should update the ports in docker-compose.yml. 
+Now, your app shoould be running. Note that, if the docker app's ports are already taken, then you should update the ports in docker-compose.yml. Also, you should have a .env file in the same directory where your docker-compose.yml file is located. In this file, you need e-mail and password specifications, which we didn't publish here. So, for learning them, please communicate with us. 
+
 
 
 ### For Running Frontend App in Development Mode
