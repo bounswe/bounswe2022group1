@@ -67,7 +67,7 @@ export default function Forum({ forumList }) {
                   <Typography
                     sx={{ display: "inline" }}
                     component="a"
-                    href={`space/${data.id}`}
+                    href={`detail/${data.id}`}
                     variant="body2"
                     color="text.primary"
                   >

@@ -10,7 +10,7 @@ import Card from "@mui/material/Card";
 import TextField from "@mui/material/TextField";
 import axios from "axios";
 
-function SpaceSidebar(props) {
+function DetailSidebar(props) {
   const { ownerUsername, userNote, learningSpaceId } = props;
 
   return (
@@ -52,4 +52,4 @@ function SpaceSidebar(props) {
   );
 }
 
-export default SpaceSidebar;
+export default DetailSidebar;

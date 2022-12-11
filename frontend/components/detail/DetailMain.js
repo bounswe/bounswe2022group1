@@ -1,14 +1,14 @@
 import * as React from "react";
-import Grid from "@mui/material/Grid";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
+import { Grid, Box, Typography, Card, CardHeader, CardContent, Button } from "@mui/material";
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
 import IconButton from "@mui/material/IconButton";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
-import CardHeader from "@mui/material/CardHeader";
-import CardContent from "@mui/material/CardContent";
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
+import { TextField, FormControlLabel, Checkbox } from "@mui/material";
 import axios from "axios";
 
 
@@ -26,10 +26,13 @@ const handleJoin = (spid) => {
    });
 }
 
-function SpaceMain({ space }) {
+function DetailMain({ space }) {
   return (
     <Grid>
-      <Box>
+
+      <Box component="form"
+            noValidate
+            sx={{ mt: 1 }}>
         {
           <Card sx={{ mt: 2 }}>
             <CardHeader
@@ -42,16 +45,16 @@ function SpaceMain({ space }) {
               <Typography variant="body2" color="text.secondary">
               <div class="btn btn-primary"> 
                 <DropdownButton id="dropdown-basic-button" title="Add Content">
-                <Dropdown.Item href={`/AddContentText/${space?.id}`}>Text</Dropdown.Item>
-                <Dropdown.Item href={`/AddContentVideo/${space?.id}`}>Video</Dropdown.Item>
-                <Dropdown.Item href={`/AddContentPicture/${space?.id}`}>Picture</Dropdown.Item>
-                <Dropdown.Item href={`/AddContentMeeting/${space?.id}`}>Meeting</Dropdown.Item>
-                <Dropdown.Item href={`/AddContentDiscussion/${space?.id}`}>Discussion</Dropdown.Item>
+                <Dropdown.Item href={`/addcontent/${space?.id}/text`}>Text</Dropdown.Item>
+                <Dropdown.Item href={`/addcontent/${space?.id}/video`}>Video</Dropdown.Item>
+                <Dropdown.Item href={`/addcontent/${space?.id}/picture`}>Picture</Dropdown.Item>
+                <Dropdown.Item href={`/addcontent/${space?.id}/meeting`}>Meeting</Dropdown.Item>
+                <Dropdown.Item href={`/addcontent/${space?.id}/discussion`}>Discussion</Dropdown.Item>
                 </DropdownButton>
               </div>
 
               <div> 
-                <button type="submit" onClick={() => handleJoin(space?.id)} className="btn btn-primary">Join</button>
+                <Button type="submit" onClick={() => handleJoin(space?.id)} variant="contained" sx={{ mt: 3, mb: 2, borderRadius: "16px" }} className="btn btn-primary">Join</Button>
               </div>
               </Typography>
             </CardContent>
@@ -74,6 +77,7 @@ function SpaceMain({ space }) {
 
     
   );
+
 }
 
-export default SpaceMain;
+export default DetailMain;
