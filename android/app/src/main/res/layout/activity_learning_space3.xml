@@ -35,6 +35,7 @@
                 android:background="@drawable/textview_background"
                 android:fontFamily="@font/andika"
                 android:paddingLeft="@dimen/margin_4"
+                android:paddingRight="@dimen/margin_4"
                 android:text="There has been no discussion yet."
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -66,10 +67,10 @@
         android:paddingLeft="@dimen/margin_4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.985"
+        app:layout_constraintHorizontal_bias="0.976"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.232" />
+        app:layout_constraintVertical_bias="0.233" />
 
     <TextView
         android:id="@+id/textView10"
@@ -82,10 +83,10 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.985"
+        app:layout_constraintHorizontal_bias="0.976"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.14" />
+        app:layout_constraintVertical_bias="0.141" />
 
     <Button
         android:fontFamily="@font/walter_turncoat"
@@ -128,10 +129,11 @@
         android:inputType="textMultiLine"
 
         android:paddingLeft="@dimen/margin_4"
+        android:paddingRight="@dimen/margin_4"
         android:text="My notes taken by me "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.996"
+        app:layout_constraintHorizontal_bias="0.98"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.747" />
@@ -218,6 +220,7 @@
                 android:background="@drawable/textview_background"
                 android:fontFamily="@font/andika"
                 android:paddingLeft="@dimen/margin_4"
+                android:paddingRight="@dimen/margin_4"
                 android:text="There is no content to show"
                 android:textSize="20sp"
                 android:textStyle="bold" />
