@@ -158,7 +158,7 @@
             android:shadowRadius="8"
             android:text="Budemi Registration"
             android:textAlignment="center"
-            android:textColor="#cf1d1d"
+            android:textColor="@color/colorPrimary1"
             android:textFontWeight="5"
             android:textIsSelectable="false"
             android:textSize="40dp"

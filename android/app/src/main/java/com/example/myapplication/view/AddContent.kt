@@ -61,7 +61,7 @@ class AddContent : AppCompatActivity() {
 
             apiService.addContent(userInfo){
                 if(it?.id!=null){ // content successfully added
-                    var intent= Intent(applicationContext, LearningSpace2::class.java)
+                    var intent= Intent(applicationContext, LearningSpace2Menu::class.java)
                     startActivity(intent)
                 }
                 else{// content couldn't be added.
@@ -82,7 +82,7 @@ class AddContent : AppCompatActivity() {
 
             apiService.addContent(userInfo){
                 if(it?.id!=null){ // content successfully added
-                    var intent= Intent(applicationContext, LearningSpace2::class.java)
+                    var intent= Intent(applicationContext, LearningSpace2Menu::class.java)
                     startActivity(intent)
                 }
                 else{// content couldn't be added.
