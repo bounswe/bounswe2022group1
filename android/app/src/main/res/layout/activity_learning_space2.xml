@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FF597B">
+    android:background="@drawable/background_general">
 
 
     <TextView
+        android:fontFamily="@font/walter_turncoat"
         android:id="@+id/learning_topic"
         android:layout_width="191dp"
         android:layout_height="48dp"
@@ -50,6 +51,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
+        android:fontFamily="@font/walter_turncoat"
         android:id="@+id/textView8"
         android:layout_width="174dp"
         android:layout_height="40dp"
@@ -66,6 +68,7 @@
         app:layout_constraintVertical_bias="0.012" />
 
     <Button
+        android:fontFamily="@font/walter_turncoat"
         android:id="@+id/join_leave"
         android:layout_width="125dp"
         android:layout_height="50dp"
@@ -80,6 +83,7 @@
         app:layout_constraintVertical_bias="0.365" />
 
     <Button
+        android:fontFamily="@font/walter_turncoat"
         android:id="@+id/add_content"
         android:layout_width="125dp"
         android:layout_height="55dp"

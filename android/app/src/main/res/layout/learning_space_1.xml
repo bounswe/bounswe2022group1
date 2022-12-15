@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#CFD4F1">
+    android:background="@drawable/background_general">
 
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
+        android:fontFamily="@font/walter_turncoat"
         android:text="Learning Spaces"
         android:textColor="#6200EE"
         android:textSize="40dp"

@@ -11,5 +11,7 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginVertical="20dp"
         android:hint="Name"
+        android:fontFamily="@font/walter_turncoat"
+
         android:textSize="16sp" />
 </LinearLayout>

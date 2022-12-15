@@ -4,11 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#CFD4F1">
+    android:background="@drawable/background_general">
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"
         android:layout_width="0dp"
+        android:fontFamily="@font/walter_turncoat"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:layout_marginTop="8dp"
@@ -22,6 +23,7 @@
 
     <ListView
         android:id="@+id/recyclerView"
+        android:fontFamily="@font/walter_turncoat"
         android:layout_width="405dp"
         android:layout_height="335dp"
         app:layout_constraintBottom_toBottomOf="parent"

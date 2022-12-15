@@ -5,17 +5,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".view.SignInActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#CFD4F1"
+        android:background="@drawable/background_general"
         tools:context=".view.SignInActivity"
         tools:layout_editor_absoluteX="-170dp"
         tools:layout_editor_absoluteY="35dp">
 
         <Button
+            android:fontFamily="@font/walter_turncoat"
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -31,7 +33,9 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
+
             android:id="@+id/button5"
+            android:fontFamily="@font/walter_turncoat"
             android:layout_width="232dp"
             android:layout_height="68dp"
             android:background="@drawable/button_background"
@@ -71,6 +75,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="ID"
+                android:fontFamily="@font/walter_turncoat"
                 android:maxLength="25" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -99,33 +104,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Password"
+                android:fontFamily="@font/walter_turncoat"
                 android:maxLength="25" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/textInputLayout2"
-            app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.496"
-            app:srcCompat="@drawable/male_user" />
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="28dp"
-            app:layout_constraintBottom_toTopOf="@+id/textInputLayout2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.496"
-            app:srcCompat="@drawable/female_user" />
-
         <TextView
+            android:fontFamily="@font/walter_turncoat"
             android:id="@+id/editTextTextPersonName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -149,6 +133,7 @@
             app:layout_constraintVertical_bias="0.591" />
 
         <TextView
+            android:fontFamily="@font/walter_turncoat"
             android:id="@+id/textView13"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

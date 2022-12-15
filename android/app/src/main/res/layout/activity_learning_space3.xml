@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#CFD4F1"
+    android:background="@drawable/background_general"
     tools:context=".view.LearningSpace3">
 
     <ScrollView
+
         android:layout_width="246dp"
         android:layout_height="210dp"
         android:layout_marginStart="11dp"
@@ -27,6 +28,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:fontFamily="@font/walter_turncoat"
                 android:id="@+id/Chatbox"
                 android:layout_width="251dp"
                 android:layout_height="match_parent"
@@ -37,6 +39,7 @@
     </ScrollView>
 
     <Button
+        android:fontFamily="@font/walter_turncoat"
         android:id="@+id/postClicked"
         android:layout_width="43dp"
         android:layout_height="39dp"
@@ -62,6 +65,7 @@
         app:layout_constraintVertical_bias="0.232" />
 
     <TextView
+        android:fontFamily="@font/walter_turncoat"
         android:id="@+id/textView10"
         android:layout_width="132dp"
         android:layout_height="34dp"
@@ -77,6 +81,7 @@
         app:layout_constraintVertical_bias="0.14" />
 
     <Button
+        android:fontFamily="@font/walter_turncoat"
         android:id="@+id/editButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -90,6 +95,7 @@
         app:layout_constraintVertical_bias="0.028" />
 
     <TextView
+        android:fontFamily="@font/walter_turncoat"
         android:id="@+id/learning_topic2"
         android:layout_width="261dp"
         android:layout_height="34dp"
@@ -105,6 +111,7 @@
         app:layout_constraintVertical_bias="0.007" />
 
     <EditText
+        android:fontFamily="@font/walter_turncoat"
         android:id="@+id/editTextTextMultiLine2"
         android:layout_width="132dp"
         android:layout_height="303dp"
@@ -120,6 +127,7 @@
         app:layout_constraintVertical_bias="0.747" />
 
     <TextView
+        android:fontFamily="@font/walter_turncoat"
         android:id="@+id/textView14"
         android:layout_width="67dp"
         android:layout_height="26dp"
@@ -134,6 +142,7 @@
         app:layout_constraintVertical_bias="0.396" />
 
     <TextView
+        android:fontFamily="@font/walter_turncoat"
         android:id="@+id/textView9"
         android:layout_width="125dp"
         android:layout_height="31dp"
@@ -148,6 +157,7 @@
         app:layout_constraintVertical_bias="0.559" />
 
     <Button
+        android:fontFamily="@font/walter_turncoat"
         android:id="@+id/saveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -161,6 +171,7 @@
         app:layout_constraintVertical_bias="0.971" />
 
     <Button
+        android:fontFamily="@font/walter_turncoat"
         android:id="@+id/UpButton"
         android:layout_width="87dp"
         android:layout_height="53dp"
@@ -189,6 +200,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:fontFamily="@font/walter_turncoat"
                 android:id="@+id/ContentText"
                 android:layout_width="249dp"
                 android:layout_height="match_parent"
