@@ -18,13 +18,13 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:fontFamily="@font/walter_turncoat"
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
+        android:fontFamily="@font/walter_turncoat"
         android:text="TextView"
-        android:textColor="#6200EE"
+        android:textColor="@color/colorPrimary4"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,12 +32,12 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <TextView
-        android:fontFamily="@font/walter_turncoat"
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/walter_turncoat"
         android:text="TextView"
-        android:textColor="#6200EE"
+        android:textColor="@color/colorPrimary4"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -13,7 +13,7 @@
         android:layout_marginTop="36dp"
         android:fontFamily="@font/walter_turncoat"
         android:text="Learning Spaces"
-        android:textColor="#6200EE"
+        android:textColor="@color/colorPrimary4"
         android:textSize="40dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"

@@ -64,7 +64,7 @@
             app:endIconMode="clear_text"
 
             app:helperText="Required*"
-            app:helperTextTextColor="@color/purple_700"
+            app:helperTextTextColor="@color/colorPrimary4"
 
 
             app:layout_constraintBottom_toTopOf="@+id/textInputLayout3"
@@ -100,6 +100,7 @@
 
             app:endIconMode="password_toggle"
             app:helperText="Required*"
+            app:helperTextTextColor="@color/colorPrimary4"
             app:layout_constraintBottom_toTopOf="@+id/button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

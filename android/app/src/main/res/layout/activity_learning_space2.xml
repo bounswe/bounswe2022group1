@@ -16,7 +16,7 @@
         android:fontFamily="@font/walter_turncoat"
         android:text="Gitar"
         android:textAlignment="center"
-        android:textColor="#6200EE"
+        android:textColor="@color/colorPrimary4"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/Owners"
         app:layout_constraintEnd_toStartOf="@+id/textView8"
@@ -51,14 +51,14 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:fontFamily="@font/walter_turncoat"
         android:id="@+id/textView8"
         android:layout_width="174dp"
         android:layout_height="40dp"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/walter_turncoat"
         android:text="Members"
         android:textAlignment="center"
-        android:textColor="#6200EE"
+        android:textColor="@color/colorPrimary4"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/add_content"
         app:layout_constraintEnd_toEndOf="parent"

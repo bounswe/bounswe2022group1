@@ -8,7 +8,7 @@
         android:id="@+id/discussionPostText"
         android:layout_width="match_parent"
         android:layout_height="526dp"
-        android:fontFamily="@font/walter_turncoat"
+        android:fontFamily="@font/andika"
         android:background="@drawable/background_general"
         android:layout_marginVertical="@dimen/margin_50"
         android:ems="10"

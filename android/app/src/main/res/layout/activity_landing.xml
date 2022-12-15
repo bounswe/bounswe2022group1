@@ -42,7 +42,7 @@
         android:fontFamily="@font/walter_turncoat"
         android:text="BUDEMI"
         android:textAlignment="center"
-        android:textColor="#6200EE"
+        android:textColor="@color/colorPrimary4"
         android:textSize="50sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
