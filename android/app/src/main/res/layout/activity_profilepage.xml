@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="22dp"
         android:layout_marginBottom="51dp"
+        android:background="@drawable/button_background"
         android:onClick="editProfileButton"
         android:text="Edit Profile"
         app:layout_constraintBottom_toTopOf="@+id/seeProfile"
@@ -24,6 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="3dp"
         android:layout_marginBottom="169dp"
+        android:background="@drawable/button_background"
         android:onClick="seeProfileButton"
         android:text="See Profile"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -41,12 +43,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/vesika" />
-        app:srcCompat="@drawable/profileage" />
+         />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/button_background"
         android:onClick="toChangePassword"
         android:text="Change Password"
         app:layout_constraintBottom_toTopOf="@+id/imageView6"

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary3"
     tools:context=".view.AddContent">
 
     <EditText
@@ -13,7 +14,7 @@
         android:layout_marginStart="34dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="60dp"
-        android:background="@color/gull_gray"
+        android:background="@color/material_dynamic_secondary90"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
@@ -78,10 +79,10 @@
 
     <EditText
         android:id="@+id/textEditText"
-        android:layout_width="282dp"
-        android:layout_height="342dp"
+        android:layout_width="297dp"
+        android:layout_height="337dp"
         android:layout_marginBottom="60dp"
-        android:background="@color/gull_gray"
+        android:background="@color/material_dynamic_secondary90"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
@@ -94,29 +95,39 @@
 
     <Button
         android:id="@+id/SubmitButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="122dp"
+        android:layout_height="70dp"
         android:layout_marginStart="189dp"
         android:layout_marginTop="3dp"
         android:layout_marginEnd="110dp"
+        android:background="@drawable/button_background"
+        android:focusable="true"
         android:onClick="submitButtonClicked"
+        android:paddingStart="25dp"
+        android:paddingTop="15dp"
+        android:paddingEnd="25dp"
+        android:paddingBottom="15dp"
         android:text="Submit"
+        android:textAllCaps="false"
+        android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textEditText"
-        app:layout_constraintVertical_bias="0.058" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <Spinner
         android:id="@+id/typeEditText"
-        style="@android:style/Widget.DeviceDefault.Light.Spinner"
+
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="129dp"
         android:layout_height="41dp"
         android:layout_marginTop="25dp"
         android:entries="@array/type_choice"
 
         android:forceDarkAllowed="false"
+        android:popupBackground="@color/blue"
         android:spinnerMode="dropdown"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"

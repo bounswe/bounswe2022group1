@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:theme="@style/AppTheme"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -12,18 +13,8 @@
         android:label="Budemi"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true"
         tools:targetApi="33">
-        <activity
-            android:name=".jetpackDeneme"
-            android:exported="false"
-            android:label="@string/title_activity_jetpack_deneme"
-            android:theme="@style/Theme.MyApplication">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
         <activity
             android:name=".view.LsSearchActivity"
             android:exported="false">
