@@ -32,7 +32,9 @@
                 android:id="@+id/Chatbox"
                 android:layout_width="251dp"
                 android:layout_height="match_parent"
+                android:background="@drawable/textview_background"
                 android:fontFamily="@font/andika"
+                android:paddingLeft="@dimen/margin_4"
                 android:text="There has been no discussion yet."
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -40,24 +42,28 @@
     </ScrollView>
 
     <Button
-        android:fontFamily="@font/walter_turncoat"
         android:id="@+id/postClicked"
         android:layout_width="43dp"
         android:layout_height="39dp"
         android:layout_marginStart="116dp"
+        android:layout_marginTop="1dp"
         android:layout_marginEnd="143dp"
         android:layout_marginBottom="2dp"
         android:background="@drawable/button_background"
+        android:fontFamily="@font/walter_turncoat"
         android:onClick="postClicked"
         android:text="+"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/saveButton"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView3" />
 
     <ListView
         android:id="@+id/Owners"
         android:layout_width="133dp"
         android:layout_height="105dp"
+        android:background="@drawable/textview_background"
+        android:paddingLeft="@dimen/margin_4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.985"
@@ -97,7 +103,7 @@
 
     <TextView
         android:id="@+id/learning_topic2"
-        android:layout_width="261dp"
+        android:layout_width="263dp"
         android:layout_height="34dp"
         android:fontFamily="@font/walter_turncoat"
         android:text="Topic of the content"
@@ -106,7 +112,7 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.102"
+        app:layout_constraintHorizontal_bias="0.09"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.007" />
@@ -115,10 +121,13 @@
         android:id="@+id/editTextTextMultiLine2"
         android:layout_width="132dp"
         android:layout_height="303dp"
+        android:background="@drawable/textview_background"
         android:ems="10"
         android:fontFamily="@font/andika"
         android:gravity="start|top"
         android:inputType="textMultiLine"
+
+        android:paddingLeft="@dimen/margin_4"
         android:text="My notes taken by me "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -181,18 +190,18 @@
         android:text="UP"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.003"
+        app:layout_constraintHorizontal_bias="0.263"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.478" />
+        app:layout_constraintVertical_bias="0.45" />
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="246dp"
-        android:layout_height="226dp"
+        android:layout_width="264dp"
+        android:layout_height="225dp"
         app:layout_constraintBottom_toTopOf="@+id/UpButton"
         app:layout_constraintEnd_toStartOf="@+id/Owners"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.486"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/learning_topic2"
         app:layout_constraintVertical_bias="0.0">
@@ -204,9 +213,11 @@
 
             <TextView
                 android:id="@+id/ContentText"
-                android:layout_width="249dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@drawable/textview_background"
                 android:fontFamily="@font/andika"
+                android:paddingLeft="@dimen/margin_4"
                 android:text="There is no content to show"
                 android:textSize="20sp"
                 android:textStyle="bold" />

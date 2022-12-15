@@ -14,6 +14,7 @@
         android:layout_marginStart="34dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="60dp"
+        android:background="@drawable/textview_background"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
@@ -87,9 +88,10 @@
 
     <EditText
         android:id="@+id/textEditText"
-        android:layout_width="297dp"
-        android:layout_height="337dp"
-        android:layout_marginBottom="60dp"
+        android:layout_width="313dp"
+        android:layout_height="335dp"
+        android:layout_marginBottom="125dp"
+        android:background="@drawable/textview_background"
         android:ems="10"
         android:fontFamily="@font/walter_turncoat"
         android:gravity="start|top"
@@ -124,18 +126,19 @@
         android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textEditText"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.192" />
 
     <Spinner
         android:id="@+id/typeEditText"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-        android:layout_width="292dp"
-        android:layout_height="37dp"
+        android:layout_width="308dp"
+        android:layout_height="36dp"
         android:layout_marginTop="25dp"
 
+        android:background="@drawable/textview_background"
         android:dropDownWidth="match_parent"
         android:dropDownSelector="@drawable/circle_button"
         android:entries="@array/type_choice"

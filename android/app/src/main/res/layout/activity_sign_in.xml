@@ -142,13 +142,13 @@
             app:layout_constraintVertical_bias="0.099" />
 
         <TextView
-            android:fontFamily="@font/walter_turncoat"
             android:id="@+id/textView13"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/textview_background"
+            android:fontFamily="@font/walter_turncoat"
             android:onClick="goToResetPassword"
             android:text="Forgot your password?"
-            android:textColor="@color/purple_700"
             android:textSize="20dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/success_message"
