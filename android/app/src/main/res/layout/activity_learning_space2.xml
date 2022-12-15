@@ -70,19 +70,19 @@
         app:layout_constraintVertical_bias="0.012" />
 
     <Button
-        android:fontFamily="@font/walter_turncoat"
         android:id="@+id/join_leave"
         android:layout_width="125dp"
-        android:layout_height="50dp"
+        android:layout_height="51dp"
         android:background="@drawable/button_background"
+        android:fontFamily="@font/walter_turncoat"
         android:onClick="enroll"
         android:text="Enroll"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.894"
+        app:layout_constraintHorizontal_bias="0.903"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/add_content"
-        app:layout_constraintVertical_bias="0.365" />
+        app:layout_constraintVertical_bias="0.228" />
 
     <Button
         android:fontFamily="@font/walter_turncoat"
