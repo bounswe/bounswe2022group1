@@ -53,6 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="37dp"
         android:layout_marginBottom="175dp"
+        android:background="@drawable/button_background"
         android:onClick="editAboutMe"
         android:text="Edit Profile"
         app:layout_constraintBottom_toBottomOf="parent"

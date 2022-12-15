@@ -41,15 +41,14 @@
         android:layout_width="43dp"
         android:layout_height="39dp"
         android:layout_marginStart="116dp"
-        android:layout_marginTop="1dp"
         android:layout_marginEnd="143dp"
         android:layout_marginBottom="2dp"
+        android:background="@drawable/button_background"
         android:onClick="postClicked"
         android:text="+"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/saveButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Chatbox" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ListView
         android:id="@+id/Owners"
@@ -81,6 +80,7 @@
         android:id="@+id/editButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/button_background"
         android:text="Edit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -151,6 +151,7 @@
         android:id="@+id/saveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/button_background"
         android:text="Save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -163,6 +164,7 @@
         android:id="@+id/UpButton"
         android:layout_width="87dp"
         android:layout_height="53dp"
+        android:background="@drawable/button_background"
         android:onClick="upClicked"
         android:text="UP"
         app:layout_constraintBottom_toBottomOf="parent"
