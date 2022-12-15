@@ -14,6 +14,7 @@ import com.example.myapplication.service.learningSpace2GetEnrolledLearningSpaces
 import com.example.myapplication.service.learningSpace2Leave_api_call
 
 
+
 var currentContentID=0
 var contentID_ContentName: HashMap<Int, Int> = HashMap<Int, Int>()
 
@@ -27,11 +28,11 @@ class LearningSpace2 : AppCompatActivity() {
 
 
         var namesAdapter: ArrayAdapter<String> = ArrayAdapter(
-            this, android.R.layout.simple_list_item_1, names
+            this, com.example.myapplication.R.layout.adapter_background,names
         )
 
         var contributorsAdapter: ArrayAdapter<String> = ArrayAdapter(
-            this, android.R.layout.simple_list_item_1, contributors
+            this, com.example.myapplication.R.layout.adapter_background, contributors
         )
 
         namesListView.adapter=namesAdapter

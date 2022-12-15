@@ -8,12 +8,12 @@
 
 
     <TextView
-        android:fontFamily="@font/walter_turncoat"
         android:id="@+id/learning_topic"
-        android:layout_width="191dp"
-        android:layout_height="48dp"
+        android:layout_width="183dp"
+        android:layout_height="44dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="5dp"
+        android:fontFamily="@font/walter_turncoat"
         android:text="Gitar"
         android:textAlignment="center"
         android:textColor="#6200EE"

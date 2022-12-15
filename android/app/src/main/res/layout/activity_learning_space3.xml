@@ -9,6 +9,7 @@
 
     <ScrollView
 
+        android:id="@+id/scrollView3"
         android:layout_width="246dp"
         android:layout_height="210dp"
         android:layout_marginStart="11dp"
@@ -28,10 +29,10 @@
             android:orientation="vertical">
 
             <TextView
-                android:fontFamily="@font/walter_turncoat"
                 android:id="@+id/Chatbox"
                 android:layout_width="251dp"
                 android:layout_height="match_parent"
+                android:fontFamily="@font/andika"
                 android:text="There has been no discussion yet."
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -111,11 +112,11 @@
         app:layout_constraintVertical_bias="0.007" />
 
     <EditText
-        android:fontFamily="@font/walter_turncoat"
         android:id="@+id/editTextTextMultiLine2"
         android:layout_width="132dp"
         android:layout_height="303dp"
         android:ems="10"
+        android:fontFamily="@font/andika"
         android:gravity="start|top"
         android:inputType="textMultiLine"
         android:text="My notes taken by me "
@@ -171,20 +172,22 @@
         app:layout_constraintVertical_bias="0.971" />
 
     <Button
-        android:fontFamily="@font/walter_turncoat"
         android:id="@+id/UpButton"
         android:layout_width="87dp"
         android:layout_height="53dp"
         android:background="@drawable/button_background"
+        android:fontFamily="@font/walter_turncoat"
         android:onClick="upClicked"
         android:text="UP"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.266"
+        app:layout_constraintHorizontal_bias="0.003"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.478" />
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="246dp"
         android:layout_height="226dp"
         app:layout_constraintBottom_toTopOf="@+id/UpButton"
@@ -200,14 +203,27 @@
             android:orientation="vertical">
 
             <TextView
-                android:fontFamily="@font/walter_turncoat"
                 android:id="@+id/ContentText"
                 android:layout_width="249dp"
                 android:layout_height="match_parent"
+                android:fontFamily="@font/andika"
                 android:text="There is no content to show"
                 android:textSize="20sp"
                 android:textStyle="bold" />
         </LinearLayout>
     </ScrollView>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView9"
+        app:layout_constraintEnd_toStartOf="@+id/editTextTextMultiLine2"
+        app:layout_constraintHorizontal_bias="0.937"
+        app:layout_constraintStart_toEndOf="@+id/UpButton"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/discussion" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

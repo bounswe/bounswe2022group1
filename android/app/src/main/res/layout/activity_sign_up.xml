@@ -17,18 +17,18 @@
 
         <Button
             android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="176dp"
+            android:layout_width="206dp"
+            android:layout_height="46dp"
+            android:layout_marginBottom="200dp"
 
 
             android:background="@drawable/button_background"
+            android:fontFamily="@font/walter_turncoat"
             android:onClick="toSignUp"
             android:text="Sign Up"
-            android:fontFamily="@font/walter_turncoat"
+            android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
@@ -36,21 +36,22 @@
             android:layout_width="206dp"
             android:layout_height="48dp"
             android:background="@drawable/button_background"
+            android:fontFamily="@font/walter_turncoat"
             android:onClick="goToLoginPage"
             android:text="Go to LogIn Page"
-            android:fontFamily="@font/walter_turncoat"
+            android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.492"
+            app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout3"
-            app:layout_constraintVertical_bias="0.302" />
+            app:layout_constraintVertical_bias="0.367" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout2"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="350dp"
-            android:layout_height="wrap_content"
+            android:layout_width="412dp"
+            android:layout_height="89dp"
             app:counterEnabled="true"
             app:counterMaxLength="25"
             app:endIconMode="clear_text"
@@ -68,29 +69,31 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/sign_up_id"
-                android:fontFamily="@font/walter_turncoat"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="ID"
+                android:layout_height="61dp"
                 android:height="48dp"
-                android:maxLength="25" />
+                android:fontFamily="@font/andika"
+                android:hint="ID"
+                android:maxLength="25"
+                android:textSize="20dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout3"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="350dp"
+            android:layout_width="412dp"
 
-            android:layout_height="wrap_content"
+            android:layout_height="102dp"
+
+            android:layout_marginBottom="20dp"
 
             app:counterEnabled="true"
 
             app:counterMaxLength="25"
-
             app:endIconMode="password_toggle"
+
+
             app:helperText="Required*"
-
-
             app:layout_constraintBottom_toTopOf="@+id/button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -99,59 +102,64 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/sign_up_password"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Password"
-                android:fontFamily="@font/walter_turncoat"
+                android:layout_height="73dp"
                 android:height="48dp"
-                android:maxLength="25" />
+                android:fontFamily="@font/andika"
+                android:hint="Password"
+                android:maxLength="25"
+                android:textSize="20dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="350dp"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_height="wrap_content"
-
-            app:helperText="Required*"
-
-            app:endIconMode="clear_text"
-
-            app:startIconDrawable="@drawable/email"
-
+            android:layout_width="414dp"
+            android:layout_height="96dp"
 
             app:counterEnabled="true"
 
             app:counterMaxLength="25"
 
+            app:endIconMode="clear_text"
+
+
+            app:helperText="Required*"
+
             app:layout_constraintBottom_toTopOf="@+id/textInputLayout3"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
+            app:startIconDrawable="@drawable/email">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/sign_up_email"
                 android:layout_width="match_parent"
+                android:layout_height="71dp"
                 android:height="48dp"
-                android:layout_height="wrap_content"
+                android:fontFamily="@font/andika"
                 android:hint="E-mail"
-                android:fontFamily="@font/walter_turncoat"
-                android:maxLength="25" />
+                android:maxLength="25"
+                android:textSize="20dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
-            android:fontFamily="@font/walter_turncoat"
+
             android:id="@+id/editTextTextPersonName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="342dp"
+            android:layout_height="113dp"
             android:ems="10"
-            android:shadowColor="#cf1d1d"
+            android:fontFamily="@font/walter_turncoat"
+            android:shadowColor="@color/colorPrimary4"
             android:shadowDx="0.0"
             android:shadowDy="0.0"
+
             android:shadowRadius="8"
-            android:text="      Budemi Registration"
+            android:text="Budemi Registration"
+            android:textAlignment="center"
             android:textColor="#cf1d1d"
             android:textFontWeight="5"
             android:textIsSelectable="false"
-            android:textSize="20sp"
+            android:textSize="40dp"
             android:textStyle="bold|italic"
             app:layout_constraintBottom_toTopOf="@+id/textInputLayout2"
             app:layout_constraintEnd_toEndOf="@+id/textInputLayout2"
