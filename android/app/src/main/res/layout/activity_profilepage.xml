@@ -4,60 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_general"><![CDATA[
-
-
-
-
-
-    />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    ]]>
+    android:background="@drawable/background_general">
 
     <TextView
-        android:id="@+id/usernameBox3"
+        android:id="@+id/seeEmail"
         android:layout_width="275dp"
         android:layout_height="50dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="12dp"
+        android:layout_marginStart="-20dp"
+        android:layout_marginEnd="2dp"
         android:fontFamily="@font/andika"
         android:paddingLeft="@dimen/margin_8"
         android:text="There is no e-mail"
@@ -67,94 +21,106 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView18"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.785" />
+        app:layout_constraintVertical_bias="0.545" />
 
     <TextView
-        android:id="@+id/usernameBox4"
+        android:id="@+id/seeID"
         android:layout_width="275dp"
         android:layout_height="50dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="12dp"
+        android:layout_marginStart="-20dp"
+        android:layout_marginEnd="2dp"
         android:fontFamily="@font/andika"
         android:paddingLeft="@dimen/margin_8"
-        android:text="There is no username"
+        android:text="There is no e-mail"
         android:textColor="@color/black"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView19"
+        app:layout_constraintHorizontal_bias="0.853"
+        app:layout_constraintStart_toEndOf="@+id/textView18"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.651" />
-
-    <TextView
-        android:id="@+id/usernameBox"
-        android:layout_width="275dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="12dp"
-        android:fontFamily="@font/andika"
-        android:paddingLeft="@dimen/margin_8"
-        android:text="There is about me oasdofasdofsadofodsafgodsaofasdofafasdofodfoasfdoasdofasdof"
-        android:textColor="@color/black"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/textView19"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+        app:layout_constraintVertical_bias="0.451" />
 
     <TextView
         android:id="@+id/textView18"
         android:layout_width="140dp"
         android:layout_height="50dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="1dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="25dp"
         android:paddingLeft="@dimen/margin_10"
         android:text="E-mail:"
         android:textColor="@color/colorPrimary1"
         android:textSize="25dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/usernameBox3"
+        app:layout_constraintEnd_toStartOf="@+id/seeEmail"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.785" />
+        app:layout_constraintVertical_bias="0.546" />
 
     <TextView
-        android:id="@+id/textView19"
-        android:layout_width="140dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="1dp"
-        android:text="Username:"
-        android:textAlignment="center"
-        android:textColor="@color/colorPrimary1"
-        android:textSize="25dp"
-        android:textStyle="bold"
+        android:id="@+id/seeAboutMe"
+        android:layout_width="275dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/andika"
+        android:paddingLeft="@dimen/margin_8"
+        android:text="There is no about me to show"
+        android:textColor="@color/black"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/usernameBox4"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.651" />
+        app:layout_constraintVertical_bias="0.811" />
 
     <TextView
         android:id="@+id/textView22"
         android:layout_width="140dp"
         android:layout_height="100dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="1dp"
+        android:layout_marginStart="10dp"
         android:text="About me:"
         android:textAlignment="center"
         android:textColor="@color/colorPrimary1"
         android:textSize="25dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/usernameBox4"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+        app:layout_constraintVertical_bias="0.811" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="140dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="5dp"
+        android:text="Enrolled:"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary1"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/_dynamic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.644" />
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="140dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="8dp"
+        android:text="User ID:"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary1"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/seeID"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.452" />
 
     <Button
         android:id="@+id/editProfile"
@@ -203,14 +169,14 @@
         app:layout_constraintVertical_bias="0.934" />
 
     <TextView
-        android:id="@+id/textView20"
+        android:id="@+id/hello_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="116dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="116dp"
         android:fontFamily="@font/walter_turncoat"
-        android:text="Hello, quanex1"
+        android:text="Hello, User"
         android:textAlignment="center"
         android:textColor="@color/colorPrimary1"
         android:textSize="30dp"
@@ -220,6 +186,24 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView6"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Spinner
+        android:id="@+id/enrolled_list"
+        android:layout_width="263dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/textview_background"
+        android:spinnerMode="dropdown"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/seeAboutMe"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.285"
+        app:layout_constraintStart_toEndOf="@+id/textView17"
+        app:layout_constraintTop_toBottomOf="@+id/seeEmail"
         app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

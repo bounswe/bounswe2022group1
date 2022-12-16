@@ -9,4 +9,5 @@ data class list_element_user(
     val username:String,
     @SerializedName("email")
     val email:String
+
 )
