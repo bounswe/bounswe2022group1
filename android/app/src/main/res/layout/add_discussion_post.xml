@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/discussionPostText"
+        android:layout_width="match_parent"
+        android:layout_height="526dp"
+        android:fontFamily="@font/andika"
+        android:background="@drawable/background_general"
+        android:layout_marginVertical="@dimen/margin_50"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine" />
+</LinearLayout>

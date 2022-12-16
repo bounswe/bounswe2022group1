@@ -19,6 +19,7 @@ class LandingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_landing)
 
+
         postToList()
 
         val view_pager2 = findViewById<ViewPager2>(R.id.viewPager2)

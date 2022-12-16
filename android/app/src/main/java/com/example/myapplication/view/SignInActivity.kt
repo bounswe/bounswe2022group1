@@ -14,7 +14,7 @@ import com.google.android.material.textfield.TextInputEditText
 class SignInActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_sign_in)
     }
 
     fun goToSignUp(view: View) {
@@ -26,7 +26,10 @@ class SignInActivity : AppCompatActivity() {
         val intent= Intent(applicationContext, HomeActivity::class.java)
         startActivity(intent)
     }
-
+    fun goToResetPassword(view: View) {
+        var intent= Intent(applicationContext, ForgotPasswordActivity::class.java)
+        startActivity(intent)
+    }
     fun toLogIn(view: View){
         val userIdView= findViewById<TextInputEditText>(R.id.sign_in_id)
         val passwordView= findViewById<TextInputEditText>(R.id.sign_in_password)

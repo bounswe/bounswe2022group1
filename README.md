@@ -24,7 +24,7 @@ Welcome to our project repository for CMPE 415 course held in Fall 2022. You can
 
 10- [Osman Fehmi Albayrak](https://github.com/bounswe/bounswe2022group1/wiki/Osman-Fehmi-Albayrak)
 
-11- [Hüseyin Seyyid](https://github.com/bounswe/bounswe2022group1/wiki/H%C3%BCseyin-Seyyid)
+11- [Hüseyin Seyyid Kaplan](https://github.com/bounswe/bounswe2022group1/wiki/Huseyin-Seyyid-Kaplan)
 
 12- [Kadir Kalkan](https://github.com/bounswe/bounswe2022group1/wiki/Kadir-Kalkan)
 
@@ -53,10 +53,56 @@ expected to learn how to effectively use them
 - [Alper Ahmetoglu](https://www.cmpe.boun.edu.tr/tr/people/alper.ahmetoglu) alper.ahmetoglu@boun.edu.tr
 
 ### For Building Backend App
+
+-> Checkout master branch
+
 -> Enter into the directory "backend". 
+
 -> You should be in the same directory as docker-compose.yml and Dockerfile. Type:
+
 -> sudo docker-compose build
+
 -> sudo docker-compose up
 
-Now, your app shoould be running. Note that, if the docker app's ports are already taken, then you should update the ports in docker-compose.yml. 
+Now, your app shoould be running. Note that, if the docker app's ports are already taken, then you should update the ports in docker-compose.yml. Also, you should have a .env file in the same directory where your docker-compose.yml file is located. In this file, you need e-mail and password specifications, which we didn't publish here. So, for learning them, please communicate with us. 
 
+
+
+### For Running Frontend App in Development Mode
+
+-> Enter into the directory "frontend". 
+
+-> npm i
+
+-> npm run dev
+
+
+
+### For Running Frontend App in Development Mode
+
+-> Enter into the directory "frontend". 
+
+-> npm i
+
+-> npm run build
+
+-> npm run start (starts to serve)
+
+You can install npm via https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
+
+
+##For Building Android App
+
+-> Checkout master branch
+
+-> Open Android Studio
+
+-> In Android Studio, do the followings
+
+       1-Click on File
+
+       2-Click on Open
+
+       3-Choose the directory deliverables/CMPE451_Customer_Presentation_Milestone_X/android folder
+
+       4-Click on Run

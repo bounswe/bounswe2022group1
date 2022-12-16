@@ -79,7 +79,7 @@ class LearningSpace1 : AppCompatActivity() {
 
 
     fun goToLearningSpace2() {
-        var intent= Intent(applicationContext, LearningSpace2::class.java)
+        var intent= Intent(applicationContext, LearningSpace2Menu::class.java)
         startActivity(intent)
     }
 
