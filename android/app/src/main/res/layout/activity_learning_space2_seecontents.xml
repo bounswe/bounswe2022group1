@@ -9,31 +9,29 @@
 
     <ListView
         android:id="@+id/Topics"
-        android:layout_width="408dp"
-        android:layout_height="621dp"
+        android:layout_width="407dp"
+        android:layout_height="566dp"
         android:layout_marginBottom="54dp"
         android:background="@drawable/textview_background"
-        android:cacheColorHint="@color/colorPrimary4"
-        android:textColor="@color/colorPrimary4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-
         app:layout_constraintTop_toBottomOf="@+id/learning_topic" />
 
     <TextView
         android:id="@+id/learning_topic"
-        android:layout_width="428dp"
-        android:layout_height="56dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
         android:fontFamily="@font/walter_turncoat"
-        android:text="Name of Learning Space"
+        android:text="Learning Space Resource"
         android:textAlignment="center"
         android:textColor="@color/colorPrimary1"
-        android:textSize="24sp"
+        android:textSize="40dp"
         app:layout_constraintBottom_toTopOf="@+id/Topics"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.401"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

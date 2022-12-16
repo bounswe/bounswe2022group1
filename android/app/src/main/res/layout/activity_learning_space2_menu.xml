@@ -8,19 +8,22 @@
 
     <TextView
         android:id="@+id/topic"
-        android:layout_width="428dp"
-        android:layout_height="56dp"
+        android:layout_width="422dp"
+        android:layout_height="113dp"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="16dp"
         android:fontFamily="@font/walter_turncoat"
         android:text="Name of Learning Space"
         android:textAlignment="center"
         android:textColor="@color/colorPrimary1"
-        android:textSize="24sp"
+        android:textSize="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/resource_image"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.166"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.333" />
 
     <Button
         android:id="@+id/addresource_button"

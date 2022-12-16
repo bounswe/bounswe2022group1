@@ -30,7 +30,7 @@
 
             <EditText
                 android:id="@+id/Chatbox"
-                android:layout_width="251dp"
+                android:layout_width="245dp"
                 android:layout_height="match_parent"
                 android:background="@drawable/textview_background"
                 android:editable="false"
@@ -38,8 +38,7 @@
                 android:paddingLeft="@dimen/margin_4"
                 android:paddingRight="@dimen/margin_4"
                 android:text="There has been no discussion yet."
-                android:textSize="20sp"
-                />
+                android:textSize="20sp" />
         </LinearLayout>
     </ScrollView>
 

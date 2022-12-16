@@ -24,16 +24,17 @@
 
     <TextView
         android:id="@+id/MemberText"
-        android:layout_width="409dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/walter_turncoat"
         android:text="Members"
         android:textAlignment="center"
         android:textColor="@color/colorPrimary1"
-        android:textSize="24sp"
+        android:textSize="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintHorizontal_bias="0.451"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.007" />
 </androidx.constraintlayout.widget.ConstraintLayout>
