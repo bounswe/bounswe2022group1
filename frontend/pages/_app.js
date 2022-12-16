@@ -21,6 +21,13 @@ const theme = createTheme({
   typography: {
     fontFamily: "Rubik",
   },
+  components: {
+    MuiPaper: {
+      defaultProps: {
+        elevation: 2,
+      },
+    },
+  },
 });
 
 function MyApp({ Component, pageProps }) {

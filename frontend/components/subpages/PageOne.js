@@ -6,9 +6,9 @@ export default function PageOne() {
   const { user } = useContext(AuthContext);
 
   return (
-    <Box>
-      <Typography mb={2} variant="h4" textAlign="center">
-        {`Welcome ${user}`}
+    <Box sx={{ m: "10%" }}>
+      <Typography mb={2} variant="h1" textAlign="center" color="primary">
+        {`Welcome ${user}!`}
       </Typography>
 
       <Typography
@@ -18,7 +18,6 @@ export default function PageOne() {
         textAlign="center"
       ></Typography>
 
-      <Divider />
       {/*
       <Typography mt={2} paragraph>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
