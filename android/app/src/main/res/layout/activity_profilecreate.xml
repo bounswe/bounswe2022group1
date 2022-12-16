@@ -6,72 +6,93 @@
     android:layout_height="match_parent"
     android:background="@drawable/background_general">
 
-    <TextView
-        android:id="@+id/success_message_profile"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="84dp"
-        android:layout_marginEnd="52dp"
-        android:layout_marginBottom="53dp"
-        android:ems="10"
-        android:shadowColor="#cf1d1d"
-        android:shadowDx="0.0"
-        android:shadowDy="0.0"
-        android:shadowRadius="8"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textFontWeight="5"
-        android:textIsSelectable="false"
-        android:textSize="20sp"
-        android:textStyle="bold|italic"
-        app:layout_constraintBottom_toTopOf="@+id/textViewAboutMe"
+    <Button
+        android:id="@+id/editAboutMe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:background="@drawable/button_background"
+        android:fontFamily="@font/walter_turncoat"
+        android:onClick="editAboutMe"
+        android:text="Confirm"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/about_me"
+        app:layout_constraintVertical_bias="0.309" />
+
+    <Button
+        android:id="@+id/editAboutMe2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:background="@drawable/button_background"
+        android:fontFamily="@font/walter_turncoat"
+        android:onClick="uploadImg"
+        android:text="Upload Image"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.738"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/about_me"
+        app:layout_constraintVertical_bias="0.003" />
 
     <EditText
-        android:fontFamily="@font/walter_turncoat"
         android:id="@+id/about_me"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="82dp"
         android:ems="10"
+        android:fontFamily="@font/walter_turncoat"
         android:gravity="center"
         android:hint="About Me"
         android:importantForAutofill="no"
         android:inputType="textPersonName"
         android:minHeight="48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.351" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="75dp"
+        android:layout_height="73dp"
         app:layout_constraintBottom_toTopOf="@+id/editAboutMe"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.247"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewAboutMe" />
+        app:layout_constraintTop_toBottomOf="@+id/about_me"
+        app:layout_constraintVertical_bias="0.431"
+        tools:srcCompat="@tools:sample/avatars" />
 
     <Button
-        android:id="@+id/editAboutMe"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
-        android:layout_marginBottom="175dp"
+        android:id="@+id/button4"
+        android:layout_width="25dp"
+        android:layout_height="27dp"
+        android:layout_marginEnd="12dp"
         android:background="@drawable/button_background"
-        android:fontFamily="@font/walter_turncoat"
-        android:onClick="editAboutMe"
-        android:text="Edit Profile"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/about_me"
-        app:layout_constraintTop_toBottomOf="@+id/about_me" />
+        android:onClick="deleteImg"
+        android:text="x"
+        app:layout_constraintBottom_toTopOf="@+id/editAboutMe"
+        app:layout_constraintEnd_toStartOf="@+id/editAboutMe2"
+        app:layout_constraintHorizontal_bias="0.214"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/about_me"
+        app:layout_constraintVertical_bias="0.269" />
 
     <TextView
-        android:fontFamily="@font/walter_turncoat"
         android:id="@+id/textViewAboutMe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="4dp"
+        android:fontFamily="@font/walter_turncoat"
         android:text="About Me:"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/about_me"
-        app:layout_constraintStart_toStartOf="@+id/about_me"
-        app:layout_constraintTop_toBottomOf="@+id/success_message_profile" />
+        app:layout_constraintStart_toStartOf="@+id/about_me" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
