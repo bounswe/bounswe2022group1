@@ -4,6 +4,7 @@ package com.example.myapplication.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.Button
@@ -13,19 +14,41 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.myapplication.R
+import com.example.myapplication.service.learningSpace2ListEveryLearningSpace_api_call
 import com.google.android.material.navigation.NavigationView
 import java.nio.file.attribute.AttributeView
 
 var selectedTAG = ""
+var learningSpaceID_Name=mutableMapOf<Int,String>()
+var learningSpaceName_ID= mutableMapOf<String,Int>()
 
 class HomeActivity : AppCompatActivity() {
 
+    fun initID_Name(){
+
+        val apiService = learningSpace2ListEveryLearningSpace_api_call()
+        apiService.listEverySpace () {
+
+            if (it?.data != null) {
+                for (i in 0..(it.data.size - 1)) {
+                    learningSpaceName_ID[it.data[i].name]=it.data[i].id
+                    learningSpaceID_Name[it.data[i].id]=it.data[i].name
+                }
+            }
+            else{ // error for API
+
+            }
+        }
+    }
 
     lateinit var toggle: ActionBarDrawerToggle
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+        initID_Name()
+
+        Log.d("user_token", user_token)
 
 
         val string = findViewById<DrawerLayout>(R.id.drawerLayout)
