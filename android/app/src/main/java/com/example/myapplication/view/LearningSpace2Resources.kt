@@ -41,13 +41,10 @@ class LearningSpace2Resources : AppCompatActivity() {
         setContentView(R.layout.activity_learning_space2_seecontents)
 
         var learning_topic = findViewById(R.id.learning_topic) as TextView
-        learning_topic.text= learningSpaceNAME
+        learning_topic.text= learningSpaceNAME+" Resources"
 
         ShowContributorsAndTopics()
-
     }
-
-
 
     fun goToLearningSpace3(position:Int) {
             currentContentID = contentID_ContentName[position]!!
