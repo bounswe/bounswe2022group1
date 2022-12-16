@@ -7,13 +7,13 @@ import { Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import DetailMain from "./DetailMain";
 
-export default function DetailInfoPage({ space }) {
+export default function DetailInfoPage({ space, content }) {
   return (
     <Container sx={{ marginTop: 12 }}>
       <Grid container maxWidth="lg" spacing={2} columns={12}>
 
         <Grid item xs={12}>
-          <DetailMain space={space} />
+          <DetailMain space={space} content={content} />
         </Grid>
       </Grid>
 
