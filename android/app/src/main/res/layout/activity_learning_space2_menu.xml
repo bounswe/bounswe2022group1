@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/background_general"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/topic"
+        android:layout_width="422dp"
+        android:layout_height="113dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/walter_turncoat"
+        android:text="Name of Learning Space"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary1"
+        android:textSize="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/resource_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.166"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.333" />
+
+    <Button
+        android:id="@+id/addresource_button"
+        android:layout_width="125dp"
+        android:layout_height="51dp"
+        android:layout_marginBottom="200dp"
+        android:background="@drawable/button_background"
+        android:fontFamily="@font/walter_turncoat"
+        android:onClick="goToAddResource"
+        android:text="Add Resource"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.094"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addresource_image"
+        app:layout_constraintVertical_bias="0.228" />
+
+    <Button
+        android:id="@+id/enroll_button"
+        android:layout_width="125dp"
+        android:layout_height="51dp"
+        android:layout_marginBottom="340dp"
+        android:background="@drawable/button_background"
+        android:fontFamily="@font/walter_turncoat"
+        android:onClick="onClickenroll"
+        android:text="Enroll"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enroll_image"
+        app:layout_constraintVertical_bias="0.228" />
+
+    <Button
+        android:id="@+id/addfavorite_button"
+        android:layout_width="125dp"
+        android:layout_height="51dp"
+        android:layout_marginBottom="200dp"
+        android:background="@drawable/button_background"
+        android:fontFamily="@font/walter_turncoat"
+        android:onClick="onClickaddFavorite"
+        android:text="Add Favorite"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.908"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addfavorite_image"
+        app:layout_constraintVertical_bias="0.228" />
+
+    <Button
+        android:id="@+id/member_button"
+        android:layout_width="125dp"
+        android:layout_height="51dp"
+        android:layout_marginBottom="476dp"
+        android:background="@drawable/button_background"
+        android:fontFamily="@font/walter_turncoat"
+        android:onClick="goToMembers"
+        android:text="Members"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.905"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/member_image"
+        app:layout_constraintVertical_bias="0.228" />
+
+    <Button
+        android:id="@+id/resource_button"
+        android:layout_width="125dp"
+        android:layout_height="51dp"
+        android:layout_marginBottom="476dp"
+        android:background="@drawable/button_background"
+        android:fontFamily="@font/walter_turncoat"
+        android:onClick="goToResources"
+        android:text="Resources"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.052"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/resource_image"
+        app:layout_constraintVertical_bias="0.228" />
+
+    <ImageView
+        android:id="@+id/addresource_image"
+        android:layout_width="53dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="71dp"
+        android:layout_marginTop="193dp"
+        android:layout_marginEnd="329dp"
+        app:layout_constraintBottom_toTopOf="@+id/addresource_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.38"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/resource_button"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@android:drawable/ic_menu_edit" />
+
+    <ImageView
+        android:id="@+id/addfavorite_image"
+        android:layout_width="68dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="218dp"
+        android:layout_marginTop="193dp"
+        android:layout_marginEnd="79dp"
+        app:layout_constraintBottom_toTopOf="@+id/addfavorite_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.571"
+        app:layout_constraintStart_toEndOf="@+id/addresource_image"
+        app:layout_constraintTop_toBottomOf="@+id/member_button"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@android:drawable/star_big_on" />
+
+    <ImageView
+        android:id="@+id/member_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="306dp"
+        android:layout_marginTop="144dp"
+        android:layout_marginEnd="62dp"
+        app:layout_constraintBottom_toTopOf="@+id/member_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/student" />
+
+    <ImageView
+        android:id="@+id/resource_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="130dp"
+        android:layout_marginEnd="190dp"
+        app:layout_constraintBottom_toTopOf="@+id/resource_button"
+        app:layout_constraintEnd_toStartOf="@+id/member_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/contents" />
+
+    <ImageView
+        android:id="@+id/enroll_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="184dp"
+        android:layout_marginTop="280dp"
+        android:layout_marginEnd="184dp"
+        app:layout_constraintBottom_toTopOf="@+id/enroll_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/addmember" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -44,7 +44,7 @@ class LearningSpace3 : AppCompatActivity() {
                 val owners = arrayOf<String>(nameOfOwner)
                 val ownersListView = findViewById<ListView>(R.id.Owners)
                 val ownersAdapter: ArrayAdapter<String> = ArrayAdapter(
-                    this, android.R.layout.simple_list_item_1, owners
+                    this, com.example.myapplication.R.layout.adapter_background, owners
                 )
                 ownersListView.adapter=ownersAdapter
 
@@ -78,7 +78,7 @@ class LearningSpace3 : AppCompatActivity() {
                 val owners = arrayOf("given id doesn't exist")
                 val ownersListView = findViewById<ListView>(R.id.Owners)
                 val ownersAdapter: ArrayAdapter<String> = ArrayAdapter(
-                    this, android.R.layout.simple_list_item_1, owners
+                    this, com.example.myapplication.R.layout.adapter_background, owners
                 )
                 ownersListView.adapter=ownersAdapter
             }
