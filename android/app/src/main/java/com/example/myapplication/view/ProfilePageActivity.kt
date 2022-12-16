@@ -20,21 +20,13 @@ class ProfilePageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profilepage)
 
-        //here do the buttons
-        val profileSeeButtonClicked = findViewById<Button>(R.id.seeProfile)
-        profileSeeButtonClicked.setOnClickListener{
-            seeProfileButton()
-        }
 
         val profileEditButtonClicked = findViewById<Button>(R.id.editProfile)
         profileEditButtonClicked.setOnClickListener{
             editProfileButton()
         }
     }
-    fun seeProfileButton() {
-        var intent= Intent(applicationContext, ProfileSeeActivity::class.java)
-        startActivity(intent)
-    }
+
     fun editProfileButton() {
         var intent= Intent(applicationContext, ProfileCreateActivity::class.java)
         startActivity(intent)
