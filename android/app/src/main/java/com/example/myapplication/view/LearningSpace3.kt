@@ -1,6 +1,8 @@
 package com.example.myapplication.view
 
+import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.FrameLayout
@@ -50,7 +52,7 @@ class LearningSpace3 : AppCompatActivity() {
                 resource.setText(it.text)
 
 
-                var nameOfOwner="Unknown"
+                var nameOfOwner="Eruhlu"
                 learningSpaceMEMBERS.forEach{
                         l->
                     if(l.id==it.owner){
@@ -60,6 +62,10 @@ class LearningSpace3 : AppCompatActivity() {
                 owner_text.text="Owner: "+nameOfOwner
                 owner_of_content=nameOfOwner
 
+            }
+            else{
+                //Log.d("Learning Space 3 Line 67","API Call failed.")
+                switchToRead()
             }
         }
         owner_text.setVisibility(View.VISIBLE)
