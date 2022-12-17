@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,15 +7,26 @@
     android:background="@drawable/background_general"
     tools:context=".view.LearningSpace3">
 
-    <ScrollView
+    <TextView
+        android:id="@+id/textView25"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5sp"
+        android:paddingRight="5sp"
+        android:text="Why Do We Fall?"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary1"
+        android:textSize="30dp"
+        android:textStyle="bold" />
 
-        android:id="@+id/scrollView3"
-        android:layout_width="246dp"
-        android:layout_height="210dp"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginStart="11dp"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="1dp"
+        android:layout_marginBottom="20dp"
+        android:splitMotionEvents="false"
         app:layout_constraintBottom_toTopOf="@+id/postClicked"
         app:layout_constraintEnd_toStartOf="@+id/editTextTextMultiLine2"
         app:layout_constraintHorizontal_bias="0.545"
@@ -28,219 +39,136 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <EditText
+            <TextView
                 android:id="@+id/Chatbox"
-                android:layout_width="245dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/textview_background"
-                android:editable="false"
-                android:fontFamily="@font/andika"
-                android:paddingLeft="@dimen/margin_4"
-                android:paddingRight="@dimen/margin_4"
-                android:text="There has been no discussion yet."
-                android:textSize="20sp" />
-        </LinearLayout>
-    </ScrollView>
-
-    <Button
-        android:id="@+id/postClicked"
-        android:layout_width="43dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="116dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="143dp"
-        android:layout_marginBottom="2dp"
-        android:background="@drawable/button_background"
-        android:fontFamily="@font/walter_turncoat"
-        android:onClick="postClicked"
-        android:text="+"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/saveButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView3" />
-
-    <ListView
-        android:id="@+id/Owners"
-        android:layout_width="133dp"
-        android:layout_height="105dp"
-        android:background="@drawable/textview_background"
-        android:paddingLeft="@dimen/margin_4"
-        android:paddingRight="@dimen/margin_4"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.976"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.233" />
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="132dp"
-        android:layout_height="34dp"
-        android:fontFamily="@font/walter_turncoat"
-        android:text="Owners"
-        android:textAlignment="center"
-        android:textColor="@color/colorPrimary1"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.976"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.141" />
-
-    <Button
-        android:id="@+id/editButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_background"
-        android:fontFamily="@font/walter_turncoat"
-        android:text="Edit"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.933"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.043" />
-
-    <TextView
-        android:id="@+id/learning_topic2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/walter_turncoat"
-        android:text="Topic of the content"
-        android:textAlignment="center"
-        android:textColor="@color/colorPrimary1"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.207"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.007" />
-
-    <EditText
-        android:id="@+id/editTextTextMultiLine2"
-        android:layout_width="132dp"
-        android:layout_height="303dp"
-        android:background="@drawable/textview_background"
-        android:ems="10"
-        android:fontFamily="@font/andika"
-        android:gravity="start|top"
-        android:inputType="textMultiLine"
-
-        android:paddingLeft="@dimen/margin_4"
-        android:paddingRight="@dimen/margin_4"
-        android:text="My notes taken by me "
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.98"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.747" />
-
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="67dp"
-        android:layout_height="26dp"
-        android:fontFamily="@font/walter_turncoat"
-        android:text="Notes"
-        android:textColor="@color/colorPrimary1"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.892"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.396" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="125dp"
-        android:layout_height="31dp"
-        android:fontFamily="@font/walter_turncoat"
-        android:text="Discussion"
-        android:textColor="@color/colorPrimary1"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.237"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.559" />
-
-    <Button
-        android:fontFamily="@font/walter_turncoat"
-        android:id="@+id/saveButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_background"
-        android:text="Save"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.934"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.971" />
-
-    <Button
-        android:id="@+id/UpButton"
-        android:layout_width="87dp"
-        android:layout_height="53dp"
-        android:background="@drawable/button_background"
-        android:fontFamily="@font/walter_turncoat"
-        android:onClick="upClicked"
-        android:text="UP"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.263"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.45" />
-
-    <ScrollView
-        android:id="@+id/scrollView2"
-        android:layout_width="264dp"
-        android:layout_height="225dp"
-        app:layout_constraintBottom_toTopOf="@+id/UpButton"
-        app:layout_constraintEnd_toStartOf="@+id/Owners"
-        app:layout_constraintHorizontal_bias="0.486"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/learning_topic2"
-        app:layout_constraintVertical_bias="0.0">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/andika"
-            android:orientation="vertical">
-
-            <EditText
-                android:id="@+id/ContentText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/textview_background"
-                android:editable="false"
-                android:fontFamily="@font/andika"
-                android:paddingLeft="@dimen/margin_4"
-                android:paddingRight="@dimen/margin_4"
-                android:text="There is no content to show"
-                android:textSize="20sp" />
+                android:text="Two government ministers have quit their posts in Peru after days of sometimes violent protests over the impeachment of the former president.  Officials say eight more people died on Thursday during clashes between the army and supporters of Pedro Castillo.  Meanwhile, thousands of tourists are trapped in the city of Cusco after protesters forced the airport to close.  The demonstrations began after Mr Castillo was removed from office by a congressional vote.  Peru has been through years of political turmoil, with the latest crisis coming to a head on 7 December when the former president announced he was dissolving Congress and introducing a state of emergency.  However, Mr Castillo's plan backfired and Congress instead voted overwhelmingly to impeach him.  Dramatic twists and turns in Peru's political crisis More than twenty people have been killed in the protests that followed.  Clashes on Thursday in the central Ayacucho region left at least eight people dead, health authorities said. Footage on social media showed protestors blocking main roads and airports.  Education Minister Patricia Correa was one of two ministers to resign of Friday, writing on Twitter that the &quot;death of compatriots has no justification&quot;, and that &quot;state violence cannot be disproportionate and cause death&quot;.  The protesters are calling for the closure of Congress, the resignation of new president Dina Boluarte and early elections. On Friday Congress voted against a proposal to bring elections forward to next year.  The protests are also affecting the country's tourism industry. The mayor of Cusco told AFP news agency that around 5,000 tourists are stranded in the city after the airport there closed when protesters tried to storm the terminal.  The city is the gateway to Macchu Picchu - an ancient Inca citadel which is visited by hundreds of thousands of people a year.  Around 800 tourists are also stuck in the small town at the foot of the mountain where the citadel stands, because the railway line which serves it has stopped running.  Some mostly American and European tourists have reportedly left the town on foot along the train tracks in an attempt to return to Cusco."
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold" />
         </LinearLayout>
     </ScrollView>
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView9"
-        app:layout_constraintEnd_toStartOf="@+id/editTextTextMultiLine2"
-        app:layout_constraintHorizontal_bias="0.937"
-        app:layout_constraintStart_toEndOf="@+id/UpButton"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/discussion" />
+    <FrameLayout
+        android:id="@+id/bottom_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:background="@drawable/rounded_rectangle"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:id="@+id/Upvote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="300sp"
+            android:layout_marginTop="30sp"
+            android:onClick="upVoteClicked"
+            app:srcCompat="@drawable/up_image" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40sp"
+            android:background="@drawable/textview_background"
+            android:paddingLeft="5sp"
+            android:paddingRight="5sp"
+            android:text="Number of votes:"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30sp"
+            android:layout_marginTop="200sp"
+            android:background="@drawable/textview_background"
+            android:paddingLeft="5sp"
+            android:paddingRight="5sp"
+            android:text="Notes:"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="185sp"
+            android:layout_marginTop="325sp"
+            android:background="@drawable/textview_background"
+            android:paddingLeft="5sp"
+            android:paddingRight="5sp"
+            android:text="Edit:"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView23"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="300sp"
+            android:layout_marginTop="200sp"
+            android:background="@drawable/textview_background"
+            android:paddingLeft="5sp"
+            android:paddingRight="5sp"
+            android:text="Discussion:"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="125sp"
+            android:background="@drawable/textview_background"
+            android:paddingLeft="5sp"
+            android:paddingRight="5sp"
+            android:text="Owner: quanex1"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/upCount"
+            android:layout_width="50sp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="210sp"
+            android:layout_marginTop="40sp"
+            android:background="@drawable/textview_background"
+            android:text="0"
+            android:textAlignment="center"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="wrap_content"
+            android:layout_height="76dp"
+            android:layout_marginLeft="25sp"
+            android:layout_marginTop="225sp"
+            android:onClick="notesClicked"
+            app:srcCompat="@drawable/note" />
+
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="wrap_content"
+            android:layout_height="76dp"
+            android:layout_marginLeft="155sp"
+            android:layout_marginTop="350sp"
+            android:onClick="editClicked"
+            app:srcCompat="@drawable/pencil" />
+
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="315sp"
+            android:layout_marginTop="225sp"
+            android:onClick="discussionClicked"
+            app:srcCompat="@drawable/discussion" />
+
+    </FrameLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
