@@ -54,7 +54,7 @@
     <FrameLayout
         android:id="@+id/bottom_sheet"
         android:layout_width="match_parent"
-        android:layout_height="450dp"
+        android:layout_height="350dp"
         android:background="@drawable/rounded_rectangle"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
@@ -97,7 +97,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="185sp"
-            android:layout_marginTop="325sp"
+            android:layout_marginTop="200sp"
             android:background="@drawable/textview_background"
             android:paddingLeft="5sp"
             android:paddingRight="5sp"
@@ -156,7 +156,7 @@
             android:layout_width="wrap_content"
             android:layout_height="76dp"
             android:layout_marginLeft="155sp"
-            android:layout_marginTop="350sp"
+            android:layout_marginTop="225sp"
             android:onClick="editClicked"
             app:srcCompat="@drawable/pencil" />
 
