@@ -8,9 +8,9 @@
     tools:context=".view.LearningSpace3">
 
     <TextView
-        android:id="@+id/textView25"
+        android:id="@+id/resource_topic"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="73dp"
         android:paddingLeft="5sp"
         android:paddingRight="5sp"
         android:text="Why Do We Fall?"
@@ -20,12 +20,12 @@
         android:textStyle="bold" />
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:layout_marginStart="11dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="80dp"
         android:splitMotionEvents="false"
         app:layout_constraintBottom_toTopOf="@+id/postClicked"
         app:layout_constraintEnd_toStartOf="@+id/editTextTextMultiLine2"
@@ -35,14 +35,17 @@
         app:layout_constraintVertical_bias="1.0">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/Chatbox"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+            <EditText
+                android:id="@+id/Resource"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginBottom="12sp"
+                android:background="@null"
+                android:inputType="none|textMultiLine"
                 android:text="Two government ministers have quit their posts in Peru after days of sometimes violent protests over the impeachment of the former president.  Officials say eight more people died on Thursday during clashes between the army and supporters of Pedro Castillo.  Meanwhile, thousands of tourists are trapped in the city of Cusco after protesters forced the airport to close.  The demonstrations began after Mr Castillo was removed from office by a congressional vote.  Peru has been through years of political turmoil, with the latest crisis coming to a head on 7 December when the former president announced he was dissolving Congress and introducing a state of emergency.  However, Mr Castillo's plan backfired and Congress instead voted overwhelmingly to impeach him.  Dramatic twists and turns in Peru's political crisis More than twenty people have been killed in the protests that followed.  Clashes on Thursday in the central Ayacucho region left at least eight people dead, health authorities said. Footage on social media showed protestors blocking main roads and airports.  Education Minister Patricia Correa was one of two ministers to resign of Friday, writing on Twitter that the &quot;death of compatriots has no justification&quot;, and that &quot;state violence cannot be disproportionate and cause death&quot;.  The protesters are calling for the closure of Congress, the resignation of new president Dina Boluarte and early elections. On Friday Congress voted against a proposal to bring elections forward to next year.  The protests are also affecting the country's tourism industry. The mayor of Cusco told AFP news agency that around 5,000 tourists are stranded in the city after the airport there closed when protesters tried to storm the terminal.  The city is the gateway to Macchu Picchu - an ancient Inca citadel which is visited by hundreds of thousands of people a year.  Around 800 tourists are also stuck in the small town at the foot of the mountain where the citadel stands, because the railway line which serves it has stopped running.  Some mostly American and European tourists have reportedly left the town on foot along the train tracks in an attempt to return to Cusco."
                 android:textAlignment="center"
                 android:textColor="@color/black"
@@ -81,7 +84,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textView21"
+            android:id="@+id/notes_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30sp"
@@ -95,7 +98,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textView24"
+            android:id="@+id/edit_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="185sp"
@@ -109,7 +112,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textView23"
+            android:id="@+id/discussion_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="300sp"
@@ -123,7 +126,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textView19"
+            android:id="@+id/owner_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="125sp"
@@ -131,6 +134,7 @@
             android:paddingLeft="5sp"
             android:paddingRight="5sp"
             android:text="Owner: quanex1"
+            android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="20dp"
             android:textStyle="bold" />
@@ -149,7 +153,7 @@
             android:textStyle="bold" />
 
         <ImageView
-            android:id="@+id/imageView8"
+            android:id="@+id/notes_image"
             android:layout_width="wrap_content"
             android:layout_height="76dp"
             android:layout_marginLeft="25sp"
@@ -158,7 +162,7 @@
             app:srcCompat="@drawable/note" />
 
         <ImageView
-            android:id="@+id/imageView10"
+            android:id="@+id/edit_image"
             android:layout_width="wrap_content"
             android:layout_height="76dp"
             android:layout_marginLeft="155sp"
@@ -167,7 +171,7 @@
             app:srcCompat="@drawable/pencil" />
 
         <ImageView
-            android:id="@+id/imageView9"
+            android:id="@+id/discussion_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="315sp"
