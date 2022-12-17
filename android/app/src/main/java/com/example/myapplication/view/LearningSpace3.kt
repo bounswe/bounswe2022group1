@@ -196,9 +196,6 @@ class LearningSpace3 : AppCompatActivity() {
     }
 
     fun editClicked(view:View){
-        var owner_text=findViewById<TextView>(R.id.owner_text)
-        owner_text.setVisibility(View.GONE)
-
         var resource = findViewById<EditText>(R.id.Resource)
 
         if(resource.isEnabled){
