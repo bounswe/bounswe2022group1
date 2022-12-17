@@ -76,6 +76,7 @@
             android:paddingLeft="5sp"
             android:paddingRight="5sp"
             android:text="Number of votes:"
+            android:textColor="@color/black"
             android:textSize="20dp"
             android:textStyle="bold" />
 
@@ -89,6 +90,7 @@
             android:paddingLeft="5sp"
             android:paddingRight="5sp"
             android:text="Notes:"
+            android:textColor="@color/black"
             android:textSize="20dp"
             android:textStyle="bold" />
 
@@ -102,6 +104,7 @@
             android:paddingLeft="5sp"
             android:paddingRight="5sp"
             android:text="Edit:"
+            android:textColor="@color/black"
             android:textSize="20dp"
             android:textStyle="bold" />
 
@@ -115,6 +118,7 @@
             android:paddingLeft="5sp"
             android:paddingRight="5sp"
             android:text="Discussion:"
+            android:textColor="@color/black"
             android:textSize="20dp"
             android:textStyle="bold" />
 
@@ -127,6 +131,7 @@
             android:paddingLeft="5sp"
             android:paddingRight="5sp"
             android:text="Owner: quanex1"
+            android:textColor="@color/black"
             android:textSize="20dp"
             android:textStyle="bold" />
 
@@ -139,6 +144,7 @@
             android:background="@drawable/textview_background"
             android:text="0"
             android:textAlignment="center"
+            android:textColor="@color/black"
             android:textSize="20dp"
             android:textStyle="bold" />
 
