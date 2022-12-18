@@ -50,43 +50,7 @@ class HomeActivity : AppCompatActivity() {
 
         Log.d("user_token", user_token)
 
-
-        val string = findViewById<DrawerLayout>(R.id.drawerLayout)
-        toggle = ActionBarDrawerToggle(this, string, R.string.open, R.string.close)
-
-        string.addDrawerListener(toggle)
-        toggle.syncState()
-
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-        val string2 = findViewById<NavigationView>(R.id.navView)
-
-        string2.setNavigationItemSelectedListener {
-            when(it.itemId) {
-                R.id.miItem1 -> goToHomePage()
-                R.id.miItem2 -> {
-                    selectedTAG = "Art"
-                    goToLearningSpace1()
-                }
-                R.id.miItem3 -> {
-                    selectedTAG = "Science"
-                    goToLearningSpace1()
-                }
-                R.id.miItem4 -> {
-                    selectedTAG = "Math"
-                    goToLearningSpace1()
-                }
-                R.id.miItem5 -> {
-                    selectedTAG = "Technology"
-                    goToLearningSpace1()
-                }
-                R.id.miItem6 -> {
-                    selectedTAG = "Engineering"
-                    goToLearningSpace1()
-                }
-            }
-            true
-        }
+        navMenuHandler()
         //println("I am home"+user_token)
         //user token null değil ise buttonları göster log off göster sign in kapat
         // , null ise sign in göster, butonları kapat logoff kapat
@@ -120,17 +84,17 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(toggle.onOptionsItemSelected(item)) {
-            return true
-        }
-        return super.onOptionsItemSelected(item)
-    }
+
 
     fun signInToSignIn() {
         var intent= Intent(applicationContext, SignInActivity::class.java)
         startActivity(intent)
     }
+    fun goToSearch(view: View) {
+        var intent= Intent(applicationContext, LsSearchActivity::class.java)
+        startActivity(intent)
+    }
+
     fun logoffToLanding() {
         user_token=""
         var intent= Intent(applicationContext, LandingActivity::class.java)
@@ -144,16 +108,60 @@ class HomeActivity : AppCompatActivity() {
         var intent= Intent(applicationContext, LearningSpace1::class.java)
         startActivity(intent)
     }
-    fun goToSearch(view: View) {
-        var intent= Intent(applicationContext, LsSearchActivity::class.java)
-        startActivity(intent)
-    }
+
     fun goToHomePage() {
         var intent= Intent(applicationContext, HomeActivity::class.java)
         startActivity(intent)
     }
-    fun goToProfilePage(view: View){
-        var intent= Intent(applicationContext, ProfilePageActivity::class.java)
-        startActivity(intent)
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(toggle.onOptionsItemSelected(item)) {
+            return true
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    fun navMenuHandler() {
+        val string = findViewById<DrawerLayout>(R.id.drawerLayout)
+        toggle = ActionBarDrawerToggle(this, string, R.string.open, R.string.close)
+
+        string.addDrawerListener(toggle)
+        toggle.syncState()
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        val string2 = findViewById<NavigationView>(R.id.navView)
+
+        string2.setNavigationItemSelectedListener {
+            when(it.itemId) {
+                R.id.profileButton -> toProfile()
+                R.id.miItem1 -> goToHomePage()
+                R.id.miItem2 -> {
+                    selectedTAG = "Art"
+                    goToLearningSpace1()
+                }
+                R.id.miItem3 -> {
+                    selectedTAG = "Science"
+                    goToLearningSpace1()
+                }
+                R.id.miItem4 -> {
+                    selectedTAG = "Math"
+                    goToLearningSpace1()
+                }
+                R.id.miItem5 -> {
+                    selectedTAG = "Technology"
+                    goToLearningSpace1()
+                }
+                R.id.miItem6 -> {
+                    selectedTAG = "Engineering"
+                    goToLearningSpace1()
+                }
+                R.id.signOut -> {
+                    logoffToLanding()
+                }
+            }
+            true
+        }
     }
 }
