@@ -1,10 +1,11 @@
 import { createContext, useEffect, useState } from "react";
+import axios from "../utils/axios";
 
 export const AuthContext = createContext();
 
 export default function AuthProvider({ children }) {
-  const [isAuthenticated, setIsAuthendicated] = useState(false);
   const [user, setUser] = useState(null);
+  const [isAuthenticated, setIsAuthendicated] = useState(false);
 
   const login = (username, token) => {
     setUser(username);
@@ -12,6 +13,7 @@ export default function AuthProvider({ children }) {
     if (typeof window != "undefined") {
       localStorage.setItem("user", username);
       localStorage.setItem("token", token);
+      axios.defaults.headers.common = { Authorization: `Token ${token}` };
     }
   };
 
@@ -22,13 +24,18 @@ export default function AuthProvider({ children }) {
       localStorage.removeItem("user");
       localStorage.removeItem("token");
     }
+    delete axios.defaults.headers.common.Authorization;
   };
 
   useEffect(() => {
     const user = localStorage.getItem("user");
     const token = localStorage.getItem("token");
     if (user) setUser(user);
-    if (token) setIsAuthendicated(true);
+    if (token) {
+      setIsAuthendicated(true);
+      axios.defaults.headers.common = { Authorization: `Token ${token}` };
+    }
+    console.log(user, token);
   }, []);
 
   const value = {
