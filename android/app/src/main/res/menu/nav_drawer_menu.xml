@@ -4,6 +4,11 @@
 
     <item
 
+        android:id="@+id/profileButton"
+        android:title="Go to Profile" />
+
+    <item
+
         android:id="@+id/miItem1"
         android:title="Home" />
 
@@ -24,5 +29,7 @@
         android:id="@+id/miItem6"
         android:title="Engineering" />
 
-
+    <item
+        android:id="@+id/signOut"
+        android:title="Sign-out"/>
 </menu>
