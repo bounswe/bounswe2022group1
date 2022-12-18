@@ -6,15 +6,20 @@ import Footer from "./Footer";
 import { Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import DetailMain from "./DetailMain";
+import DetailContributors from "./DetailContributors";
 
 export default function DetailInfoPage({ space }) {
   return (
-    <Container sx={{ marginTop: 12 }}>
+    <Container sx={{ marginTop: 12}}>
       <Grid container maxWidth="lg" spacing={2} columns={12}>
 
         <Grid item xs={12}>
           <DetailMain space={space} />
         </Grid>
+        <Grid item xs={12}>
+          <DetailContributors space={space} />
+        </Grid>
+        
       </Grid>
 
       <Footer title="BUDEMI" description="a company of bogazici university" />

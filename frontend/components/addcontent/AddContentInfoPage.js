@@ -9,19 +9,12 @@ import Footer from "../detail/Footer";
 
 export default function AddContentInfoPage({ routerQuery }) {
   return (
-    <Container sx={{ marginTop: 12 }}>
+    <Container>
       <Grid container maxWidth="lg" spacing={2} columns={12}>
-
         <Grid item xs={12}>
-        {routerQuery.type==="text" ? <ContentAdd routerQuery={routerQuery} typeSent="text"/>
-            : routerQuery.type==="image" ? <ContentAdd routerQuery={routerQuery} typeSent="image"/>
-                : routerQuery.type==="video" ? <ContentAdd routerQuery={routerQuery} typeSent="video"/>
-                    : routerQuery.type==="discussion" ? <ContentAdd routerQuery={routerQuery} typeSent="discussion"/>
-                        : routerQuery.type==="meeting" ? <ContentAdd routerQuery={routerQuery} typeSent="meeting"/>
-                            : console.log("")}
+          <ContentAdd routerQuery={routerQuery}/>
         </Grid>
       </Grid>
-      <Footer title="BUDEMI" description="a company of bogazici university" />
     </Container>
   );
 }

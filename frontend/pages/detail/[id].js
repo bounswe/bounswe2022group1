@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import DetailInfoPage from "../../components/detail/DetailInfoPage";
 import { useRouter } from "next/router";
-import { Button } from "@mui/material";
+import { AuthContext } from "../../contexts/AuthContext";
 
 const handleJoin = (spid) => {
   axios.post(`http://3.89.218.253:8000/app/enroll/`, {
@@ -20,8 +20,13 @@ const handleJoin = (spid) => {
 
 
 const DetailPage = () => {
-  const [space, setSpace] = useState(null);
+  const { user } = useContext(AuthContext);
   const router = useRouter();
+  useEffect(() => {
+    if (!user) return;
+  });
+  
+  const [space, setSpace] = useState(null);
 
   useEffect(() => {
     const { id } = router.query;

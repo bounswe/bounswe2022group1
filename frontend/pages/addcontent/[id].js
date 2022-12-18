@@ -1,14 +1,15 @@
-import React, { useState, useEffect, useCallback } from "react";
-import axios from "axios";
-import Grid from "@mui/material/Grid";
-import Container from "@mui/material/Container";
-import AddContentInfoPage from "../../../components/addcontent/AddContentInfoPage";
-
+import React, { useEffect, useContext } from "react";
+import AddContentInfoPage from "../../components/addcontent/AddContentInfoPage";
+import { AuthContext } from "../../contexts/AuthContext";
 import { useRouter } from "next/router";
 
 
 const AddContent = () => {
+  const { user } = useContext(AuthContext);
   const router = useRouter();
+  useEffect(() => {
+    if (!user) return;
+  });
 
   useEffect(() => {
     const query = router.query;
@@ -17,7 +18,6 @@ const AddContent = () => {
   }, [router]);
 
   return (
-    
     <>
     <div>
       <AddContentInfoPage routerQuery={router.query}/>
