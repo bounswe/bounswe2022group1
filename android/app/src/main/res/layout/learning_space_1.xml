@@ -13,10 +13,11 @@
         android:layout_marginTop="36dp"
         android:fontFamily="@font/walter_turncoat"
         android:text="Learning Spaces"
-        android:textColor="@color/colorPrimary4"
+        android:textColor="@color/colorPrimary1"
         android:textSize="40dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,6 +25,11 @@
         android:id="@+id/Topics"
         android:layout_width="342dp"
         android:layout_height="389dp"
+        tools:listitem="@layout/ls_list_item"
+        android:dividerHeight="10dp"
+        android:paddingLeft="8dp"
+        android:paddingTop="8dp"
+        android:divider="@color/colorPrimary4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.507"
@@ -34,11 +40,17 @@
         android:id="@+id/createbutton"
         android:layout_width="43dp"
         android:layout_height="39dp"
+        android:background="@color/colorPrimary1"
         android:onClick="showDialog"
         android:text="+"
+        android:textColor="@color/colorPrimary4"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:circularflow_radiusInDP="8dp"
         app:layout_constraintBottom_toTopOf="@+id/Topics"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.907"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
