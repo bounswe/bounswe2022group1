@@ -129,6 +129,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="125sp"
             android:background="@drawable/textview_background"
+            android:fontFamily="@font/walter_turncoat"
             android:paddingLeft="5sp"
             android:paddingRight="5sp"
             android:textAlignment="center"
@@ -152,7 +153,7 @@
         <ImageView
             android:id="@+id/notes_image"
             android:layout_width="wrap_content"
-            android:layout_height="76dp"
+            android:layout_height="80sp"
             android:layout_marginLeft="25sp"
             android:layout_marginTop="225sp"
             android:onClick="notesClicked"
@@ -160,9 +161,9 @@
 
         <ImageView
             android:id="@+id/edit_image"
-            android:layout_width="wrap_content"
-            android:layout_height="76dp"
-            android:layout_marginLeft="155sp"
+            android:layout_width="90sp"
+            android:layout_height="80sp"
+            android:layout_marginLeft="172sp"
             android:layout_marginTop="225sp"
             android:onClick="editClicked"
             app:srcCompat="@drawable/pencil" />
@@ -170,7 +171,7 @@
         <ImageView
             android:id="@+id/discussion_image"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
             android:layout_marginLeft="315sp"
             android:layout_marginTop="225sp"
             android:onClick="discussionClicked"
