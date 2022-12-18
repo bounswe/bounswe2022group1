@@ -43,7 +43,7 @@ class ProfilePageActivity : AppCompatActivity() {
 
 
                 enroll_list= mutableListOf<String>()
-                enroll_list.add("Please Choose")
+                enroll_list.add("Click to see")
                 it?.learningspaces?.forEach {
                     enroll_list.add(learningSpaceID_Name[it].toString())
                 }
@@ -61,12 +61,13 @@ class ProfilePageActivity : AppCompatActivity() {
             enrollListView.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {
-                    Log.d("omer_baba","nothing selected")
+
                 }
 
                 override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+
                     var space_name=enrollListView.selectedItem.toString()
-                    if(!space_name.equals("Please Choose")){
+                    if(!space_name.equals(enroll_list.get(0))){
                         learningSpaceID = learningSpaceName_ID[space_name]!!
                         learningSpaceNAME = space_name
                         goToLearningSpace2()

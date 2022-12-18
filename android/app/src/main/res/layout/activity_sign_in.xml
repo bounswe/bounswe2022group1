@@ -125,7 +125,7 @@
             android:id="@+id/textView13"
             android:layout_width="180dp"
             android:layout_height="51dp"
-            android:layout_marginBottom="48dp"
+            android:layout_marginBottom="32dp"
             android:fontFamily="@font/walter_turncoat"
             android:onClick="goToResetPassword"
             android:text="Forgot password?"
@@ -135,14 +135,14 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/success_message"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.064"
+            app:layout_constraintHorizontal_bias="0.063"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/textView8"
             android:layout_width="179dp"
             android:layout_height="69dp"
-            android:layout_marginBottom="48dp"
+            android:layout_marginBottom="24dp"
             android:fontFamily="@font/walter_turncoat"
             android:onClick="goToSignUp"
             android:text="Don't have an account? Sign Up"
@@ -151,7 +151,7 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/success_message"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.984"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView

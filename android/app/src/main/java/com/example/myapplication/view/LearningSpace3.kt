@@ -1,135 +1,154 @@
 package com.example.myapplication.view
 
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.text.Spannable
-import android.text.SpannableStringBuilder
-import android.text.style.RelativeSizeSpan
-import android.text.style.SubscriptSpan
 import android.util.Log
 import android.view.View
-import android.widget.*
+import android.widget.EditText
+import android.widget.FrameLayout
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.R
-import com.example.myapplication.model.learningSpace3GetDiscussionList_send_model
 import com.example.myapplication.model.learningSpace3PostDiscussion_send_model
-import com.example.myapplication.model.ls_create_model
 import com.example.myapplication.service.learningSpace3GetContent_api_call
 import com.example.myapplication.service.learningSpace3GetDiscussionList_api_call
 import com.example.myapplication.service.learningSpace3PostDiscussion_api_call
-import com.example.myapplication.service.ls_create_call
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+
 
 class LearningSpace3 : AppCompatActivity() {
 
-    var numberOfUpCount=0
+    lateinit var name_of_content:String
+    lateinit var owner_of_content:String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_learning_space3)
 
+        val bottomSheetLayout = findViewById<FrameLayout>(R.id.bottom_sheet)
+        BottomSheetBehavior.from(bottomSheetLayout).apply{
+            peekHeight=100
+            this.state=BottomSheetBehavior.STATE_COLLAPSED
+        }
+
+        switchToRead()
+
+    }
+
+    fun switchToRead(){
+        var resource = findViewById<EditText>(R.id.Resource)
+        resource.setEnabled(false)
+
+        var resource_topic=findViewById<TextView>(R.id.resource_topic)
+        var owner_text=findViewById<TextView>(R.id.owner_text)
+
+
         val apiService = learningSpace3GetContent_api_call()
-
         apiService.getContent(currentContentID) {
+            if(it?.id!=null){
+                name_of_content=it.name
+                resource_topic.text=it.name
+                resource.setText(it.text)
 
 
-            if(it?.id !=null){ //content success
-                updateDiscussion()
-                var nameOfOwner=""
+                var nameOfOwner="Eruhlu"
                 learningSpaceMEMBERS.forEach{
-                    l->
+                        l->
                     if(l.id==it.owner){
                         nameOfOwner=l.name
                     }
                 }
-
-                val owners = arrayOf<String>(nameOfOwner)
-                val ownersListView = findViewById<ListView>(R.id.Owners)
-                val ownersAdapter: ArrayAdapter<String> = ArrayAdapter(
-                    this, com.example.myapplication.R.layout.adapter_background, owners
-                )
-                ownersListView.adapter=ownersAdapter
-
-
-                var contentView = findViewById<TextView>(R.id.ContentText)
-                contentView.text=it?.text
-
-                var learningTopic = findViewById<TextView>(R.id.learning_topic2)
-                learningTopic.text=it?.name?.uppercase()
-
-                var numberOfUp = findViewById<Button>(R.id.UpButton)
-
-                // Creating a string span
-                numberOfUpCount=it.upVoteCount
-                val mString = "Up +"+numberOfUpCount.toString()
-                val mStringSpan = SpannableStringBuilder(mString)
-
-                // Subscripting the string span for "2"
-                mStringSpan.setSpan(SubscriptSpan(), 4,mString.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-
-                // Setting the text size ratio for "2"
-                // with respect to rest of the span
-                mStringSpan.setSpan(RelativeSizeSpan(1f),4, mString.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-
-                // Setting the string
-                // span to TextView
-                numberOfUp.text = mStringSpan
-
-            }
-            else{ // content unsuccess
-                val owners = arrayOf("given id doesn't exist")
-                val ownersListView = findViewById<ListView>(R.id.Owners)
-                val ownersAdapter: ArrayAdapter<String> = ArrayAdapter(
-                    this, com.example.myapplication.R.layout.adapter_background, owners
-                )
-                ownersListView.adapter=ownersAdapter
-            }
-        }
-
-
-    }
-
-
-    fun updateDiscussion(){
-        val apiService = learningSpace3GetDiscussionList_api_call()
-
-        apiService.getDiscussionList(currentContentID){
-            if(it?.data!=null){
-                val Chatbox = findViewById<TextView>(R.id.Chatbox)
-                var temp=""
-                for(i in 0..(it.data.size-1)){
-                    temp+=it.data[i].owner.username.toString()+":\n"+it.data[i].body+"\n\n"
-                }
-                Chatbox.text=temp
+                owner_text.text="Owner: "+nameOfOwner
+                owner_of_content=nameOfOwner
 
             }
             else{
-                Log.d("updateDiscussion","update fail abi"+ currentContentID.toString())
+                //Log.d("Learning Space 3 Line 67","API Call failed.")
+                switchToRead()
             }
+        }
+        owner_text.setVisibility(View.VISIBLE)
+
+    }
+
+
+    var x=0
+    fun upVoteClicked(view: View){
+        var Upvote = findViewById<ImageView>(R.id.Upvote)
+        var UpCount = findViewById<TextView>(R.id.upCount)
+
+        if(x%2==0){
+            x++
+            Upvote.setImageResource(R.drawable.down_image)
+        }
+        else{
+            x--
+            Upvote.setImageResource(R.drawable.up_image)
+        }
+
+        UpCount.text=x.toString()
+
+    }
+
+    fun discussionClicked(view:View){
+        var discussion_text=findViewById<TextView>(R.id.discussion_text)
+
+        if(discussion_text.text.equals("Discussion:")){
+
+            var notes_text=findViewById<TextView>(R.id.notes_text)
+            if(notes_text.text.equals("Read:")){
+                notes_text.setText("Notes:")
+                var notes_image=findViewById<ImageView>(R.id.notes_image)
+                notes_image.setImageResource(R.drawable.note)
+            }
+
+            discussion_text.setText("Read:")
+            var discussion_image=findViewById<ImageView>(R.id.discussion_image)
+            discussion_image.setImageResource(R.drawable.book)
+
+            var resource_topic=findViewById<TextView>(R.id.resource_topic)
+            resource_topic.setText(name_of_content+" Discussion")
+
+            var owner_text=findViewById<TextView>(R.id.owner_text)
+            owner_text.setText("Say Something?")
+
+            owner_text.setOnClickListener{
+                if(discussion_text.text.equals("Read:")){
+                    postClicked()
+                }
+            }
+
+
+            val apiService = learningSpace3GetDiscussionList_api_call()
+
+            apiService.getDiscussionList(currentContentID){
+                if(it?.data!=null){
+                    var Chatbox = findViewById<TextView>(R.id.Resource)
+                    var temp=""
+                    for(i in 0..(it.data.size-1)){
+                        temp+=it.data[i].owner.username.toString()+":\n"+it.data[i].body+"\n\n"
+                    }
+                    Chatbox.text=temp
+
+                }
+                else{
+                    // fail to call update discussion
+                }
+            }
+
+        }
+        else{
+            discussion_text.setText("Discussion:")
+            var discussion_image=findViewById<ImageView>(R.id.discussion_image)
+            discussion_image.setImageResource(R.drawable.discussion)
+            switchToRead()
+
         }
 
     }
 
-
-    fun upClicked(view: View){
-        // Creating a string span
-        numberOfUpCount++ // should be done via back-end code
-
-        val mString = "Up +"+numberOfUpCount.toString()
-        val mStringSpan = SpannableStringBuilder(mString)
-
-        // Subscripting the string span for "2"
-        mStringSpan.setSpan(SubscriptSpan(), 4,mString.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-
-        // Setting the text size ratio for "2"
-        // with respect to rest of the span
-        mStringSpan.setSpan(RelativeSizeSpan(1f),4, mString.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-
-        // Setting the string
-        // span to TextView
-        var numberOfUp = findViewById<Button>(R.id.UpButton)
-        numberOfUp.text = mStringSpan
-    }
-
-    fun postClicked(view: View) {
+    fun postClicked() {
         val builder = AlertDialog.Builder(this)
         val inflater = layoutInflater
         val dialogLayout = inflater.inflate(R.layout.add_discussion_post, null)
@@ -150,7 +169,7 @@ class LearningSpace3 : AppCompatActivity() {
                         updateDiscussion()
                     }
                     else{
-                        Log.d("Post couldn't be created","omer")
+                        // post fail
                     }
                 }
             }
@@ -161,4 +180,77 @@ class LearningSpace3 : AppCompatActivity() {
             show()
         }
     }
+
+    fun updateDiscussion(){
+        val apiService = learningSpace3GetDiscussionList_api_call()
+
+        apiService.getDiscussionList(currentContentID){
+            if(it?.data!=null){
+                val Chatbox = findViewById<TextView>(R.id.Resource)
+                var temp=""
+                for(i in 0..(it.data.size-1)){
+                    temp+=it.data[i].owner.username.toString()+":\n"+it.data[i].body+"\n\n"
+                }
+                Chatbox.text=temp
+
+            }
+            else{
+
+            }
+        }
+
+    }
+
+    fun editClicked(view:View){
+        var resource = findViewById<EditText>(R.id.Resource)
+
+        if(resource.isEnabled){
+            resource.setEnabled(false)
+        }
+        else{
+            resource.setEnabled(true)
+        }
+
+    }
+
+    fun notesClicked(view:View){
+        var notes_text=findViewById<TextView>(R.id.notes_text)
+
+        if(notes_text.text.equals("Notes:")){
+            var discussion_text=findViewById<TextView>(R.id.discussion_text)
+            if(discussion_text.text.equals("Read:")){
+                discussion_text.setText("Discussion:")
+                var discussion_image=findViewById<ImageView>(R.id.discussion_image)
+                discussion_image.setImageResource(R.drawable.discussion)
+            }
+
+                notes_text.text="Read:"
+                var notes_image=findViewById<ImageView>(R.id.notes_image)
+                notes_image.setImageResource(R.drawable.book)
+
+                var resource_topic=findViewById<TextView>(R.id.resource_topic)
+                resource_topic.setText(name_of_content+" Notes")
+
+                var owner_text=findViewById<TextView>(R.id.owner_text)
+                owner_text.setVisibility(View.GONE)
+
+
+                var resource = findViewById<EditText>(R.id.Resource)
+                resource.setText("My notes will be here.") // api call
+        }
+        else{
+            notes_text.text="Notes:"
+            var notes_image=findViewById<ImageView>(R.id.notes_image)
+            notes_image.setImageResource(R.drawable.note)
+
+            switchToRead()
+
+        }
+
+
+
+
+
+    }
+
 }

@@ -4,6 +4,8 @@
         <item>@font/advent_pro_bold</item>
         <item>@font/aladin</item>
         <item>@font/andika</item>
+        <item>@font/rubik_bold</item>
+        <item>@font/rubik_medium</item>
         <item>@font/walter_turncoat</item>
     </array>
 </resources>
