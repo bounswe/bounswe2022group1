@@ -3,10 +3,10 @@
     android:id="@android:id/text1"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:fontFamily="@font/rubik_medium"
+    android:fontFamily="@font/andika"
     android:paddingLeft="5dp"
     android:paddingTop="2dip"
     android:paddingBottom="3dip"
     android:textColor="@color/black"
     android:textSize="20dp"
-    android:textStyle="bold" />
+    />

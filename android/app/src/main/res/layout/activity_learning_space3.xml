@@ -44,7 +44,7 @@
                 android:layout_height="fill_parent"
                 android:layout_marginBottom="12sp"
                 android:background="@null"
-                android:fontFamily="@font/rubik_medium"
+                android:fontFamily="@font/andika"
                 android:inputType="none|textMultiLine"
                 android:textColor="@color/black"
                 android:textSize="20dp"
