@@ -10,12 +10,14 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.myapplication.R
 import com.example.myapplication.service.learningSpace2ListEveryLearningSpace_api_call
 import com.google.android.material.navigation.NavigationView
+import org.w3c.dom.Text
 import java.nio.file.attribute.AttributeView
 
 var selectedTAG = ""
@@ -49,6 +51,9 @@ class HomeActivity : AppCompatActivity() {
         initID_Name()
 
         Log.d("user_token", user_token)
+
+        var welcome_text=findViewById<TextView>(R.id.welcome_text)
+        welcome_text.setSelected(true)
 
         navMenuHandler()
         //println("I am home"+user_token)
