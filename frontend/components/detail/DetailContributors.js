@@ -6,19 +6,6 @@ import PeopleIcon from '@mui/icons-material/People';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import axios from "axios";
 
-const handleJoin = (spid) => {
-  axios.post(`http://3.89.218.253:8000/app/enroll/`, {
-      learning_space_id: spid,
-      },{headers: {
-          'Authorization': `token ${localStorage.getItem("token")}`
-      }})
-      .then((response) => {
-          console.log(response.data);
-          alert("Successfully enrolled "+response.data.name+" for user "+localStorage.getItem("user"));
-      }, (error) => {
-          console.log(error);
-   });
-}
 
 function DetailContributors({ space }) {
   const [open, setOpen] = React.useState(false);

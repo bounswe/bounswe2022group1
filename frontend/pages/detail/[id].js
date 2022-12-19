@@ -3,20 +3,7 @@ import axios from "axios";
 import DetailInfoPage from "../../components/detail/DetailInfoPage";
 import { useRouter } from "next/router";
 import { AuthContext } from "../../contexts/AuthContext";
-
-const handleJoin = (spid) => {
-  axios.post(`http://3.89.218.253:8000/app/enroll/`, {
-      learning_space_id: spid,
-      },{headers: {
-          'Authorization': `token ${localStorage.getItem("token")}`
-      }})
-      .then((response) => {
-          console.log(response.data);
-    alert("Successfully enrolled "+response.data.name+" for user "+localStorage.getItem("user"));
-      }, (error) => {
-          console.log(error);
-   });
-}
+import {Container} from "@mui/material";
 
 
 const DetailPage = () => {
@@ -43,11 +30,14 @@ const DetailPage = () => {
   }, [router]);
 
   return (
-    <>
-      <div>
-        <DetailInfoPage space={space}/>
-      </div>
-    </>
+    <Container
+    sx={{
+      borderRadius: "16px",
+      background: "#dae7fb",
+    }}
+  >
+    <DetailInfoPage space={space}/>
+     </Container>
   );
 };
 
