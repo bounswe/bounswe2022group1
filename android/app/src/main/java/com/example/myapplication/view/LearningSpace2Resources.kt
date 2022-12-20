@@ -8,11 +8,7 @@ import android.view.View
 import android.widget.*
 import com.example.myapplication.R
 import com.example.myapplication.model.learningspace2Enroll_send_model
-import com.example.myapplication.service.learningSpace2Enroll_api_call
-import com.example.myapplication.service.learningSpace2GetContentList_api_call
-import com.example.myapplication.service.learningSpace2GetEnrolledLearningSpaces_api_call
-import com.example.myapplication.service.learningSpace2Leave_api_call
-
+import com.example.myapplication.service.*
 
 
 var currentContentID=0
@@ -53,6 +49,8 @@ class LearningSpace2Resources : AppCompatActivity() {
     }
 
     fun ShowContributorsAndTopics(){
+
+
         val apiService = learningSpace2GetContentList_api_call()
         val userInfo = learningSpaceID
 
@@ -63,8 +61,18 @@ class LearningSpace2Resources : AppCompatActivity() {
 
                 names= arrayOf<String>()
                 for(i in 0..(receivedArr.size-1)){
-                    //contributors+=receivedArr[i].owner.toString()
-                    names+=receivedArr[i].name.toString()
+
+                    var owner_name="Ömer Özdemir"
+                    learningSpaceMEMBERS.forEach{
+                            l->
+                        if(l.id==receivedArr[i].owner){
+                            owner_name=l.name
+                        }
+                    }
+
+                    names+="Topic: "+receivedArr[i].name.toString()+"\n"+"Owner:"+owner_name+
+                    "   Votes:"+receivedArr[i].upVoteCount+
+                            "\n"
                     contentID_ContentName.put(i,receivedArr[i].id)
                 }
 

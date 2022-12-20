@@ -1,6 +1,7 @@
 package com.example.myapplication.view
 
 import android.graphics.drawable.Drawable
+import android.media.Image
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -10,6 +11,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.marginLeft
 import com.example.myapplication.R
 import com.example.myapplication.model.learningSpace3PostDiscussion_send_model
 import com.example.myapplication.service.learningSpace3GetContent_api_call
@@ -22,21 +24,25 @@ class LearningSpace3 : AppCompatActivity() {
 
     lateinit var name_of_content:String
     lateinit var owner_of_content:String
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_learning_space3)
 
+    fun makeShorter(){
         val bottomSheetLayout = findViewById<FrameLayout>(R.id.bottom_sheet)
         BottomSheetBehavior.from(bottomSheetLayout).apply{
             peekHeight=100
             this.state=BottomSheetBehavior.STATE_COLLAPSED
         }
+    }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_learning_space3)
         switchToRead()
 
     }
 
     fun switchToRead(){
+        switchToEdit()
+        makeShorter()
         var resource = findViewById<EditText>(R.id.Resource)
         resource.setEnabled(false)
 
@@ -64,7 +70,6 @@ class LearningSpace3 : AppCompatActivity() {
 
             }
             else{
-                //Log.d("Learning Space 3 Line 67","API Call failed.")
                 switchToRead()
             }
         }
@@ -92,6 +97,8 @@ class LearningSpace3 : AppCompatActivity() {
     }
 
     fun discussionClicked(view:View){
+        makeShorter()
+        switchToEdit()
         var discussion_text=findViewById<TextView>(R.id.discussion_text)
 
         if(discussion_text.text.equals("Discussion:")){
@@ -201,19 +208,41 @@ class LearningSpace3 : AppCompatActivity() {
 
     }
 
-    fun editClicked(view:View){
-        var resource = findViewById<EditText>(R.id.Resource)
 
-        if(resource.isEnabled){
-            resource.setEnabled(false)
+    fun switchToEdit(){
+        var edit_text=findViewById<TextView>(R.id.edit_text)
+        edit_text.setText("Edit:")
+
+        var edit_image=findViewById<ImageView>(R.id.edit_image)
+        edit_image.setImageResource(R.drawable.pencil)
+
+        var resource = findViewById<EditText>(R.id.Resource)
+        resource.setEnabled(false)
+    }
+
+    fun editClicked(view:View){
+        makeShorter()
+
+        var edit_text=findViewById<TextView>(R.id.edit_text)
+
+        if(edit_text.text.equals("Edit:")){
+            edit_text.setText("Save:")
+
+            var edit_image=findViewById<ImageView>(R.id.edit_image)
+            edit_image.setImageResource(R.drawable.save_text)
+
+            var resource = findViewById<EditText>(R.id.Resource)
+            resource.setEnabled(true)
         }
         else{
-            resource.setEnabled(true)
+            switchToEdit()
         }
 
     }
 
     fun notesClicked(view:View){
+        makeShorter()
+        switchToEdit()
         var notes_text=findViewById<TextView>(R.id.notes_text)
 
         if(notes_text.text.equals("Notes:")){
@@ -246,10 +275,6 @@ class LearningSpace3 : AppCompatActivity() {
             switchToRead()
 
         }
-
-
-
-
 
     }
 

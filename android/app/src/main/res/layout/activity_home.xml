@@ -41,7 +41,7 @@
         android:src="@drawable/java_paint"
         app:layout_constraintBottom_toTopOf="@+id/textView4"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/welcome_text"
         tools:ignore="MissingConstraints" />
 
     <ImageView
@@ -55,7 +55,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toEndOf="@+id/imageView4"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/welcome_text"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -137,22 +137,27 @@
             tools:ignore="MissingConstraints" />
     </LinearLayout>
 
-    <TextView
-        android:fontFamily="@font/walter_turncoat"
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="304dp"
-        android:foregroundGravity="center"
-        android:gravity="center"
-        android:text="Welcome to Budemi"
-        android:textColor="#FFFFFF"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logoffButton"
-        tools:ignore="MissingConstraints" />
+        <TextView
+            android:id="@+id/welcome_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="304dp"
+            android:ellipsize="marquee"
+            android:fadingEdge="horizontal"
+            android:fontFamily="@font/walter_turncoat"
+            android:foregroundGravity="center"
+            android:gravity="center"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:text="Welcome To Budemi    Welcome To Budemi"
+            android:textColor="@color/colorPrimary1"
+            android:textSize="34sp"
+            app:layout_constraintBottom_toTopOf="@+id/buttonLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logoffButton"
+            tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/signinButton"
@@ -163,7 +168,7 @@
         android:background="#000000"
         android:onClick="signInToSignIn"
         android:text="Sign In"
-        app:layout_constraintBottom_toTopOf="@+id/textView6"
+        app:layout_constraintBottom_toTopOf="@+id/welcome_text"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="MissingConstraints" />
 
@@ -192,7 +197,7 @@
             android:onClick="logoffToLanding"
             android:scaleType="fitCenter"
             android:src="@drawable/logout"
-            app:layout_constraintBottom_toTopOf="@+id/textView6"
+            app:layout_constraintBottom_toTopOf="@+id/welcome_text"
             app:layout_constraintEnd_toEndOf="@+id/signinButton"
             app:layout_constraintStart_toStartOf="@+id/signinButton"
             app:layout_constraintTop_toTopOf="parent"

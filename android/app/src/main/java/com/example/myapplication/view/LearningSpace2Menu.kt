@@ -1,6 +1,7 @@
 package com.example.myapplication.view
 
 import android.content.Intent
+import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -90,6 +91,18 @@ class LearningSpace2Menu : AppCompatActivity() {
     }
 
     fun onClickaddFavorite(view:View){
+        var addfavorite_image=findViewById<ImageView>(R.id.addfavorite_image)
+        var addfavorite_button=findViewById<Button>(R.id.addfavorite_button)
+
+        if(addfavorite_button.text.equals("Add Favorite")){
+            addfavorite_image.setImageResource(R.drawable.remove_fav)
+            addfavorite_button.setText("Remove Favorite")
+        }
+        else{
+            addfavorite_image.setImageResource(R.drawable.add_fav)
+            addfavorite_button.setText("Add Favorite")
+        }
+
 
     }
 
