@@ -9,7 +9,7 @@ from knox.models import AuthToken
 from knox.views import LoginView as KnoxLoginView
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from .serializers import ContentSerializer, UserSerializer, RegisterSerializer, DiscussionPostSerializer
-from .serializers import ChangePasswordSerializer, LearningSpaceSerializer, DiscussionSerializer, ProfileSerializer,ProfilePostSerializer,ResetSerializer
+from .serializers import ChangePasswordSerializer, LearningSpaceSerializer, DiscussionSerializer, ProfileSerializer,ProfilePostSerializer,ResetSerializer,LearningSpacePostSerializer
 from .models import Content, LearningSpace, Discussion, Profile
 
 from django.core.exceptions import ValidationError
@@ -111,6 +111,7 @@ class LearningSpaceApiView(APIView):
     # add permission to check if user is authenticated
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = LearningSpaceSerializer
+    serializer_class2=LearningSpacePostSerializer
     
     
     def get(self, request, *args, **kwargs):
@@ -133,18 +134,25 @@ class LearningSpaceApiView(APIView):
         '''
         Create the Todo with given todo data
         '''
-        data = {
-            'name': request.data.get('name'),
-            'tag' : request.data.get('tag')
-        }
+      
+        data = request.data.copy()
+        data['ls_owner'] = request.user.id
+
+
+        
+
+        
+
+        
     
 
-        serializer = self.serializer_class(data=data)
+        serializer = self.serializer_class2(data=data)
         if serializer.is_valid():
             serializer.save()
             ls = LearningSpace.objects.get(id=serializer.data['id'])
             ls.members.add(request.user)
-            serializer = self.serializer_class(ls)
+         
+            serializer = self.serializer_class2(ls)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

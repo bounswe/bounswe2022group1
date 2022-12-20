@@ -5,8 +5,15 @@ from django.contrib.auth.models import User
 class LearningSpace(models.Model):
     name = models.CharField(max_length=30)
     members = models.ManyToManyField(User, related_name='members')
-    
+    #owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='owner')
     tag = models.CharField(max_length=30)
+    image = models.ImageField(upload_to='uploads/', default='uploads/default.png',null=True)
+    ls_owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    description = models.TextField(null=True)
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['created_on']
 
 
     # TODO: add contributors field
@@ -46,6 +53,7 @@ class Discussion(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
+
 
     class Meta:
         ordering = ['created_on']

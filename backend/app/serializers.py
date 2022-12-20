@@ -29,12 +29,26 @@ class ChangePasswordSerializer(serializers.Serializer):
 
     new_pass = serializers.CharField(required=True)
 
+
 class LearningSpaceSerializer(serializers.ModelSerializer):
+    members = UserSerializer(many=True, read_only=True)
+    ls_owner=UserSerializer(read_only=True)
+    
+    
     class Meta:
         model = LearningSpace
-        fields = ["id", "name", "members", "tag"]
-    
+        fields = ["id", "name", "members", "tag", "image", "ls_owner", "description","created_on"]
+
+class LearningSpacePostSerializer(serializers.ModelSerializer):
     members = UserSerializer(many=True, read_only=True)
+    
+    
+    
+    class Meta:
+        model = LearningSpace
+        fields = ["id", "name", "members", "tag", "image", "ls_owner", "description","created_on"]
+    
+ 
 
 
 class ContentSerializer(serializers.ModelSerializer):
