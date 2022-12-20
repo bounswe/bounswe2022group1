@@ -65,3 +65,15 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     learningspaces = models.ManyToManyField(LearningSpace, related_name='learningspaces',blank=True)
     image = models.ImageField(upload_to='uploads/', default='uploads/default.png')
+
+class Note(models.Model):
+    content = models.ForeignKey(Content,on_delete=models.CASCADE, related_name='note')
+    #name = models.CharField(max_length=30)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    body = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+
+
+    class Meta:
+        ordering = ['created_on']
+
