@@ -58,7 +58,21 @@ const handleLeave = (spid) => {
 };
 
 
-function DetailMain({ space }) {
+	if (!space)
+		return (
+			<Grid>
+				<Box
+					variant="body2"
+					display="flex"
+					justifyContent="center"
+				>
+					<Card>
+						<CircularProgress />
+					</Card>
+				</Box>
+			</Grid>
+		);
+
 	return (
 		<Grid>
 			<Box component="form" noValidate sx={{ mt: 1 }}>
