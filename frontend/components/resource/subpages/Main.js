@@ -1,21 +1,28 @@
 import { useContext } from "react";
-import { Typography, Container, Box, Divider, Paper, Button, Card, TextField } from "@mui/material";
+import {
+  Typography,
+  Container,
+  Box,
+  Divider,
+  Paper,
+  Button,
+  Card,
+  TextField,
+} from "@mui/material";
 import { format } from "date-fns";
 import { AuthContext } from "../../../contexts/AuthContext";
 import React, { useState, useEffect, useCallback } from "react";
 import { Routes, Route, useParams } from "react-router-dom";
 import axios from "axios";
 import { useRouter } from "next/router";
-import ReactMarkdown from 'react-markdown'
-
+import ReactMarkdown from "react-markdown";
 
 export default function Main() {
-    const router = useRouter()
+  const router = useRouter();
   const { id } = router.query;
   const [resource, setResource] = useState(null);
   const [comments, setComments] = useState(null);
   const [comment, setComment] = useState("");
-
 
   const handleChange = (event) => {
     setComment(event.target.value);
@@ -49,7 +56,6 @@ export default function Main() {
 
   console.log(comments);
 
-
   useEffect(() => {
     const { id } = router.query;
     if (!id) return;
@@ -74,37 +80,33 @@ export default function Main() {
 
   return (
     <div>
-    <Box>
-      <Typography mb={2} variant="h4" textAlign="center">
-        {`${resource?.name}`}
-      </Typography>
+      <Box>
+        <Typography mb={2} variant="h4" textAlign="center">
+          {`${resource?.name}`}
+        </Typography>
 
-      <Typography
+        <Typography mb={2} variant="h5">
+          {<ReactMarkdown>{resource?.text}</ReactMarkdown>}
+        </Typography>
 
-        mb={2}
-        variant="h5"
-      >{<ReactMarkdown>{resource?.text}</ReactMarkdown>}</Typography>
-
-      <Divider />
-     
-    </Box>
-    <Box>
+        <Divider />
+      </Box>
+      <Box>
         <Typography mb={2} variant="h6" textAlign="center">
-        Discussion
-      </Typography>
-
-
+          Discussion
+        </Typography>
 
         {comments &&
           comments.map((comment) => (
-            <Card sx ={{p: 1.5, borderRadius: '16px', m:1}} >
-                <Typography gutterBottom color= 'text.secondary'>
-                    {comment?.owner.username} | {format(new Date(comment?.created_on), "d MMMM, yyyy")}
-                </Typography>
-            
-                <Typography gutterBottom sx ={{ml: 8}}>
+            <Card sx={{ p: 1.5, borderRadius: "16px", m: 1 }}>
+              <Typography gutterBottom color="text.secondary">
+                {comment?.owner.username} |{" "}
+                {format(new Date(comment?.created_on), "d MMMM, yyyy")}
+              </Typography>
+
+              <Typography gutterBottom sx={{ ml: 8 }}>
                 {`        ${comment?.body}`}
-                </Typography>
+              </Typography>
             </Card>
           ))}
         {/* <form>
@@ -128,27 +130,26 @@ export default function Main() {
           </div>
         </form> */}
 
-<TextField
-            margin="normal"
-            fullWidth
-            name="comment"
-            label="Enter your comment"
-            type="comment"
-            id="comment"
-            onChange={(e) => setComment(e.target.value)}
-          />
+        <TextField
+          margin="normal"
+          fullWidth
+          name="comment"
+          label="Enter your comment"
+          type="comment"
+          id="comment"
+          onChange={(e) => setComment(e.target.value)}
+        />
 
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            onClick={handleSubmit}
-            sx={{ mt: 3, mb: 2, borderRadius: "16px" }}
-          >
-            Submit
-          </Button>
-
-    </Box>
+        <Button
+          type="submit"
+          fullWidth
+          variant="contained"
+          onClick={handleSubmit}
+          sx={{ mt: 3, mb: 2, borderRadius: "16px" }}
+        >
+          Submit
+        </Button>
+      </Box>
     </div>
   );
 }
