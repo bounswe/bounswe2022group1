@@ -1,32 +1,55 @@
-import * as React from "react";
-import { Grid, Box, Typography, Card, CardHeader, CardContent, Button } from "@mui/material";
+import * as React from 'react';
+import {
+	Grid,
+	Box,
+	Card,
+	CardHeader,
+	CardContent,
+	Button,
+	CardActions,
+	CircularProgress,
+} from '@mui/material';
 import Stack from '@mui/material/Stack';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-import IconButton from "@mui/material/IconButton";
-import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
+import IconButton from '@mui/material/IconButton';
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
-import { TextField, FormControlLabel, Checkbox } from "@mui/material";
+import { TextField, FormControlLabel, Checkbox } from '@mui/material';
 import { Link } from '@mui/material';
-import axios from "axios";
-
+import axios from 'axios';
 
 const handleJoin = (spid) => {
-  axios.post(`http://3.89.218.253:8000/app/enroll/`, {
-      learning_space_id: spid,
-      },{headers: {
-          'Authorization': `token ${localStorage.getItem("token")}`
-      }})
-      .then((response) => {
-          console.log(response.data);
-          alert("Successfully enrolled "+response.data.name+" for user "+localStorage.getItem("user"));
-      }, (error) => {
-          console.log(error);
-   });
-}
+	axios
+		.post(
+			`http://3.89.218.253:8000/app/enroll/`,
+			{
+				learning_space_id: spid,
+			},
+			{
+				headers: {
+					Authorization: `token ${localStorage.getItem('token')}`,
+				},
+			}
+		)
+		.then(
+			(response) => {
+				console.log(response.data);
+				alert(
+					'Successfully enrolled ' +
+						response.data.name +
+						' for user ' +
+						localStorage.getItem('user')
+				);
+			},
+			(error) => {
+				console.log(error);
+			}
+		);
+};
 
 const handleLeave = (spid) => {
 	axios
@@ -57,6 +80,10 @@ const handleLeave = (spid) => {
 		);
 };
 
+function DetailMain({ space, content }) {
+	const username =
+		typeof window !== 'undefined' && localStorage.getItem('user');
+	const isMember = space?.members.find((e) => e.username === username);
 
 	if (!space)
 		return (
