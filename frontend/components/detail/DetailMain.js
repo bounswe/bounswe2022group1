@@ -76,86 +76,118 @@ const handleLeave = (spid) => {
 	return (
 		<Grid>
 			<Box component="form" noValidate sx={{ mt: 1 }}>
-				{
-					<Card sx={{ mt: 2 }}>
-						<CardHeader
-							title={space?.name + ' Learning Space'}
-							style={{ textAlign: 'center' }}
-							titleTypographyProps={{ variant: 'h2' }}
-						/>
-						<CardContent>
-							<Typography variant="body2" color="text.secondary">
-								<Box display="flex" justifyContent="space-between">
-									<FormControl>
-										<InputLabel id="demo-simple-select-label">
-											Add Content
-										</InputLabel>
-										<Select
-											labelId="addcontent-label"
-											id="addcontent-select"
-											value="addcontent"
-											label="addcontent"
-											displayEmpty
-											sx={{ width: 200 }}
+				<Card sx={{ mt: 2 }}>
+					<CardHeader
+						title={space?.name + ' Learning Space'}
+						style={{ textAlign: 'center' }}
+						titleBoxProps={{ variant: 'h2' }}
+					/>
+					<CardContent>
+						<Box variant="body2" color="text.secondary">
+							<Box display="flex" justifyContent="space-between">
+								{isMember ? (
+									<>
+										<FormControl>
+											<InputLabel id="demo-simple-select-label">
+												Add Content
+											</InputLabel>
+											<Select
+												labelId="addcontent-label"
+												id="addcontent-select"
+												value="addcontent"
+												label="addcontent"
+												displayEmpty
+												sx={{ width: 200 }}
+											>
+												<MenuItem value="">Add Content</MenuItem>
+												<MenuItem
+													component={Link}
+													href={`/addcontent/${space?.id}/text`}
+												>
+													Text
+												</MenuItem>
+												<MenuItem
+													component={Link}
+													href={`/addcontent/${space?.id}/video`}
+												>
+													Video
+												</MenuItem>
+												<MenuItem
+													component={Link}
+													href={`/addcontent/${space?.id}/image`}
+												>
+													Image
+												</MenuItem>
+												<MenuItem
+													component={Link}
+													href={`/addcontent/${space?.id}/meeting`}
+												>
+													Meeting
+												</MenuItem>
+												<MenuItem
+													component={Link}
+													href={`/addcontent/${space?.id}/discussion`}
+												>
+													Discussion
+												</MenuItem>
+											</Select>
+										</FormControl>
+										<Button
+											type="submit"
+											onClick={() => handleLeave(space?.id)}
+											variant="contained"
+											sx={{ mt: 3, mb: 2, borderRadius: '16px' }}
+											className="btn btn-primary"
 										>
-											<MenuItem value="">Add Content</MenuItem>
-											<MenuItem
-												component={Link}
-												href={`/addcontent/${space?.id}/text`}
-											>
-												Text
-											</MenuItem>
-											<MenuItem
-												component={Link}
-												href={`/addcontent/${space?.id}/video`}
-											>
-												Video
-											</MenuItem>
-											<MenuItem
-												component={Link}
-												href={`/addcontent/${space?.id}/image`}
-											>
-												Image
-											</MenuItem>
-											<MenuItem
-												component={Link}
-												href={`/addcontent/${space?.id}/meeting`}
-											>
-												Meeting
-											</MenuItem>
-											<MenuItem
-												component={Link}
-												href={`/addcontent/${space?.id}/discussion`}
-											>
-												Discussion
-											</MenuItem>
-										</Select>
-									</FormControl>
-									<Button
-										type="submit"
-										onClick={() => handleJoin(space?.id)}
-										variant="contained"
-										sx={{ mt: 3, mb: 2, borderRadius: '16px' }}
-										className="btn btn-primary"
-									>
-										Join
+											Leave
+										</Button>
+									</>
+								) : (
+									<>
+										<div style={{ flex: 1 }}></div>
+										<Button
+											type="submit"
+											onClick={() => handleJoin(space?.id)}
+											variant="contained"
+											sx={{ mt: 3, mb: 2, borderRadius: '16px' }}
+											className="btn btn-primary"
+										>
+											Join
+										</Button>
+									</>
+								)}
+							</Box>
+						</Box>
+					</CardContent>
+					<CardContent>
+						{content?.map((c) => (
+							<Card
+								key={c.id}
+								style={{ border: '1px solid green', margin: '10px' }}
+							>
+								<CardContent>
+									<Box variant="h5" component="div">
+										{c.name}
+									</Box>
+								</CardContent>
+								<CardActions>
+									<Button href={`/content/${c.id}`} size="small">
+										Learn More
 									</Button>
-                </Box>
-                
-							</Typography>
-						</CardContent>
-						<CardContent>
-							<Typography variant="body2" color="text.secondary">
-								<ul>
-									Members:
-									{space?.members.map((mem) => (
-										<li key={mem}>{mem.username}</li>
-									))}
-								</ul>
-							</Typography>
-						</CardContent>
-					</Card>
-				}
+								</CardActions>
+							</Card>
+						))}
+
+						<Box variant="body2" color="text.secondary">
+							<ul>
+								Members:
+								{space?.members.map((mem) => (
+									<li key={mem}>{mem.username}</li>
+								))}
+							</ul>
+						</Box>
+					</CardContent>
+				</Card>
 			</Box>
 		</Grid>
 	);
