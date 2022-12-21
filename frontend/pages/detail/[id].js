@@ -4,21 +4,6 @@ import DetailInfoPage from "../../components/detail/DetailInfoPage";
 import { useRouter } from "next/router";
 import { Button } from "@mui/material";
 
-const handleJoin = (spid) => {
-  axios.post(`http://3.89.218.253:8000/app/enroll/`, {
-      learning_space_id: spid,
-      },{headers: {
-          'Authorization': `token ${localStorage.getItem("token")}`
-      }})
-      .then((response) => {
-          console.log(response.data);
-    alert("Successfully enrolled "+response.data.name+" for user "+localStorage.getItem("user"));
-      }, (error) => {
-          console.log(error);
-   });
-}
-
-
 const DetailPage = () => {
   const [space, setSpace] = useState(null);
   const [content, setContent] = useState(null);
