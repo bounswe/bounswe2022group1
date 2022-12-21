@@ -8,6 +8,10 @@ import android.util.Log
 import android.view.View
 import android.widget.*
 import com.example.myapplication.R
+import com.example.myapplication.model.ls_list_element
+import com.example.myapplication.model.ls_members
+import com.example.myapplication.service.learningSpace2ListEveryLearningSpace_api_call
+import com.example.myapplication.service.ls_by_tag_call
 import com.example.myapplication.service.profile_see_api_call
 import java.io.File
 import java.io.FileOutputStream
@@ -70,6 +74,19 @@ class ProfilePageActivity : AppCompatActivity() {
                     if(!space_name.equals(enroll_list.get(0))){
                         learningSpaceID = learningSpaceName_ID[space_name]!!
                         learningSpaceNAME = space_name
+
+                        val apiService =learningSpace2ListEveryLearningSpace_api_call()
+                        learningSpaceMEMBERS.clear()
+                        apiService.listEverySpace  {
+                            it?.data?.forEach{
+                                if(it.id== learningSpaceID){
+                                    it.members.forEach {
+                                        learningSpaceMEMBERS.add(it)
+                                    }
+                                }
+                            }
+
+                        }
                         goToLearningSpace2()
                     }
 
