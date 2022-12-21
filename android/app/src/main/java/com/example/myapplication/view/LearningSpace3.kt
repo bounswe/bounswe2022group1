@@ -22,8 +22,8 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 class LearningSpace3 : AppCompatActivity() {
 
-    lateinit var name_of_content:String
-    lateinit var owner_of_content:String
+    var name_of_content=""
+    var owner_of_content=""
 
     fun makeShorter(){
         val bottomSheetLayout = findViewById<FrameLayout>(R.id.bottom_sheet)
@@ -134,7 +134,7 @@ class LearningSpace3 : AppCompatActivity() {
                     var Chatbox = findViewById<TextView>(R.id.Resource)
                     var temp=""
                     for(i in 0..(it.data.size-1)){
-                        temp+=it.data[i].owner.username.toString()+":\n"+it.data[i].body+"\n\n"
+                        temp+=it.data[i].owner.username.toString()+":\n"+it.data[i].body+"\n"+"_________________________________"+"\n"
                     }
                     Chatbox.text=temp
 
@@ -196,7 +196,7 @@ class LearningSpace3 : AppCompatActivity() {
                 val Chatbox = findViewById<TextView>(R.id.Resource)
                 var temp=""
                 for(i in 0..(it.data.size-1)){
-                    temp+=it.data[i].owner.username.toString()+":\n"+it.data[i].body+"\n\n"
+                    temp+=it.data[i].owner.username.toString()+":\n"+it.data[i].body+"\n"+"_________________________________"+"\n"
                 }
                 Chatbox.text=temp
 
