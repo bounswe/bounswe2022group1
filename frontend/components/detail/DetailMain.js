@@ -7,7 +7,6 @@ import {
 	CardContent,
   CardActionArea,
 	Button,
-	CircularProgress,
   Typography,
 } from '@mui/material';
 import { Link } from '@mui/material';
@@ -48,20 +47,6 @@ function DetailMain({ space, content }) {
   typeof window !== 'undefined' && localStorage.getItem('user');
   const isMember = space?.members.find((e) => e.username === username);
 
-  if (!space)
-    return (
-      <Grid>
-        <Box
-          variant="body2"
-          display="flex"
-          justifyContent="center"
-        >
-          <Card>
-            <CircularProgress />
-          </Card>
-        </Box>
-      </Grid>
-    );
   return (
     <Grid>
       <Box component="form"

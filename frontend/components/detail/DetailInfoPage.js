@@ -1,10 +1,30 @@
 import * as React from "react";
-import Grid from "@mui/material/Grid";
-import Container from "@mui/material/Container";
+import {
+	Grid,
+	Box,
+	Card,
+  Container,
+	CircularProgress,
+} from '@mui/material';
 import DetailMain from "./DetailMain";
 import DetailContributors from "./DetailContributors";
 
 export default function DetailInfoPage({ space, content }) {
+  if (!space)
+  return (
+    <Grid>
+      <Box
+        variant="body2"
+        display="flex"
+        justifyContent="center"
+      >
+        <Card>
+          <CircularProgress />
+        </Card>
+      </Box>
+    </Grid>
+  );
+
   return (
     <Container sx={{borderRadius: "16px",background: "#dae7fb", marginTop: 15}}>
       <Grid container maxWidth="lg" spacing={2} columns={12}>
