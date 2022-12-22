@@ -1,10 +1,9 @@
 import * as React from "react";
-import { Grid, Box, Typography, Card, CardHeader, CardContent, Button, List, ListItemButton, ListItemIcon, ListItemText, Collapse } from "@mui/material";
+import { Grid, Box, Card, CardContent, List, ListItemButton, ListItemIcon, ListItemText, Collapse } from "@mui/material";
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import PeopleIcon from '@mui/icons-material/People';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import axios from "axios";
 
 
 function DetailContributors({ space }) {
