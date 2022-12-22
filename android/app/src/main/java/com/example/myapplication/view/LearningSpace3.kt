@@ -5,6 +5,7 @@ import android.media.Image
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.webkit.WebView
 import android.widget.EditText
 import android.widget.FrameLayout
 import android.widget.ImageView
@@ -18,6 +19,7 @@ import com.example.myapplication.service.learningSpace3GetContent_api_call
 import com.example.myapplication.service.learningSpace3GetDiscussionList_api_call
 import com.example.myapplication.service.learningSpace3PostDiscussion_api_call
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import org.markdownj.MarkdownProcessor
 
 
 class LearningSpace3 : AppCompatActivity() {
@@ -37,26 +39,53 @@ class LearningSpace3 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_learning_space3)
         switchToRead()
-
     }
 
+
+    //should show WebView - OK.
+    //should hide resource - OK.
+    //should show topic - OK.
+    //should show owner - OK.
+    //should show edit(if owner),discussion,notes - OK.
     fun switchToRead(){
-        switchToEdit()
         makeShorter()
-        var resource = findViewById<EditText>(R.id.Resource)
+        //not editable.
+        var resource=findViewById<TextView>(R.id.Resource)
         resource.setEnabled(false)
 
-        var resource_topic=findViewById<TextView>(R.id.resource_topic)
-        var owner_text=findViewById<TextView>(R.id.owner_text)
+        //Show Discussion
+        var discussion_text=findViewById<TextView>(R.id.discussion_text)
+        discussion_text.setText("Discussion:")
+        var discussion_image=findViewById<ImageView>(R.id.discussion_image)
+        discussion_image.setImageResource(R.drawable.discussion)
 
+
+        //Show Notes
+        var notes_text=findViewById<TextView>(R.id.notes_text)
+        notes_text.text="Notes:"
+        var notes_image=findViewById<ImageView>(R.id.notes_image)
+        notes_image.setImageResource(R.drawable.note)
+
+
+        //Show Edit
+        var edit_text=findViewById<TextView>(R.id.edit_text)
+        edit_text.setText("Edit:")
+        var edit_image=findViewById<ImageView>(R.id.edit_image)
+        edit_image.setImageResource(R.drawable.pencil)
+        edit_text.setVisibility(View.VISIBLE)
+        edit_image.setVisibility(View.VISIBLE)
 
         val apiService = learningSpace3GetContent_api_call()
         apiService.getContent(currentContentID) {
             if(it?.id!=null){
-                name_of_content=it.name
-                resource_topic.text=it.name
-                resource.setText(it.text)
 
+                var resource = findViewById<EditText>(R.id.Resource)
+                var WebView = findViewById<WebView>(R.id.WebView);
+                resource.setVisibility(View.GONE) //should hide resource
+                WebView.setVisibility(View.VISIBLE) //should show WebView
+                var markdownText=it.text
+                var html_text= MarkdownProcessor().markdown(markdownText)
+                WebView.loadData(html_text, "text/html", "utf-8");
 
                 var nameOfOwner="Eruhlu"
                 learningSpaceMEMBERS.forEach{
@@ -65,15 +94,19 @@ class LearningSpace3 : AppCompatActivity() {
                         nameOfOwner=l.name
                     }
                 }
-                owner_text.text="Owner: "+nameOfOwner
-                owner_of_content=nameOfOwner
 
+                var resource_topic=findViewById<TextView>(R.id.resource_topic)
+                var owner_text=findViewById<TextView>(R.id.owner_text)
+                name_of_content=it.name
+                resource_topic.text=it.name //should show topic
+                owner_text.text="Owner: "+nameOfOwner //show owner
+                owner_of_content=nameOfOwner
+                owner_text.setVisibility(View.VISIBLE)
             }
             else{
                 switchToRead()
             }
         }
-        owner_text.setVisibility(View.VISIBLE)
 
     }
 
@@ -98,10 +131,25 @@ class LearningSpace3 : AppCompatActivity() {
 
     fun discussionClicked(view:View){
         makeShorter()
-        switchToEdit()
+
+
         var discussion_text=findViewById<TextView>(R.id.discussion_text)
 
         if(discussion_text.text.equals("Discussion:")){
+            //hide WebView
+            var WebView=findViewById<WebView>(R.id.WebView)
+            WebView.setVisibility(View.GONE)
+            //show resource and not editable.
+            var resource=findViewById<TextView>(R.id.Resource)
+            resource.setVisibility(View.VISIBLE)
+            resource.setEnabled(false)
+
+            //hide edit
+            var edit_image=findViewById<ImageView>(R.id.edit_image)
+            var edit_text=findViewById<TextView>(R.id.edit_text)
+            edit_text.setVisibility(View.GONE)
+            edit_image.setVisibility(View.GONE)
+
 
             var notes_text=findViewById<TextView>(R.id.notes_text)
             if(notes_text.text.equals("Read:")){
@@ -119,6 +167,7 @@ class LearningSpace3 : AppCompatActivity() {
 
             var owner_text=findViewById<TextView>(R.id.owner_text)
             owner_text.setText("Say Something?")
+            owner_text.setVisibility(View.VISIBLE)
 
             owner_text.setOnClickListener{
                 if(discussion_text.text.equals("Read:")){
@@ -146,9 +195,6 @@ class LearningSpace3 : AppCompatActivity() {
 
         }
         else{
-            discussion_text.setText("Discussion:")
-            var discussion_image=findViewById<ImageView>(R.id.discussion_image)
-            discussion_image.setImageResource(R.drawable.discussion)
             switchToRead()
 
         }
@@ -208,22 +254,15 @@ class LearningSpace3 : AppCompatActivity() {
 
     }
 
-
-    fun switchToEdit(){
-        var edit_text=findViewById<TextView>(R.id.edit_text)
-        edit_text.setText("Edit:")
-
-        var edit_image=findViewById<ImageView>(R.id.edit_image)
-        edit_image.setImageResource(R.drawable.pencil)
-
-        var resource = findViewById<EditText>(R.id.Resource)
-        resource.setEnabled(false)
-    }
-
     fun editClicked(view:View){
         makeShorter()
+        var resource = findViewById<EditText>(R.id.Resource)
+        var WebView = findViewById<WebView>(R.id.WebView)
+        resource.setVisibility(View.VISIBLE)
+        WebView.setVisibility(View.GONE)
 
         var edit_text=findViewById<TextView>(R.id.edit_text)
+        var notes_text=findViewById<TextView>(R.id.notes_text)
 
         if(edit_text.text.equals("Edit:")){
             edit_text.setText("Save:")
@@ -231,49 +270,87 @@ class LearningSpace3 : AppCompatActivity() {
             var edit_image=findViewById<ImageView>(R.id.edit_image)
             edit_image.setImageResource(R.drawable.save_text)
 
-            var resource = findViewById<EditText>(R.id.Resource)
+
+
+            if(notes_text.text.equals("Read:")){
+                //nothing will be done.
+            }
+            else{
+                //load content
+                val apiService = learningSpace3GetContent_api_call()
+                apiService.getContent(currentContentID) {
+                    if(it?.id!=null){
+                        resource.setText(it.text)
+                    }
+                    else{
+                        switchToRead()
+                    }
+                }
+            }
             resource.setEnabled(true)
         }
         else{
-            switchToEdit()
+            // save the changes then switchToRead()
+            if(notes_text.text.equals("Read:")){
+                //save the note, then switchToNotes
+                switchToNotes()
+            }
+            else{
+                switchToRead()
+            }
+
         }
 
     }
 
+    fun switchToNotes(){
+        var notes_text=findViewById<TextView>(R.id.notes_text)
+        //hide webview
+        var WebView=findViewById<WebView>(R.id.WebView)
+        WebView.setVisibility(View.GONE)
+
+        //Show Edit
+        var edit_text=findViewById<TextView>(R.id.edit_text)
+        edit_text.setText("Edit:")
+        var edit_image=findViewById<ImageView>(R.id.edit_image)
+        edit_image.setImageResource(R.drawable.pencil)
+        edit_text.setVisibility(View.VISIBLE)
+        edit_image.setVisibility(View.VISIBLE)
+
+
+        var discussion_text=findViewById<TextView>(R.id.discussion_text)
+        if(discussion_text.text.equals("Read:")){
+            discussion_text.setText("Discussion:")
+            var discussion_image=findViewById<ImageView>(R.id.discussion_image)
+            discussion_image.setImageResource(R.drawable.discussion)
+        }
+
+        notes_text.text="Read:"
+        var notes_image=findViewById<ImageView>(R.id.notes_image)
+        notes_image.setImageResource(R.drawable.book)
+
+        var resource_topic=findViewById<TextView>(R.id.resource_topic)
+        resource_topic.setText(name_of_content+" Notes")
+
+        var owner_text=findViewById<TextView>(R.id.owner_text)
+        owner_text.setVisibility(View.GONE)
+
+
+        var resource = findViewById<EditText>(R.id.Resource)
+        resource.setVisibility(View.VISIBLE)
+        resource.setText("My notes will be here.") // api call
+        resource.setEnabled(false)
+    }
+
     fun notesClicked(view:View){
         makeShorter()
-        switchToEdit()
+
         var notes_text=findViewById<TextView>(R.id.notes_text)
-
         if(notes_text.text.equals("Notes:")){
-            var discussion_text=findViewById<TextView>(R.id.discussion_text)
-            if(discussion_text.text.equals("Read:")){
-                discussion_text.setText("Discussion:")
-                var discussion_image=findViewById<ImageView>(R.id.discussion_image)
-                discussion_image.setImageResource(R.drawable.discussion)
-            }
-
-                notes_text.text="Read:"
-                var notes_image=findViewById<ImageView>(R.id.notes_image)
-                notes_image.setImageResource(R.drawable.book)
-
-                var resource_topic=findViewById<TextView>(R.id.resource_topic)
-                resource_topic.setText(name_of_content+" Notes")
-
-                var owner_text=findViewById<TextView>(R.id.owner_text)
-                owner_text.setVisibility(View.GONE)
-
-
-                var resource = findViewById<EditText>(R.id.Resource)
-                resource.setText("My notes will be here.") // api call
+            switchToNotes()
         }
         else{
-            notes_text.text="Notes:"
-            var notes_image=findViewById<ImageView>(R.id.notes_image)
-            notes_image.setImageResource(R.drawable.note)
-
             switchToRead()
-
         }
 
     }

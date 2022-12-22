@@ -27,47 +27,30 @@
         android:id="@+id/name"
         android:layout_width="78dp"
         android:layout_height="39dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginBottom="60dp"
         android:fontFamily="@font/walter_turncoat"
         android:text="Name:"
         android:textColor="@color/colorPrimary1"
         android:textSize="26sp"
-        app:layout_constraintBottom_toTopOf="@+id/name2"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.041"
+        app:layout_constraintHorizontal_bias="0.045"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/name2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:fontFamily="@font/walter_turncoat"
-        android:text="Type:"
-        android:textColor="@color/colorPrimary1"
-        android:textSize="26sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.04"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.087" />
 
     <TextView
         android:id="@+id/textOrUrl"
         android:layout_width="63dp"
         android:layout_height="39dp"
-        android:layout_marginTop="22dp"
-        android:layout_marginBottom="360dp"
+        android:layout_marginBottom="548dp"
         android:fontFamily="@font/walter_turncoat"
         android:text="Text:"
         android:textColor="@color/colorPrimary1"
         android:textSize="26sp"
         app:layout_constraintBottom_toBottomOf="@+id/SubmitButton"
         app:layout_constraintEnd_toStartOf="@+id/SubmitButton"
-        app:layout_constraintHorizontal_bias="0.109"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name2" />
+        app:layout_constraintHorizontal_bias="0.122"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView15"
@@ -90,8 +73,11 @@
     <EditText
         android:id="@+id/textEditText"
         android:layout_width="313dp"
-        android:layout_height="335dp"
-        android:layout_marginBottom="125dp"
+        android:layout_height="500dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="31dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="18dp"
         android:background="@drawable/textview_background"
         android:ems="10"
         android:fontFamily="@font/andika"
@@ -100,20 +86,17 @@
         android:selectAllOnFocus="false"
         android:singleLine="false"
         android:textAlignment="viewStart"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/SubmitButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.875"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/typeEditText"
-        app:layout_constraintVertical_bias="0.416" />
+        app:layout_constraintStart_toEndOf="@+id/textOrUrl"
+        app:layout_constraintTop_toBottomOf="@+id/NameEditText" />
 
     <Button
         android:id="@+id/SubmitButton"
         android:layout_width="122dp"
         android:layout_height="70dp"
-        android:layout_marginStart="189dp"
-        android:layout_marginTop="3dp"
-        android:layout_marginEnd="110dp"
+        android:layout_marginStart="194dp"
+        android:layout_marginEnd="116dp"
         android:background="@drawable/button_background"
         android:focusable="true"
         android:fontFamily="@font/walter_turncoat"
@@ -129,36 +112,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textEditText"
-        app:layout_constraintVertical_bias="0.192" />
-
-    <Spinner
-        android:id="@+id/typeEditText"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-        android:layout_width="308dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="25dp"
-
-        android:background="@drawable/textview_background"
-        android:dropDownWidth="match_parent"
-        android:dropDownSelector="@drawable/circle_button"
-        android:entries="@array/type_choice"
-        android:focusable="auto"
-        android:foregroundTintMode="src_in"
-        android:layoutDirection="inherit"
-        android:layoutMode="clipBounds"
-        android:longClickable="false"
-        android:pointerIcon="context_menu"
-        android:popupTheme="@style/TextAppearance.Compat.Notification.Line2"
-        android:scrollbarStyle="outsideOverlay"
-        android:spinnerMode="dropdown"
-        android:textAlignment="center"
-        android:theme="@style/SpinnerTheme"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.84"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/NameEditText"
-        app:layout_constraintVertical_bias="0.022" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.975" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
