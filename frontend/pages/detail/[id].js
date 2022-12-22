@@ -7,13 +7,9 @@ import {Container} from "@mui/material";
 
 
 const DetailPage = () => {
-  const { user } = useContext(AuthContext);
-  const router = useRouter();
-  useEffect(() => {
-    if (!user) return;
-  });
-  
   const [space, setSpace] = useState(null);
+  const [content, setContent] = useState(null);
+  const router = useRouter();
 
   useEffect(() => {
     const { id } = router.query;
@@ -26,18 +22,29 @@ const DetailPage = () => {
       });
       setSpace(res.data);
     };
+    const getContentList = async () => {
+      const baseURL = `http://3.89.218.253:8000/app/content-list/?learning_space_id=${id}`;
+      const res = await axios.get(baseURL, {
+        headers: { Authorization: `token ${localStorage.getItem("token")}` },
+      });
+      setContent(res.data.data);
+    };
+    getContentList();
     getSpace();
   }, [router]);
 
   return (
+    <div>
     <Container
     sx={{
       borderRadius: "16px",
       background: "#dae7fb",
     }}
   >
-    <DetailInfoPage space={space}/>
+    <DetailInfoPage space={space} content={content}/>
      </Container>
+    </div>
+
   );
 };
 

@@ -1,8 +1,29 @@
-import React, { useState, useEffect, useContext } from "react";
-import { Grid, Box, Typography, Card, CardHeader, CardContent, Button, Link } from "@mui/material";
-import { useRouter } from "next/router";
-import axios from "axios";
-import { AuthContext } from "../../contexts/AuthContext";
+import * as React from 'react';
+import {
+	Grid,
+	Box,
+	Card,
+	CardHeader,
+	CardContent,
+  CardActionArea,
+	Button,
+	CardActions,
+	CircularProgress,
+  Typography,
+} from '@mui/material';
+import Stack from '@mui/material/Stack';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import IconButton from '@mui/material/IconButton';
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import { TextField, FormControlLabel, Checkbox } from '@mui/material';
+import { Link } from '@mui/material';
+import axios from 'axios';
+
 
 const handleJoin = (spid) => {
   axios.post(`http://3.89.218.253:8000/app/enroll/`, {
@@ -32,22 +53,31 @@ const handleLeave = (spid) => {
   });
 };
 
-const ifJoin = (space) => {
-  const { user } = useContext(AuthContext);
-  const [control, setControl] = useState(false);
-  {space?.members.map(mem => (
-    user === mem.username ? setControl(true) : console.log("ad")
-  ))}
-    return control;
-};
 
-function DetailMain({ space }) {
-  const [control, setControl] = useState(false);
+function DetailMain({ space, content }) {
+  const username =
+  typeof window !== 'undefined' && localStorage.getItem('user');
+  const isMember = space?.members.find((e) => e.username === username);
+
+  if (!space)
+    return (
+      <Grid>
+        <Box
+          variant="body2"
+          display="flex"
+          justifyContent="center"
+        >
+          <Card>
+            <CircularProgress />
+          </Card>
+        </Box>
+      </Grid>
+    );
   return (
     <Grid>
       <Box component="form"
         noValidate
-        sx={{ mt: 1 }}>
+        sx={{ mt: 2}}>
         {
           <Card sx={{ mt: 2 }}>
             <CardHeader
@@ -59,12 +89,58 @@ function DetailMain({ space }) {
               <Typography variant="body2" color="text.secondary">
                 <Box display="flex" justifyContent="space-between">
                   <Button type="submit" component={Link} href={`/addcontent/${space?.id}`} variant="contained" sx={{ mt: 3, mb: 2, borderRadius: "16px" }} className="btn btn-primary">Add Resource</Button>
-                  <Button type="submit" onClick={() => handleLeave(space?.id)} variant="contained" color="error" sx={{ mt: 3, mb: 2, borderRadius: "16px" }}>Leave</Button>
-                  <Button type="submit" onClick={() => handleJoin(space?.id)} variant="contained" color="primary" sx={{ mt: 3, mb: 2, borderRadius: "16px" }} >Join</Button>
-                    
+
+                  {isMember ? (
+									<>
+										
+										<Button
+											type="submit"
+											onClick={() => handleLeave(space?.id)}
+											variant="contained"
+                      color="error" 
+											sx={{ mt: 3, mb: 2, borderRadius: '16px' }}
+											className="btn btn-primary"
+										>
+											Leave
+										</Button>
+									</>
+								) : (
+									<>
+										<div style={{ flex: 1 }}></div>
+										<Button
+											type="submit"
+											onClick={() => handleJoin(space?.id)}
+											variant="contained"
+                      color="primary" 
+											sx={{ mt: 3, mb: 2, borderRadius: '16px' }}
+											className="btn btn-primary"
+										>
+											Join
+										</Button>
+									</>
+								)}
                 </Box>
               </Typography>
             </CardContent>
+            
+            <CardContent>
+						{content?.map((c) => (
+							<Card
+								key={c.id}
+								style={{ border: '1px solid green', margin: '10px' }}
+							>
+              <CardActionArea href={`/content/${c?.id}`}>
+								<CardContent>
+									<Box variant="h5" component="div">
+										{c.name}
+									</Box>
+								</CardContent>
+                </CardActionArea>
+							</Card>
+						))}
+
+					</CardContent>
+
           </Card>
         }
       </Box>
