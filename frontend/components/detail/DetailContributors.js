@@ -17,6 +17,7 @@ function DetailContributors({ space }) {
     <Grid>
       <Box component="form" noValidate sx={{ mt: 1 }}>
       {
+        
         <Card sx={{ mt: 2, mb: 4}}>
           <CardContent>
             <List

@@ -103,7 +103,7 @@ function DetailMain({ space, content }) {
 								key={c.id}
 								style={{ border: '1px solid green', margin: '10px' }}
 							>
-              <CardActionArea href={`/content/${c?.id}`}>
+              <CardActionArea href={`/resource/${c?.id}`}>
 								<CardContent>
 									<Box variant="h5" component="div">
 										{c.name}
