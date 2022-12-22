@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { Box, TextField, Typography, Button, Grid } from "@mui/material";
 import { useRouter } from "next/router";
+import "@uiw/react-md-editor/markdown-editor.css";
+import "@uiw/react-markdown-preview/markdown.css";
+import dynamic from "next/dynamic";
 
-function ContentAdd({routerQuery, typeSent}) {
+function ContentAdd({routerQuery}) {
   const router = useRouter();
 
   const [name, setName] = useState("");
@@ -17,13 +20,13 @@ function ContentAdd({routerQuery, typeSent}) {
       },
       body: JSON.stringify({
         name: name,
+        type: "text",
         text: text,
         learningSpace: routerQuery.id,
       }),
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
       })
       .catch((err) => {
         console.log(err);
@@ -31,6 +34,12 @@ function ContentAdd({routerQuery, typeSent}) {
     event.preventDefault();
     router.push(`/detail/${routerQuery.id}`);
   }
+
+
+  const MDEditor = dynamic(
+    () => import("@uiw/react-md-editor").then((mod) => mod.default),
+    { ssr: false }
+  );
 
   return (
     <Grid>
@@ -65,19 +74,19 @@ function ContentAdd({routerQuery, typeSent}) {
               setName(e.target.value);
             }}
           />
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            name="resource"
-            label="Resource"
-            id="resource"
-            multiline={true}
-            rows={15}
-            onChange={(e) => {
-              setText(e.target.value);
-            }}
-          />
+
+           <div data-color-mode="light">
+           <hr/>
+           <Typography
+          component="h2"
+          variant="h6"
+        >
+          Text
+        </Typography>
+        
+            <MDEditor height={500} value={text} onChange={setText} />
+          </div>
+          <hr/>
           <Button
             type="submit"
             fullWidth

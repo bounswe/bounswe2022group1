@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from "react";
-import AddContentInfoPage from "../../components/addcontent/AddContentInfoPage";
+import AddContentPage from "../../components/addcontent/AddContentPage";
 import { AuthContext } from "../../contexts/AuthContext";
 import { useRouter } from "next/router";
 
@@ -20,7 +20,7 @@ const AddContent = () => {
   return (
     <>
     <div>
-      <AddContentInfoPage routerQuery={router.query}/>
+      <AddContentPage routerQuery={router.query}/>
     </div>
     </>
   );

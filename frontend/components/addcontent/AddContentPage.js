@@ -7,7 +7,7 @@ import Button from "@mui/material/Button";
 import ContentAdd from "./ContentAdd";
 import Footer from "../detail/Footer";
 
-export default function AddContentInfoPage({ routerQuery }) {
+export default function AddContentPage({ routerQuery }) {
   return (
     <Container>
       <Grid container maxWidth="lg" spacing={2} columns={12}>
