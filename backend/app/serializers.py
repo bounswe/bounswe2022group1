@@ -118,17 +118,9 @@ class NotePostSerializer(serializers.ModelSerializer):
         #fields = '__all__'
         fields = ["id", "content", "owner", "body", "created_on"]
 
+
+
 class ProfileSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Profile
-        #fields = '_all_'
-        fields = ["id", "about_me", "user","learningspaces","image"]
-    user =  UserSerializer()
-    image = serializers.FileField()
-    #learningspaces = LearningSpaceSerializer(many=True, read_only=True)
-
-
-class ProfilePostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
         #fields = '_all_'

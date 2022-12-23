@@ -4,10 +4,11 @@ from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth import login
 from django.contrib.auth.models import User
 from knox.models import AuthToken
+from rest_framework.views import APIView
 from knox.views import LoginView as KnoxLoginView
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from .serializers import ContentSerializer, UserSerializer, RegisterSerializer, DiscussionPostSerializer
-from .serializers import ChangePasswordSerializer, LearningSpaceSerializer, DiscussionSerializer, ProfileSerializer,ProfilePostSerializer,ResetSerializer,LearningSpacePostSerializer
+from .serializers import ChangePasswordSerializer, LearningSpaceSerializer, DiscussionSerializer, ProfileSerializer,ResetSerializer,LearningSpacePostSerializer
 from .models import Content, LearningSpace, Discussion, Profile
 from .serializers import *
 from django.core.exceptions import ValidationError
@@ -384,8 +385,7 @@ class noteApiView(APIView):
 class profileApiView(APIView):
     # add permission to check if user is authenticated
     permission_classes = [permissions.IsAuthenticated]
-    serializer_class = ProfilePostSerializer
-    serializer_class1 = ProfileSerializer
+    serializer_class = ProfileSerializer
 
     def post(self, request, *args, **kwargs):
         
@@ -393,16 +393,6 @@ class profileApiView(APIView):
         
 
         data['user'] = request.user.id
-        learningspaces=LearningSpace.objects.filter(members__id=request.user.id)
-        list=[]
-        for i in learningspaces:
-            list.append(i.id)
-
-        data["learningspaces"] = list
-        print(list)
-       
-
-        # TODO: check wheter the given learning space id exists and user is a member of it
 
         serializer = self.serializer_class(data=data)
         if serializer.is_valid():
@@ -420,9 +410,20 @@ class profileApiView(APIView):
 
         try:
             profile = Profile.objects.get(user=user_id)
-            
-            serializer = self.serializer_class1(profile)
-            return Response(serializer.data, status=status.HTTP_200_OK)
+            profile = self.serializer_class(profile).data
+
+            learningspaces=LearningSpace.objects.filter(members__id=request.user.id)
+            list=[]
+            for i in learningspaces:
+                list.append(i.id)
+
+            profile["learningspaces"] = list
+            print(profile)
+
+
+
+            #serializer = self.serializer_class1(profile)
+            return Response(profile, status=status.HTTP_200_OK)
         except LearningSpace.DoesNotExist:
             return Response({"message": "given content id doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
 
