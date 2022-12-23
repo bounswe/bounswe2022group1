@@ -23,9 +23,7 @@ class AddContent : AppCompatActivity() {
     fun submitButtonClicked(view: View){
         var nameEditText = findViewById(R.id.NameEditText) as EditText
         var textEditText = findViewById(R.id.textEditText) as EditText
-
-
-
+        
         var name=nameEditText.text.toString()
         var type="text"
         var text=textEditText.text.toString()

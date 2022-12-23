@@ -53,8 +53,8 @@ class LandingActivity : AppCompatActivity() {
     }
 
     private fun postToList() {
-        addToList("Course Variety", "Enroll in a wide range of courses", R.drawable.variety)
-        addToList("Share Your Knowledge", "Create courses and share with others", R.drawable.scholar)
+        addToList("Learning Space Variety", "Enroll in a wide range of Learning Spaces", R.drawable.variety)
+        addToList("Share Your Knowledge", "Create Learning Spaces and share it", R.drawable.scholar)
         addToList("Communication Channels", "Ask and answer questions, discuss your ideas", R.drawable.discuss)
     }
 }
