@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from .models import LearningSpace, Content, Discussion, Profile
+from .models import LearningSpace, Content, Discussion, Profile,Note
 
 # User Serializer
 class UserSerializer(serializers.ModelSerializer):
@@ -28,12 +28,26 @@ class ChangePasswordSerializer(serializers.Serializer):
 
     new_pass = serializers.CharField(required=True)
 
+
 class LearningSpaceSerializer(serializers.ModelSerializer):
+    members = UserSerializer(many=True, read_only=True)
+    ls_owner=UserSerializer(read_only=True)
+    
+    
     class Meta:
         model = LearningSpace
-        fields = ["id", "name", "members", "tag"]
-    
+        fields = ["id", "name", "members", "tag", "image", "ls_owner", "description","created_on"]
+
+class LearningSpacePostSerializer(serializers.ModelSerializer):
     members = UserSerializer(many=True, read_only=True)
+    
+    
+    
+    class Meta:
+        model = LearningSpace
+        fields = ["id", "name", "members", "tag", "image", "ls_owner", "description","created_on"]
+    
+ 
 
 
 class ContentSerializer(serializers.ModelSerializer):
@@ -87,6 +101,20 @@ class DiscussionSerializer(serializers.ModelSerializer):
 class DiscussionPostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Discussion
+        #fields = '__all__'
+        fields = ["id", "content", "owner", "body", "created_on"]
+
+class NoteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Note
+        #fields = '__all__'
+        fields = ["id", "content", "owner", "body", "created_on"]
+    owner =  UserSerializer()
+
+
+class NotePostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Note
         #fields = '__all__'
         fields = ["id", "content", "owner", "body", "created_on"]
 

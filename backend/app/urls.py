@@ -26,6 +26,7 @@ urlpatterns = [
     path('app/forget-password/' , forgetpasswordApiView.as_view() , name="forget_password"),
     path('app/leave-learning-space/', leaveApiView.as_view(), name='leave-learning-space'),
     path('app/enrolled-learning-spaces/', EnrolledLearningSpaceApiView.as_view(), name='enrolled-learning-spaces'),
+    path('app/note/', noteApiView.as_view(), name='note'),
     
     
 

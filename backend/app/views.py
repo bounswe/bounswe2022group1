@@ -7,9 +7,9 @@ from knox.models import AuthToken
 from knox.views import LoginView as KnoxLoginView
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from .serializers import ContentSerializer, UserSerializer, RegisterSerializer, DiscussionPostSerializer
-from .serializers import ChangePasswordSerializer, LearningSpaceSerializer, DiscussionSerializer, ProfileSerializer,ProfilePostSerializer,ResetSerializer
+from .serializers import ChangePasswordSerializer, LearningSpaceSerializer, DiscussionSerializer, ProfileSerializer,ProfilePostSerializer,ResetSerializer,LearningSpacePostSerializer
 from .models import Content, LearningSpace, Discussion, Profile
-
+from .serializers import *
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
 
@@ -109,6 +109,7 @@ class LearningSpaceApiView(APIView):
     # add permission to check if user is authenticated
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = LearningSpaceSerializer
+    serializer_class2=LearningSpacePostSerializer
     
     
     def get(self, request, *args, **kwargs):
@@ -131,18 +132,25 @@ class LearningSpaceApiView(APIView):
         '''
         Create the Todo with given todo data
         '''
-        data = {
-            'name': request.data.get('name'),
-            'tag' : request.data.get('tag')
-        }
+      
+        data = request.data.copy()
+        data['ls_owner'] = request.user.id
+
+
+        
+
+        
+
+        
     
 
-        serializer = self.serializer_class(data=data)
+        serializer = self.serializer_class2(data=data)
         if serializer.is_valid():
             serializer.save()
             ls = LearningSpace.objects.get(id=serializer.data['id'])
             ls.members.add(request.user)
-            serializer = self.serializer_class(ls)
+         
+            serializer = self.serializer_class2(ls)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -324,6 +332,53 @@ class discussionApiListView(APIView):
             return Response({"data": serializer.data}, status=status.HTTP_200_OK)
         except LearningSpace.DoesNotExist:
             return Response({"message": "given content id doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+
+
+
+
+class noteApiView(APIView):
+    # add permission to check if user is authenticated
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = NoteSerializer
+    serializer_class_post = NotePostSerializer
+
+    def post(self, request, *args, **kwargs):
+        
+        data = request.data.copy()
+        
+
+        data['owner'] = request.user.id
+       
+
+        # TODO: check wheter the given learning space id exists and user is a member of it
+
+        serializer = self.serializer_class_post(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    def get(self, request, *args, **kwargs):
+        try:
+            content_id = int(request.GET.get('content_id'))
+        except ValueError:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            content = Content.objects.get(id=content_id)
+            note = content.note.all()
+            serializer = self.serializer_class(note, many=True)
+            return Response({"data": serializer.data}, status=status.HTTP_200_OK)
+        except LearningSpace.DoesNotExist:
+            return Response({"message": "given content id doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
+    
+    
+
 
 
 class profileApiView(APIView):
