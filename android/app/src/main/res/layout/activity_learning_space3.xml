@@ -49,6 +49,18 @@
                 android:textColor="@color/black"
                 android:textSize="20dp"
                 android:textStyle="bold" />
+
+            <WebView
+                android:id="@+id/WebView"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginBottom="12sp"
+                android:background="@null"
+                android:fontFamily="@font/andika"
+                android:inputType="none|textMultiLine"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold" />
         </LinearLayout>
     </ScrollView>
 
