@@ -9,12 +9,10 @@ import Footer from "../detail/Footer";
 
 export default function AddContentPage({ routerQuery }) {
   return (
-    <Container>
-      <Grid container maxWidth="lg" spacing={2} columns={12}>
+      <Grid container maxWidth="xl" ml={2} mr={2}>
         <Grid item xs={12}>
           <ContentAdd routerQuery={routerQuery}/>
         </Grid>
       </Grid>
-    </Container>
   );
 }

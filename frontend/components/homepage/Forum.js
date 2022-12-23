@@ -41,7 +41,6 @@ export default function Forum({ forumList, sx }) {
               </CardContent>
               <CardActions>
                 <Button size="small" component={Link} href={`detail/${data?.id}`}>View</Button>
-                <Button size="small">Learn More</Button>
               </CardActions>
             </Card>
           </Grid>
