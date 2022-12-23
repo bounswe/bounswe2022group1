@@ -533,4 +533,62 @@ class userNamefromIDAPIView(APIView):
             return Response({"message": "User with given id doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
 
 
+class favoriteLearningSpaceAPIView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = FavoriteSerializer
+    serializer_class_post = FavoritePostSerializer
+
+    def get(self, request, *args, **kwargs):
+        try:
+            user_id = int(request.GET.get('user', request.user.id))
+
+        except ValueError:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            favorite_ls = Favorite.objects.filter(user__id=user_id)
+            serializer = self.serializer_class(favorite_ls, many=True)
+            return Response({"data": serializer.data}, status=status.HTTP_200_OK)
+        except:
+            return Response({"message": "given user id doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
+
+    
+    def post(self, request, *args, **kwargs):
+        data = request.data.copy()
+        data['user'] = request.user.id
+        print(data)
+        serializer = self.serializer_class_post(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        
+        
+    
+class disFavoriteAPIView(APIView):
+    # add permission to check if user is authenticated
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = FavoriteSerializer
+
+    def post(self, request, *args, **kwargs):
+        try:
+            learning_space_id = int(request.data.get('learningSpace'))
+        except ValueError:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            favorite_record = Favorite.objects.get(learningSpace__id=learning_space_id)
+            favorite_record.delete()
+            serializer = self.serializer_class(favorite_record)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except:
+            return Response({"message": "given learning space id doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+
+
+
+
+
+
        

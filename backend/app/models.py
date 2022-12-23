@@ -76,3 +76,9 @@ class Note(models.Model):
     class Meta:
         ordering = ['created_on']
 
+
+
+class Favorite(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    learningSpace = models.ForeignKey(LearningSpace, on_delete=models.CASCADE)
+

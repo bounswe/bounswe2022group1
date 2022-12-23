@@ -28,6 +28,9 @@ urlpatterns = [
     path('app/enrolled-learning-spaces/', EnrolledLearningSpaceApiView.as_view(), name='enrolled-learning-spaces'),
     path('app/note/', noteApiView.as_view(), name='note'),
     path('app/user-from-id/', userNamefromIDAPIView.as_view(), name='user-from-id'),
+    path('app/favorite/', favoriteLearningSpaceAPIView.as_view(), name='favorite'),
+    path('app/unfavorite/', disFavoriteAPIView.as_view(), name='unfavorite'),
+
 
     
     
