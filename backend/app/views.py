@@ -138,12 +138,6 @@ class LearningSpaceApiView(APIView):
         data['ls_owner'] = request.user.id
 
 
-        
-
-        
-
-        
-    
 
         serializer = self.serializer_class2(data=data)
         if serializer.is_valid():
@@ -264,10 +258,6 @@ class enrollApiView(APIView):
             ls.members.add(request.user)
             serializer = self.serializer_class(ls)
 
-            if (Profile.objects.filter(user=request.user).exists()):
-                profile_obj=Profile.objects.get(user=request.user)
-                new_learningspaces = LearningSpace.objects.filter(members__id=request.user.id)
-                profile_obj.learningspaces.set(new_learningspaces)
             return Response(serializer.data, status=status.HTTP_200_OK)
         except LearningSpace.DoesNotExist:
             return Response({"message": "given learning space id doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
@@ -393,7 +383,7 @@ class profileApiView(APIView):
         
 
         data['user'] = request.user.id
-
+        print(data)
         serializer = self.serializer_class(data=data)
         if serializer.is_valid():
             serializer.save()
@@ -526,6 +516,21 @@ class forgetpasswordApiView(APIView):
             return Response({"message": "your password is sent to your email"}, status=status.HTTP_200_OK)
 
 
+class userNamefromIDAPIView(APIView):
+    # add permission to check if user is authenticated
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = UserSerializer
+    
+    
+    def get(self, request, *args, **kwargs):
+        try:
+            id = request.GET.get('id')
+            user = User.objects.filter(id=id)[0]
+            print(user)
+            serializer = self.serializer_class(user)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except:
+            return Response({"message": "User with given id doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
 
 
        

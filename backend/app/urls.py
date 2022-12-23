@@ -27,6 +27,8 @@ urlpatterns = [
     path('app/leave-learning-space/', leaveApiView.as_view(), name='leave-learning-space'),
     path('app/enrolled-learning-spaces/', EnrolledLearningSpaceApiView.as_view(), name='enrolled-learning-spaces'),
     path('app/note/', noteApiView.as_view(), name='note'),
+    path('app/user-from-id/', userNamefromIDAPIView.as_view(), name='user-from-id'),
+
     
     
 
