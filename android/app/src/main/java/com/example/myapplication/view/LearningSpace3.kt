@@ -72,6 +72,7 @@ class LearningSpace3 : AppCompatActivity() {
         edit_text.setText("Edit:")
         var edit_image=findViewById<ImageView>(R.id.edit_image)
         edit_image.setImageResource(R.drawable.pencil)
+
         edit_text.setVisibility(View.VISIBLE)
         edit_image.setVisibility(View.VISIBLE)
 
@@ -102,6 +103,10 @@ class LearningSpace3 : AppCompatActivity() {
                 owner_text.text="Owner: "+nameOfOwner //show owner
                 owner_of_content=nameOfOwner
                 owner_text.setVisibility(View.VISIBLE)
+                if(!nameOfOwner.equals(user_name)){
+                    edit_text.setVisibility(View.GONE)
+                    edit_image.setVisibility(View.GONE)
+                }
             }
             else{
                 switchToRead()
@@ -338,7 +343,7 @@ class LearningSpace3 : AppCompatActivity() {
 
         var resource = findViewById<EditText>(R.id.Resource)
         resource.setVisibility(View.VISIBLE)
-        resource.setText("My notes will be here.") // api call
+        resource.setText("My notes will be here.") // api call will be made here.
         resource.setEnabled(false)
     }
 
