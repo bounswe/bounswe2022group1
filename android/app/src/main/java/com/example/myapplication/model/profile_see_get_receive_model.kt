@@ -13,5 +13,4 @@ data class profile_see_get_receive_model (
     val learningspaces:Array<Int>,
     @SerializedName("image")
     val image:String
-
 )

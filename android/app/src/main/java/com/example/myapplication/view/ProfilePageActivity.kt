@@ -1,9 +1,13 @@
 package com.example.myapplication.view
 
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.View
 import android.widget.*
@@ -15,6 +19,7 @@ import com.example.myapplication.service.ls_by_tag_call
 import com.example.myapplication.service.profile_see_api_call
 import java.io.File
 import java.io.FileOutputStream
+import java.util.concurrent.Executors
 
 
 class ProfilePageActivity : AppCompatActivity() {
@@ -25,9 +30,53 @@ class ProfilePageActivity : AppCompatActivity() {
 
     lateinit var enroll_list:MutableList<String>
 
+    fun init_image(imageURL:String){
+        // Declaring and initializing the ImageView
+        val imageView = findViewById<ImageView>(R.id.imageView)
+
+        // Declaring executor to parse the URL
+        val executor = Executors.newSingleThreadExecutor()
+
+        // Once the executor parses the URL
+        // and receives the image, handler will load it
+        // in the ImageView
+        val handler = Handler(Looper.getMainLooper())
+
+        // Initializing the image
+        var image: Bitmap? = null
+
+        // Only for Background process (can take time depending on the Internet speed)
+        executor.execute {
+
+            // Image URL
+            //val imageURL = "https://media.geeksforgeeks.org/wp-content/cdn-uploads/gfg_200x200-min.png"
+
+            // Tries to get the image and post it in the ImageView
+            // with the help of Handler
+            try {
+                val `in` = java.net.URL(imageURL).openStream()
+                image = BitmapFactory.decodeStream(`in`)
+
+                // Only for making changes in UI
+                handler.post {
+                    imageView.setImageBitmap(image)
+                }
+            }
+
+            // If the URL doesnot point to
+            // image or any other kind of failure
+            catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profilepage)
+
+
 
 
         val apiService = profile_see_api_call()
@@ -45,6 +94,8 @@ class ProfilePageActivity : AppCompatActivity() {
             var user_id = findViewById(R.id.seeID) as TextView
             user_id.text=it?.user?.id.toString()
 
+            init_image("http://3.89.218.253:8000/"+it?.image.toString())
+            Log.d("omer_baba",it?.image.toString())
 
                 enroll_list= mutableListOf<String>()
                 enroll_list.add("Click to see")
