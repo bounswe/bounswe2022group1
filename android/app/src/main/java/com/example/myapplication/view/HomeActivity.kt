@@ -6,19 +6,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
-import android.view.View
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.LinearLayout
+
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.widget.SearchView
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.myapplication.R
 import com.example.myapplication.service.learningSpace2ListEveryLearningSpace_api_call
 import com.google.android.material.navigation.NavigationView
 import org.w3c.dom.Text
-import java.nio.file.attribute.AttributeView
 
 var selectedTAG = ""
 var learningSpaceID_Name=mutableMapOf<Int,String>()
@@ -55,38 +51,17 @@ class HomeActivity : AppCompatActivity() {
         var welcome_text=findViewById<TextView>(R.id.welcome_text)
         welcome_text.setSelected(true)
 
+        val searchView = findViewById<SearchView>(R.id.search)
+        searchView.setOnQueryTextFocusChangeListener{ v, b->
+            goToSearch()
+            searchView.clearFocus()
+        }
+
         navMenuHandler()
         //println("I am home"+user_token)
         //user token null değil ise buttonları göster log off göster sign in kapat
         // , null ise sign in göster, butonları kapat logoff kapat
-        var buttonLayout = findViewById(R.id.buttonLayout) as LinearLayout
-        var logoffButton = findViewById(R.id.logoffButton) as ImageButton
-        var signinButton = findViewById(R.id.signinButton) as Button
-        
-        if(user_token != "") {
-            buttonLayout.visibility = View.VISIBLE
-            logoffButton.visibility = View.VISIBLE
-            signinButton.visibility = View.INVISIBLE
-        }
-        else {
-            buttonLayout.visibility = View.INVISIBLE
-            logoffButton.visibility = View.INVISIBLE
-            signinButton.visibility = View.VISIBLE
-        }
 
-        //here check if buttons are pressed and direct them to signIn
-        val signInButtonClicked = findViewById<Button>(R.id.signinButton)
-        signInButtonClicked.setOnClickListener{
-            signInToSignIn()
-        }
-        val logoffButtonClicked = findViewById<ImageButton>(R.id.logoffButton)
-        logoffButtonClicked.setOnClickListener{
-            logoffToLanding()
-        }
-        val profileButtonClicked = findViewById<ImageButton>(R.id.profileButton)
-        profileButtonClicked.setOnClickListener{
-            toProfile()
-        }
     }
 
 
@@ -95,7 +70,7 @@ class HomeActivity : AppCompatActivity() {
         var intent= Intent(applicationContext, SignInActivity::class.java)
         startActivity(intent)
     }
-    fun goToSearch(view: View) {
+    fun goToSearch() {
         var intent= Intent(applicationContext, LsSearchActivity::class.java)
         startActivity(intent)
     }

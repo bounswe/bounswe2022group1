@@ -60,7 +60,11 @@ class LearningSpace1 : AppCompatActivity() {
                 ids.add(it.id)
                 spaceValues.add(it.name)
 
-                val element = ls_list_element(it.name, "Description", "created AT", "Osman")
+                var desc = it.description
+                if(it.description == null) {
+                    desc = ""
+                }
+                val element = ls_list_element(it.name, desc, "created AT", it.ls_owner.name)
                 lsArrayList.add(element)
 
                 it.members.forEach { el ->

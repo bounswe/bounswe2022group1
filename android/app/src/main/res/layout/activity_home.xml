@@ -15,133 +15,10 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp">
 
-    <TextView
-        android:fontFamily="@font/walter_turncoat"
-        android:id="@+id/textView5"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginEnd="55dp"
-        android:layout_marginBottom="60dp"
-        android:background="#000000"
-        android:gravity="center"
-        android:text="5-Star Python Course"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/buttonLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView4"
-        tools:ignore="MissingConstraints"
-        tools:text="5-Star Python Course" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="120dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="44dp"
-        android:contentDescription="@string/todo"
-        android:src="@drawable/java_paint"
-        app:layout_constraintBottom_toTopOf="@+id/textView4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcome_text"
-        tools:ignore="MissingConstraints" />
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="120dp"
-        android:layout_height="80dp"
-
-        android:contentDescription="TODO"
-        android:src="@drawable/python_paint"
-        app:layout_constraintBottom_toTopOf="@+id/textView5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
-        app:layout_constraintStart_toEndOf="@+id/imageView4"
-        app:layout_constraintTop_toBottomOf="@+id/welcome_text"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:fontFamily="@font/walter_turncoat"
-        android:id="@+id/textView4"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginEnd="72dp"
-        android:layout_marginBottom="60dp"
-        android:background="#000000"
-        android:gravity="center"
-        android:text="Java Course For Beginners"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/buttonLayout"
-        app:layout_constraintEnd_toStartOf="@+id/textView5"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:text="Java Course For Beginners" />
-
-    <LinearLayout
-        android:id="@+id/buttonLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginBottom="40dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        tools:ignore="MissingConstraints">
-
-        <ImageButton
-            android:id="@+id/searchButton"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:background="@null"
-            android:contentDescription="@string/appbar_scrolling_view_behavior"
-            android:onClick="goToSearch"
-            app:srcCompat="@android:drawable/ic_menu_search"
-            tools:ignore="MissingConstraints,DuplicateSpeakableTextCheck" />
-
-        <ImageButton
-            android:id="@+id/featuredButton"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:background="@null"
-            android:contentDescription="@string/bottom_sheet_behavior"
-            app:srcCompat="@android:drawable/btn_star_big_on"
-            tools:ignore="MissingConstraints" />
-
-        <ImageButton
-            android:id="@+id/myLearningButton"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:background="@null"
-            android:contentDescription="@string/appbar_scrolling_view_behavior"
-            app:srcCompat="@android:drawable/ic_menu_info_details"
-            tools:ignore="MissingConstraints" />
-
-        <ImageButton
-            android:id="@+id/wishlistButton"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-
-            android:background="@null"
-            android:contentDescription="@string/appbar_scrolling_view_behavior"
-            app:srcCompat="@android:drawable/ic_menu_view"
-            tools:ignore="MissingConstraints" />
-
-        <ImageButton
-            android:id="@+id/profileButton"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:background="@null"
-            android:contentDescription="@string/appbar_scrolling_view_behavior"
-            android:onClick="goToProfilePage"
-            app:srcCompat="@android:drawable/ic_menu_my_calendar"
-            tools:ignore="MissingConstraints" />
-    </LinearLayout>
-
         <TextView
             android:id="@+id/welcome_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="304dp"
             android:ellipsize="marquee"
             android:fadingEdge="horizontal"
             android:fontFamily="@font/walter_turncoat"
@@ -153,55 +30,27 @@
             android:text="Welcome To Budemi    Welcome To Budemi"
             android:textColor="@color/colorPrimary1"
             android:textSize="34sp"
-            app:layout_constraintBottom_toTopOf="@+id/buttonLayout"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.14"
+            tools:ignore="MissingConstraints" />
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/search"
+            android:layout_width="0dp"
+            android:fontFamily="@font/walter_turncoat"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/search_view_bg"
+            app:iconifiedByDefault="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/logoffButton"
-            tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/signinButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="43dp"
-        android:layout_marginBottom="64dp"
-        android:background="#000000"
-        android:onClick="signInToSignIn"
-        android:text="Sign In"
-        app:layout_constraintBottom_toTopOf="@+id/welcome_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="MissingConstraints" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="481dp"
-        android:layout_marginBottom="16dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/buttonLayout"
-        app:layout_constraintStart_toStartOf="@+id/buttonLayout"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints">
-
-    </LinearLayout>
-
-        <ImageButton
-            android:id="@+id/logoffButton"
-            android:layout_width="50dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="18dp"
-            android:layout_marginBottom="64dp"
-            android:background="@null"
-            android:onClick="logoffToLanding"
-            android:scaleType="fitCenter"
-            android:src="@drawable/logout"
-            app:layout_constraintBottom_toTopOf="@+id/welcome_text"
-            app:layout_constraintEnd_toEndOf="@+id/signinButton"
-            app:layout_constraintStart_toStartOf="@+id/signinButton"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
+            app:queryHint="Search Here ..." />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

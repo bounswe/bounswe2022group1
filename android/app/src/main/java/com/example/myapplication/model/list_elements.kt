@@ -10,6 +10,14 @@ data class list_elements(
     @SerializedName("members")
     val members:Array<ls_members>,
     @SerializedName("tag")
-    val tag:String
+    val tag:String,
+    @SerializedName("image")
+    val image:String,
+    @SerializedName("ls_owner")
+    val ls_owner:ls_members,
+    @SerializedName("description")
+    val description:String,
+    @SerializedName("created_on")
+    val created_on:String
 )
 
