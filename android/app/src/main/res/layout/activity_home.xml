@@ -15,6 +15,19 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp">
 
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="match_parent"
+
+            android:layout_height="25dp"
+            android:src="@drawable/logo_bottom_border"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.202" />
+
         <TextView
             android:id="@+id/welcome_text"
             android:layout_width="wrap_content"
@@ -35,23 +48,58 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.14"
+            app:layout_constraintVertical_bias="0.129"
             tools:ignore="MissingConstraints" />
 
         <androidx.appcompat.widget.SearchView
             android:id="@+id/search"
             android:layout_width="0dp"
-            android:fontFamily="@font/walter_turncoat"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:layout_marginTop="8dp"
             android:background="@drawable/search_view_bg"
+            android:fontFamily="@font/walter_turncoat"
             app:iconifiedByDefault="false"
+            app:layout_constraintBottom_toTopOf="@+id/welcome_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.551"
             app:queryHint="Search Here ..." />
 
+        <me.relex.circleindicator.CircleIndicator3
+                android:id="@+id/indicator"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/viewPager2"
+                app:layout_constraintVertical_bias="0.0"
+                tools:layout_editor_absoluteX="0dp" >
+
+        </me.relex.circleindicator.CircleIndicator3>
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Favourite Learning Spaces:"
+            android:textColor="@color/colorPrimary1"
+
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.08"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager2"
+            android:layout_width="324dp"
+            android:layout_height="217dp"
+            android:background="@color/colorPrimary4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView5" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

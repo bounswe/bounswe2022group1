@@ -23,7 +23,7 @@ class LsListAdapter(private val context: Activity, private val arrayList: ArrayL
 
         name.text = arrayList[position].name
         desc.text = arrayList[position].desc
-        info.text = arrayList[position].createdAt
+        info.text = arrayList[position].createdAt + arrayList[position].owner
 
         return view
     }
