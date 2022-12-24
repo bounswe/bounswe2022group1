@@ -205,15 +205,24 @@ class contentApiView(APIView):
             return Response({"error": "you are not the owner of this content"}, status=status.HTTP_400_BAD_REQUEST)       
 
         # Those fields are needed to validate data because Content exceptionally has a custom validate() function.
+        
+        if 'name' not in data:
+            data['name'] = content.name
         if 'type' not in data:
             data['type'] = content.type
         if 'text' not in data:
             data['text'] = content.text
         if 'url' not in data:
             data['url'] = content.url
+        if 'upVoteCount' not in data:
+            data['upVoteCount'] = content.upVoteCount
+        
+        
+
+        print(data)
+
 
         serializer = self.serializer_class(content, data=data, partial=True)
-
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)

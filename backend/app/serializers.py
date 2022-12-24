@@ -64,6 +64,8 @@ class ContentSerializer(serializers.ModelSerializer):
         instance.type = validated_data.get('type', instance.type)
         instance.text = validated_data.get('text', instance.text)
         instance.url = validated_data.get('url', instance.url)
+        instance.upVoteCount = validated_data.get('upVoteCount', instance.url)
+
         instance.save()
         return instance
 
@@ -71,22 +73,15 @@ class ContentSerializer(serializers.ModelSerializer):
     def validate(self, data):
         # TODO: fill each condition with the correct validations (whether it is really a video, image, etc.)
         if data['type'] == "text":
-            if data.get("text", "") == "" or data.get("url", "") != "":
+            if data.get("text", "") == "":
                 raise serializers.ValidationError("Type doesn't match the content")
         elif data['type'] == "video":
-            if data.get("url", "") == "" or data.get("text", "") != "":
+            if data.get("url", "") == "":
                 raise serializers.ValidationError("Type doesn't match the content")
         elif data['type'] == "image":
-            if data.get("url", "") == "" or data.get("text", "") != "":
+            if data.get("url", "") == "":
                 raise serializers.ValidationError("Type doesn't match the content")
-        elif data['type'] == "discussion":
-            if data.get("url", "") != "" or data.get("text", "") != "":
-                raise serializers.ValidationError("Type doesn't match the content")
-        elif data['type'] == "meeting":
-            if data.get("url", "") != "" or data.get("text", "") == "":
-                raise serializers.ValidationError("Type doesn't match the content")
-        else:
-            raise serializers.ValidationError("Invalid type value")
+   
         return data
 
 
