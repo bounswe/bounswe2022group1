@@ -5,6 +5,11 @@ import "@uiw/react-md-editor/markdown-editor.css";
 import "@uiw/react-markdown-preview/markdown.css";
 import dynamic from "next/dynamic";
 
+const MDEditor = dynamic(
+  () => import("@uiw/react-md-editor").then((mod) => mod.default),
+  { ssr: false }
+);
+
 function ContentAdd({routerQuery}) {
   const router = useRouter();
 
@@ -36,10 +41,7 @@ function ContentAdd({routerQuery}) {
   }
 
 
-  const MDEditor = dynamic(
-    () => import("@uiw/react-md-editor").then((mod) => mod.default),
-    { ssr: false }
-  );
+
 
   return (
     <Grid>
@@ -83,8 +85,9 @@ function ContentAdd({routerQuery}) {
         >
           Text
         </Typography>
-        
-            <MDEditor height={500} value={text} onChange={setText} />
+          <MDEditor height={500} value={text} onChange={(e) => {
+              setText(e);
+            }} />
           </div>
           <hr/>
           <Button
