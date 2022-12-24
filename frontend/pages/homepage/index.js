@@ -12,7 +12,7 @@ import Sidebar from "../../components/homepage/Sidebar";
 import Footer from "../../components/homepage/Footer";
 import Forum from "../../components/homepage/Forum";
 import { useState, useEffect } from "react";
-import { Button } from "@mui/material";
+import { Button, Paper } from "@mui/material";
 import { useContext } from "react";
 import { Typography, Divider } from "@mui/material";
 import { AuthContext } from "../../contexts/AuthContext";
@@ -227,13 +227,10 @@ export default function Homepage() {
     <Container
       sx={{
         borderRadius: "16px",
-        background: "#dae7fb",
+        //background: "#dae7fb",
       }}
     >
       <Box sx={{ padding: 4, margin: 4, marginTop: 15 }}>
-        {/* 
-        <Header title="Welcome!" sections={sections} />
-*/}
         <WelcomePost post={welcomePost} />
         <Grid container spacing={4}>
           {featuredPosts &&

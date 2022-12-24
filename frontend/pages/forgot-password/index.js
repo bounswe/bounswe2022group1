@@ -62,12 +62,12 @@ export default function SignUp() {
 
   return (
     <Box display="flex" justifyContent="center">
-      <Box
+      <Paper
         sx={{
           padding: 6,
           marginTop: 15,
-          backgroundColor: "#dae7fb",
-          borderRadius: "15px",
+          //backgroundColor: "#dae7fb",
+          // borderRadius: "15px",
         }}
       >
         <Typography
@@ -117,7 +117,7 @@ export default function SignUp() {
             Sign Up
           </Button>
         </Box>
-      </Box>
+      </Paper>
     </Box>
   );
 }

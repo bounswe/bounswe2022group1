@@ -24,7 +24,12 @@ export default function Header() {
       }}
     >
       <Toolbar>
-        <Image src="/assets/BUdemi.svg" width={80} height={80} alt="budemi" />
+        <Image
+          src="/assets/budemi logo2.png"
+          width={120}
+          height={40}
+          alt="budemi"
+        />
 
         <Box sx={{ flexGrow: 1 }} />
 

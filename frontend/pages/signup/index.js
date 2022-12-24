@@ -9,16 +9,19 @@ import {
   Checkbox,
   Button,
   Grid,
+  Paper,
 } from "@mui/material";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { LineAxisOutlined } from "@mui/icons-material";
+import { useTheme } from "@mui/material/styles";
 
 export default function SignUp() {
   const { isAuthenticated, login } = useContext(AuthContext);
   const router = useRouter();
+  const theme = useTheme();
 
   if (typeof window != "undefined" && isAuthenticated) {
     router.push("/homepage", {}, { replace: true });
@@ -69,12 +72,11 @@ export default function SignUp() {
 
   return (
     <Box display="flex" justifyContent="center">
-      <Box
+      <Paper
+        elevation={2}
         sx={{
           padding: 6,
           marginTop: 15,
-          backgroundColor: "#dae7fb",
-          borderRadius: "15px",
         }}
       >
         <Typography
@@ -122,12 +124,12 @@ export default function SignUp() {
             type="submit"
             fullWidth
             variant="contained"
-            sx={{ mt: 3, mb: 2, borderRadius: "16px" }}
+            sx={{ mt: 3, mb: 2 }}
           >
             Sign Up
           </Button>
         </Box>
-      </Box>
+      </Paper>
     </Box>
   );
 }
