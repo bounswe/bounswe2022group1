@@ -55,7 +55,9 @@ class HomeActivity : AppCompatActivity() {
 
         val searchView = findViewById<SearchView>(R.id.search)
         searchView.setOnQueryTextFocusChangeListener{ v, b->
-            goToSearch()
+            if(b) {
+                goToSearch()
+            }
             searchView.clearFocus()
         }
 
