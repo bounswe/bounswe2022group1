@@ -8,12 +8,18 @@ import android.util.Log
 import android.view.MenuItem
 
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.SearchView
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.viewpager2.widget.ViewPager2
 import com.example.myapplication.R
+import com.example.myapplication.model.favorite_ls
+import com.example.myapplication.model.ls_list_element
+import com.example.myapplication.model.ls_members
+import com.example.myapplication.service.favorite_ls_call
 import com.example.myapplication.service.learningSpace2ListEveryLearningSpace_api_call
+import com.example.myapplication.service.user_from_id_api_call
 import com.google.android.material.navigation.NavigationView
 import me.relex.circleindicator.CircleIndicator3
 import org.w3c.dom.Text
@@ -66,19 +72,58 @@ class HomeActivity : AppCompatActivity() {
         var names = ArrayList<String>()
         var descs = ArrayList<String>()
         var creators = ArrayList<String>()
+        var ids = ArrayList<Int>()
+        var members = mutableListOf<ls_members>()
+        /*
         names += "Embedded Systems"
         descs += "Hardware Course"
         creators += "24.12.2022 by quanex1"
         names += "omer"
         descs += "ozde"
         creators += "213213"
-        val view_pager2 = findViewById<ViewPager2>(R.id.viewPager2)
+*/
+        val apiService = favorite_ls_call()
+        apiService.favoriteLSpaces("Token " + user_token) {
+            it?.data?.forEach {
+                names += it.learningSpace.name
+                descs += it.learningSpace.description
+                creators += it.learningSpace.created_on.substring(0, 10) + " by " + it.learningSpace.ls_owner.name
+                ids += it.learningSpace.id
+                it.learningSpace.members.forEach {
+                    members.add(it)
+                }
+                /*names.put(it.id, it.name)
+                ids.add(it.id)
+                spaceValues.add(it.name)
 
-        view_pager2.adapter = HomeViewPager(names, descs, creators)
-        //view_pager2.adapter = ViewPager2.ORIENTATION_HORIZONTAL
+                var desc = it.description
+                if (it.description == null) {
+                    desc = ""
+                }
+                val element = ls_list_element(
+                    it.name,
+                    desc,
+                    it.created_on.substring(0, 10) + " by ",
+                    it.ls_owner.name
+                )
+                lsArrayList.add(element)
 
-        val indicator = findViewById<CircleIndicator3>(R.id.indicator)
-        indicator.setViewPager(view_pager2)
+                it.members.forEach { el ->
+                    currentMembers.add(el)
+                }
+                members.add(currentMembers.toMutableList())
+                currentMembers.clear()
+                */
+            }
+            val view_pager2 = findViewById<ViewPager2>(R.id.viewPager2)
+            val context = applicationContext
+
+            view_pager2.adapter = HomeViewPager(names, descs, creators, ids, members, context)
+            //view_pager2.adapter = ViewPager2.ORIENTATION_HORIZONTAL
+
+            val indicator = findViewById<CircleIndicator3>(R.id.indicator)
+            indicator.setViewPager(view_pager2)
+        }
 
     }
 

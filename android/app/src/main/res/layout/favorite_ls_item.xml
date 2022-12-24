@@ -13,7 +13,7 @@
         android:layout_marginVertical="10dp"
         android:layout_marginHorizontal="16dp"
         android:orientation="horizontal">
-        
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -30,11 +30,10 @@
                 android:textColor="@color/colorPrimary1"
                 android:textSize="30dp"
                 android:textStyle="bold" />
-
             <TextView
                 android:id="@+id/lsDescription"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="75dp"
                 android:layout_marginTop="8dp"
                 android:text="TextView"
                 android:textAlignment="center"
@@ -47,7 +46,7 @@
                 android:layout_marginLeft="25dp"
                 android:layout_marginTop="8dp"
                 android:text="TextView"
-                android:textSize="12dp" />
+                android:textSize="16dp" />
         </LinearLayout>
     </RelativeLayout>
 </LinearLayout>
