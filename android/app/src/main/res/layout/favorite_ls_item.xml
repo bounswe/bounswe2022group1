@@ -30,7 +30,6 @@
                 android:textColor="@color/colorPrimary1"
                 android:textSize="30dp"
                 android:textStyle="bold" />
-
             <TextView
                 android:id="@+id/lsDescription"
                 android:layout_width="match_parent"
