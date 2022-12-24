@@ -41,7 +41,7 @@
             android:scrollHorizontally="true"
             android:singleLine="true"
             android:text="Welcome To Budemi    Welcome To Budemi"
-            android:textColor="@color/colorPrimary1"
+            android:textColor="@color/black"
             android:textSize="34sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -94,7 +94,7 @@
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewPager2"
             android:layout_width="324dp"
-            android:layout_height="217dp"
+            android:layout_height="wrap_content"
             android:background="@color/colorPrimary4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.494"

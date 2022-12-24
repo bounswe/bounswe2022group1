@@ -151,8 +151,8 @@ class LearningSpace1 : AppCompatActivity() {
         val builder = AlertDialog.Builder(this)
         val inflater = layoutInflater
         val dialogLayout = inflater.inflate(R.layout.add_learning_space, null)
-        val editText = dialogLayout.findViewById<EditText>(R.id.ls_editText)
-
+        val editText = dialogLayout.findViewById<EditText>(R.id.ls_editText2)
+        val editText2 = dialogLayout.findViewById<EditText>(R.id.ls_editText)
         with(builder) {
             setTitle("Create Learning Space")
             setPositiveButton("Confirm"){ dialog, which ->
@@ -160,6 +160,7 @@ class LearningSpace1 : AppCompatActivity() {
 
                 val newSpace = ls_create_model(
                     name = editText.text.toString(),
+                    description = editText2.text.toString(),
                     tag = selectedTAG
                 )
 
