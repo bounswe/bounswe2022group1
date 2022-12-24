@@ -11,9 +11,11 @@ import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.SearchView
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.viewpager2.widget.ViewPager2
 import com.example.myapplication.R
 import com.example.myapplication.service.learningSpace2ListEveryLearningSpace_api_call
 import com.google.android.material.navigation.NavigationView
+import me.relex.circleindicator.CircleIndicator3
 import org.w3c.dom.Text
 
 var selectedTAG = ""
@@ -53,14 +55,30 @@ class HomeActivity : AppCompatActivity() {
 
         val searchView = findViewById<SearchView>(R.id.search)
         searchView.setOnQueryTextFocusChangeListener{ v, b->
-            goToSearch()
+            if(b) {
+                goToSearch()
+            }
             searchView.clearFocus()
         }
 
         navMenuHandler()
-        //println("I am home"+user_token)
-        //user token null değil ise buttonları göster log off göster sign in kapat
-        // , null ise sign in göster, butonları kapat logoff kapat
+
+        var names = ArrayList<String>()
+        var descs = ArrayList<String>()
+        var creators = ArrayList<String>()
+        names += "Embedded Systems"
+        descs += "Hardware Course"
+        creators += "24.12.2022 by quanex1"
+        names += "omer"
+        descs += "ozde"
+        creators += "213213"
+        val view_pager2 = findViewById<ViewPager2>(R.id.viewPager2)
+
+        view_pager2.adapter = HomeViewPager(names, descs, creators)
+        //view_pager2.adapter = ViewPager2.ORIENTATION_HORIZONTAL
+
+        val indicator = findViewById<CircleIndicator3>(R.id.indicator)
+        indicator.setViewPager(view_pager2)
 
     }
 

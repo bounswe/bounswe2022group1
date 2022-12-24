@@ -64,7 +64,7 @@ class LearningSpace1 : AppCompatActivity() {
                 if(it.description == null) {
                     desc = ""
                 }
-                val element = ls_list_element(it.name, desc, "created AT", it.ls_owner.name)
+                val element = ls_list_element(it.name, desc, it.created_on.substring(0, 10) + " by ", it.ls_owner.name)
                 lsArrayList.add(element)
 
                 it.members.forEach { el ->
