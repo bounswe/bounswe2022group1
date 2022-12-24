@@ -379,6 +379,38 @@ class noteApiView(APIView):
         except LearningSpace.DoesNotExist:
             return Response({"message": "given content id doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
     
+    def patch(self, request, *args, **kwargs):
+        data = request.data.copy()
+
+        try:
+            note_id = int(data['id'])
+        except ValueError:
+            return Response({"error": "given id is not an integer"}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            note = Note.objects.get(id=note_id)
+        except Note.DoesNotExist:
+            return Response({"error": "given id doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
+
+        if note.owner != request.user: 
+            return Response({"error": "you are not the owner of this note"}, status=status.HTTP_400_BAD_REQUEST)       
+
+        # Those fields are needed to validate data because Content exceptionally has a custom validate() function.
+        
+        content_id=note.content.id
+        data['content'] = content_id
+        data['owner'] = note.owner
+        data['created_on'] = note.created_on
+
+      
+
+        serializer = self.serializer_class(note, data=data, partial=True)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
     
 
 
