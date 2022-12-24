@@ -558,7 +558,20 @@ class forgetpasswordApiView(APIView):
             send_forget_password_mail(get_email, new_pass )
             return Response({"message": "your password is sent to your email"}, status=status.HTTP_200_OK)
 
+class getuseridAPIView(APIView):
+    # add permission to check if user is authenticated
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = UserSerializer
 
+
+    def get(self, request, *args, **kwargs):
+        try:
+            username = request.GET.get('username')
+            user = User.objects.filter(username=username)[0]
+            serializer = self.serializer_class(user)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except:
+            return Response({"message": "User with given username doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
 
 
        
