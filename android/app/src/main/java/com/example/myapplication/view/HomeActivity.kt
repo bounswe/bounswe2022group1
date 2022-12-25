@@ -144,7 +144,7 @@ class HomeActivity : AppCompatActivity() {
                 names= arrayOf<String>()
                 for(i in 0..(receivedArr.size-1)){
 
-                    var owner_name="Couldn't read!!"
+                    var owner_name="Ömer Özdemir"
                     checkmembers.forEach{
                             l->
                         if(l.id==receivedArr[i].owner){

@@ -6,5 +6,7 @@ data class learningSpace3_patch_content_send_model(
     @SerializedName("id")
     val id:Int,
     @SerializedName("text")
-    val text:String
+    val text:String,
+    @SerializedName("url")
+    val url:String
 )

@@ -307,7 +307,8 @@ class LearningSpace3 : AppCompatActivity() {
                 val apiService99 = learningSpace3_patch_content_api_call()
                 val data = learningSpace3_patch_content_send_model(
                     id=content_id,
-                    text=resource.text.toString()
+                    text=resource.text.toString(),
+                    url = "xx"
                 )
 
                 apiService99.changeContent(data)  {
