@@ -10,5 +10,5 @@ import retrofit2.http.Query
 
 interface learningSpace3_see_all_note_api {
     @GET("note/")
-    fun seeAllNotes(@Header("Authorization") Token:String, @Query("content_id")content_id: learningSpace3_see_all_note_send_model): Call<learningSpace3_see_all_note_receive_model>
+    fun seeAllNotes(@Header("Authorization") Token:String, @Query("content_id")content_id: Int): Call<learningSpace3_see_all_note_receive_model>
 }

@@ -10,7 +10,7 @@ import retrofit2.Response
 
 class learningSpace3_see_all_note_api_call {
 
-    fun seeAllNotes(userData: learningSpace3_see_all_note_send_model, onResult: (learningSpace3_see_all_note_receive_model?) -> Unit){
+    fun seeAllNotes(userData: Int, onResult: (learningSpace3_see_all_note_receive_model?) -> Unit){
 
         val retrofit = ServiceBuilder.buildService(learningSpace3_see_all_note_api::class.java)
 
