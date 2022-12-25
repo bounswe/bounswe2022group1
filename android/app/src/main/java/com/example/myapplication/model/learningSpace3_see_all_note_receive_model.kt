@@ -4,5 +4,5 @@ import com.google.gson.annotations.SerializedName
 
 data class learningSpace3_see_all_note_receive_model(
     @SerializedName("data")
-    val data:Array<note_model>
+    val data:Array<see_all_note_model>
 )
