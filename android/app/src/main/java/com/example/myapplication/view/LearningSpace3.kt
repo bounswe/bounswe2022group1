@@ -34,9 +34,31 @@ class LearningSpace3 : AppCompatActivity() {
         }
     }
 
+    fun updateCount(){
+        var Upvote = findViewById<ImageView>(R.id.Upvote)
+        var UpCount = findViewById<TextView>(R.id.upCount)
+        Upvote.setTag(R.id.Upvote)
+            val apiService = learningSpace3_patch_content_info_api_call()
+            val data = learningSpace3_patch_content_info_send_model(
+                id=content_id,
+                url = "xx"
+            )
+
+            apiService.getInfo(data)  {
+                if(it?.id!=null){
+                    UpCount.setText(it.upVoteCount)
+                }
+                else{
+                    Log.d("Up vote update failed","")
+                }
+            }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_learning_space3)
+
+        updateCount()
         switchToRead()
     }
 
@@ -119,17 +141,50 @@ class LearningSpace3 : AppCompatActivity() {
     fun upVoteClicked(view: View){
         var Upvote = findViewById<ImageView>(R.id.Upvote)
         var UpCount = findViewById<TextView>(R.id.upCount)
+        Log.d("selam",Upvote.getTag().toString()+" "+R.drawable.up_image.toString())
+        if(Upvote.getTag()==R.drawable.up_image){
 
-        if(x%2==0){
-            x++
-            Upvote.setImageResource(R.drawable.down_image)
+            var resource=findViewById<EditText>(R.id.Resource)
+            val apiService = learningSpace3_up_count_api_call()
+            val data = learningSpace3_up_count_send_model(
+                id=content_id,
+                url = "xx" ,
+                upVoteCount=UpCount.text.toString().toInt()+1
+            )
+
+            apiService.updateVote(data)  {
+                if(it?.id!=null){
+                    UpCount.setText((UpCount.text.toString().toInt()+1).toString())
+                    Upvote.setImageResource(R.drawable.down_image)
+                    Upvote.setTag(R.drawable.down_image)
+                    Log.d("Up vote success","down image'a gec")
+                }
+                else{
+                    Log.d("Up vote failed","")
+                }
+            }
         }
         else{
-            x--
-            Upvote.setImageResource(R.drawable.up_image)
-        }
+            var resource=findViewById<EditText>(R.id.Resource)
+            val apiService = learningSpace3_up_count_api_call()
+            val data = learningSpace3_up_count_send_model(
+                id=content_id,
+                url = "xx" ,
+                upVoteCount=UpCount.text.toString().toInt()-1
+            )
 
-        UpCount.text=x.toString()
+            apiService.updateVote(data)  {
+                if(it?.id!=null){
+                    UpCount.setText((UpCount.text.toString().toInt()-1).toString())
+                    Upvote.setImageResource(R.drawable.up_image)
+                    Upvote.setTag(R.drawable.up_image)
+                }
+                else{
+                    Log.d("Up vote failed","")
+                }
+            }
+
+        }
 
     }
 
@@ -318,7 +373,8 @@ class LearningSpace3 : AppCompatActivity() {
                 val data = learningSpace3_patch_content_send_model(
                     id=content_id,
                     text=resource.text.toString(),
-                    url = "xx"
+                    url = "xx" ,
+                    upVoteCount=up_cnt.text.toString().toInt()
                 )
 
                 apiService99.changeContent(data)  {
@@ -418,6 +474,7 @@ class LearningSpace3 : AppCompatActivity() {
                     Log.d("note get","unsuccess")
                 }
             }
+
             switchToNotes()
         }
         else{
