@@ -182,6 +182,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     fun goToLearningSpace3(position:Int) {
+        learningSpaceMEMBERS = checkmembers
         currentContentID = contentID_ContentName[position]!!
         var intent = Intent(applicationContext, LearningSpace3::class.java)
         startActivity(intent)
