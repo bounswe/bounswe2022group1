@@ -63,7 +63,7 @@ class Discussion(models.Model):
 class Profile(models.Model):
     about_me = models.CharField(max_length=100)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='uploads/', default='uploads/default.png', null = True)
+    image = models.TextField()
 
 class Note(models.Model):
     content = models.ForeignKey(Content,on_delete=models.CASCADE, related_name='note')
