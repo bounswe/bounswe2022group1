@@ -15,9 +15,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.marginLeft
 import com.example.myapplication.R
 import com.example.myapplication.model.learningSpace3PostDiscussion_send_model
-import com.example.myapplication.service.learningSpace3GetContent_api_call
-import com.example.myapplication.service.learningSpace3GetDiscussionList_api_call
-import com.example.myapplication.service.learningSpace3PostDiscussion_api_call
+import com.example.myapplication.model.learningSpace3_patch_content_send_model
+import com.example.myapplication.model.resetPassword_send_model
+import com.example.myapplication.service.*
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import org.markdownj.MarkdownProcessor
 
@@ -26,6 +26,7 @@ class LearningSpace3 : AppCompatActivity() {
 
     var name_of_content=""
     var owner_of_content=""
+    var content_id=-1
 
     fun makeShorter(){
         val bottomSheetLayout = findViewById<FrameLayout>(R.id.bottom_sheet)
@@ -79,7 +80,7 @@ class LearningSpace3 : AppCompatActivity() {
         val apiService = learningSpace3GetContent_api_call()
         apiService.getContent(currentContentID) {
             if(it?.id!=null){
-
+                content_id=it.id
                 var resource = findViewById<EditText>(R.id.Resource)
                 var WebView = findViewById<WebView>(R.id.WebView);
                 resource.setVisibility(View.GONE) //should hide resource
@@ -300,8 +301,24 @@ class LearningSpace3 : AppCompatActivity() {
                 //save the note, then switchToNotes
                 switchToNotes()
             }
-            else{
-                switchToRead()
+            else{ //save changes for content
+                val up_cnt=findViewById<TextView>(R.id.upCount)
+                val apiService99 = learningSpace3_patch_content_api_call()
+                val data = learningSpace3_patch_content_send_model(
+                    id=content_id,
+                    text=resource.text.toString()
+                )
+
+                apiService99.changeContent(data)  {
+                    if(it?.id!=null){
+                        Log.d("edit content"+content_id.toString(),"success")
+                        switchToRead()
+                    }
+                    else{
+                        Log.d("edit content","unsuccess")
+                    }
+                }
+
             }
 
         }
