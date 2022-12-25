@@ -1,0 +1,39 @@
+version: '3'
+
+services: 
+  db_annotation:
+    platform: linux/x86_64
+    image: mysql:5.7
+    environment:
+       MYSQL_DATABASE: 'django_start'
+       MYSQL_PASSWORD: 'root'
+       MYSQL_ROOT_PASSWORD: 'root' 
+       MYSQL_TCP_PORT: 3307
+    ports:
+    - 3307:3307 
+    volumes:
+      - .setup.sql:/docker-entrypoint-initbd.d/setup.sql
+
+  web_annotation:
+    
+    build: .
+    command:
+      - /bin/sh
+      - -c
+      - |
+          echo "sleep for 10sec"
+          sleep 10 
+          python manage.py makemigrations
+          python manage.py migrate
+          python manage.py runserver 0.0.0.0:8001
+          
+          
+    
+    volumes:
+      - .:/code
+    ports:
+      - "8001:8001"
+    depends_on:
+      - db_annotation
+    links: 
+      - db_annotation 
