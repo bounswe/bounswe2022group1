@@ -35,7 +35,13 @@ export default function Main() {
       const res = await axios.get(baseURL, {
         headers: { Authorization: `token ${localStorage.getItem("token")}` },
       });
-      setCreator(res.data.owner);
+
+      const baseURL2 = `http://3.89.218.253:8000/app/user-from-id/?id=${res.data.owner}`;
+      const res2 = await axios.get(baseURL2, {
+        headers: { Authorization: `token ${localStorage.getItem("token")}` },
+      });
+      const str = `Creator: ${res2.data.username}`;
+      setCreator(str);
     };
     const getCommentors = async () => {
       const baseURL = `http://3.89.218.253:8000/app/discussion-list/?content_id=${id}`;
@@ -66,17 +72,14 @@ export default function Main() {
         </Typography>
       </Card>
 
-
-
-        {commentors &&
-          commentors?.map((person) => (
-            <Card sx ={{p: 1.5, borderRadius: '16px', m:1}} >
-                <Typography gutterBottom color= 'text.secondary'>
-                <ProfileCard id={person}/>
-                </Typography>
-            </Card>
-          ))}
-
+      {commentors &&
+        commentors.map((person) => (
+          <Card sx={{ p: 1.5, borderRadius: "16px", m: 1 }}>
+            <Typography gutterBottom color="text.secondary">
+              {person}
+            </Typography>
+          </Card>
+        ))}
     </Box>
   );
 }

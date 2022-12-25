@@ -124,7 +124,7 @@ export default function Main() {
       </Typography>
 
       <Typography
-
+        ref={paraEl}
         mb={2}
         variant="h5"
       >{<ReactMarkdown>{resource?.text}</ReactMarkdown>}</Typography>
