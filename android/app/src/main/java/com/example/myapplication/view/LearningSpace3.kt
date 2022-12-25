@@ -16,6 +16,7 @@ import androidx.core.view.marginLeft
 import com.example.myapplication.R
 import com.example.myapplication.model.learningSpace3PostDiscussion_send_model
 import com.example.myapplication.model.learningSpace3_patch_content_send_model
+import com.example.myapplication.model.learningSpace3_see_all_note_send_model
 import com.example.myapplication.model.resetPassword_send_model
 import com.example.myapplication.service.*
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -366,15 +367,35 @@ class LearningSpace3 : AppCompatActivity() {
 
     fun notesClicked(view:View){
         makeShorter()
-
         var notes_text=findViewById<TextView>(R.id.notes_text)
         if(notes_text.text.equals("Notes:")){
+            val apiService = learningSpace3_see_all_note_api_call()
+
+            apiService.seeAllNotes(content_id)  {
+                if(it!=null){
+                    Log.d("note get"+content_id.toString(),"success"+it?.toString())
+                    var id_of_current_user=2
+                    it.data.forEach {
+                        if( id_of_current_user==it.owner){
+                            var resource=findViewById<EditText>(R.id.Resource)
+                            resource.setText(it.body)
+                            switchToRead()
+                        }
+                    }
+
+                }
+                else{
+                    Log.d("note get","unsuccess")
+                }
+            }
+
+
+
             switchToNotes()
         }
         else{
             switchToRead()
         }
-
     }
 
 }
