@@ -332,7 +332,7 @@ class LearningSpace3 : AppCompatActivity() {
 
 
             if(notes_text.text.equals("Read:")){
-                //nothing will be done.
+
             }
             else{
                 //load content
@@ -352,7 +352,20 @@ class LearningSpace3 : AppCompatActivity() {
             // save the changes then switchToRead()
             if(notes_text.text.equals("Read:")){
                 //save the note, then switchToNotes
-                switchToNotes()
+                val apiServiceX = learningSpace3_post_note_api_call()
+                val data = learningSpace3_post_note_send_model(
+                    body = resource.text.toString(),
+                    content = content_id
+                )
+                apiServiceX.postNote(data) {
+                    if(it?.id!=null){
+                        Log.d("edit content"+content_id.toString(),"success")
+                        switchToNotes()
+                    }
+                    else{
+                        Log.d("edit content","unsuccess")
+                    }
+                }
             }
             else{ //save changes for content
                 val up_cnt=findViewById<TextView>(R.id.upCount)
@@ -415,7 +428,27 @@ class LearningSpace3 : AppCompatActivity() {
 
         var resource = findViewById<EditText>(R.id.Resource)
         resource.setVisibility(View.VISIBLE)
-        resource.setText("My notes will be here.") // api call will be made here.
+        //resource.setText("My notes will be here.") // api call will be made here.
+
+        val apiService = learningSpace3_see_all_note_api_call()
+        apiService.seeAllNotes(content_id)  {
+            if(it!=null){
+                Log.d("note get"+content_id.toString(),"success"+it?.toString())
+                var id_of_current_user=3
+                var body = ""
+                it.data.forEach {
+                    if( id_of_current_user==it.owner.id){
+                        body = it.body
+                    }
+                }
+                var resource=findViewById<EditText>(R.id.Resource)
+                resource.setText(body)
+            }
+            else{
+                Log.d("note get","unsuccess")
+            }
+        }
+
         resource.setEnabled(false)
     }
 
@@ -424,30 +457,23 @@ class LearningSpace3 : AppCompatActivity() {
         var notes_text=findViewById<TextView>(R.id.notes_text)
         if(notes_text.text.equals("Notes:")){
             val apiService = learningSpace3_see_all_note_api_call()
-
-
-            /*
             apiService.seeAllNotes(content_id)  {
                 if(it!=null){
                     Log.d("note get"+content_id.toString(),"success"+it?.toString())
-                    var id_of_current_user=2
+                    var id_of_current_user=3
+                    var body = ""
                     it.data.forEach {
-                        if( id_of_current_user==it.owner){
-                            var resource=findViewById<EditText>(R.id.Resource)
-                            resource.setText(it.body)
-                            switchToRead()
+                        if( id_of_current_user==it.owner.id){
+                            body = it.body
                         }
                     }
-
+                    var resource=findViewById<EditText>(R.id.Resource)
+                    resource.setText(body)
                 }
                 else{
                     Log.d("note get","unsuccess")
                 }
             }
-
-             */
-
-
 
             switchToNotes()
         }
