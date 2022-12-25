@@ -63,8 +63,7 @@ class Discussion(models.Model):
 class Profile(models.Model):
     about_me = models.CharField(max_length=100)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    learningspaces = models.ManyToManyField(LearningSpace, related_name='learningspaces',blank=True)
-    image = models.ImageField(upload_to='uploads/', default='uploads/default.png')
+    image = models.ImageField(upload_to='uploads/', default='uploads/default.png', null = True)
 
 class Note(models.Model):
     content = models.ForeignKey(Content,on_delete=models.CASCADE, related_name='note')
@@ -76,4 +75,10 @@ class Note(models.Model):
 
     class Meta:
         ordering = ['created_on']
+
+
+
+class Favorite(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    learningSpace = models.ForeignKey(LearningSpace, on_delete=models.CASCADE)
 

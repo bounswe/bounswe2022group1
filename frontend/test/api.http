@@ -1,0 +1,22 @@
+## Login
+
+POST http://3.89.218.253:8000/app/login/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "kadir_12",
+    "password": "123123"
+}
+
+### Content
+GET http://3.89.218.253:8000/app/content-list/ HTTP/1.1
+Content-Type: application/json
+Authorization: "Token 777eae3eca6e17c9fca50a721e817735f5b442e4dabe22a6ab5976389b6a706f"
+
+# {
+#     "name" : "Deneme",
+#     "type" : "discussion",
+#     "text" : "Lorem ipsum dolor sit amet",
+#     "url" : "/content/1/",
+#     "learningSpace" : 1
+# }

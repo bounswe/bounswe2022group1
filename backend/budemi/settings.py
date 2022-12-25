@@ -15,9 +15,10 @@ import environ
 import os
 
 env = environ.Env()
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -100,9 +101,9 @@ REST_FRAMEWORK = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': env('MYSQL_DATABASE'),
-        'USER': env('MYSQL_USER'),
-        'PASSWORD': env('MYSQL_PASSWORD'),
+        'NAME': 'django_start',
+        'USER': 'root',
+        'PASSWORD': 'root',
         'HOST': 'db',
         'PORT': '3306',
         'OPTIONS': {

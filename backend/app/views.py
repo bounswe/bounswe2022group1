@@ -1,15 +1,14 @@
-from django.http import QueryDict
-from rest_framework import generics, permissions, status, generics, views
+from rest_framework import generics, permissions, status, generics
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated   
-from rest_framework.views import APIView
 from django.contrib.auth import login
 from django.contrib.auth.models import User
 from knox.models import AuthToken
+from rest_framework.views import APIView
 from knox.views import LoginView as KnoxLoginView
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from .serializers import ContentSerializer, UserSerializer, RegisterSerializer, DiscussionPostSerializer
-from .serializers import ChangePasswordSerializer, LearningSpaceSerializer, DiscussionSerializer, ProfileSerializer,ProfilePostSerializer,ResetSerializer,LearningSpacePostSerializer
+from .serializers import ChangePasswordSerializer, LearningSpaceSerializer, DiscussionSerializer, ProfileSerializer,ResetSerializer,LearningSpacePostSerializer
 from .models import Content, LearningSpace, Discussion, Profile
 from .serializers import *
 from django.core.exceptions import ValidationError
@@ -88,7 +87,7 @@ class ChangePassword(generics.UpdateAPIView):
         if serialization.is_valid():
             
             #controll the old password
-            if not self.object.check_password(serialization.data.get("old_pass")):
+            if self.object.check_password(serialization.data.get("old_pass")):
 
                 return Response({"old_pass": ["Wrong password."]}, status=status.HTTP_400_BAD_REQUEST)
             
@@ -139,12 +138,6 @@ class LearningSpaceApiView(APIView):
         data['ls_owner'] = request.user.id
 
 
-        
-
-        
-
-        
-    
 
         serializer = self.serializer_class2(data=data)
         if serializer.is_valid():
@@ -212,15 +205,24 @@ class contentApiView(APIView):
             return Response({"error": "you are not the owner of this content"}, status=status.HTTP_400_BAD_REQUEST)       
 
         # Those fields are needed to validate data because Content exceptionally has a custom validate() function.
+        
+        if 'name' not in data:
+            data['name'] = content.name
         if 'type' not in data:
             data['type'] = content.type
         if 'text' not in data:
             data['text'] = content.text
         if 'url' not in data:
             data['url'] = content.url
+        if 'upVoteCount' not in data:
+            data['upVoteCount'] = content.upVoteCount
+        
+        
+
+        print(data)
+
 
         serializer = self.serializer_class(content, data=data, partial=True)
-
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
@@ -265,10 +267,6 @@ class enrollApiView(APIView):
             ls.members.add(request.user)
             serializer = self.serializer_class(ls)
 
-            if (Profile.objects.filter(user=request.user).exists()):
-                profile_obj=Profile.objects.get(user=request.user)
-                new_learningspaces = LearningSpace.objects.filter(members__id=request.user.id)
-                profile_obj.learningspaces.set(new_learningspaces)
             return Response(serializer.data, status=status.HTTP_200_OK)
         except LearningSpace.DoesNotExist:
             return Response({"message": "given learning space id doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
@@ -418,8 +416,7 @@ class noteApiView(APIView):
 class profileApiView(APIView):
     # add permission to check if user is authenticated
     permission_classes = [permissions.IsAuthenticated]
-    serializer_class = ProfilePostSerializer
-    serializer_class1 = ProfileSerializer
+    serializer_class = ProfileSerializer
 
     def post(self, request, *args, **kwargs):
         
@@ -427,17 +424,7 @@ class profileApiView(APIView):
         
 
         data['user'] = request.user.id
-        learningspaces=LearningSpace.objects.filter(members__id=request.user.id)
-        list=[]
-        for i in learningspaces:
-            list.append(i.id)
-
-        data["learningspaces"] = list
-        print(list)
-       
-
-        # TODO: check wheter the given learning space id exists and user is a member of it
-
+        print(data)
         serializer = self.serializer_class(data=data)
         if serializer.is_valid():
             serializer.save()
@@ -454,9 +441,20 @@ class profileApiView(APIView):
 
         try:
             profile = Profile.objects.get(user=user_id)
-            
-            serializer = self.serializer_class1(profile)
-            return Response(serializer.data, status=status.HTTP_200_OK)
+            profile = self.serializer_class(profile).data
+
+            learningspaces=LearningSpace.objects.filter(members__id=request.user.id)
+            list=[]
+            for i in learningspaces:
+                list.append(i.id)
+
+            profile["learningspaces"] = list
+            print(profile)
+
+
+
+            #serializer = self.serializer_class1(profile)
+            return Response(profile, status=status.HTTP_200_OK)
         except LearningSpace.DoesNotExist:
             return Response({"message": "given content id doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -562,6 +560,79 @@ class getuseridAPIView(APIView):
     # add permission to check if user is authenticated
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = UserSerializer
+
+class userNamefromIDAPIView(APIView):
+    # add permission to check if user is authenticated
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = UserSerializer
+    
+    
+    def get(self, request, *args, **kwargs):
+        try:
+            id = request.GET.get('id')
+            user = User.objects.filter(id=id)[0]
+            print(user)
+            serializer = self.serializer_class(user)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except:
+            return Response({"message": "User with given id doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
+
+
+class favoriteLearningSpaceAPIView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = FavoriteSerializer
+    serializer_class_post = FavoritePostSerializer
+
+    def get(self, request, *args, **kwargs):
+        try:
+            user_id = int(request.GET.get('user', request.user.id))
+
+        except ValueError:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            favorite_ls = Favorite.objects.filter(user__id=user_id)
+            serializer = self.serializer_class(favorite_ls, many=True)
+            return Response({"data": serializer.data}, status=status.HTTP_200_OK)
+        except:
+            return Response({"message": "given user id doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
+
+    
+    def post(self, request, *args, **kwargs):
+        data = request.data.copy()
+        data['user'] = request.user.id
+        print(data)
+        serializer = self.serializer_class_post(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        
+        
+    
+class disFavoriteAPIView(APIView):
+    # add permission to check if user is authenticated
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = FavoriteSerializer
+
+    def post(self, request, *args, **kwargs):
+        try:
+            learning_space_id = int(request.data.get('learningSpace'))
+        except ValueError:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            favorite_record = Favorite.objects.get(learningSpace__id=learning_space_id)
+            favorite_record.delete()
+            serializer = self.serializer_class(favorite_record)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except:
+            return Response({"message": "given learning space id doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+
+
+
 
 
     def get(self, request, *args, **kwargs):
