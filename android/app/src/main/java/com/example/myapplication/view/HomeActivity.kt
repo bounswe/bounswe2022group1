@@ -32,7 +32,7 @@ class HomeActivity : AppCompatActivity() {
         finish()
         startActivity(intent)
     }
-
+    private lateinit var checkmembers: MutableList<ls_members>
     fun initID_Name(){
 
         val apiService = learningSpace2ListEveryLearningSpace_api_call()
@@ -80,7 +80,8 @@ class HomeActivity : AppCompatActivity() {
         var creators = ArrayList<String>()
         var ids = ArrayList<Int>()
         var members = mutableListOf<ls_members>()
-
+        var membersList = mutableListOf<MutableList<ls_members>>()
+        checkmembers = mutableListOf<ls_members>()
         val apiService = favorite_ls_call()
         apiService.favoriteLSpaces("Token " + user_token) {
             it?.data?.forEach {
@@ -90,12 +91,15 @@ class HomeActivity : AppCompatActivity() {
                 ids += it.learningSpace.id
                 it.learningSpace.members.forEach {
                     members.add(it)
+                    checkmembers.add(it)
                 }
             }
+            membersList.add(members)
+            members.clear()
             val view_pager2 = findViewById<ViewPager2>(R.id.viewPager2)
             val context = applicationContext
 
-            view_pager2.adapter = HomeViewPager(names, descs, creators, ids, members, context)
+            view_pager2.adapter = HomeViewPager(names, descs, creators, ids, membersList, context)
             //view_pager2.adapter = ViewPager2.ORIENTATION_HORIZONTAL
 
             val indicator = findViewById<CircleIndicator3>(R.id.indicator)
@@ -112,6 +116,7 @@ class HomeActivity : AppCompatActivity() {
                 override fun onPageSelected(position: Int) {
                     super.onPageSelected(position)
                     learningSpaceID = ids[position]
+                    learningSpaceMEMBERS = members
                     ShowContributorsAndTopics()
                 }
 
@@ -139,8 +144,8 @@ class HomeActivity : AppCompatActivity() {
                 names= arrayOf<String>()
                 for(i in 0..(receivedArr.size-1)){
 
-                    var owner_name="Ömer Özdemir"
-                    learningSpaceMEMBERS.forEach{
+                    var owner_name="Couldn't read!!"
+                    checkmembers.forEach{
                             l->
                         if(l.id==receivedArr[i].owner){
                             owner_name=l.name
