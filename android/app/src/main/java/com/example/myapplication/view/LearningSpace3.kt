@@ -1,29 +1,24 @@
 package com.example.myapplication.view
 
-import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.media.Image
 import android.os.Bundle
 import android.util.Log
-import android.view.MenuItem
 import android.view.View
 import android.webkit.WebView
 import android.widget.EditText
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.marginLeft
-import androidx.drawerlayout.widget.DrawerLayout
 import com.example.myapplication.R
 import com.example.myapplication.model.learningSpace3PostDiscussion_send_model
-import com.example.myapplication.service.learningSpace3GetContent_api_call
-import com.example.myapplication.service.learningSpace3GetDiscussionList_api_call
-import com.example.myapplication.service.learningSpace3PostDiscussion_api_call
+import com.example.myapplication.model.learningSpace3_patch_content_send_model
+import com.example.myapplication.model.resetPassword_send_model
+import com.example.myapplication.service.*
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.navigation.NavigationView
 import org.markdownj.MarkdownProcessor
 
 
@@ -31,7 +26,8 @@ class LearningSpace3 : AppCompatActivity() {
 
     var name_of_content=""
     var owner_of_content=""
-    private lateinit var toggle: ActionBarDrawerToggle
+    var content_id=-1
+
     fun makeShorter(){
         val bottomSheetLayout = findViewById<FrameLayout>(R.id.bottom_sheet)
         BottomSheetBehavior.from(bottomSheetLayout).apply{
@@ -44,7 +40,6 @@ class LearningSpace3 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_learning_space3)
         switchToRead()
-        navMenuHandler()
     }
 
 
@@ -85,7 +80,7 @@ class LearningSpace3 : AppCompatActivity() {
         val apiService = learningSpace3GetContent_api_call()
         apiService.getContent(currentContentID) {
             if(it?.id!=null){
-
+                content_id=it.id
                 var resource = findViewById<EditText>(R.id.Resource)
                 var WebView = findViewById<WebView>(R.id.WebView);
                 resource.setVisibility(View.GONE) //should hide resource
@@ -306,8 +301,24 @@ class LearningSpace3 : AppCompatActivity() {
                 //save the note, then switchToNotes
                 switchToNotes()
             }
-            else{
-                switchToRead()
+            else{ //save changes for content
+                val up_cnt=findViewById<TextView>(R.id.upCount)
+                val apiService99 = learningSpace3_patch_content_api_call()
+                val data = learningSpace3_patch_content_send_model(
+                    id=content_id,
+                    text=resource.text.toString()
+                )
+
+                apiService99.changeContent(data)  {
+                    if(it?.id!=null){
+                        Log.d("edit content"+content_id.toString(),"success")
+                        switchToRead()
+                    }
+                    else{
+                        Log.d("edit content","unsuccess")
+                    }
+                }
+
             }
 
         }
@@ -364,75 +375,6 @@ class LearningSpace3 : AppCompatActivity() {
             switchToRead()
         }
 
-    }
-    fun logoffToLanding() {
-        user_token=""
-        var intent= Intent(applicationContext, LandingActivity::class.java)
-        startActivity(intent)
-    }
-    fun toProfile() {
-        var intent= Intent(applicationContext, ProfilePageActivity::class.java)
-        startActivity(intent)
-    }
-    fun goToLearningSpace1() {
-        var intent= Intent(applicationContext, LearningSpace1::class.java)
-        startActivity(intent)
-    }
-
-    fun goToHomePage() {
-        var intent= Intent(applicationContext, HomeActivity::class.java)
-        startActivity(intent)
-    }
-
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(toggle.onOptionsItemSelected(item)) {
-            return true
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
-    fun navMenuHandler() {
-        val string = findViewById<DrawerLayout>(R.id.drawerLayout)
-        toggle = ActionBarDrawerToggle(this, string, R.string.open, R.string.close)
-
-        string.addDrawerListener(toggle)
-        toggle.syncState()
-
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-        val string2 = findViewById<NavigationView>(R.id.navView)
-
-        string2.setNavigationItemSelectedListener {
-            when(it.itemId) {
-                R.id.profileButton -> toProfile()
-                R.id.miItem1 -> goToHomePage()
-                R.id.miItem2 -> {
-                    selectedTAG = "Art"
-                    goToLearningSpace1()
-                }
-                R.id.miItem3 -> {
-                    selectedTAG = "Science"
-                    goToLearningSpace1()
-                }
-                R.id.miItem4 -> {
-                    selectedTAG = "Math"
-                    goToLearningSpace1()
-                }
-                R.id.miItem5 -> {
-                    selectedTAG = "Technology"
-                    goToLearningSpace1()
-                }
-                R.id.miItem6 -> {
-                    selectedTAG = "Engineering"
-                    goToLearningSpace1()
-                }
-                R.id.signOut -> {
-                    logoffToLanding()
-                }
-            }
-            true
-        }
     }
 
 }
