@@ -49,37 +49,6 @@ export default function Forum({ forumList, sx }) {
     </Box>
   );
 
-<<<<<<< HEAD
-            <ListItemText
-              primary={
-                <>
-                  <Typography
-                    sx={{ display: "inline", textDecoration: "none" }}
-                    component="a"
-                    href="#"
-                    color="text.primary"
-                  >
-                    {data?.name}
-                  </Typography>
-                </>
-              }
-              secondary={
-                <>
-                  <Typography
-                    sx={{ display: "inline" }}
-                    component="a"
-                    href={`detail/${data.id}`}
-                    variant="body2"
-                    color="text.primary"
-                  >
-                    {data.tag}
-                  </Typography>
-                  {/* {`- ${"Description metni"}`} */}
-                </>
-              }
-            />
-          </ListItem>
-=======
   // return (
   //   <List
   //     sx={{
@@ -96,7 +65,6 @@ export default function Forum({ forumList, sx }) {
   //           <ListItemAvatar fontSize="large">
   //             <InfoIcon fontSize="large" />
   //           </ListItemAvatar>
->>>>>>> 7d80f85ca304679fd427488d00e71b0976c5a5ec
 
   //           <ListItemText
   //             primary={

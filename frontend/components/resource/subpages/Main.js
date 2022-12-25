@@ -13,10 +13,12 @@ import { format } from "date-fns";
 import { AuthContext } from "../../../contexts/AuthContext";
 import React, { useState, useEffect, useCallback } from "react";
 import { useRef } from "react";
-import { Routes, Route, useParams } from "react-router-dom";
+import { Routes, Route, useParams, renderMatches } from "react-router-dom";
 import axios from "axios";
 import { useRouter } from "next/router";
-import ReactMarkdown from 'react-markdown'
+import ReactMarkdown from 'react-markdown';
+import "@recogito/recogito-js/dist/recogito.min.css";
+import "@recogito/annotorious/dist/annotorious.min.css";
 
 
 export default function Main() {
@@ -50,6 +52,51 @@ export default function Main() {
       )
       .then(function (response) {
         console.log('Success', response);
+        // TODO setComments(eski comment + yeni comments)
+
+        const getResource = async () => {
+          const baseURL = `http://3.89.218.253:8000/app/content/?id=${id}`;
+          const res = await axios.get(baseURL, {
+            headers: { Authorization: `token ${localStorage.getItem("token")}` },
+          });
+          setResource(res.data);
+        };
+        const getComments = async () => {
+          const baseURL = `http://3.89.218.253:8000/app/discussion-list/?content_id=${id}`;
+          const res = await axios.get(baseURL, {
+            headers: { Authorization: `token ${localStorage.getItem("token")}` },
+          });
+          setComments(res.data.data);
+        };
+        getResource();
+        getComments();
+    })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+
+  const handleUpvote = e => {
+    e.preventDefault();
+    const { id } = router.query;
+    if (!id) return;
+    axios
+      .patch(
+        `http://3.89.218.253:8000/app/content/`,
+        {
+          id: id,
+          upVoteCount: resource.upVoteCount + 1,
+        },
+        {
+          headers: {
+            Authorization: `token ${localStorage.getItem("token")}`,
+          },
+        }
+      )
+      .then(function (response) {   //TODO ECE
+        console.log('Success', response);
+        setResource(response.data);
     })
       .catch((error) => {
         console.log(error);
@@ -81,53 +128,72 @@ export default function Main() {
   }, [router]);
 
   const paraEl = useRef();
-   //const imgEl = useRef();
+  
 
-   const [reco, setReco] = useState();
-   const [anno, setAnno] = useState();
+  const [reco, setReco] = useState();
+  const [anno, setAnno] = useState();
 
-   const [called, setCalled] = useState(false);
+  const [called, setCalled] = useState(false);
 
-   // Current drawing tool name
-   const [tool, setTool] = useState("rect");
+  // Current drawing tool name
+  const [tool, setTool] = useState("rect");
 
-   useEffect(() => {
-     if (called) return;
-     setCalled(true);
-     import("@recogito/recogito-js").then((mod) => {
-       const Recogito = mod.Recogito;
+  useEffect(() => {
+    if (called) return;
+    setCalled(true);
+    import("@recogito/recogito-js").then((mod) => {
+      const Recogito = mod.Recogito;
 
-       const r = new Recogito({ content: paraEl.current });
+      const r = new Recogito({ content: paraEl.current });
 
-       r.setAuthInfo({
-         id: localStorage.getItem("token"),
-         displayName: localStorage.getItem("user"),
-       });
+      r.setAuthInfo({
+        id: localStorage.getItem("token"),
+        displayName: localStorage.getItem("user"),
+      });
 
-       r.on("createAnnotation", (annotation) => {
-         console.log(annotation);
-       });
+      r.on("createAnnotation", (annotation) => {
+        console.log(annotation);
+      });
 
-       setReco(r);
-     });
+      setReco(r);
+    });
 
+  //   import("@recogito/annotorious").then((mod) => {
+  //     const Annotorious = mod.Annotorious;
 
+  //     console.log(mod);
+  //     const a = new Annotorious({ image: imgEl.current });
+
+  //     a.setAuthInfo({
+  //       id: localStorage.getItem("token"),
+  //       displayName: localStorage.getItem("user"),
+  //     });
+  //   });
    }, []);
 
 
-
+  
   return (
     <div>
+      {/* <img
+         src="https://www.avatarsinpixels.com/Public/images/previews/minipix4.png"
+         ref={imgEl}
+         width="500"
+         height="500"
+       /> */}
     <Box>
       <Typography mb={2} variant="h4" textAlign="center">
         {`${resource?.name}`}
       </Typography>
-
+      <p> Number of counts: {resource?.upVoteCount}</p>
+      <Button onClick={handleUpvote}>
+          Upvote!
+          </Button>
       <Typography
-        ref={paraEl}
         mb={2}
         variant="h5"
-      >{<ReactMarkdown>{resource?.text}</ReactMarkdown>}</Typography>
+        ref={paraEl}
+      ><ReactMarkdown>{resource?.text}</ReactMarkdown></Typography>
 
         <Divider />
       </Box>
