@@ -371,15 +371,19 @@ class LearningSpace3 : AppCompatActivity() {
         if(notes_text.text.equals("Notes:")){
             val apiService = learningSpace3_see_all_note_api_call()
 
-            apiService.seeAllNotes(content_id)  {
+            var data=learningSpace3_see_all_note_send_model(
+                content_id=content_id
+            )
+
+            apiService.seeAllNotes(data)  {
                 if(it!=null){
                     Log.d("note get"+content_id.toString(),"success"+it?.toString())
-                    var id_of_current_user=2
+                    var id_of_current_user=1
                     it.data.forEach {
-                        if( id_of_current_user==it.owner){
+                        if( id_of_current_user==it.owner.id){
                             var resource=findViewById<EditText>(R.id.Resource)
                             resource.setText(it.body)
-                            switchToRead()
+                            switchToNotes()
                         }
                     }
 
@@ -389,11 +393,9 @@ class LearningSpace3 : AppCompatActivity() {
                 }
             }
 
-
-
-            switchToNotes()
         }
         else{
+            //save the note
             switchToRead()
         }
     }
