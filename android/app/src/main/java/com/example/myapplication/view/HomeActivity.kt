@@ -93,9 +93,10 @@ class HomeActivity : AppCompatActivity() {
                     members.add(it)
                     checkmembers.add(it)
                 }
+                membersList.add(members.toMutableList())
+                members.clear()
             }
-            membersList.add(members)
-            members.clear()
+
             val view_pager2 = findViewById<ViewPager2>(R.id.viewPager2)
             val context = applicationContext
 
@@ -116,7 +117,7 @@ class HomeActivity : AppCompatActivity() {
                 override fun onPageSelected(position: Int) {
                     super.onPageSelected(position)
                     learningSpaceID = ids[position]
-                    learningSpaceMEMBERS = members
+                    learningSpaceMEMBERS = checkmembers
                     ShowContributorsAndTopics()
                 }
 
