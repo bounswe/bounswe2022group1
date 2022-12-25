@@ -3,26 +3,31 @@ import { Typography, Container, Box, Divider, Paper, Button, Card, TextField } f
 import { format } from "date-fns";
 import { AuthContext } from "../../../contexts/AuthContext";
 import React, { useState, useEffect, useCallback } from "react";
+import { useRef } from "react";
 import { Routes, Route, useParams } from "react-router-dom";
 import axios from "axios";
 import { useRouter } from "next/router";
 import ReactMarkdown from 'react-markdown'
+import "@recogito/recogito-js/dist/recogito.min.css";
+import "@recogito/annotorious/dist/annotorious.min.css";
 
 
 export default function Main() {
-    const router = useRouter()
+    const router = useRouter();
   const { id } = router.query;
   const [resource, setResource] = useState(null);
   const [comments, setComments] = useState(null);
   const [comment, setComment] = useState("");
 
 
+
+
   const handleChange = (event) => {
     setComment(event.target.value);
   };
 
-  const handleSubmit = () => {
-    event.preventDefault();
+  const handleSubmit = e => {
+    e.preventDefault();
     const { id } = router.query;
     if (!id) return;
     axios
@@ -38,10 +43,9 @@ export default function Main() {
           },
         }
       )
-      .then((response) => {
-        console.log(response.data.data);
-        useEffect();
-      })
+      .then(function (response) {
+        console.log('Success', response);
+    })
       .catch((error) => {
         console.log(error);
       });
@@ -72,9 +76,65 @@ export default function Main() {
     getComments();
   }, [router]);
 
+  const paraEl = useRef();
+   const imgEl = useRef();
+
+   const [reco, setReco] = useState();
+   const [anno, setAnno] = useState();
+
+   const [called, setCalled] = useState(false);
+
+   // Current drawing tool name
+   const [tool, setTool] = useState("rect");
+
+   useEffect(() => {
+     if (called) return;
+     setCalled(true);
+     import("@recogito/recogito-js").then((mod) => {
+       const Recogito = mod.Recogito;
+
+       const r = new Recogito({ content: paraEl.current });
+
+       r.setAuthInfo({
+         id: localStorage.getItem("token"),
+         displayName: localStorage.getItem("user"),
+       });
+
+       r.on("createAnnotation", (annotation) => {
+         console.log(annotation);
+       });
+
+       setReco(r);
+     });
+
+     import("@recogito/annotorious").then((mod) => {
+       const Annotorious = mod.Annotorious;
+
+       console.log(mod);
+       const a = new Annotorious({ image: imgEl.current });
+
+       a.setAuthInfo({
+        id: localStorage.getItem("token"),
+        displayName: localStorage.getItem("user"),
+       });
+     });
+   }, []);
+
+
+
   return (
     <div>
     <Box>
+    <p ref={paraEl}>
+         This is a paragraph to be annotated. Lorem ipsum lorem lorem ipsum ipsum
+         lorem ipsum
+       </p>
+       <img
+         src="https://www.avatarsinpixels.com/Public/images/previews/minipix4.png"
+         ref={imgEl}
+         width="500"
+         height="500"
+       />
       <Typography mb={2} variant="h4" textAlign="center">
         {`${resource?.name}`}
       </Typography>
@@ -83,6 +143,7 @@ export default function Main() {
 
         mb={2}
         variant="h5"
+        ref={paraEl}
       >{<ReactMarkdown>{resource?.text}</ReactMarkdown>}</Typography>
 
       <Divider />

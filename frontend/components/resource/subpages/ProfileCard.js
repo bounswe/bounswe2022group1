@@ -33,8 +33,7 @@ export default function ProfileCard({ id }){
     
     return(
         <div>
-        <p> {card?.id}</p>
-        <p> {card?.username}</p>
+        <p> {id}</p>
         </div>
     );
 

@@ -39,7 +39,9 @@ export default function Main() {
       });
       var peopleIds = [];
       for(const comment of res.data.data){
-        if(!peopleIds.find((comment.owner.id))){
+        console.log(peopleIds);
+        
+        if(!peopleIds?.find((comment.owner.id))){
             peopleIds.push((comment.owner.id));
         }
         console.log(comment);
@@ -67,7 +69,7 @@ export default function Main() {
 
 
         {commentors &&
-          commentors.map((person) => (
+          commentors?.map((person) => (
             <Card sx ={{p: 1.5, borderRadius: '16px', m:1}} >
                 <Typography gutterBottom color= 'text.secondary'>
                 <ProfileCard id={person}/>
