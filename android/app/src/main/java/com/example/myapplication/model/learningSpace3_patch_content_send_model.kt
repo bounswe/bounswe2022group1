@@ -8,5 +8,7 @@ data class learningSpace3_patch_content_send_model(
     @SerializedName("text")
     val text:String,
     @SerializedName("url")
-    val url:String
+    val url:String,
+    @SerializedName("upVoteCount")
+    val upVoteCount:Int
 )
