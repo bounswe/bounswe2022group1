@@ -1,10 +1,4 @@
 {
-  "../components/resource/subpages/Main.js -> @recogito/annotorious": {
-    "id": "../components/resource/subpages/Main.js -> @recogito/annotorious",
-    "files": [
-      "static/chunks/node_modules_recogito_annotorious_dist_annotorious_min_js.js"
-    ]
-  },
   "../components/resource/subpages/Main.js -> @recogito/recogito-js": {
     "id": "../components/resource/subpages/Main.js -> @recogito/recogito-js",
     "files": [

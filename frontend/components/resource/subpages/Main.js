@@ -77,7 +77,7 @@ export default function Main() {
   }, [router]);
 
   const paraEl = useRef();
-   const imgEl = useRef();
+   //const imgEl = useRef();
 
    const [reco, setReco] = useState();
    const [anno, setAnno] = useState();
@@ -107,17 +107,7 @@ export default function Main() {
        setReco(r);
      });
 
-     import("@recogito/annotorious").then((mod) => {
-       const Annotorious = mod.Annotorious;
 
-       console.log(mod);
-       const a = new Annotorious({ image: imgEl.current });
-
-       a.setAuthInfo({
-        id: localStorage.getItem("token"),
-        displayName: localStorage.getItem("user"),
-       });
-     });
    }, []);
 
 
@@ -125,16 +115,7 @@ export default function Main() {
   return (
     <div>
     <Box>
-    <p ref={paraEl}>
-         This is a paragraph to be annotated. Lorem ipsum lorem lorem ipsum ipsum
-         lorem ipsum
-       </p>
-       <img
-         src="https://www.avatarsinpixels.com/Public/images/previews/minipix4.png"
-         ref={imgEl}
-         width="500"
-         height="500"
-       />
+       
       <Typography mb={2} variant="h4" textAlign="center">
         {`${resource?.name}`}
       </Typography>
