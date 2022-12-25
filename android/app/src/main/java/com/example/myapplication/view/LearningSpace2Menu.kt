@@ -1,6 +1,7 @@
 package com.example.myapplication.view
 
 import android.content.Intent
+import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -9,10 +10,11 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import com.example.myapplication.R
+import com.example.myapplication.model.learningSpace2AddContentText_send_model
+import com.example.myapplication.model.learningSpace2_add_favorite_send_model
+import com.example.myapplication.model.learningSpace2_remove_favorite_send_model
 import com.example.myapplication.model.learningspace2Enroll_send_model
-import com.example.myapplication.service.learningSpace2Enroll_api_call
-import com.example.myapplication.service.learningSpace2GetEnrolledLearningSpaces_api_call
-import com.example.myapplication.service.learningSpace2Leave_api_call
+import com.example.myapplication.service.*
 
 class LearningSpace2Menu : AppCompatActivity() {
     private lateinit var resource_button:Button
@@ -89,7 +91,42 @@ class LearningSpace2Menu : AppCompatActivity() {
         startActivity(intent)
     }
 
+
     fun onClickaddFavorite(view:View){
+        var addfavorite_image=findViewById<ImageView>(R.id.addfavorite_image)
+        var addfavorite_button=findViewById<Button>(R.id.addfavorite_button)
+
+        if(addfavorite_button.text.equals("Add Favorite")){
+
+            val userInfo = learningSpace2_add_favorite_send_model(
+                learningSpace= learningSpaceID
+            )
+
+            val apiService = learningSpace2_add_fav_api_call()
+            apiService.addFavorite (userInfo) {
+                if(it!=null){
+                    addfavorite_image.setImageResource(R.drawable.remove_fav)
+                    addfavorite_button.setText("Remove Favorite")
+                }
+            }
+
+        }
+        else{
+
+            val userInfo = learningSpace2_add_favorite_send_model(
+                learningSpace= learningSpaceID
+            )
+
+            val apiService = learningSpace2_remove_fav_api_call()
+            apiService.removeFavorite (userInfo) {
+                if(it!=null){
+                    addfavorite_image.setImageResource(R.drawable.add_fav)
+                    addfavorite_button.setText("Add Favorite")
+                }
+            }
+
+        }
+
 
     }
 

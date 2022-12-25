@@ -133,7 +133,7 @@
         app:layout_constraintStart_toEndOf="@+id/addresource_image"
         app:layout_constraintTop_toBottomOf="@+id/member_button"
         app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@android:drawable/star_big_on" />
+        app:srcCompat="@drawable/add_fav" />
 
     <ImageView
         android:id="@+id/member_image"

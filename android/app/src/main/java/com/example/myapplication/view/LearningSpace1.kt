@@ -12,8 +12,10 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.R
+import com.example.myapplication.databinding.LearningSpace1Binding
 import com.example.myapplication.model.list_elements
 import com.example.myapplication.model.ls_create_model
+import com.example.myapplication.model.ls_list_element
 import com.example.myapplication.model.ls_members
 import com.example.myapplication.service.ls_by_tag_call
 import com.example.myapplication.service.ls_create_call
@@ -24,11 +26,71 @@ var learningSpaceMEMBERS = mutableListOf<ls_members>()
 
 class LearningSpace1 : AppCompatActivity() {
 
+    private lateinit var binding: LearningSpace1Binding
+    private lateinit var lsArrayList: ArrayList<ls_list_element>
+
+    fun goToLearningSpace2() {
+        var intent= Intent(applicationContext, LearningSpace2Menu::class.java)
+        startActivity(intent)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.learning_space_1)
 
+        binding = LearningSpace1Binding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        lsArrayList = ArrayList()
+        val list = ls_list_element("Osman", "123231", "dasads", "3421")
+
+        val apiService = ls_by_tag_call()
+
+        val names: HashMap<Int, String> = HashMap<Int, String>()
+
+        val ids = mutableListOf<Int>()
+        val spaceValues = mutableListOf<String>()
+        val currentMembers = mutableListOf<ls_members>()
+        val members = mutableListOf<MutableList<ls_members>>()
+        learningSpaceMEMBERS.clear()
+        apiService.getLSpaces(selectedTAG, "Token " + user_token) {
+            it?.data?.forEach {
+                names.put(it.id, it.name)
+                ids.add(it.id)
+                spaceValues.add(it.name)
+
+                var desc = it.description
+                if(it.description == null) {
+                    desc = ""
+                }
+                val element = ls_list_element(it.name, desc, it.created_on.substring(0, 10) + " by ", it.ls_owner.name)
+                lsArrayList.add(element)
+
+                it.members.forEach { el ->
+                    currentMembers.add(el)
+                }
+                members.add(currentMembers.toMutableList())
+                currentMembers.clear()
+            }
+
+            val spaceNames: MutableList<String> = ArrayList()
+            names.values.forEach {
+                spaceNames.add(it)
+            }
+
+            binding.Topics.isClickable = true
+            binding.Topics.adapter = LsListAdapter(this, lsArrayList)
+            binding.Topics.setOnItemClickListener { parent, view, position, id ->
+                learningSpaceID = ids[position]
+                learningSpaceNAME = spaceValues[position]
+                learningSpaceMEMBERS.clear()
+                learningSpaceMEMBERS = members[position].toMutableList()
+                //Toast.makeText(this, learningSpaceMEMBERS.toString(), Toast.LENGTH_LONG).show()
+                goToLearningSpace2()
+            }
+
+            /*
         val listView = findViewById<ListView>(R.id.Topics)
         val apiService = ls_by_tag_call()
 
@@ -74,14 +136,11 @@ class LearningSpace1 : AppCompatActivity() {
                 goToLearningSpace2()
             }
         }
+*/
+        }
 
     }
 
-
-    fun goToLearningSpace2() {
-        var intent= Intent(applicationContext, LearningSpace2Menu::class.java)
-        startActivity(intent)
-    }
 
     fun goToLearningSpace1() {
         var intent= Intent(applicationContext, LearningSpace1::class.java)
@@ -92,8 +151,8 @@ class LearningSpace1 : AppCompatActivity() {
         val builder = AlertDialog.Builder(this)
         val inflater = layoutInflater
         val dialogLayout = inflater.inflate(R.layout.add_learning_space, null)
-        val editText = dialogLayout.findViewById<EditText>(R.id.ls_editText)
-
+        val editText = dialogLayout.findViewById<EditText>(R.id.ls_editText2)
+        val editText2 = dialogLayout.findViewById<EditText>(R.id.ls_editText)
         with(builder) {
             setTitle("Create Learning Space")
             setPositiveButton("Confirm"){ dialog, which ->
@@ -101,6 +160,7 @@ class LearningSpace1 : AppCompatActivity() {
 
                 val newSpace = ls_create_model(
                     name = editText.text.toString(),
+                    description = editText2.text.toString(),
                     tag = selectedTAG
                 )
 

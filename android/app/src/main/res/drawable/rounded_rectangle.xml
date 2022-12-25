@@ -3,7 +3,7 @@
     <item android:state_pressed="true" >
         <shape>
             <solid
-                android:color="#70c656" />
+                android:color="@color/colorPrimary1" />
             <stroke
                 android:width="1dp"
                 android:color="#53933f" />
@@ -19,8 +19,8 @@
     <item>
         <shape>
             <gradient
-                android:startColor="#70c656"
-                android:endColor="#53933f"
+                android:startColor="@color/colorPrimary1"
+                android:endColor="@color/colorPrimary2"
                 android:angle="270" />
             <stroke
                 android:width="1dp"

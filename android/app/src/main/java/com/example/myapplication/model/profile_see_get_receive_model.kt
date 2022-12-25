@@ -10,7 +10,7 @@ data class profile_see_get_receive_model (
     @SerializedName("user")
     val user:list_element_user,
     @SerializedName("learningspaces")
-    val learningspaces:Array<Int>
-    //image not used.
-
+    val learningspaces:Array<Int>,
+    @SerializedName("image")
+    val image:String
 )

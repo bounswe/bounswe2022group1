@@ -19,10 +19,16 @@ class ForgotPasswordActivity : AppCompatActivity() {
         setContentView(R.layout.activity_forgot_password)
     }
 
+    fun goToSignIn(view: View){
+        var intent= Intent(applicationContext, SignInActivity::class.java)
+        startActivity(intent)
+    }
+
     fun goToSignIn(){
         var intent= Intent(applicationContext, SignInActivity::class.java)
         startActivity(intent)
     }
+
     fun resetPassword(view: View) {
         val email = findViewById(R.id.email) as TextInputEditText
 

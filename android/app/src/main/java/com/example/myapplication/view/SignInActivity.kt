@@ -11,6 +11,7 @@ import com.example.myapplication.model.sign_in_model
 import com.example.myapplication.service.SignInApiCall
 import com.google.android.material.textfield.TextInputEditText
 
+var user_name=""
 class SignInActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +46,7 @@ class SignInActivity : AppCompatActivity() {
             successMessage.visibility = View.VISIBLE
             if(it?.token!=null){
                 successMessage.text="Login is successful!"
+                user_name=userIdView.text.toString()
                 user_token = it?.token
                 successMessage.postDelayed({ successMessage.visibility = View.INVISIBLE },2000)
                 loggedIn(view);
