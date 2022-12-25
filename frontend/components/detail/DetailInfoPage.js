@@ -9,7 +9,7 @@ import {
 import DetailMain from "./DetailMain";
 import DetailContributors from "./DetailContributors";
 
-export default function DetailInfoPage({ space, content }) {
+export default function DetailInfoPage({ space, content, fav }) {
   if (!space)
   return (
     <Grid>
@@ -30,7 +30,7 @@ export default function DetailInfoPage({ space, content }) {
       <Grid container maxWidth="lg" spacing={2} columns={12}>
 
         <Grid item xs={12}>
-          <DetailMain space={space} content={content} />
+          <DetailMain space={space} content={content} fav={fav}/>
         </Grid>
         <Grid item xs={12}>
           <DetailContributors space={space} />
