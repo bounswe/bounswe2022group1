@@ -8,7 +8,7 @@ data class note_model(
     @SerializedName("content")
     val content:Int,
     @SerializedName("owner")
-    val owner:Int,
+    val owner:ls_members,
     @SerializedName("body")
     val body:String,
     @SerializedName("created_on")
