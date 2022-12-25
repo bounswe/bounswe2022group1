@@ -6,10 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.webkit.WebView
-import android.widget.EditText
-import android.widget.FrameLayout
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.marginLeft
@@ -391,9 +388,12 @@ class LearningSpace3 : AppCompatActivity() {
             else{
                 Log.d("note get","unsuccess")
             }
+            if(resource.text.toString().equals("")) {
+                resource.setText("My notes will be here.")
+            }
+            resource.setEnabled(false)
         }
 
-        resource.setEnabled(false)
     }
 
     fun notesClicked(view:View){
