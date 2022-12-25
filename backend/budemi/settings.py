@@ -101,9 +101,9 @@ REST_FRAMEWORK = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'django_start',
-        'USER': 'root',
-        'PASSWORD': 'root',
+        'NAME': env('MYSQL_DATABASE'),
+        'USER': env('MYSQL_USER'),
+        'PASSWORD': env('MYSQL_PASSWORD'),
         'HOST': 'db',
         'PORT': '3306',
         'OPTIONS': {
