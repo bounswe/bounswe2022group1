@@ -1,3 +1,4 @@
+//This file can be merged with frontend/pages/_app.js
 import React, { useState } from "react";
 import { Box, TextField, Typography, Button } from "@mui/material";
 import { useRouter } from "next/router";

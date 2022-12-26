@@ -1,3 +1,4 @@
+// This file can be merged with frontend/pages/_app.js
 import "../styles/globals.css";
 import Header from "../components/header";
 import Head from "next/head";
@@ -7,10 +8,26 @@ import AuthProvider from "../contexts/AuthContext";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#FF597B",
+    },
+    secondary: {
+      main: "#F9B5D0",
+    },
+  },
+  shape: {
+    borderRadius: 10,
+  },
   typography: {
-    allVariants: {
-      fontFamily: `"Comfortaa", "Helvetica", "Arial", sans-serif`,
-      textTransform: "none",
+    fontFamily: "Rubik",
+  },
+  components: {
+    MuiPaper: {
+      defaultProps: {
+        elevation: 2,
+        variant: "outlined",
+      },
     },
   },
 });
@@ -21,9 +38,7 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <title>Budemii</title>
       </Head>
-
       <CssBaseline />
-
       <ThemeProvider theme={theme}>
         <AuthProvider>
           <SnackbarProvider

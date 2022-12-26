@@ -16,6 +16,8 @@ import Forum from "../../components/homepage/Forum";
 import { useState, useEffect, useContext } from "react";
 // contexts
 import { AuthContext } from "../../contexts/AuthContext";
+// icons
+import AddCircleIcon from "@mui/icons-material/AddCircle";
 // axios
 import axios from "../../utils/axios";
 import SearchBar from "../../components/homepage/SearchBar";
@@ -117,13 +119,14 @@ export default function Homepage() {
     <Container
       sx={{
         borderRadius: "16px",
-        background: "#dae7fb",
+        //background: "#dae7fb",
       }}
     >
       <Box
         sx={{
           padding: 2,
           mt: "20px",
+          marginTop: 10,
         }}
       >
         <SearchBar
@@ -134,8 +137,8 @@ export default function Homepage() {
         {forumList.length > 0 && (
           <Forum forumList={forumList} sx={{ marginTop: 2 }} />
         )}
+        <Footer title="BUDEMI" description="a company of bogazici university" />
       </Box>
-
       <Dialog open={openModal} fullWidth onClose={handleCloseModal}>
         <DialogTitle textAlign="center" variant="h4">
           Add Learning Space
@@ -166,8 +169,8 @@ export default function Homepage() {
           />
 
           <Button
-            fullWidth
             type="submit"
+            fullWidth
             variant="contained"
             sx={{ mt: 3, mb: 2, borderRadius: "16px" }}
           >
