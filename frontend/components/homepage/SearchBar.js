@@ -30,7 +30,7 @@ export default function SearchBar({ handleSearch, handleOpenModal }) {
         color="primary"
         onClick={handleOpenModal}
       >
-        Add a Tag
+        Add a Learning Space
       </Button>
     </Stack>
   );
