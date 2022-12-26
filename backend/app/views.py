@@ -467,9 +467,9 @@ class profileApiView(APIView):
         profile = Profile.objects.get(user=request.user.id)
         
         if 'about_me' not in data:
-            data['about_me'] = profile.name
+            data['about_me'] = profile.about_me
         if 'image' not in data:
-            data['image'] = profile.type
+            data['image'] = profile.image
         
         serializer = self.serializer_class(profile, data=data, partial=True)
         if serializer.is_valid():
