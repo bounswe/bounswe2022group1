@@ -13,17 +13,23 @@
     "@emotion/styled": "^11.10.5",
     "@mui/icons-material": "^5.10.14",
     "@mui/material": "^5.10.14",
+    "@recogito/annotorious": "^2.7.9",
+    "@recogito/recogito-js": "^1.8.2",
+    "@uiw/react-markdown-preview": "^4.1.6",
+    "@uiw/react-md-editor": "^3.20.1",
     "axios": "^1.1.3",
     "date-fns": "^2.29.3",
     "eslint": "8.28.0",
     "eslint-config-next": "13.0.4",
     "markdown-to-jsx": "^7.1.7",
+    "moment": "^2.29.4",
     "next": "13.0.4",
+    "next-remove-imports": "^1.0.8",
     "notistack": "^2.0.8",
     "react": "18.2.0",
+    "react-bootstrap": "^2.7.0",
     "react-dom": "18.2.0",
-    "react-markdown": "^7.1.1",
-    "react-router-dom": "^6.0.2"
-  },
-  "devDependencies": {}
+    "react-markdown": "^8.0.4",
+    "react-router-dom": "^6.5.0"
+  }
 }
