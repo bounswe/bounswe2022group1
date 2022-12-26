@@ -102,9 +102,9 @@ class ProfilePageActivity : AppCompatActivity() {
                 }
 
 
+
                 var user_id = findViewById(R.id.seeID) as TextView
                 user_id.text=it?.user.toString()
-
 
                 val imageView = findViewById<ImageView>(R.id.imageView)
                 var outBytes = Base64.decode(it?.image, Base64.DEFAULT)
@@ -120,19 +120,14 @@ class ProfilePageActivity : AppCompatActivity() {
                     enroll_list.add(learningSpaceID_Name[it].toString())
                 }
 
-                    enroll_list= mutableListOf<String>()
-                    enroll_list.add("Click to see")
-                    it?.learningspaces?.forEach {
-                        enroll_list.add(learningSpaceID_Name[it].toString())
-                    }
 
+                val enrollListView = findViewById<Spinner>(R.id.enrolled_list)
 
-                    val enrollListView = findViewById<Spinner>(R.id.enrolled_list)
+                var enrollAdapter: ArrayAdapter<String> = ArrayAdapter(
+                    this, R.layout.adapter_background, enroll_list
+                )
 
-                    var enrollAdapter: ArrayAdapter<String> = ArrayAdapter(
-                        this, R.layout.adapter_background, enroll_list
-                    )
-
+                enrollListView.adapter = enrollAdapter
 
                 enrollListView.setSelection(0)
                 enrollListView.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -140,7 +135,6 @@ class ProfilePageActivity : AppCompatActivity() {
                     override fun onNothingSelected(parent: AdapterView<*>?) {
 
                     }
-
 
                     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
 
@@ -154,7 +148,6 @@ class ProfilePageActivity : AppCompatActivity() {
                             apiService.listEverySpace  {
                                 it?.data?.forEach{
                                     if(it.id== learningSpaceID){
-
                                         it.members.forEach {
                                             learningSpaceMEMBERS.add(it)
                                         }
@@ -165,23 +158,16 @@ class ProfilePageActivity : AppCompatActivity() {
                             goToLearningSpace2()
                         }
 
-
                     }
 
-
-                    }
                 }
-
-
             }
 
 
 
 
 
-
         }
-
     }
 
     fun goToLearningSpace2() {
