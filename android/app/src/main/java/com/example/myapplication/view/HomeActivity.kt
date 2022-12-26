@@ -8,6 +8,7 @@ import android.view.MenuItem
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
@@ -99,32 +100,44 @@ class HomeActivity : AppCompatActivity() {
 
             val view_pager2 = findViewById<ViewPager2>(R.id.viewPager2)
             val context = applicationContext
+            if(names.size == 0) {
+                view_pager2.adapter = HomeViewPager(
+                    listOf("Empty"),
+                    listOf("There are no favourite learning spaces"),
+                    listOf(""),
+                    listOf(),
+                    mutableListOf(),
+                    context
+                )
+            }
+            else {
+                view_pager2.adapter = HomeViewPager(names, descs, creators, ids, membersList, context)
+                //view_pager2.adapter = ViewPager2.ORIENTATION_HORIZONTAL
 
-            view_pager2.adapter = HomeViewPager(names, descs, creators, ids, membersList, context)
-            //view_pager2.adapter = ViewPager2.ORIENTATION_HORIZONTAL
+                val indicator = findViewById<CircleIndicator3>(R.id.indicator)
+                indicator.setViewPager(view_pager2)
+                view_pager2.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
+                    override fun onPageScrolled(
+                        position: Int,
+                        positionOffset: Float,
+                        positionOffsetPixels: Int
+                    ) {
+                        super.onPageScrolled(position, positionOffset, positionOffsetPixels)
+                    }
 
-            val indicator = findViewById<CircleIndicator3>(R.id.indicator)
-            indicator.setViewPager(view_pager2)
-            view_pager2.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
-                override fun onPageScrolled(
-                    position: Int,
-                    positionOffset: Float,
-                    positionOffsetPixels: Int
-                ) {
-                    super.onPageScrolled(position, positionOffset, positionOffsetPixels)
-                }
+                    override fun onPageSelected(position: Int) {
+                        super.onPageSelected(position)
+                        learningSpaceID = ids[position]
+                        learningSpaceMEMBERS = checkmembers
+                        ShowContributorsAndTopics()
+                    }
 
-                override fun onPageSelected(position: Int) {
-                    super.onPageSelected(position)
-                    learningSpaceID = ids[position]
-                    learningSpaceMEMBERS = checkmembers
-                    ShowContributorsAndTopics()
-                }
+                    override fun onPageScrollStateChanged(state: Int) {
+                        super.onPageScrollStateChanged(state)
+                    }
+                })
+            }
 
-                override fun onPageScrollStateChanged(state: Int) {
-                    super.onPageScrollStateChanged(state)
-                }
-            })
         }
 
 
@@ -171,15 +184,25 @@ class HomeActivity : AppCompatActivity() {
     fun setContributorsAndTopics(){
         val namesListView = findViewById<ListView>(R.id.resources)
 
-        var namesAdapter: ArrayAdapter<String> = ArrayAdapter(
-            this, R.layout.adapter_background,names
-        )
+        if(names.size == 0) {
+            var namesAdapter: ArrayAdapter<String> = ArrayAdapter(
+                this, R.layout.adapter_background, listOf("There are no resource")
+            )
 
-        namesListView.adapter=namesAdapter
-
-        namesListView.setOnItemClickListener { parent, view, position, id ->
-            goToLearningSpace3(position)
+            namesListView.adapter=namesAdapter
         }
+        else {
+            var namesAdapter: ArrayAdapter<String> = ArrayAdapter(
+                this, R.layout.adapter_background,names
+            )
+
+            namesListView.adapter=namesAdapter
+
+            namesListView.setOnItemClickListener { parent, view, position, id ->
+                goToLearningSpace3(position)
+            }
+        }
+
     }
 
     fun goToLearningSpace3(position:Int) {
