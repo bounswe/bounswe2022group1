@@ -1,22 +1,23 @@
+https://www.cyberciti.biz/faq/how-to-install-docker-on-amazon-linux-2/
 -> önce build et.
-
 
 # Build the Docker image for the current folder 
 # and tag it with `dockerized-react`
 
-docker build . -t budemiv5
+docker login --username=kadirgokhann
+docker build . -t budemiv7
 
-# Check the image was created
-docker images | grep budemiv5
+docker tag budemiv7 kadirgokhann/budemiv7
+
+docker push kadirgokhann/budemiv7
 
 
-docker tag budemiv5 kadirgokhann/budemiv5
-
-docker push kadirgokhann/budemiv5
-
-docker pull kadirgokhann/budemiv5
+from instance:
+docker login --username=kadirgokhann
+docker pull kadirgokhann/budemiv7
 
 
 # Run the image in detached mode 
-# and map port 3000 inside the container with 3000 on current host
-docker run -p 80:3000 -d kadirgokhann/budemiv5
+# and map port 3000 inside the container with 80 on current host
+docker run -p 80:3000 -d kadirgokhann/budemiv7
+
