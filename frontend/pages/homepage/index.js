@@ -16,13 +16,13 @@ import Forum from "../../components/homepage/Forum";
 import { useState, useEffect, useContext } from "react";
 // contexts
 import { AuthContext } from "../../contexts/AuthContext";
-// icons
-import AddCircleIcon from "@mui/icons-material/AddCircle";
 // axios
 import axios from "../../utils/axios";
+import SearchBar from "../../components/homepage/SearchBar";
+import { useSnackbar } from "notistack";
 
 export default function Homepage() {
-  const { user } = useContext(AuthContext);
+  const { user, isAuthenticated } = useContext(AuthContext);
 
   const [forumList, setForumList] = useState([]);
 
@@ -34,34 +34,51 @@ export default function Homepage() {
 
   const [error, setError] = useState(false);
 
+  const { enqueueSnackbar } = useSnackbar();
+
   const router = useRouter();
 
-  const getForumList = async () => {
-    const response = await fetch(
-      "http://3.89.218.253:8000/app/learning-space-list/",
-      {
-        method: "GET",
-        headers: {
-          "content-type": "application/json",
-          Authorization: "Token " + localStorage.getItem("token"),
-        },
-      }
-    )
-      .then((response) => response.json())
+  const getForumList = () => {
+    fetch("http://3.89.218.253:8000/app/learning-space-list/", {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+        Authorization: "Token " + localStorage.getItem("token"),
+      },
+    })
+      .then((response) => {
+        if (response.ok) return response.json();
+        throw new Error(response.statusText);
+      })
       .then((data) => {
         setForumList(data.data);
-      });
+      })
+      .catch((error) => console.log(error));
   };
 
   function handleSubmit(event) {
     if (tag && name) {
-      /** Axios kullanmak için backendde CORS yapılandırması yapılması lazım ... */
-      /** https://stackoverflow.com/questions/35760943/how-can-i-enable-cors-on-django-rest-framework */
-      axios
-        .post("/learning-space", { name, tag })
-        .then(() => router.push("/homepage"))
-        .catch((err) => console.log(err));
-      handleCloseModal();
+      fetch("http://3.89.218.253:8000/app/learning-space/", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          Authorization: "Token " + localStorage.getItem("token"),
+        },
+        body: JSON.stringify({ name, tag }),
+      })
+        .then((response) => {
+          if (response.ok) return response.json();
+          throw new Error(response.statusText);
+        })
+        .then((data) => {
+          setForumList([...forumList, data]);
+        })
+        .catch((error) =>
+          enqueueSnackbar(error.message || "Something went wrong", {
+            variant: "error",
+          })
+        )
+        .finally(() => handleCloseModal());
     } else {
       setError(true);
     }
@@ -87,6 +104,10 @@ export default function Homepage() {
   };
 
   useEffect(() => {
+    if (!isAuthenticated) {
+      router.push("/login");
+      return;
+    }
     getForumList();
   }, []);
 
@@ -95,29 +116,23 @@ export default function Homepage() {
       sx={{
         borderRadius: "16px",
         background: "#dae7fb",
+        height: "calc(100vh - 120px)",
       }}
     >
-      <Box sx={{ padding: 2, marginTop: 15 }}>
-        <Stack flexDirection="row">
-          <Box flexGrow={0.25}>
-            <TextField
-              fullWidth
-              onChange={handleSearch}
-              label="Search for Tag"
-            />
-          </Box>
-
-          <Box flexGrow={1} />
-
-          <IconButton color="primary" size="large" onClick={handleOpenModal}>
-            <AddCircleIcon fontSize="inherit" />
-          </IconButton>
-        </Stack>
+      <Box
+        sx={{
+          padding: 2,
+          mt: "20px",
+        }}
+      >
+        <SearchBar
+          handleOpenModal={handleOpenModal}
+          handleSearch={handleSearch}
+        />
 
         <Forum forumList={forumList} sx={{ marginTop: 2 }} />
-
-        <Footer title="BUDEMI" description="a company of bogazici university" />
       </Box>
+
       <Dialog open={openModal} fullWidth onClose={handleCloseModal}>
         <DialogTitle textAlign="center" variant="h4">
           Add Learning Space
@@ -148,8 +163,8 @@ export default function Homepage() {
           />
 
           <Button
-            type="submit"
             fullWidth
+            type="submit"
             variant="contained"
             sx={{ mt: 3, mb: 2, borderRadius: "16px" }}
           >
