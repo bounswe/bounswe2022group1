@@ -44,7 +44,7 @@ class LearningSpace3 : AppCompatActivity() {
 
             apiService.getInfo(data)  {
                 if(it?.id!=null){
-                    UpCount.setText(it.upVoteCount)
+                    UpCount.setText(it.upVoteCount.toString())
                 }
                 else{
                     Log.d("Up vote update failed","")
