@@ -85,78 +85,83 @@ class ProfilePageActivity : AppCompatActivity() {
 
         val apiService = profile_see_api_call()
         apiService.getProfile("Token " + user_token) {
-            var _about_me = findViewById(R.id.seeAboutMe) as TextView
-            _about_me.text=it?.about_me
+            if(it!=null){
+                var _about_me = findViewById(R.id.seeAboutMe) as TextView
+                _about_me.text=it?.about_me
 
-            var hello_message = findViewById(R.id.hello_message) as TextView
-            hello_message.text="Hello, "+it?.user?.username
+                var hello_message = findViewById(R.id.hello_message) as TextView
+                hello_message.text="Hello, "+it?.user?.username
 
-            var _email = findViewById(R.id.seeEmail) as TextView
-            _email.text=it?.user?.email
-
-
-            var user_id = findViewById(R.id.seeID) as TextView
-            user_id.text=it?.user?.id.toString()
-
-            init_image("http://3.89.218.253:8000/"+it?.image.toString())
-            Log.d("omer_baba",it?.image.toString())
-
-                enroll_list= mutableListOf<String>()
-                enroll_list.add("Click to see")
-                it?.learningspaces?.forEach {
-                    enroll_list.add(learningSpaceID_Name[it].toString())
-                }
+                var _email = findViewById(R.id.seeEmail) as TextView
+                _email.text=it?.user?.email
 
 
-                val enrollListView = findViewById<Spinner>(R.id.enrolled_list)
+                var user_id = findViewById(R.id.seeID) as TextView
+                user_id.text=it?.user?.id.toString()
 
-                var enrollAdapter: ArrayAdapter<String> = ArrayAdapter(
-                    this, R.layout.adapter_background, enroll_list
-                )
+                init_image("http://3.89.218.253:8000/"+it?.image.toString())
+                Log.d("omer_baba",it?.image.toString())
 
-                enrollListView.adapter = enrollAdapter
-
-            enrollListView.setSelection(0)
-            enrollListView.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-
-                override fun onNothingSelected(parent: AdapterView<*>?) {
-
-                }
-
-                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-
-                    var space_name=enrollListView.selectedItem.toString()
-                    if(!space_name.equals(enroll_list.get(0))){
-                        learningSpaceID = learningSpaceName_ID[space_name]!!
-                        learningSpaceNAME = space_name
-
-                        val apiService =learningSpace2ListEveryLearningSpace_api_call()
-                        learningSpaceMEMBERS.clear()
-                        apiService.listEverySpace  {
-                            it?.data?.forEach{
-                                if(it.id== learningSpaceID){
-                                    it.members.forEach {
-                                        learningSpaceMEMBERS.add(it)
-                                    }
-                                }
-                            }
-
-                        }
-                        goToLearningSpace2()
+                    enroll_list= mutableListOf<String>()
+                    enroll_list.add("Click to see")
+                    it?.learningspaces?.forEach {
+                        enroll_list.add(learningSpaceID_Name[it].toString())
                     }
 
-                }
 
+                    val enrollListView = findViewById<Spinner>(R.id.enrolled_list)
+
+                    var enrollAdapter: ArrayAdapter<String> = ArrayAdapter(
+                        this, R.layout.adapter_background, enroll_list
+                    )
+
+                    enrollListView.adapter = enrollAdapter
+
+                enrollListView.setSelection(0)
+                enrollListView.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+
+                    override fun onNothingSelected(parent: AdapterView<*>?) {
+
+                    }
+
+                    override fun onItemSelected(
+                        parent: AdapterView<*>?,
+                        view: View?,
+                        position: Int,
+                        id: Long
+                    ) {
+
+                        var space_name = enrollListView.selectedItem.toString()
+                        if (!space_name.equals(enroll_list.get(0))) {
+                            learningSpaceID = learningSpaceName_ID[space_name]!!
+                            learningSpaceNAME = space_name
+
+                            val apiService = learningSpace2ListEveryLearningSpace_api_call()
+                            learningSpaceMEMBERS.clear()
+                            apiService.listEverySpace {
+                                it?.data?.forEach {
+                                    if (it.id == learningSpaceID) {
+                                        it.members.forEach {
+                                            learningSpaceMEMBERS.add(it)
+                                        }
+                                    }
+                                }
+
+                            }
+                            goToLearningSpace2()
+                        }
+
+                    }
+                }
+            }
+            else{
+                editProfileButton()
             }
 
 
         }
 
 
-        val profileEditButtonClicked = findViewById<Button>(R.id.editProfile)
-        profileEditButtonClicked.setOnClickListener{
-            editProfileButton()
-        }
     }
 
     fun goToLearningSpace2() {
