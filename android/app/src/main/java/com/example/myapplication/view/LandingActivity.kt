@@ -4,10 +4,14 @@ package com.example.myapplication.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.viewpager2.widget.ViewPager2
 import com.example.myapplication.R
+import com.example.myapplication.service.learningSpace2ListEveryLearningSpace_api_call
 import me.relex.circleindicator.CircleIndicator3
+
+
 
 class LandingActivity : AppCompatActivity() {
 
@@ -19,6 +23,7 @@ class LandingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_landing)
 
+
         postToList()
 
         val view_pager2 = findViewById<ViewPager2>(R.id.viewPager2)
@@ -27,7 +32,6 @@ class LandingActivity : AppCompatActivity() {
 
         val indicator = findViewById<CircleIndicator3>(R.id.indicator)
         indicator.setViewPager(view_pager2)
-
     }
 
     fun go_to_login_page(view: View) {
@@ -47,8 +51,8 @@ class LandingActivity : AppCompatActivity() {
     }
 
     private fun postToList() {
-        addToList("Course Variety", "Enroll in a wide range of courses", R.drawable.variety)
-        addToList("Share Your Knowledge", "Create courses and share with others", R.drawable.scholar)
+        addToList("Learning Space Variety", "Enroll in a wide range of Learning Spaces", R.drawable.variety)
+        addToList("Share Your Knowledge", "Create Learning Spaces and share it", R.drawable.scholar)
         addToList("Communication Channels", "Ask and answer questions, discuss your ideas", R.drawable.discuss)
     }
 }

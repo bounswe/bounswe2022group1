@@ -6,202 +6,139 @@
     android:id="@+id/drawerLayout"
     android:layout_height="match_parent"
     tools:context=".view.HomeActivity">
-
     <androidx.constraintlayout.widget.ConstraintLayout
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#CFD4F1"
+        android:background="@drawable/background_general"
         tools:context=".view.HomeActivity"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp">
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginEnd="55dp"
-        android:layout_marginBottom="60dp"
-        android:background="#000000"
-        android:gravity="center"
-        android:text="5-Star Python Course"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/buttonLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView4"
-        tools:ignore="MissingConstraints"
-        tools:text="5-Star Python Course" />
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="match_parent"
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="120dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="44dp"
-        android:contentDescription="@string/todo"
-        android:src="@drawable/java_paint"
-        app:layout_constraintBottom_toTopOf="@+id/textView4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
-        tools:ignore="MissingConstraints" />
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="120dp"
-        android:layout_height="80dp"
-
-        android:contentDescription="TODO"
-        android:src="@drawable/python_paint"
-        app:layout_constraintBottom_toTopOf="@+id/textView5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
-        app:layout_constraintStart_toEndOf="@+id/imageView4"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginEnd="72dp"
-        android:layout_marginBottom="60dp"
-        android:background="#000000"
-        android:gravity="center"
-        android:text="Java Course For Beginners"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/buttonLayout"
-        app:layout_constraintEnd_toStartOf="@+id/textView5"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:text="Java Course For Beginners" />
-
-    <LinearLayout
-        android:id="@+id/buttonLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginBottom="40dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        tools:ignore="MissingConstraints">
-
-        <ImageButton
-            android:id="@+id/searchButton"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:background="@null"
-            android:contentDescription="@string/appbar_scrolling_view_behavior"
-            android:onClick="goToSearch"
-            app:srcCompat="@android:drawable/ic_menu_search"
-            tools:ignore="MissingConstraints,DuplicateSpeakableTextCheck" />
-
-        <ImageButton
-            android:id="@+id/featuredButton"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:background="@null"
-            android:contentDescription="@string/bottom_sheet_behavior"
-            app:srcCompat="@android:drawable/btn_star_big_on"
-            tools:ignore="MissingConstraints" />
-
-        <ImageButton
-            android:id="@+id/myLearningButton"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:background="@null"
-            android:contentDescription="@string/appbar_scrolling_view_behavior"
-            app:srcCompat="@android:drawable/ic_menu_info_details"
-            tools:ignore="MissingConstraints" />
-
-        <ImageButton
-            android:id="@+id/wishlistButton"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-
-            android:background="@null"
-            android:contentDescription="@string/appbar_scrolling_view_behavior"
-            app:srcCompat="@android:drawable/ic_menu_view"
-            tools:ignore="MissingConstraints" />
-
-        <ImageButton
-            android:id="@+id/profileButton"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:background="@null"
-            android:contentDescription="@string/appbar_scrolling_view_behavior"
-            android:onClick="goToProfilePage"
-            app:srcCompat="@android:drawable/ic_menu_my_calendar"
-            tools:ignore="MissingConstraints" />
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="304dp"
-        android:foregroundGravity="center"
-        android:gravity="center"
-        android:text="Welcome to Budemi"
-        android:textColor="#FFFFFF"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logoffButton"
-        tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/signinButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="43dp"
-        android:layout_marginBottom="64dp"
-        android:background="#000000"
-        android:onClick="signInToSignIn"
-        android:text="Sign In"
-        app:layout_constraintBottom_toTopOf="@+id/textView6"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="MissingConstraints" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="481dp"
-        android:layout_marginBottom="16dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/buttonLayout"
-        app:layout_constraintStart_toStartOf="@+id/buttonLayout"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints">
-
-    </LinearLayout>
-
-        <ImageButton
-            android:id="@+id/logoffButton"
-            android:layout_width="50dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="18dp"
-            android:layout_marginBottom="64dp"
-            android:background="@null"
-            android:onClick="logoffToLanding"
-            android:scaleType="fitCenter"
-            android:src="@drawable/logout"
-            app:layout_constraintBottom_toTopOf="@+id/textView6"
-            app:layout_constraintEnd_toEndOf="@+id/signinButton"
-            app:layout_constraintStart_toStartOf="@+id/signinButton"
+            android:layout_height="25dp"
+            android:src="@drawable/logo_bottom_border"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.202" />
+
+        <TextView
+            android:id="@+id/welcome_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="marquee"
+            android:fadingEdge="horizontal"
+            android:fontFamily="@font/walter_turncoat"
+            android:foregroundGravity="center"
+            android:gravity="center"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:text="Welcome To Budemi    Welcome To Budemi"
+            android:textColor="@color/black"
+            android:textSize="34sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.129"
             tools:ignore="MissingConstraints" />
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/search"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@drawable/search_view_bg"
+            android:fontFamily="@font/walter_turncoat"
+            app:iconifiedByDefault="false"
+            app:layout_constraintBottom_toTopOf="@+id/welcome_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.551"
+            app:queryHint="Search Here ..." />
+
+        <me.relex.circleindicator.CircleIndicator3
+                android:id="@+id/indicator"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/viewPager2"
+                app:layout_constraintVertical_bias="0.0"
+                tools:layout_editor_absoluteX="0dp" >
+
+        </me.relex.circleindicator.CircleIndicator3>
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Favourite Learning Spaces:"
+            android:textColor="@color/colorPrimary1"
+
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.08"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager2"
+            android:layout_width="324dp"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Resources"
+            android:textColor="@color/colorPrimary1"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/indicator" />
+
+        <ScrollView
+            android:layout_width="400dp"
+            android:layout_height="253dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView6"
+            app:layout_constraintVertical_bias="0.0">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+            <ListView
+                android:id="@+id/resources"
+                android:layout_width="match_parent"
+                android:layout_height="253dp"/>
+            </LinearLayout>
+        </ScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navView"
-        android:layout_width="wrap_content"
+        android:layout_width="180dp"
         android:layout_height="match_parent"
         app:headerLayout="@layout/nav_header"
         app:menu="@menu/nav_drawer_menu"

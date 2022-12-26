@@ -2,32 +2,230 @@
 package com.example.myapplication.view
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
-import android.view.View
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.LinearLayout
-import android.widget.Toast
+import android.widget.ArrayAdapter
+import android.widget.ListView
+import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.viewpager2.widget.ViewPager2
 import com.example.myapplication.R
+import com.example.myapplication.model.ls_members
+import com.example.myapplication.service.favorite_ls_call
+import com.example.myapplication.service.learningSpace2GetContentList_api_call
+import com.example.myapplication.service.learningSpace2ListEveryLearningSpace_api_call
 import com.google.android.material.navigation.NavigationView
-import java.nio.file.attribute.AttributeView
+import me.relex.circleindicator.CircleIndicator3
 
 var selectedTAG = ""
+var learningSpaceID_Name=mutableMapOf<Int,String>()
+var learningSpaceName_ID= mutableMapOf<String,Int>()
 
 class HomeActivity : AppCompatActivity() {
 
+    override fun onRestart() {
+        super.onRestart()
+        finish()
+        startActivity(intent)
+    }
+    private lateinit var checkmembers: MutableList<ls_members>
+    fun initID_Name(){
+
+        val apiService = learningSpace2ListEveryLearningSpace_api_call()
+        apiService.listEverySpace () {
+
+            if (it?.data != null) {
+                for (i in 0..(it.data.size - 1)) {
+                    learningSpaceName_ID[it.data[i].name]=it.data[i].id
+                    learningSpaceID_Name[it.data[i].id]=it.data[i].name
+                }
+            }
+            else{ // error for API
+
+            }
+        }
+    }
 
     lateinit var toggle: ActionBarDrawerToggle
+    private lateinit var names: Array<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+        initID_Name()
+
+        val context1 = this
+        Log.d("user_token", user_token)
+
+        var welcome_text=findViewById<TextView>(R.id.welcome_text)
+        welcome_text.setSelected(true)
+
+        val searchView = findViewById<SearchView>(R.id.search)
+        searchView.setOnQueryTextFocusChangeListener{ v, b->
+            if(b) {
+                goToSearch()
+            }
+            searchView.clearFocus()
+        }
+
+        names = arrayOf("Osman", "fehmi")
+        navMenuHandler()
+
+        var names = ArrayList<String>()
+        var descs = ArrayList<String>()
+        var creators = ArrayList<String>()
+        var ids = ArrayList<Int>()
+        var members = mutableListOf<ls_members>()
+        var membersList = mutableListOf<MutableList<ls_members>>()
+        checkmembers = mutableListOf<ls_members>()
+        val apiService = favorite_ls_call()
+        apiService.favoriteLSpaces("Token " + user_token) {
+            it?.data?.forEach {
+                names += it.learningSpace.name
+                descs += it.learningSpace.description
+                creators += it.learningSpace.created_on.substring(0, 10) + " by " + it.learningSpace.ls_owner.name
+                ids += it.learningSpace.id
+                it.learningSpace.members.forEach {
+                    members.add(it)
+                    checkmembers.add(it)
+                }
+                membersList.add(members.toMutableList())
+                members.clear()
+            }
+
+            val view_pager2 = findViewById<ViewPager2>(R.id.viewPager2)
+            val context = applicationContext
+
+            view_pager2.adapter = HomeViewPager(names, descs, creators, ids, membersList, context)
+            //view_pager2.adapter = ViewPager2.ORIENTATION_HORIZONTAL
+
+            val indicator = findViewById<CircleIndicator3>(R.id.indicator)
+            indicator.setViewPager(view_pager2)
+            view_pager2.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
+                override fun onPageScrolled(
+                    position: Int,
+                    positionOffset: Float,
+                    positionOffsetPixels: Int
+                ) {
+                    super.onPageScrolled(position, positionOffset, positionOffsetPixels)
+                }
+
+                override fun onPageSelected(position: Int) {
+                    super.onPageSelected(position)
+                    learningSpaceID = ids[position]
+                    learningSpaceMEMBERS = checkmembers
+                    ShowContributorsAndTopics()
+                }
+
+                override fun onPageScrollStateChanged(state: Int) {
+                    super.onPageScrollStateChanged(state)
+                }
+            })
+        }
 
 
+
+    }
+
+    fun ShowContributorsAndTopics(){
+
+
+        val apiService = learningSpace2GetContentList_api_call()
+        val userInfo = learningSpaceID
+
+        apiService.getContentList(userInfo) {
+
+            if(it?.data!=null){ // success
+                var receivedArr=it?.data
+
+                names= arrayOf<String>()
+                for(i in 0..(receivedArr.size-1)){
+
+                    var owner_name="Ömer Özdemir"
+                    checkmembers.forEach{
+                            l->
+                        if(l.id==receivedArr[i].owner){
+                            owner_name=l.name
+                        }
+                    }
+
+                    names+="Topic: "+receivedArr[i].name.toString()+"\n"+"Owner:"+owner_name+
+                            "   Votes:"+receivedArr[i].upVoteCount+
+                            "\n"
+                    contentID_ContentName.put(i,receivedArr[i].id)
+                }
+
+                setContributorsAndTopics()
+            }
+            else{ // showing contributors is unsucess
+
+            }
+
+        }
+    }
+
+    fun setContributorsAndTopics(){
+        val namesListView = findViewById<ListView>(R.id.resources)
+
+        var namesAdapter: ArrayAdapter<String> = ArrayAdapter(
+            this, R.layout.adapter_background,names
+        )
+
+        namesListView.adapter=namesAdapter
+
+        namesListView.setOnItemClickListener { parent, view, position, id ->
+            goToLearningSpace3(position)
+        }
+    }
+
+    fun goToLearningSpace3(position:Int) {
+        learningSpaceMEMBERS = checkmembers
+        currentContentID = contentID_ContentName[position]!!
+        var intent = Intent(applicationContext, LearningSpace3::class.java)
+        startActivity(intent)
+    }
+
+    fun signInToSignIn() {
+        var intent= Intent(applicationContext, SignInActivity::class.java)
+        startActivity(intent)
+    }
+    fun goToSearch() {
+        var intent= Intent(applicationContext, LsSearchActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun logoffToLanding() {
+        user_token=""
+        var intent= Intent(applicationContext, LandingActivity::class.java)
+        startActivity(intent)
+    }
+    fun toProfile() {
+        var intent= Intent(applicationContext, ProfilePageActivity::class.java)
+        startActivity(intent)
+    }
+    fun goToLearningSpace1() {
+        var intent= Intent(applicationContext, LearningSpace1::class.java)
+        startActivity(intent)
+    }
+
+    fun goToHomePage() {
+        var intent= Intent(applicationContext, HomeActivity::class.java)
+        startActivity(intent)
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(toggle.onOptionsItemSelected(item)) {
+            return true
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    fun navMenuHandler() {
         val string = findViewById<DrawerLayout>(R.id.drawerLayout)
         toggle = ActionBarDrawerToggle(this, string, R.string.open, R.string.close)
 
@@ -40,6 +238,7 @@ class HomeActivity : AppCompatActivity() {
 
         string2.setNavigationItemSelectedListener {
             when(it.itemId) {
+                R.id.profileButton -> toProfile()
                 R.id.miItem1 -> goToHomePage()
                 R.id.miItem2 -> {
                     selectedTAG = "Art"
@@ -61,76 +260,11 @@ class HomeActivity : AppCompatActivity() {
                     selectedTAG = "Engineering"
                     goToLearningSpace1()
                 }
+                R.id.signOut -> {
+                    logoffToLanding()
+                }
             }
             true
         }
-        //println("I am home"+user_token)
-        //user token null değil ise buttonları göster log off göster sign in kapat
-        // , null ise sign in göster, butonları kapat logoff kapat
-        var buttonLayout = findViewById(R.id.buttonLayout) as LinearLayout
-        var logoffButton = findViewById(R.id.logoffButton) as ImageButton
-        var signinButton = findViewById(R.id.signinButton) as Button
-        
-        if(user_token != "") {
-            buttonLayout.visibility = View.VISIBLE
-            logoffButton.visibility = View.VISIBLE
-            signinButton.visibility = View.INVISIBLE
-        }
-        else {
-            buttonLayout.visibility = View.INVISIBLE
-            logoffButton.visibility = View.INVISIBLE
-            signinButton.visibility = View.VISIBLE
-        }
-
-        //here check if buttons are pressed and direct them to signIn
-        val signInButtonClicked = findViewById<Button>(R.id.signinButton)
-        signInButtonClicked.setOnClickListener{
-            signInToSignIn()
-        }
-        val logoffButtonClicked = findViewById<ImageButton>(R.id.logoffButton)
-        logoffButtonClicked.setOnClickListener{
-            logoffToLanding()
-        }
-        val profileButtonClicked = findViewById<ImageButton>(R.id.profileButton)
-        profileButtonClicked.setOnClickListener{
-            toProfile()
-        }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(toggle.onOptionsItemSelected(item)) {
-            return true
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
-    fun signInToSignIn() {
-        var intent= Intent(applicationContext, SignInActivity::class.java)
-        startActivity(intent)
-    }
-    fun logoffToLanding() {
-        user_token=""
-        var intent= Intent(applicationContext, LandingActivity::class.java)
-        startActivity(intent)
-    }
-    fun toProfile() {
-        var intent= Intent(applicationContext, ProfilePageActivity::class.java)
-        startActivity(intent)
-    }
-    fun goToLearningSpace1() {
-        var intent= Intent(applicationContext, LearningSpace1::class.java)
-        startActivity(intent)
-    }
-    fun goToSearch(view: View) {
-        var intent= Intent(applicationContext, LsSearchActivity::class.java)
-        startActivity(intent)
-    }
-    fun goToHomePage() {
-        var intent= Intent(applicationContext, HomeActivity::class.java)
-        startActivity(intent)
-    }
-    fun goToProfilePage(view: View){
-        var intent= Intent(applicationContext, ProfilePageActivity::class.java)
-        startActivity(intent)
     }
 }

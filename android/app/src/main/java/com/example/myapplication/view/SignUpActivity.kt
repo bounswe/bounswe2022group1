@@ -19,7 +19,7 @@ class SignUpActivity : AppCompatActivity() {
         setContentView(R.layout.activity_sign_up)
     }
 
-    fun goToLoginPage() {
+    fun goToLoginPage(view: View) {
         var intent= Intent(applicationContext, SignInActivity::class.java)
         startActivity(intent)
     }

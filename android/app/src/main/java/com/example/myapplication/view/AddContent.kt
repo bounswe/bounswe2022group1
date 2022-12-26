@@ -17,37 +17,15 @@ class AddContent : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_content)
 
-        var typeEditText = findViewById(R.id.typeEditText) as Spinner
-
-        var textOrUrl=findViewById(R.id.textOrUrl) as TextView
-        typeEditText.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-
-            }
-
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                var type=typeEditText.selectedItem.toString()
-                if(type.equals("text") || type.equals("meeting") || type.equals("discussion")){
-                    textOrUrl.text="Text:"
-                }
-                else{
-                    textOrUrl.text="URL:"
-                }
-            }
-
-        }
     }
 
 
     fun submitButtonClicked(view: View){
         var nameEditText = findViewById(R.id.NameEditText) as EditText
-        var typeEditText = findViewById(R.id.typeEditText) as Spinner
         var textEditText = findViewById(R.id.textEditText) as EditText
-
-
-
+        
         var name=nameEditText.text.toString()
-        var type=typeEditText.selectedItem.toString()
+        var type="text"
         var text=textEditText.text.toString()
 
         if(type=="text" || type=="meeting" || type.equals("discussion")){
@@ -61,7 +39,7 @@ class AddContent : AppCompatActivity() {
 
             apiService.addContent(userInfo){
                 if(it?.id!=null){ // content successfully added
-                    var intent= Intent(applicationContext, LearningSpace2::class.java)
+                    var intent= Intent(applicationContext, LearningSpace2Menu::class.java)
                     startActivity(intent)
                 }
                 else{// content couldn't be added.
@@ -82,7 +60,7 @@ class AddContent : AppCompatActivity() {
 
             apiService.addContent(userInfo){
                 if(it?.id!=null){ // content successfully added
-                    var intent= Intent(applicationContext, LearningSpace2::class.java)
+                    var intent= Intent(applicationContext, LearningSpace2Menu::class.java)
                     startActivity(intent)
                 }
                 else{// content couldn't be added.

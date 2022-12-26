@@ -1,21 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/drawerLayout"
+    android:layout_height="match_parent"
+    tools:context=".view.HomeActivity">
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#CFD4F1">
+    android:background="@drawable/background_general">
 
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
+        android:fontFamily="@font/walter_turncoat"
         android:text="Learning Spaces"
-        android:textColor="#6200EE"
+        android:textColor="@color/colorPrimary1"
         android:textSize="40dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,6 +32,11 @@
         android:id="@+id/Topics"
         android:layout_width="342dp"
         android:layout_height="389dp"
+        tools:listitem="@layout/ls_list_item"
+        android:dividerHeight="10dp"
+        android:paddingLeft="8dp"
+        android:paddingTop="8dp"
+        android:divider="@color/colorPrimary4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.507"
@@ -33,11 +47,26 @@
         android:id="@+id/createbutton"
         android:layout_width="43dp"
         android:layout_height="39dp"
+        android:background="@color/colorPrimary1"
         android:onClick="showDialog"
         android:text="+"
+        android:textColor="@color/colorPrimary4"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:circularflow_radiusInDP="8dp"
         app:layout_constraintBottom_toTopOf="@+id/Topics"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.907"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navView"
+        android:layout_width="180dp"
+        android:layout_height="match_parent"
+        app:headerLayout="@layout/nav_header"
+        app:menu="@menu/nav_drawer_menu"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true" />
+</androidx.drawerlayout.widget.DrawerLayout>
