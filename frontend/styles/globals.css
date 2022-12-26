@@ -1,7 +1,40 @@
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Rubik:400,500,600,700,800");
 
 body {
-  background: #1c8ef9 !important;
-
+  background: #ffffff !important;
+  font-family: "Fira Sans", sans-serif;
 }
 
+.r6o-tag {
+  display: none !important;
+}
+
+.r6o-btn {
+  background-color: #ff597b !important;
+  border-color: #ff597b !important;
+  border-radius: 16px !important;
+  color: #ffffff !important;
+}
+
+.r6o-btn.outline {
+  background-color: #ffffff !important;
+  border-color: #ff597b !important;
+  color: #ff597b !important;
+  border-radius: 16px !important;
+}
+
+.r6o-footer {
+  background-color: #ffffff !important;
+  border-radius: 16px !important;
+}
+
+.r6o-editor-inner {
+  border-radius: 16px !important;
+  padding: 4px !important;
+}
+
+.r6o-widget.comment {
+  border-radius: 16px !important;
+  margin: 4px !important;
+  padding: 8px !important;
+}
