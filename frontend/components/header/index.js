@@ -1,4 +1,4 @@
-import Link from "next/link";
+import NextLink from "next/link";
 import Image from "next/image";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
@@ -17,25 +17,30 @@ export default function Header() {
 
   return (
     <AppBar
-      position="fixed"
+      position="sticky"
       sx={{
         backgroundColor: "white",
         color: "#737373",
+        height: "70px",
       }}
     >
       <Toolbar>
-        <Image src="/assets/BUdemi.svg" width={80} height={80} alt="budemi" />
+        <NextLink href="/">
+          <Image src="/assets/BUdemi.svg" width={80} height={80} alt="budemi" />
+        </NextLink>
 
         <Box sx={{ flexGrow: 1 }} />
 
-        <Box display="flex" justifyContent="flex-end">
+        <Box display="flex">
           {pages.map(
             (page) =>
               page.auth && (
-                <Link
+                <NextLink
                   key={page.name}
                   href={page.href}
-                  style={{ textDecoration: "none" }}
+                  style={{
+                    textDecoration: "none",
+                  }}
                 >
                   <Typography
                     sx={{
@@ -45,7 +50,7 @@ export default function Header() {
                   >
                     {page.name}
                   </Typography>
-                </Link>
+                </NextLink>
               )
           )}
         </Box>
