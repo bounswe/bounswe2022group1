@@ -1,3 +1,4 @@
+//This file can be merged.
 import NextLink from "next/link";
 import Image from "next/image";
 import { useContext } from "react";
@@ -21,12 +22,16 @@ export default function Header() {
       sx={{
         backgroundColor: "white",
         color: "#737373",
-        height: "70px",
       }}
     >
       <Toolbar>
         <NextLink href="/">
-          <Image src="/assets/BUdemi.svg" width={80} height={80} alt="budemi" />
+          <Image
+            src="/assets/budemi logo2.png"
+            width={120}
+            height={40}
+            alt="budemi"
+          />
         </NextLink>
 
         <Box sx={{ flexGrow: 1 }} />
@@ -38,9 +43,7 @@ export default function Header() {
                 <NextLink
                   key={page.name}
                   href={page.href}
-                  style={{
-                    textDecoration: "none",
-                  }}
+                  style={{ textDecoration: "none" }}
                 >
                   <Typography
                     sx={{
