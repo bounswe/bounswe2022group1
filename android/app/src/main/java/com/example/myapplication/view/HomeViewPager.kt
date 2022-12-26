@@ -23,14 +23,16 @@ class HomeViewPager(private var names: List<String>, private var descs: List<Str
 
         init {
             itemView.setOnClickListener{
-                val position = adapterPosition
-                learningSpaceNAME = names[position].toString()
-                learningSpaceID = ids[position]
-                learningSpaceMEMBERS = members[position]
+                if(!names[0].equals("Empty")){
+                    val position = adapterPosition
+                    learningSpaceNAME = names[position].toString()
+                    learningSpaceID = ids[position]
+                    learningSpaceMEMBERS = members[position]
 
-                var intent= Intent(context, LearningSpace2Menu::class.java)
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(intent)
+                    var intent= Intent(context, LearningSpace2Menu::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent)
+                }
             }
         }
     }
