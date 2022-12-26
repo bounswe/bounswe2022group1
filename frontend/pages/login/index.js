@@ -40,7 +40,7 @@ export default function Login() {
         throw new Error(response.statusText);
       })
       .then((data) => {
-        login(username, data.token, data.expiry);
+        login(username, data.token);
         router.push("/profile");
       })
       .catch((error) =>
