@@ -19,30 +19,28 @@ function Copyright() {
 
 function Footer({ description, title }) {
   return (
-    <Box
+    <Container
       component="footer"
       sx={{
-        bgcolor: "background.paper",
+        my: 6,
         py: 2,
-        marginTop: 5,
         borderRadius: "20px",
+        bgcolor: "background.paper",
       }}
     >
-      <Container maxWidth="lg">
-        <Typography variant="h6" align="center" gutterBottom>
-          {title}
-        </Typography>
-        <Typography
-          variant="subtitle1"
-          align="center"
-          color="text.secondary"
-          component="p"
-        >
-          {description}
-        </Typography>
-        <Copyright />
-      </Container>
-    </Box>
+      <Typography variant="h6" align="center" gutterBottom>
+        {title}
+      </Typography>
+      <Typography
+        variant="subtitle1"
+        align="center"
+        color="text.secondary"
+        component="p"
+      >
+        {description}
+      </Typography>
+      <Copyright />
+    </Container>
   );
 }
 
