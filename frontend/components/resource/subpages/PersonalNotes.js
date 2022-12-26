@@ -20,8 +20,9 @@ import ProfileCard from "./ProfileCard";
 export default function Main() {
   const router = useRouter();
   const { id } = router.query;
-  const [notes, setNotes] = useState(null);
+  //const [notes, setNotes] = useState(null);
   const [note, setNote] = useState(null);
+  const [noteBody, setNoteBody] = useState("");
 
 
   const handleSubmit = (e) => {
@@ -33,7 +34,7 @@ export default function Main() {
         `http://3.89.218.253:8000/app/note/`,
         {
           content: id,
-          body: note,
+          body: noteBody,
         },
         {
           headers: {
@@ -43,25 +44,26 @@ export default function Main() {
       )
       .then(function (response) {
         console.log("Success", response);
-        // TODO setComments(eski comment + yeni comments)
+        // TODO get notes aynisi
+        const getNote = async () => {
+          const baseURL = `http://3.89.218.253:8000/app/note/?content_id=${id}`;
+          const res = await axios.get(baseURL, {
+            headers: { Authorization: `token ${localStorage.getItem("token")}` },
+          });
+          console.log(res.data.data);
+          var latestNote = "";
+          const len = res.data.data.length
+          if(len > 0){
+            latestNote = res.data.data[len -1];
+          }
+
+          setNote(latestNote);
+        };
+        getNote();
+        //TODO getnotes aynisi
 
         
-        const getNotes = async () => {
-            const baseURL = `http://3.89.218.253:8000/app/note/?content_id=${id}`;
-            const res = await axios.get(baseURL, {
-              headers: { Authorization: `token ${localStorage.getItem("token")}` },
-            });
-            console.log(res.data.data);
-            var texts = [];
-            for (const text of res.data.data) {
-              if (!texts.includes(text)) {
-                texts?.push(text);
-              }
-            }
-            setNotes(texts);
-          };
 
-        getNotes();
       })
       .catch((error) => {
         console.log(error);
@@ -73,34 +75,31 @@ export default function Main() {
     if (!id) return;
 
     
-    const getNotes = async () => {
+    const getNote = async () => {
       const baseURL = `http://3.89.218.253:8000/app/note/?content_id=${id}`;
       const res = await axios.get(baseURL, {
         headers: { Authorization: `token ${localStorage.getItem("token")}` },
       });
       console.log(res.data.data);
-      var texts = [];
-      for (const text of res.data.data) {
-        if (!texts.includes(text)) {
-          texts?.push(text);
-        }
+      var latestNote = "";
+      const len = res.data.data.length
+      if(len > 0){
+        latestNote = res.data.data[len -1];
       }
-      setNotes(texts);
+      setNote(latestNote);
     };
-    getNotes();
+    getNote();
   }, [router]);
 
   return (
     <Box>
       <Typography mb={2} variant="h6" textAlign="center">
-        My Notes
+        My Note
       </Typography>
 
 
-      {notes &&
-        notes.map((note) => (
-          <Card sx={{ p: 1.5, borderRadius: "16px", m: 1 }}>
-            <Card sx={{ p: 1.5, borderRadius: "16px", m: 1 }}>
+            {note && 
+            (<Card sx={{ p: 1.5, borderRadius: "16px", m: 1 }}>
               <Typography gutterBottom color="text.secondary">
                 
                 {format(new Date(note?.created_on), "d MMMM, yyyy")}
@@ -109,18 +108,18 @@ export default function Main() {
               <Typography gutterBottom sx={{ ml: 8 }}>
                 {`        ${note?.body}`}
               </Typography>
-            </Card>
-          </Card>
-        ))}
+            </Card>)
+}
+          
 
 <TextField
           margin="normal"
           fullWidth
           name="note"
-          label="Add a new note"
           type="note"
           id="note"
-          onChange={(e) => setNote(e.target.value)}
+          value={noteBody}
+          onChange={(e) => setNoteBody(e.target.value)}
         />
 
         <Button
