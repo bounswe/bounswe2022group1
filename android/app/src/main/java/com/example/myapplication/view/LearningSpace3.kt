@@ -63,7 +63,7 @@ class LearningSpace3 : AppCompatActivity() {
         apiService.getInfo(data)  {
             if(it?.id!=null){
                 var UpCount = findViewById<TextView>(R.id.upCount)
-                UpCount.setText(it.upVoteCount)
+                UpCount.setText(it.upVoteCount.toString())
             }
             else{
                 Log.d("Up vote update failed","")
