@@ -1,6 +1,6 @@
-import * as React from 'react';
+import * as React from "react";
 import {
-	Grid,
+  Grid,
 	Box,
 	Card,
 	CardHeader,
@@ -8,14 +8,21 @@ import {
   CardActionArea,
 	Button,
   Typography,
-} from '@mui/material';
-import { Link } from '@mui/material';
+} from "@mui/material";
+import Stack from "@mui/material/Stack";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
+import IconButton from "@mui/material/IconButton";
+import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
+import { TextField, FormControlLabel, Checkbox } from "@mui/material";
+import { Link } from "@mui/material";
 import Image from "next/image";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import axios from 'axios';
+import axios from "axios";
 import Moment from 'moment';
-
 
 const handleJoin = (spid) => {
   axios.post(`http://3.89.218.253:8000/app/enroll/`, {

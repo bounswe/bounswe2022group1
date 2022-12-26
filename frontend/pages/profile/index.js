@@ -33,6 +33,7 @@ const menus = [
 
 export default function Profile() {
   const { user } = useContext(AuthContext);
+
   const router = useRouter();
   useEffect(() => {
     if (!user) router.push("/homepage");

@@ -1,4 +1,5 @@
-import Link from "next/link";
+//This file can be merged.
+import NextLink from "next/link";
 import Image from "next/image";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
@@ -17,27 +18,29 @@ export default function Header() {
 
   return (
     <AppBar
-      position="fixed"
+      position="sticky"
       sx={{
         backgroundColor: "white",
         color: "#737373",
       }}
     >
       <Toolbar>
-        <Image
-          src="/assets/budemi logo2.png"
-          width={120}
-          height={40}
-          alt="budemi"
-        />
+        <NextLink href="/">
+          <Image
+            src="/assets/budemi logo2.png"
+            width={120}
+            height={40}
+            alt="budemi"
+          />
+        </NextLink>
 
         <Box sx={{ flexGrow: 1 }} />
 
-        <Box display="flex" justifyContent="flex-end">
+        <Box display="flex">
           {pages.map(
             (page) =>
               page.auth && (
-                <Link
+                <NextLink
                   key={page.name}
                   href={page.href}
                   style={{ textDecoration: "none" }}
@@ -50,7 +53,7 @@ export default function Header() {
                   >
                     {page.name}
                   </Typography>
-                </Link>
+                </NextLink>
               )
           )}
         </Box>

@@ -19,7 +19,6 @@ function Copyright() {
 
 function Footer({ description, title }) {
   return (
-
     <>
       <Divider sx={{ mt: 8, mb: 4 }} />
       <Box component="footer" sx={{ bgcolor: "background.paper" }}>
@@ -39,7 +38,6 @@ function Footer({ description, title }) {
         </Container>
       </Box>
     </>
-
   );
 }
 

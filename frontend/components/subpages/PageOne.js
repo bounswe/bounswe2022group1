@@ -1,81 +1,204 @@
-import { useContext } from "react";
-import { Typography, Container, Box, Divider } from "@mui/material";
+//This page can be merged
+import { useContext, useEffect, useRef, useState } from "react";
+import {
+  Typography,
+  Container,
+  Box,
+  Divider,
+  Avatar,
+  Card,
+  Input,
+  IconButton,
+  Stack,
+  Paper,
+  Chip,
+  Button,
+} from "@mui/material";
 import { AuthContext } from "../../contexts/AuthContext";
+import axios from "../../utils/axios";
+import { useSnackbar } from "notistack";
+import EditIcon from "@mui/icons-material/Edit";
+
+const tags = [
+  "C",
+  "C++",
+  "Kubernetes",
+  "React",
+  "Python",
+  "C++",
+  "Docker",
+  "Kubernetes",
+  "Python",
+  "Docker",
+];
 
 export default function PageOne() {
-  const { user } = useContext(AuthContext);
+  const ref = useRef();
+
+  const [id, setId] = useState(null);
+
+  const [user, setUser] = useState(null);
+
+  const { enqueueSnackbar } = useSnackbar();
+
+  const { user: userName } = useContext(AuthContext);
+
+  const [isEditable, setIsEditable] = useState(false);
+
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const [aboutMe, setAboutMe] = useState(null);
+
+  const [favorite, setFavorite] = useState({});
+
+  // console.log(favorite);
+
+  const getFileToBase64 = (file) => {
+    return new Promise((resolve) => {
+      let reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        resolve(reader.result);
+      };
+    });
+  };
+
+  const onSelectFile = (e) => {
+    if (!e.target.files.length) return;
+    getFileToBase64(e.target.files[0])
+      .then((result) => {
+        console.log(result);
+        setSelectedFile(result);
+        setUser({ ...user, image: result });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const handleUpdate = () => {
+    axios
+      .patch("/profile/", {
+        about_me: aboutMe,
+        image: selectedFile || user.image,
+      })
+      .then((data) => {
+        enqueueSnackbar("Success ", { variant: "success" });
+      })
+      .catch((err) => console.log(err));
+  };
+
+  useEffect(() => {
+    if (!userName) return;
+    axios
+      .get("/user_id_from_username/?username=" + userName)
+      .then((data) => setId(data.data.id))
+      .catch((err) => console.log(err));
+  }, []);
+
+  useEffect(() => {
+    if (!id) return;
+    axios
+      .get("/profile/?user_id=" + id)
+      .then((data) => {
+        console.log(data.data);
+        setUser(data.data);
+        setAboutMe(data.data.about_me);
+      })
+      .catch((err) => console.log(err));
+    axios
+      .get("/favorite/?user=" + id)
+      .then((data) => {
+        setFavorite(data.data.data);
+      })
+      .catch((err) => console.log(err));
+  }, [id]);
 
   return (
-    <Box sx={{ m: "10%" }}>
-      <Typography mb={2} variant="h1" textAlign="center" color="primary">
-        {`Welcome ${user}!`}
-      </Typography>
+    <>
+      <Stack
+        spacing={1}
+        component={Paper}
+        sx={{ borderRadius: 6, p: 2, flexDirection: "column" }}
+      >
+        <Stack>
+          <Avatar
+            sx={{ alignSelf: "center", width: 100, height: 100 }}
+            src={user?.image}
+            onClick={() => ref.current?.click()}
+          />
+          <Typography mt={1} textAlign="center">
+            {userName}
+          </Typography>
+          <Button
+            size="small"
+            color="info"
+            variant="contained"
+            onClick={handleUpdate}
+            sx={{ alignSelf: "end" }}
+          >
+            Update
+          </Button>
+        </Stack>
 
-      <Typography
-        color="text.disabled"
-        mb={2}
-        variant="h5"
-        textAlign="center"
-      ></Typography>
+        <Divider />
+        <Stack flexDirection={"row"}>
+          <Box sx={{ minWidth: "50%" }}>
+            <Box
+              display="flex"
+              alignItems="center"
+              justifyContent="space-between"
+            >
+              <Typography color="text.secondary" variant="h6">
+                About Me
+              </Typography>
+              <IconButton
+                color={isEditable ? "success" : "disabled"}
+                onClick={() => setIsEditable(!isEditable)}
+              >
+                <EditIcon />
+              </IconButton>
+            </Box>
 
-      {/*
-      <Typography mt={2} paragraph>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus
-        non enim praesent elementum facilisis leo vel. Risus at ultrices mi
-        tempus imperdiet. Semper risus in hendrerit gravida rutrum quisque non
-        tellus. Convallis convallis tellus id interdum velit laoreet id donec
-        ultrices. Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl
-        suscipit adipiscing bibendum est ultricies integer quis. Cursus euismod
-        quis viverra nibh cras. Metus vulputate eu scelerisque felis imperdiet
-        proin fermentum leo. Mauris commodo quis imperdiet massa tincidunt. Cras
-        tincidunt lobortis feugiat vivamus at augue. At augue eget arcu dictum
-        varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt.
-        Lorem donec massa sapien faucibus et molestie ac.
-      </Typography>
-      <Typography paragraph>
-        Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
-        ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar elementum
-        integer enim neque volutpat ac tincidunt. Ornare suspendisse sed nisi
-        lacus sed viverra tellus. Purus sit amet volutpat consequat mauris.
-        Elementum eu facilisis sed odio morbi. Euismod lacinia at quis risus sed
-        vulputate odio. Morbi tincidunt ornare massa eget egestas purus viverra
-        accumsan in. In hendrerit gravida rutrum quisque non tellus orci ac.
-        Pellentesque nec nam aliquam sem et tortor. Habitant morbi tristique
-        senectus et. Adipiscing elit duis tristique sollicitudin nibh sit.
-        Ornare aenean euismod elementum nisi quis eleifend. Commodo viverra
-        maecenas accumsan lacus vel facilisis. Nulla posuere sollicitudin
-        aliquam ultrices sagittis orci a.
-      </Typography>
-      <Typography paragraph>
-        Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
-        ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar elementum
-        integer enim neque volutpat ac tincidunt. Ornare suspendisse sed nisi
-        lacus sed viverra tellus. Purus sit amet volutpat consequat mauris.
-        Elementum eu facilisis sed odio morbi. Euismod lacinia at quis risus sed
-        vulputate odio. Morbi tincidunt ornare massa eget egestas purus viverra
-        accumsan in. In hendrerit gravida rutrum quisque non tellus orci ac.
-        Pellentesque nec nam aliquam sem et tortor. Habitant morbi tristique
-        senectus et. Adipiscing elit duis tristique sollicitudin nibh sit.
-        Ornare aenean euismod elementum nisi quis eleifend. Commodo viverra
-        maecenas accumsan lacus vel facilisis. Nulla posuere sollicitudin
-        aliquam ultrices sagittis orci a.
-      </Typography>
-      <Typography paragraph>
-        Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
-        ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar elementum
-        integer enim neque volutpat ac tincidunt. Ornare suspendisse sed nisi
-        lacus sed viverra tellus. Purus sit amet volutpat consequat mauris.
-        Elementum eu facilisis sed odio morbi. Euismod lacinia at quis risus sed
-        vulputate odio. Morbi tincidunt ornare massa eget egestas purus viverra
-        accumsan in. In hendrerit gravida rutrum quisque non tellus orci ac.
-        Pellentesque nec nam aliquam sem et tortor. Habitant morbi tristique
-        senectus et. Adipiscing elit duis tristique sollicitudin nibh sit.
-        Ornare aenean euismod elementum nisi quis eleifend. Commodo viverra
-        maecenas accumsan lacus vel facilisis. Nulla posuere sollicitudin
-        aliquam ultrices sagittis orci a.
-      </Typography>
-      */}
-    </Box>
+            <Typography
+              p={1}
+              suppressContentEditableWarning={true}
+              contentEditable={isEditable}
+              onInput={(e) => setAboutMe(e.currentTarget.textContent)}
+            >
+              {user?.about_me}
+            </Typography>
+          </Box>
+
+          <Box sx={{ minWidth: "50%", ml: 2 }}>
+            <Typography color="text.secondary" variant="h6">
+              My Favorites
+            </Typography>
+
+            {Object.keys(favorite)?.map((key) => {
+              console.log(key);
+              return (
+                <Chip
+                  sx={{ m: "2px" }}
+                  label={
+                    <Typography fontSize="small">
+                      {favorite[key]?.learningSpace?.tag}
+                    </Typography>
+                  }
+                />
+              );
+            })}
+          </Box>
+        </Stack>
+      </Stack>
+
+      <input
+        type="file"
+        ref={ref}
+        onChange={onSelectFile}
+        style={{ display: "none" }}
+        accept=".jpg,.jpeg,.png"
+      />
+    </>
   );
 }

@@ -12,7 +12,6 @@ import {
   Paper,
 } from "@mui/material";
 import { useRouter } from "next/router";
-import Link from "next/link";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { LineAxisOutlined } from "@mui/icons-material";
@@ -32,10 +31,6 @@ export default function SignUp() {
   const [email, setEmail] = useState("");
 
   function handleSubmit(event) {
-    console.log("username: " + username);
-    console.log("password: " + password);
-    console.log("email: " + email);
-
     fetch("http://3.89.218.253:8000/app/register/", {
       method: "POST",
       headers: {
@@ -91,17 +86,14 @@ export default function SignUp() {
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           <TextField
             margin="normal"
-            required
             fullWidth
             id="username"
             label="Username"
             name="username"
-            autoFocus
             onChange={(e) => setUsername(e.target.value)}
           />
           <TextField
             margin="normal"
-            required
             fullWidth
             name="email"
             label="Email"
@@ -111,7 +103,6 @@ export default function SignUp() {
           />
           <TextField
             margin="normal"
-            required
             fullWidth
             name="password"
             label="Password"

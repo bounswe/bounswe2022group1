@@ -6,33 +6,26 @@ import {
   FormControlLabel,
   Checkbox,
   Button,
+  Link,
   Grid,
   Paper,
 } from "@mui/material";
 import { useRouter } from "next/router";
-import Link from "next/link";
+import NextLink from "next/link";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import axios from "../../utils/axios";
+import { useSnackbar } from "notistack";
 
 export default function Login() {
   const { login } = useContext(AuthContext);
+  const { enqueueSnackbar } = useSnackbar();
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
 
   function handleSubmit(event) {
-    /** Axios'u kullanmak için backende CORS ayarı yapılması lazım !!! */
-
-    // axios
-    //   .post("/login", { username, password })
-    //   .then((response) => {
-    //     login(username, response.data.data);
-    //     router.push("/profile");
-    //   })
-    //   .catch((err) => console.log(err));
-
     fetch("http://3.89.218.253:8000/app/login/", {
       method: "POST",
       headers: {
@@ -43,20 +36,20 @@ export default function Login() {
         password: password,
       }),
     })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        if (data.token) {
-          login(username, data.token);
-          router.push("/profile");
-          return;
-        } else {
-          alert("Failed with status code " + data.status);
-        }
+      .then((response) => {
+        if (response.ok) return response.json();
+        throw new Error(response.statusText);
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .then((data) => {
+        login(username, data.token);
+        router.push("/profile");
+      })
+      .catch((error) =>
+        enqueueSnackbar(error.message || "Something went wrong", {
+          variant: "error",
+        })
+      );
+
     event.preventDefault();
   }
 
@@ -69,30 +62,22 @@ export default function Login() {
           marginTop: 15,
         }}
       >
-        <Typography
-          fontWeight="bold"
-          textAlign="center"
-          component="h1"
-          variant="h5"
-        >
-          Sign in
+        <Typography fontWeight="bold" textAlign="center" variant="h5">
+          Sign In
         </Typography>
 
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           <TextField
             margin="normal"
-            required
             fullWidth
             label="Username"
             name="username"
-            autoFocus
             onChange={(e) => {
               setUsername(e.target.value);
             }}
           />
           <TextField
             margin="normal"
-            required
             fullWidth
             name="password"
             label="Password"
@@ -106,25 +91,30 @@ export default function Login() {
             label="Remember me"
           />
           <Button
-            type="submit"
             fullWidth
+            type="submit"
             variant="contained"
             sx={{ mt: 3, mb: 5 }}
           >
             Sign In
           </Button>
-          <Grid container>
-            <Grid item xs>
-              <Link href="/forgot-password" variant="body2">
-                Forgot password?
-              </Link>
-            </Grid>
-            <Grid item>
-              <Link href="signup" variant="body2">
-                {"Don't have an account? Sign Up"}
-              </Link>
-            </Grid>
-          </Grid>
+          <Box display="flex" justifyContent="space-between" mt={1}>
+            <Link
+              component={NextLink}
+              href="/forgot-password"
+              sx={{ textDecoration: "none" }}
+            >
+              <Typography>Forgot password?</Typography>
+            </Link>
+
+            <Link
+              href="/signup"
+              component={NextLink}
+              sx={{ textDecoration: "none" }}
+            >
+              <Typography>Don't have an account? Sign Up</Typography>
+            </Link>
+          </Box>
         </Box>
       </Paper>
     </Box>

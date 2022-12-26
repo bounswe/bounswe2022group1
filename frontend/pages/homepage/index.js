@@ -20,9 +20,12 @@ import { AuthContext } from "../../contexts/AuthContext";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 // axios
 import axios from "../../utils/axios";
+import SearchBar from "../../components/homepage/SearchBar";
+import { useSnackbar } from "notistack";
+import Login from "../login";
 
 export default function Homepage() {
-  const { user } = useContext(AuthContext);
+  const { user, isAuthenticated } = useContext(AuthContext);
 
   const [forumList, setForumList] = useState([]);
 
@@ -34,34 +37,51 @@ export default function Homepage() {
 
   const [error, setError] = useState(false);
 
+  const { enqueueSnackbar } = useSnackbar();
+
   const router = useRouter();
 
-  const getForumList = async () => {
-    const response = await fetch(
-      "http://3.89.218.253:8000/app/learning-space-list/",
-      {
-        method: "GET",
-        headers: {
-          "content-type": "application/json",
-          Authorization: "Token " + localStorage.getItem("token"),
-        },
-      }
-    )
-      .then((response) => response.json())
+  const getForumList = () => {
+    fetch("http://3.89.218.253:8000/app/learning-space-list/", {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+        Authorization: "Token " + localStorage.getItem("token"),
+      },
+    })
+      .then((response) => {
+        if (response.ok) return response.json();
+        throw new Error(response.statusText);
+      })
       .then((data) => {
         setForumList(data.data);
-      });
+      })
+      .catch((error) => console.log(error));
   };
 
   function handleSubmit(event) {
     if (tag && name) {
-      /** Axios kullanmak için backendde CORS yapılandırması yapılması lazım ... */
-      /** https://stackoverflow.com/questions/35760943/how-can-i-enable-cors-on-django-rest-framework */
-      axios
-        .post("/learning-space", { name, tag })
-        .then(() => router.push("/homepage"))
-        .catch((err) => console.log(err));
-      handleCloseModal();
+      fetch("http://3.89.218.253:8000/app/learning-space/", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          Authorization: "Token " + localStorage.getItem("token"),
+        },
+        body: JSON.stringify({ name, tag }),
+      })
+        .then((response) => {
+          if (response.ok) return response.json();
+          throw new Error(response.statusText);
+        })
+        .then((data) => {
+          setForumList([...forumList, data]);
+        })
+        .catch((error) =>
+          enqueueSnackbar(error.message || "Something went wrong", {
+            variant: "error",
+          })
+        )
+        .finally(() => handleCloseModal());
     } else {
       setError(true);
     }
@@ -87,8 +107,13 @@ export default function Homepage() {
   };
 
   useEffect(() => {
+    if (!isAuthenticated) return;
     getForumList();
-  }, []);
+  }, [isAuthenticated]);
+
+  if (!isAuthenticated) {
+    return <Login />;
+  }
 
   return (
     <Container
@@ -97,25 +122,21 @@ export default function Homepage() {
         //background: "#dae7fb",
       }}
     >
-      <Box sx={{ padding: 2, marginTop: 15 }}>
-        <Stack flexDirection="row">
-          <Box flexGrow={0.25}>
-            <TextField
-              fullWidth
-              onChange={handleSearch}
-              label="Search for Tag"
-            />
-          </Box>
+      <Box
+        sx={{
+          padding: 2,
+          mt: "20px",
+          marginTop: 10,
+        }}
+      >
+        <SearchBar
+          handleOpenModal={handleOpenModal}
+          handleSearch={handleSearch}
+        />
 
-          <Box flexGrow={1} />
-
-          <IconButton color="primary" size="large" onClick={handleOpenModal}>
-            <AddCircleIcon fontSize="inherit" />
-          </IconButton>
-        </Stack>
-
-        <Forum forumList={forumList} sx={{ marginTop: 2 }} />
-
+        {forumList.length > 0 && (
+          <Forum forumList={forumList} sx={{ marginTop: 2 }} />
+        )}
         <Footer title="BUDEMI" description="a company of bogazici university" />
       </Box>
       <Dialog open={openModal} fullWidth onClose={handleCloseModal}>
