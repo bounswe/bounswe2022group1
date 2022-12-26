@@ -7,6 +7,7 @@ import {
   CardContent,
   Grid,
   CardMedia,
+  Link,
 } from "@mui/material";
 import Image from "next/image";
 
@@ -39,7 +40,7 @@ export default function Forum({ forumList, sx }) {
                 </Typography>
               </CardContent>
               <CardActions>
-                <Button size="small">View</Button>
+                <Button size="small" component={Link} href={`/detail/${data?.id}`}>View</Button>
                 <Button size="small">Learn More</Button>
               </CardActions>
             </Card>
