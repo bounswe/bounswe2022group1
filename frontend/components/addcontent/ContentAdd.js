@@ -26,6 +26,7 @@ function ContentAdd({routerQuery}) {
       body: JSON.stringify({
         name: name,
         type: "text",
+        url: "xxx",
         text: text,
         learningSpace: routerQuery.id,
       }),

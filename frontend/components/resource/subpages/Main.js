@@ -95,6 +95,7 @@ export default function Main() {
         `http://3.89.218.253:8000/app/content/`,
         {
           id: id,
+          url: "xxx",
           upVoteCount: resource.upVoteCount + 1,
         },
         {
