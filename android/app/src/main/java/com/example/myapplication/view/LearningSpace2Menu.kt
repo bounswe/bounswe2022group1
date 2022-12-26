@@ -134,16 +134,15 @@ class LearningSpace2Menu : AppCompatActivity() {
                 learningSpace= learningSpaceID
             )
 
-            Toast.makeText(this, learningSpaceID.toString(), Toast.LENGTH_SHORT).show()
             val apiService = learningSpace2_remove_fav_api_call()
             apiService.removeFavorite (userInfo) {
-                Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
-
+                Log.d("unfav",it.toString())
                 if(it!=null){
                     addfavorite_image.setImageResource(R.drawable.add_fav)
                     addfavorite_button.setText("Add Favorite")
                 }
                 else{
+
                     Log.d("api call to remove fav","failed!")
                 }
             }
