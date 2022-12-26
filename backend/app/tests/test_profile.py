@@ -54,5 +54,26 @@ class ProfileTest(APITestCase):
         self.assertEqual(response.data['image'], 'imagestring')
         print("Test: profile get method test is passed ")
     
+    def test_patch_learning_space(self):
+        url = reverse('profile')
+        data = {
+            "about_me": 'student',
+            "image": "imagestring",
+        }
+        response = self.client.post(url, data, format='json')
+        id = response.data['id']
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+
+        url = reverse('profile')
+        data = {
+           
+            "image": "imagestring1",
+        }
+        response = self.client.patch(url, data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data['about_me'], 'student')
+        self.assertEqual(response.data['image'], 'imagestring1')
+        print("Test: profile patch method test is passed ")
+    
     
     
