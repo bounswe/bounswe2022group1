@@ -8,6 +8,7 @@ import {Container} from "@mui/material";
 const DetailPage = () => {
   const [space, setSpace] = useState(null);
   const [content, setContent] = useState(null);
+  const [fav, setFav] = useState(null);
   const router = useRouter();
 
   useEffect(() => {
@@ -28,8 +29,16 @@ const DetailPage = () => {
       });
       setContent(res.data.data);
     };
+    const getFavList = async () => {
+      const baseURL = `http://3.89.218.253:8000/app/favorite/?user=6`;
+      const res = await axios.get(baseURL, {
+        headers: { Authorization: `token ${localStorage.getItem("token")}` },
+      });
+      setFav(res.data.data);
+    };
     getContentList();
     getSpace();
+    getFavList();
   }, [router]);
 
   return (
@@ -40,7 +49,7 @@ const DetailPage = () => {
       background: "#dae7fb",
     }}
   >
-    <DetailInfoPage space={space} content={content}/>
+    <DetailInfoPage space={space} content={content} fav={fav}/>
      </Container>
     </div>
 
