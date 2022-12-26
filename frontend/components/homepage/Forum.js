@@ -6,41 +6,53 @@ import {
   Button,
   CardContent,
   Grid,
+  Chip,
+  Link,
   CardMedia,
 } from "@mui/material";
-import Image from "next/image";
+import NextLink from "next/link";
+
+function getRandomColor(index) {
+  const colors = [
+    "success",
+    "primary",
+    "secondary",
+    "info",
+    "error",
+    "warning",
+  ];
+
+  return colors[index % colors.length];
+}
 
 export default function Forum({ forumList, sx }) {
   return (
     <Box sx={sx}>
-      <Grid container spacing={2} flexDirection="row" justifyContent="center">
+      <Grid container spacing={2} flexDirection="row">
         {forumList?.map((data, index) => (
-          <Grid item xs={3} key={index}>
+          <Grid item xs={4} key={index}>
             <Card sx={{ boxShadow: 10 }}>
-              <CardMedia component="image">
-                <Image
-                  height={150}
-                  width={250}
-                  src={"https://picsum.photos/200/300/?blur"}
-                  loader={() => "https://picsum.photos/200/300/?blur"}
-                  alt={data?.name}
-                />
-              </CardMedia>
+              <CardMedia component="image"></CardMedia>
               <CardContent>
                 <Typography
+                  gutterBottom
                   variant="h6"
                   component="div"
+                  // textAlign="center"
                   sx={{ textTransform: "capitalize" }}
                 >
                   {data?.name}
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {data?.tag}
-                </Typography>
+                <Chip color={getRandomColor(index)} label={data?.tag} />
               </CardContent>
               <CardActions>
-                <Button size="small">View</Button>
-                <Button size="small">Learn More</Button>
+                <Link
+                  href="#"
+                  component={NextLink}
+                  sx={{ textDecoration: "none", ml: 2 }}
+                >
+                  <Typography>View</Typography>
+                </Link>
               </CardActions>
             </Card>
           </Grid>
