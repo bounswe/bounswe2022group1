@@ -58,6 +58,7 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         initID_Name()
+        learningSpaceID = -1
         val context1 = this
         Log.d("user_token", user_token)
 
