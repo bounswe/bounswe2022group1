@@ -1,26 +1,14 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import DetailInfoPage from "../../components/detail/DetailInfoPage";
 import { useRouter } from "next/router";
-import { Button } from "@mui/material";
-
-const handleJoin = (spid) => {
-  axios.post(`http://3.89.218.253:8000/app/enroll/`, {
-      learning_space_id: spid,
-      },{headers: {
-          'Authorization': `token ${localStorage.getItem("token")}`
-      }})
-      .then((response) => {
-          console.log(response.data);
-    alert("Successfully enrolled "+response.data.name+" for user "+localStorage.getItem("user"));
-      }, (error) => {
-          console.log(error);
-   });
-}
+import {Container} from "@mui/material";
 
 
 const DetailPage = () => {
   const [space, setSpace] = useState(null);
+  const [content, setContent] = useState(null);
+  const [fav, setFav] = useState(null);
   const router = useRouter();
 
   useEffect(() => {
@@ -34,15 +22,37 @@ const DetailPage = () => {
       });
       setSpace(res.data);
     };
+    const getContentList = async () => {
+      const baseURL = `http://3.89.218.253:8000/app/content-list/?learning_space_id=${id}`;
+      const res = await axios.get(baseURL, {
+        headers: { Authorization: `token ${localStorage.getItem("token")}` },
+      });
+      setContent(res.data.data);
+    };
+    const getFavList = async () => {
+      const baseURL = `http://3.89.218.253:8000/app/favorite/`;
+      const res = await axios.get(baseURL, {
+        headers: { Authorization: `token ${localStorage.getItem("token")}` },
+      });
+      setFav(res.data.data);
+    };
+    getContentList();
     getSpace();
+    getFavList();
   }, [router]);
 
   return (
-    <>
-      <div>
-        <DetailInfoPage space={space}/>
-      </div>
-    </>
+    <div>
+    <Container
+    sx={{
+      borderRadius: "16px",
+      background: "#dae7fb",
+    }}
+  >
+    <DetailInfoPage space={space} content={content} fav={fav}/>
+     </Container>
+    </div>
+
   );
 };
 
