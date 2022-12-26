@@ -3,6 +3,7 @@ package com.example.myapplication.service
 
 import com.example.myapplication.model.profile_edit_post_send_model
 import com.example.myapplication.model.profile_edit_post_receive_model
+import com.example.myapplication.view.user_token
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -13,7 +14,7 @@ class profile_edit_api_call {
 
         val retrofit = ServiceBuilder.buildService(profile_edit_api::class.java)
 
-        retrofit.createProfile(userData).enqueue(
+        retrofit.createProfile("Token "+ user_token, userData).enqueue(
             object : Callback<profile_edit_post_receive_model> {
                 override fun onResponse(
                     call: Call<profile_edit_post_receive_model>,
