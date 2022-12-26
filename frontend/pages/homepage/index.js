@@ -94,7 +94,7 @@ export default function Homepage() {
     <Container
       sx={{
         borderRadius: "16px",
-        background: "#dae7fb",
+        //background: "#dae7fb",
       }}
     >
       <Box sx={{ padding: 2, marginTop: 15 }}>

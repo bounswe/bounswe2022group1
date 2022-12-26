@@ -1,23 +1,20 @@
 import React, { useState } from "react";
-import {
-  Box,
-  TextField,
-  Typography,
-  FormControlLabel,
-  Checkbox,
-  Button,
-  Grid,
-} from "@mui/material";
+import { Box, TextField, Typography, Button, Grid } from "@mui/material";
 import { useRouter } from "next/router";
-import Link from "next/link";
-import { useContext } from "react";
+import "@uiw/react-md-editor/markdown-editor.css";
+import "@uiw/react-markdown-preview/markdown.css";
+import dynamic from "next/dynamic";
 
-function ContentAdd({routerQuery, typeSent}) {
+const MDEditor = dynamic(
+  () => import("@uiw/react-md-editor").then((mod) => mod.default),
+  { ssr: false }
+);
+
+function ContentAdd({routerQuery}) {
   const router = useRouter();
 
   const [name, setName] = useState("");
   const [text, setText] = useState("");
-  const [url, setUrl] = useState("");
 
   function handleText(event) {
     fetch("http://3.89.218.253:8000/app/content/", {
@@ -28,14 +25,13 @@ function ContentAdd({routerQuery, typeSent}) {
       },
       body: JSON.stringify({
         name: name,
-        type: typeSent,
+        type: "text",
         text: text,
         learningSpace: routerQuery.id,
       }),
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
       })
       .catch((err) => {
         console.log(err);
@@ -44,33 +40,12 @@ function ContentAdd({routerQuery, typeSent}) {
     router.push(`/detail/${routerQuery.id}`);
   }
 
-  function handleUrl(event) {
-    fetch("http://3.89.218.253:8000/app/content/", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        'Authorization': `token ${localStorage.getItem("token")}`,
-      },
-      body: JSON.stringify({
-        name: name,
-        type: typeSent,
-        url: url,
-        learningSpace: routerQuery.id,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    event.preventDefault();
-    router.push(`/detail/${routerQuery.id}`);
-  }
+
+
 
   return (
-    <Box display="flex" justifyContent="center">
+    <Grid>
+    <Box>
       <Box
         sx={{
           padding: 6,
@@ -85,86 +60,48 @@ function ContentAdd({routerQuery, typeSent}) {
           component="h1"
           variant="h5"
         >
-          Add {typeSent} Content
+          Add Resource
         </Typography>
 
-
-        {typeSent==="text" || typeSent==="meeting" ? 
         <Box component="form" onSubmit={handleText} noValidate sx={{ mt: 1 }}>
-        <TextField
-          margin="normal"
-          required
-          fullWidth
-          id="name"
-          label="Name"
-          name="name"
-          autoFocus
-          onChange={(e) => {
-            setName(e.target.value);
-          }}
-        />
-        <TextField
-                margin="normal"
-                required
-                fullWidth
-                name="text"
-                label="Text"
-                id="text"
-                onChange={(e) => {
-                  setText(e.target.value);
-                }}
-              />
-              <Button
-            type="submit"
+          <TextField
+            margin="normal"
+            required
             fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2, borderRadius: "16px" }}
-          >
-            Add {typeSent} Content
-          </Button>
-        </Box>
-        : 
-        typeSent==="image" || typeSent==="video" ? 
-        <Box component="form" onSubmit={handleUrl} noValidate sx={{ mt: 1 }}>
-        <TextField
-          margin="normal"
-          required
-          fullWidth
-          id="name"
-          label="Name"
-          name="name"
-          autoFocus
-          onChange={(e) => {
-            setName(e.target.value);
-          }}
-        />
-        <TextField
-                margin="normal"
-                required
-                fullWidth
-                name="url"
-                label="Url"
-                id="url"
-                onChange={(e) => {
-                  setUrl(e.target.value);
-                }}
-              />
-              <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2, borderRadius: "16px" }}
-          >
-            Add {typeSent} Content
-          </Button>
-        </Box>
-        : console.log("")
-        }
+            id="name"
+            label="Name"
+            name="name"
+            autoFocus
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
+          />
 
-        
+           <div data-color-mode="light">
+           <hr/>
+           <Typography
+          component="h2"
+          variant="h6"
+        >
+          Text
+        </Typography>
+          <MDEditor height={500} value={text} onChange={(e) => {
+              setText(e);
+            }} />
+          </div>
+          <hr/>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2, borderRadius: "16px" }}
+          >
+            Add Resource
+          </Button>
+        </Box>
       </Box>
     </Box>
-
+  </Grid>
   );
 }
 

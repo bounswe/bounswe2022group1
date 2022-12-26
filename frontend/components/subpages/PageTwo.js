@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Typography, Container, Box, Divider } from "@mui/material";
+import { Typography, Container, Box, Divider, Paper } from "@mui/material";
 import { AuthContext } from "../../contexts/AuthContext";
 import React, { useState } from "react";
 import { useRouter } from "next/router";
@@ -46,9 +46,9 @@ export default function PageTwo() {
   }
 
   return (
-    <Box>
+    <Box sx={{ pl: 4, pr: 4 }}>
       <Typography mb={2} variant="h4" textAlign="center">
-        {`Welcome ${user}`}
+        {`Change Password`}
       </Typography>
 
       <Typography
@@ -58,7 +58,6 @@ export default function PageTwo() {
         textAlign="center"
       ></Typography>
 
-      <Divider />
       <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
         <TextField
           margin="normal"

@@ -12,7 +12,6 @@ import {
 import { format } from "date-fns";
 import { AuthContext } from "../../../contexts/AuthContext";
 import React, { useState, useEffect, useCallback } from "react";
-import { Routes, Route, useParams } from "react-router-dom";
 import axios from "axios";
 import { useRouter } from "next/router";
 import ReactMarkdown from "react-markdown";

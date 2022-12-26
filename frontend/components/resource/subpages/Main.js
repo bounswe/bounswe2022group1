@@ -214,6 +214,7 @@ export default function Main() {
         <Divider />
        
         { showEdit ? <Button>Edit</Button> : null }
+
       </Box>
       <Box>
         <Typography mb={2} variant="h6" textAlign="center">

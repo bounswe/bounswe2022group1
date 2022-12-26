@@ -1,23 +1,43 @@
 import * as React from "react";
-import CssBaseline from "@mui/material/CssBaseline";
-import Grid from "@mui/material/Grid";
-import Container from "@mui/material/Container";
-import Footer from "./Footer";
-import { Typography } from "@mui/material";
-import Button from "@mui/material/Button";
+import {
+	Grid,
+	Box,
+	Card,
+  Container,
+	CircularProgress,
+} from '@mui/material';
 import DetailMain from "./DetailMain";
+import DetailContributors from "./DetailContributors";
 
-export default function DetailInfoPage({ space }) {
+export default function DetailInfoPage({ space, content, fav }) {
+  if (!space)
   return (
-    <Container sx={{ marginTop: 12 }}>
+    <Grid>
+      <Box
+        variant="body2"
+        display="flex"
+        justifyContent="center"
+      >
+        <Card>
+          <CircularProgress />
+        </Card>
+      </Box>
+    </Grid>
+  );
+
+  return (
+    <Container sx={{borderRadius: "16px",background: "#dae7fb", marginTop: 15}}>
       <Grid container maxWidth="lg" spacing={2} columns={12}>
 
         <Grid item xs={12}>
-          <DetailMain space={space} />
+          <DetailMain space={space} content={content} fav={fav}/>
         </Grid>
+        <Grid item xs={12}>
+          <DetailContributors space={space} />
+        </Grid>
+        
       </Grid>
-
-      <Footer title="BUDEMI" description="a company of bogazici university" />
+    
     </Container>
   );
 }
