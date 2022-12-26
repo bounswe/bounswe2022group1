@@ -58,7 +58,6 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         initID_Name()
-
         val context1 = this
         Log.d("user_token", user_token)
 
@@ -73,7 +72,7 @@ class HomeActivity : AppCompatActivity() {
             searchView.clearFocus()
         }
 
-        names = arrayOf("Osman", "fehmi")
+        names = arrayOf()
         navMenuHandler()
 
         var names = ArrayList<String>()
@@ -109,6 +108,27 @@ class HomeActivity : AppCompatActivity() {
                     mutableListOf(),
                     context
                 )
+                val indicator = findViewById<CircleIndicator3>(R.id.indicator)
+                indicator.setViewPager(view_pager2)
+                view_pager2.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
+                    override fun onPageScrolled(
+                        position: Int,
+                        positionOffset: Float,
+                        positionOffsetPixels: Int
+                    ) {
+                        super.onPageScrolled(position, positionOffset, positionOffsetPixels)
+                    }
+
+                    override fun onPageSelected(position: Int) {
+                        super.onPageSelected(position)
+                    }
+
+                    override fun onPageScrollStateChanged(state: Int) {
+                        super.onPageScrollStateChanged(state)
+                    }
+                })
+                ShowContributorsAndTopics()
+
             }
             else {
                 view_pager2.adapter = HomeViewPager(names, descs, creators, ids, membersList, context)
@@ -175,6 +195,7 @@ class HomeActivity : AppCompatActivity() {
                 setContributorsAndTopics()
             }
             else{ // showing contributors is unsucess
+                setContributorsAndTopics()
 
             }
 
@@ -183,7 +204,6 @@ class HomeActivity : AppCompatActivity() {
 
     fun setContributorsAndTopics(){
         val namesListView = findViewById<ListView>(R.id.resources)
-
         if(names.size == 0) {
             var namesAdapter: ArrayAdapter<String> = ArrayAdapter(
                 this, R.layout.adapter_background, listOf("There are no resource")
