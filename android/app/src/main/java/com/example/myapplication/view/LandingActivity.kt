@@ -19,7 +19,6 @@ class LandingActivity : AppCompatActivity() {
     private var descList = mutableListOf<String>()
     private var imagesList = mutableListOf<Int>()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_landing)
@@ -33,7 +32,6 @@ class LandingActivity : AppCompatActivity() {
 
         val indicator = findViewById<CircleIndicator3>(R.id.indicator)
         indicator.setViewPager(view_pager2)
-
     }
 
     fun go_to_login_page(view: View) {

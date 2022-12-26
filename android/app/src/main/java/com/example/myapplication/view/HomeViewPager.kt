@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.model.ls_members
 
-class HomeViewPager(private var names: List<String>, private var descs: List<String>, private var creators: List<String>, private var ids: List<Int>, private var members: MutableList<ls_members>, private var context: Context) : RecyclerView.Adapter<HomeViewPager.Pager2ViewHolder>() {
+class HomeViewPager(private var names: List<String>, private var descs: List<String>, private var creators: List<String>, private var ids: List<Int>, private var members: MutableList<MutableList<ls_members>>, private var context: Context) : RecyclerView.Adapter<HomeViewPager.Pager2ViewHolder>() {
 
     inner class Pager2ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -26,7 +26,7 @@ class HomeViewPager(private var names: List<String>, private var descs: List<Str
                 val position = adapterPosition
                 learningSpaceNAME = names[position].toString()
                 learningSpaceID = ids[position]
-                learningSpaceMEMBERS = members
+                learningSpaceMEMBERS = members[position]
 
                 var intent= Intent(context, LearningSpace2Menu::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

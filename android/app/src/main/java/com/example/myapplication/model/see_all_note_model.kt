@@ -2,7 +2,7 @@ package com.example.myapplication.model
 
 import com.google.gson.annotations.SerializedName
 
-data class note_model(
+data class see_all_note_model(
     @SerializedName("id")
     val id:Int,
     @SerializedName("content")

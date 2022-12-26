@@ -8,15 +8,18 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Base64
 import android.util.Log
+import android.view.MenuItem
 import android.view.View
 import android.widget.*
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.drawerlayout.widget.DrawerLayout
 import com.example.myapplication.R
 import com.example.myapplication.model.ls_list_element
 import com.example.myapplication.model.ls_members
-import com.example.myapplication.service.learningSpace2ListEveryLearningSpace_api_call
-import com.example.myapplication.service.ls_by_tag_call
-import com.example.myapplication.service.profile_see_api_call
+import com.example.myapplication.service.*
+import com.google.android.material.navigation.NavigationView
 import java.io.File
 import java.io.FileOutputStream
 import java.util.concurrent.Executors
@@ -72,30 +75,44 @@ class ProfilePageActivity : AppCompatActivity() {
 
     }
 
+    private lateinit var toggle: ActionBarDrawerToggle
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profilepage)
 
-
-
+        navMenuHandler()
 
         val apiService = profile_see_api_call()
         apiService.getProfile("Token " + user_token) {
-            var _about_me = findViewById(R.id.seeAboutMe) as TextView
-            _about_me.text=it?.about_me
+            if(it == null) {
+                editProfileButton()
+            }
+            else {
+                //Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
+                var _about_me = findViewById(R.id.seeAboutMe) as TextView
+                _about_me.text=it?.about_me
 
-            var hello_message = findViewById(R.id.hello_message) as TextView
-            hello_message.text="Hello, "+it?.user?.username
+                var hello_message = findViewById(R.id.hello_message) as TextView
+                hello_message.text="Hello, "+ user_name
 
-            var _email = findViewById(R.id.seeEmail) as TextView
-            _email.text=it?.user?.email
+                val apiService2 = user_from_id_api_call()
+                apiService2.userFromID(it?.user!!) {
+                    var _email = findViewById(R.id.seeEmail) as TextView
+                    _email.text=it?.email
+                }
 
 
-            var user_id = findViewById(R.id.seeID) as TextView
-            user_id.text=it?.user?.id.toString()
 
-            init_image("http://3.89.218.253:8000/"+it?.image.toString())
-            Log.d("omer_baba",it?.image.toString())
+                var user_id = findViewById(R.id.seeID) as TextView
+                user_id.text=it?.user.toString()
+
+                val imageView = findViewById<ImageView>(R.id.imageView)
+                var outBytes = Base64.decode(it?.image, Base64.DEFAULT)
+                var bitmap2 = BitmapFactory.decodeByteArray(outBytes,0, outBytes.size)
+                imageView.setImageBitmap(bitmap2)
+
+                //init_image("http://3.89.218.253:8000/"+it?.image.toString())
+                Log.d("omer_baba",it?.image.toString())
 
                 enroll_list= mutableListOf<String>()
                 enroll_list.add("Click to see")
@@ -112,46 +129,44 @@ class ProfilePageActivity : AppCompatActivity() {
 
                 enrollListView.adapter = enrollAdapter
 
-            enrollListView.setSelection(0)
-            enrollListView.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                enrollListView.setSelection(0)
+                enrollListView.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
 
-                override fun onNothingSelected(parent: AdapterView<*>?) {
+                    override fun onNothingSelected(parent: AdapterView<*>?) {
 
-                }
+                    }
 
-                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
 
-                    var space_name=enrollListView.selectedItem.toString()
-                    if(!space_name.equals(enroll_list.get(0))){
-                        learningSpaceID = learningSpaceName_ID[space_name]!!
-                        learningSpaceNAME = space_name
+                        var space_name=enrollListView.selectedItem.toString()
+                        if(!space_name.equals(enroll_list.get(0))){
+                            learningSpaceID = learningSpaceName_ID[space_name]!!
+                            learningSpaceNAME = space_name
 
-                        val apiService =learningSpace2ListEveryLearningSpace_api_call()
-                        learningSpaceMEMBERS.clear()
-                        apiService.listEverySpace  {
-                            it?.data?.forEach{
-                                if(it.id== learningSpaceID){
-                                    it.members.forEach {
-                                        learningSpaceMEMBERS.add(it)
+                            val apiService =learningSpace2ListEveryLearningSpace_api_call()
+                            learningSpaceMEMBERS.clear()
+                            apiService.listEverySpace  {
+                                it?.data?.forEach{
+                                    if(it.id== learningSpaceID){
+                                        it.members.forEach {
+                                            learningSpaceMEMBERS.add(it)
+                                        }
                                     }
                                 }
-                            }
 
+                            }
+                            goToLearningSpace2()
                         }
-                        goToLearningSpace2()
+
                     }
 
                 }
-
             }
 
 
-        }
 
 
-        val profileEditButtonClicked = findViewById<Button>(R.id.editProfile)
-        profileEditButtonClicked.setOnClickListener{
-            editProfileButton()
+
         }
     }
 
@@ -168,5 +183,75 @@ class ProfilePageActivity : AppCompatActivity() {
     fun toChangePassword(view: View) {
         var intent = Intent(applicationContext, ChangePasswordActivity::class.java)
         startActivity(intent)
+    }
+
+    fun logoffToLanding() {
+        user_token=""
+        var intent= Intent(applicationContext, LandingActivity::class.java)
+        startActivity(intent)
+    }
+    fun toProfile() {
+        var intent= Intent(applicationContext, ProfilePageActivity::class.java)
+        startActivity(intent)
+    }
+    fun goToLearningSpace1() {
+        var intent= Intent(applicationContext, LearningSpace1::class.java)
+        startActivity(intent)
+    }
+
+    fun goToHomePage() {
+        var intent= Intent(applicationContext, HomeActivity::class.java)
+        startActivity(intent)
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(toggle.onOptionsItemSelected(item)) {
+            return true
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    fun navMenuHandler() {
+        val string = findViewById<DrawerLayout>(R.id.drawerLayout)
+        toggle = ActionBarDrawerToggle(this, string, R.string.open, R.string.close)
+
+        string.addDrawerListener(toggle)
+        toggle.syncState()
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        val string2 = findViewById<NavigationView>(R.id.navView)
+
+        string2.setNavigationItemSelectedListener {
+            when(it.itemId) {
+                R.id.profileButton -> toProfile()
+                R.id.miItem1 -> goToHomePage()
+                R.id.miItem2 -> {
+                    selectedTAG = "Art"
+                    goToLearningSpace1()
+                }
+                R.id.miItem3 -> {
+                    selectedTAG = "Science"
+                    goToLearningSpace1()
+                }
+                R.id.miItem4 -> {
+                    selectedTAG = "Math"
+                    goToLearningSpace1()
+                }
+                R.id.miItem5 -> {
+                    selectedTAG = "Technology"
+                    goToLearningSpace1()
+                }
+                R.id.miItem6 -> {
+                    selectedTAG = "Engineering"
+                    goToLearningSpace1()
+                }
+                R.id.signOut -> {
+                    logoffToLanding()
+                }
+            }
+            true
+        }
     }
 }

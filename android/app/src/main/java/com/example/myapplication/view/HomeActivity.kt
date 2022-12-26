@@ -2,27 +2,24 @@
 package com.example.myapplication.view
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
-
+import android.widget.ArrayAdapter
+import android.widget.ListView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.viewpager2.widget.ViewPager2
 import com.example.myapplication.R
-import com.example.myapplication.model.favorite_ls
-import com.example.myapplication.model.ls_list_element
 import com.example.myapplication.model.ls_members
 import com.example.myapplication.service.favorite_ls_call
+import com.example.myapplication.service.learningSpace2GetContentList_api_call
 import com.example.myapplication.service.learningSpace2ListEveryLearningSpace_api_call
-import com.example.myapplication.service.user_from_id_api_call
 import com.google.android.material.navigation.NavigationView
 import me.relex.circleindicator.CircleIndicator3
-import org.w3c.dom.Text
 
 var selectedTAG = ""
 var learningSpaceID_Name=mutableMapOf<Int,String>()
@@ -30,6 +27,12 @@ var learningSpaceName_ID= mutableMapOf<String,Int>()
 
 class HomeActivity : AppCompatActivity() {
 
+    override fun onRestart() {
+        super.onRestart()
+        finish()
+        startActivity(intent)
+    }
+    private lateinit var checkmembers: MutableList<ls_members>
     fun initID_Name(){
 
         val apiService = learningSpace2ListEveryLearningSpace_api_call()
@@ -48,12 +51,14 @@ class HomeActivity : AppCompatActivity() {
     }
 
     lateinit var toggle: ActionBarDrawerToggle
+    private lateinit var names: Array<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         initID_Name()
 
+        val context1 = this
         Log.d("user_token", user_token)
 
         var welcome_text=findViewById<TextView>(R.id.welcome_text)
@@ -67,6 +72,7 @@ class HomeActivity : AppCompatActivity() {
             searchView.clearFocus()
         }
 
+        names = arrayOf("Osman", "fehmi")
         navMenuHandler()
 
         var names = ArrayList<String>()
@@ -74,14 +80,8 @@ class HomeActivity : AppCompatActivity() {
         var creators = ArrayList<String>()
         var ids = ArrayList<Int>()
         var members = mutableListOf<ls_members>()
-        /*
-        names += "Embedded Systems"
-        descs += "Hardware Course"
-        creators += "24.12.2022 by quanex1"
-        names += "omer"
-        descs += "ozde"
-        creators += "213213"
-*/
+        var membersList = mutableListOf<MutableList<ls_members>>()
+        checkmembers = mutableListOf<ls_members>()
         val apiService = favorite_ls_call()
         apiService.favoriteLSpaces("Token " + user_token) {
             it?.data?.forEach {
@@ -91,43 +91,103 @@ class HomeActivity : AppCompatActivity() {
                 ids += it.learningSpace.id
                 it.learningSpace.members.forEach {
                     members.add(it)
+                    checkmembers.add(it)
                 }
-                /*names.put(it.id, it.name)
-                ids.add(it.id)
-                spaceValues.add(it.name)
-
-                var desc = it.description
-                if (it.description == null) {
-                    desc = ""
-                }
-                val element = ls_list_element(
-                    it.name,
-                    desc,
-                    it.created_on.substring(0, 10) + " by ",
-                    it.ls_owner.name
-                )
-                lsArrayList.add(element)
-
-                it.members.forEach { el ->
-                    currentMembers.add(el)
-                }
-                members.add(currentMembers.toMutableList())
-                currentMembers.clear()
-                */
+                membersList.add(members.toMutableList())
+                members.clear()
             }
+
             val view_pager2 = findViewById<ViewPager2>(R.id.viewPager2)
             val context = applicationContext
 
-            view_pager2.adapter = HomeViewPager(names, descs, creators, ids, members, context)
+            view_pager2.adapter = HomeViewPager(names, descs, creators, ids, membersList, context)
             //view_pager2.adapter = ViewPager2.ORIENTATION_HORIZONTAL
 
             val indicator = findViewById<CircleIndicator3>(R.id.indicator)
             indicator.setViewPager(view_pager2)
+            view_pager2.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
+                override fun onPageScrolled(
+                    position: Int,
+                    positionOffset: Float,
+                    positionOffsetPixels: Int
+                ) {
+                    super.onPageScrolled(position, positionOffset, positionOffsetPixels)
+                }
+
+                override fun onPageSelected(position: Int) {
+                    super.onPageSelected(position)
+                    learningSpaceID = ids[position]
+                    learningSpaceMEMBERS = checkmembers
+                    ShowContributorsAndTopics()
+                }
+
+                override fun onPageScrollStateChanged(state: Int) {
+                    super.onPageScrollStateChanged(state)
+                }
+            })
         }
+
+
 
     }
 
+    fun ShowContributorsAndTopics(){
 
+
+        val apiService = learningSpace2GetContentList_api_call()
+        val userInfo = learningSpaceID
+
+        apiService.getContentList(userInfo) {
+
+            if(it?.data!=null){ // success
+                var receivedArr=it?.data
+
+                names= arrayOf<String>()
+                for(i in 0..(receivedArr.size-1)){
+
+                    var owner_name="Ömer Özdemir"
+                    checkmembers.forEach{
+                            l->
+                        if(l.id==receivedArr[i].owner){
+                            owner_name=l.name
+                        }
+                    }
+
+                    names+="Topic: "+receivedArr[i].name.toString()+"\n"+"Owner:"+owner_name+
+                            "   Votes:"+receivedArr[i].upVoteCount+
+                            "\n"
+                    contentID_ContentName.put(i,receivedArr[i].id)
+                }
+
+                setContributorsAndTopics()
+            }
+            else{ // showing contributors is unsucess
+
+            }
+
+        }
+    }
+
+    fun setContributorsAndTopics(){
+        val namesListView = findViewById<ListView>(R.id.resources)
+
+        var namesAdapter: ArrayAdapter<String> = ArrayAdapter(
+            this, R.layout.adapter_background,names
+        )
+
+        namesListView.adapter=namesAdapter
+
+        namesListView.setOnItemClickListener { parent, view, position, id ->
+            goToLearningSpace3(position)
+        }
+    }
+
+    fun goToLearningSpace3(position:Int) {
+        learningSpaceMEMBERS = checkmembers
+        currentContentID = contentID_ContentName[position]!!
+        var intent = Intent(applicationContext, LearningSpace3::class.java)
+        startActivity(intent)
+    }
 
     fun signInToSignIn() {
         var intent= Intent(applicationContext, SignInActivity::class.java)

@@ -14,9 +14,9 @@ data class learningSpace3_patch_content_receive_model(
     @SerializedName("url")
     val url:String,
     @SerializedName("owner")
-    val owner:String,
+    val owner:Int,
     @SerializedName("learningSpace")
-    val learningSpace:String,
+    val learningSpace:Int,
     @SerializedName("upVoteCount")
-    val upVoteCount:String
+    val upVoteCount:Int
 )

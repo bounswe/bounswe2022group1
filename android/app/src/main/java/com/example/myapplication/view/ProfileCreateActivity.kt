@@ -14,10 +14,13 @@ import android.util.Base64
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import com.example.myapplication.R
+import com.example.myapplication.model.profile_edit_post_send_model
+import com.example.myapplication.service.profile_edit_api_call
 import java.io.ByteArrayOutputStream
 
 
@@ -26,6 +29,7 @@ class ProfileCreateActivity : AppCompatActivity() {
     lateinit var pickMedia: ActivityResultLauncher<PickVisualMediaRequest>
     lateinit var imageView: ImageView
     lateinit var imageFinal: String
+    lateinit var about_me: TextView
     // change here for api's - post
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,6 +60,18 @@ class ProfileCreateActivity : AppCompatActivity() {
     fun goToProfile() {
         var intent= Intent(applicationContext, ProfilePageActivity::class.java)
         startActivity(intent)
+    }
+
+    fun editAboutMe(view: View){
+        about_me = findViewById<TextView>(R.id.about_me)
+        var apiService = profile_edit_api_call()
+        var data = profile_edit_post_send_model(
+            about_me = about_me.text.toString(),
+            image = imageFinal
+        )
+        apiService.createProfile(data) {
+            goToProfile()
+        }
     }
 
     fun uploadImg(view: View) {
