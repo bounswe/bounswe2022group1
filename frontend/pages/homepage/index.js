@@ -20,6 +20,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 import axios from "../../utils/axios";
 import SearchBar from "../../components/homepage/SearchBar";
 import { useSnackbar } from "notistack";
+import Login from "../login";
 
 export default function Homepage() {
   const { user, isAuthenticated } = useContext(AuthContext);
@@ -104,19 +105,19 @@ export default function Homepage() {
   };
 
   useEffect(() => {
-    if (!isAuthenticated) {
-      router.push("/login");
-      return;
-    }
+    if (!isAuthenticated) return;
     getForumList();
-  }, []);
+  }, [isAuthenticated]);
+
+  if (!isAuthenticated) {
+    return <Login />;
+  }
 
   return (
     <Container
       sx={{
         borderRadius: "16px",
         background: "#dae7fb",
-        height: "calc(100vh - 120px)",
       }}
     >
       <Box
@@ -130,7 +131,9 @@ export default function Homepage() {
           handleSearch={handleSearch}
         />
 
-        <Forum forumList={forumList} sx={{ marginTop: 2 }} />
+        {forumList.length > 0 && (
+          <Forum forumList={forumList} sx={{ marginTop: 2 }} />
+        )}
       </Box>
 
       <Dialog open={openModal} fullWidth onClose={handleCloseModal}>
