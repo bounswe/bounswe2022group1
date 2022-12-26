@@ -1,3 +1,4 @@
+//This page can be merged
 import { useState } from "react";
 import {
   Box,
@@ -29,9 +30,9 @@ export default function Sidebar({ menus }) {
           <Toolbar>
             <Link component={NextLink} href="/homepage">
               <Image
-                src="/assets/BUdemi.svg"
-                width={200}
-                height={150}
+                src="/assets/budemi logo2.png"
+                width={210}
+                height={70}
                 alt="budemi.svg"
               />
             </Link>
@@ -63,8 +64,9 @@ export default function Sidebar({ menus }) {
         sx={{
           m: 5,
           p: 5,
-          borderRadius: "16px",
-          background: "#dae7fb",
+          marginTop: 15,
+          //borderRadius: "16px",
+          //background: "#dae7fb",
         }}
       >
         {page.page}
