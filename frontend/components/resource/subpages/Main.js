@@ -16,15 +16,14 @@ import { useRef } from "react";
 import { Routes, Route, useParams, renderMatches } from "react-router-dom";
 import axios from "axios";
 import { useRouter } from "next/router";
-import ReactMarkdown from 'react-markdown';
+import ReactMarkdown from "react-markdown";
 import "@recogito/recogito-js/dist/recogito.min.css";
 import "@recogito/annotorious/dist/annotorious.min.css";
 import IconButton from "@mui/material/IconButton";
-import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
-
+import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 
 export default function Main() {
-    const router = useRouter()
+  const router = useRouter();
   const { id } = router.query;
   const [resource, setResource] = useState(null);
   const [comments, setComments] = useState(null);
@@ -33,12 +32,13 @@ export default function Main() {
   const [creator, setCreator] = useState(null);
   const [showEdit, setShowEdit] = useState(false);
 
+  const [annotationsMap, setAnnotationsMap] = useState({});
 
   const handleChange = (event) => {
     setComment(event.target.value);
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const { id } = router.query;
     if (!id) return;
@@ -56,34 +56,37 @@ export default function Main() {
         }
       )
       .then(function (response) {
-        console.log('Success', response);
+        console.log("Success", response);
         // TODO setComments(eski comment + yeni comments)
 
         const getResource = async () => {
           const baseURL = `http://3.89.218.253:8000/app/content/?id=${id}`;
           const res = await axios.get(baseURL, {
-            headers: { Authorization: `token ${localStorage.getItem("token")}` },
+            headers: {
+              Authorization: `token ${localStorage.getItem("token")}`,
+            },
           });
           setResource(res.data);
         };
         const getComments = async () => {
           const baseURL = `http://3.89.218.253:8000/app/discussion-list/?content_id=${id}`;
           const res = await axios.get(baseURL, {
-            headers: { Authorization: `token ${localStorage.getItem("token")}` },
+            headers: {
+              Authorization: `token ${localStorage.getItem("token")}`,
+            },
           });
           setComments(res.data.data);
         };
-        
+
         getResource();
         getComments();
-    })
+      })
       .catch((error) => {
         console.log(error);
       });
   };
 
-
-  const handleUpvote = e => {
+  const handleUpvote = (e) => {
     e.preventDefault();
     const { id } = router.query;
     if (!id) return;
@@ -100,10 +103,11 @@ export default function Main() {
           },
         }
       )
-      .then(function (response) {   //TODO ECE
-        console.log('Success', response);
+      .then(function (response) {
+        //TODO ECE
+        console.log("Success", response);
         setResource(response.data);
-    })
+      })
       .catch((error) => {
         console.log(error);
       });
@@ -141,7 +145,7 @@ export default function Main() {
       });
       const str = `Creator: ${res2.data.username}`;
       setCreator(str);
-      if(res2.data.username == localStorage.getItem("user")){
+      if (res2.data.username == localStorage.getItem("user")) {
         setShowEdit(true);
       }
     };
@@ -151,7 +155,7 @@ export default function Main() {
   }, [router]);
 
   const paraEl = useRef();
-  
+  const imgEl = useRef();
 
   const [reco, setReco] = useState();
   const [anno, setAnno] = useState();
@@ -162,8 +166,12 @@ export default function Main() {
   const [tool, setTool] = useState("rect");
 
   useEffect(() => {
+    const { id } = router.query;
+    if (!id) return;
+
     if (called) return;
     setCalled(true);
+
     import("@recogito/recogito-js").then((mod) => {
       const Recogito = mod.Recogito;
 
@@ -175,46 +183,116 @@ export default function Main() {
       });
 
       r.on("createAnnotation", (annotation) => {
-        console.log(annotation);
+        const baseURL = `http://3.89.218.253:8001/app/annotation/`;
+        axios
+          .post(
+            baseURL,
+            {
+              content_id: id,
+              annotation_string: JSON.stringify(annotation),
+            },
+            {
+              headers: {
+                Authorization: `token ${localStorage.getItem("token")}`,
+              },
+            }
+          )
+          .then((res) => {
+            annotationsMap[annotation.id] = res.data.id;
+          });
       });
+
+      r.on("updateAnnotation", (annotation, previous) => {
+        const baseURL = `http://3.89.218.253:8001/app/annotation/`;
+        axios
+          .patch(
+            baseURL,
+            {
+              content_id: id,
+              id: annotationsMap[previous.id],
+              annotation_string: JSON.stringify(annotation),
+            },
+            {
+              headers: {
+                Authorization: `token ${localStorage.getItem("token")}`,
+              },
+            }
+          )
+          .then((res) => {});
+      });
+
+      r.on("deleteAnnotation", (annotation) => {
+        const baseURL = `http://3.89.218.253:8001/app/delete-annotation/`;
+        axios
+          .post(
+            baseURL,
+            {
+              content_id: id,
+              id: annotationsMap[annotation.id],
+            },
+            {
+              headers: {
+                Authorization: `token ${localStorage.getItem("token")}`,
+              },
+            }
+          )
+          .then((res) => {});
+      });
+
+      const baseURL = `http://3.89.218.253:8001/app/annotation/?content_id=${id}`;
+
+      axios
+        .get(baseURL, {
+          headers: { Authorization: `token ${localStorage.getItem("token")}` },
+        })
+        .then((res) => {
+          res.data.data.forEach((element) => {
+            const annotation_object = JSON.parse(element.annotation_string);
+            r.addAnnotation(annotation_object);
+            annotationsMap[annotation_object.id] = element.id;
+          });
+        });
 
       setReco(r);
     });
 
-  //   import("@recogito/annotorious").then((mod) => {
-  //     const Annotorious = mod.Annotorious;
+    //   import("@recogito/annotorious").then((mod) => {
+    //     const Annotorious = mod.Annotorious;
 
-  //     console.log(mod);
-  //     const a = new Annotorious({ image: imgEl.current });
+    //     console.log(mod);
+    //     const a = new Annotorious({ image: imgEl.current });
 
-  //     a.setAuthInfo({
-  //       id: localStorage.getItem("token"),
-  //       displayName: localStorage.getItem("user"),
-  //     });
-  //   });
-   }, []);
+    //     a.setAuthInfo({
+    //       id: localStorage.getItem("token"),
+    //       displayName: localStorage.getItem("user"),
+    //     });
+    //   });
+  }, [router]);
 
+  useEffect(() => {
+    console.log(resource);
+  }, [resource]);
 
-  
   return (
     <div>
-    <Box>
-    <IconButton aria-label="upvote" color="secondary" onClick={handleUpvote}>
-                  <ThumbUpAltIcon />     Upvotes: {resource?.upVoteCount}
-                </IconButton>
-      <Typography mb={2} variant="h4" textAlign="center">
-        {`${resource?.name}`}
-      </Typography>
-      <Typography
-        mb={2}
-        variant="h5"
-        ref={paraEl}
-      ><ReactMarkdown>{resource?.text}</ReactMarkdown></Typography>
+      <Box>
+        <IconButton
+          aria-label="upvote"
+          color="secondary"
+          onClick={handleUpvote}
+        >
+          <ThumbUpAltIcon /> Upvotes: {resource?.upVoteCount}
+        </IconButton>
+        <Typography mb={2} variant="h4" textAlign="center">
+          {`${resource?.name}`}
+        </Typography>
+        <Typography mb={2} variant="h5" ref={paraEl}>
+          <ReactMarkdown>{resource?.text}</ReactMarkdown>
+        </Typography>
 
         <Divider />
-       
-        { showEdit ? <Button>Edit</Button> : null }
 
+        {showEdit ? <Button>Edit</Button> : null}
       </Box>
       <Box>
         <Typography mb={2} variant="h6" textAlign="center">
