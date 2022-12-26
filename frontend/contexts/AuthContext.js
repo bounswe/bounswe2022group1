@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import axios from "../utils/axios";
 
-export const AuthContext = createContext();
+export const AuthContext = createContext(null);
 
 export default function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
@@ -12,7 +12,7 @@ export default function AuthProvider({ children }) {
     setIsAuthendicated(true);
     if (typeof window != "undefined") {
       localStorage.setItem("token", token);
-
+      localStorage.setItem("user", user);
       axios.defaults.headers.common = { Authorization: `Token ${token}` };
     }
   };

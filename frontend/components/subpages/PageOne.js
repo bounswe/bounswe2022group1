@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import {
   Typography,
   Container,
@@ -6,53 +6,166 @@ import {
   Divider,
   Avatar,
   Card,
+  Input,
+  IconButton,
   Stack,
   Paper,
   Chip,
+  Button,
 } from "@mui/material";
 import { AuthContext } from "../../contexts/AuthContext";
 import axios from "../../utils/axios";
+import { useSnackbar } from "notistack";
+import EditIcon from "@mui/icons-material/Edit";
 
 const tags = [
   "C",
   "C++",
   "Kubernetes",
   "React",
-  "React",
   "Python",
   "C++",
   "Docker",
   "Kubernetes",
   "Python",
   "Docker",
-  "C",
 ];
 
 export default function PageOne() {
-  const { user } = useContext(AuthContext);
+  const ref = useRef();
+
+  const [id, setId] = useState(null);
+
+  const [user, setUser] = useState(null);
+
+  const { enqueueSnackbar } = useSnackbar();
+
+  const { user: userName } = useContext(AuthContext);
+
+  const [isEditable, setIsEditable] = useState(false);
+
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const [aboutMe, setAboutMe] = useState(null);
+
+  const [favorite, setFavorite] = useState({});
+
+  // console.log(favorite);
+
+  const getFileToBase64 = (file) => {
+    return new Promise((resolve) => {
+      let reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        resolve(reader.result);
+      };
+    });
+  };
+
+  const onSelectFile = (e) => {
+    if (!e.target.files.length) return;
+    getFileToBase64(e.target.files[0])
+      .then((result) => {
+        console.log(result);
+        setSelectedFile(result);
+        setUser({ ...user, image: result });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const handleUpdate = () => {
+    axios
+      .patch("/profile/", {
+        about_me: aboutMe,
+        image: selectedFile || user.image,
+      })
+      .then((data) => {
+        enqueueSnackbar("Success ", { variant: "success" });
+      })
+      .catch((err) => console.log(err));
+  };
+
+  useEffect(() => {
+    if (!userName) return;
+    axios
+      .get("/user_id_from_username/?username=" + userName)
+      .then((data) => setId(data.data.id))
+      .catch((err) => console.log(err));
+  }, []);
+
+  useEffect(() => {
+    if (!id) return;
+    axios
+      .get("/profile/?user_id=" + id)
+      .then((data) => {
+        console.log(data.data);
+        setUser(data.data);
+        setAboutMe(data.data.about_me);
+      })
+      .catch((err) => console.log(err));
+    axios
+      .get("/favorite/?user=" + id)
+      .then((data) => {
+        setFavorite(data.data.data);
+      })
+      .catch((err) => console.log(err));
+  }, [id]);
 
   return (
-    <Box>
+    <>
       <Stack
         spacing={1}
         component={Paper}
         sx={{ borderRadius: 6, p: 2, flexDirection: "column" }}
       >
-        <Avatar sx={{ alignSelf: "center" }} />
-        <Typography textAlign="center">Kadir Gökhan Sezer</Typography>
+        <Stack>
+          <Avatar
+            sx={{ alignSelf: "center" }}
+            src={user?.image}
+            onClick={() => ref.current?.click()}
+          />
+          <Typography mt={1} textAlign="center">
+            {userName}
+          </Typography>
+          <Button
+            size="small"
+            color="info"
+            variant="contained"
+            onClick={handleUpdate}
+            sx={{ alignSelf: "end" }}
+          >
+            Update
+          </Button>
+        </Stack>
 
         <Divider />
         <Stack flexDirection={"row"}>
           <Box sx={{ minWidth: "50%" }}>
-            <Typography color="text.secondary" variant="h6">
-              About Me
-            </Typography>
-            <Typography component="p">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              Rhoncus dolor purus non enim praesent elementum facilisis leo vel.
-              Risus at ultrices mi tempus imperdiet. Semper risus in hendrerit
-              gravida rutrum quisque non tellus.
+            <Box
+              display="flex"
+              alignItems="center"
+              justifyContent="space-between"
+            >
+              <Typography color="text.secondary" variant="h6">
+                About Me
+              </Typography>
+              <IconButton
+                color={isEditable ? "success" : "disabled"}
+                onClick={() => setIsEditable(!isEditable)}
+              >
+                <EditIcon />
+              </IconButton>
+            </Box>
+
+            <Typography
+              p={1}
+              suppressContentEditableWarning={true}
+              contentEditable={isEditable}
+              onInput={(e) => setAboutMe(e.currentTarget.textContent)}
+            >
+              {user?.about_me}
             </Typography>
           </Box>
 
@@ -60,12 +173,31 @@ export default function PageOne() {
             <Typography color="text.secondary" variant="h6">
               My Favorites
             </Typography>
-            {tags.map((data) => (
-              <Chip sx={{ m: "2px" }} label={data} />
-            ))}
+
+            {Object.keys(favorite)?.map((key) => {
+              console.log(key);
+              return (
+                <Chip
+                  sx={{ m: "2px" }}
+                  label={
+                    <Typography fontSize="small">
+                      {favorite[key]?.learningSpace?.tag}
+                    </Typography>
+                  }
+                />
+              );
+            })}
           </Box>
         </Stack>
       </Stack>
-    </Box>
+
+      <input
+        type="file"
+        ref={ref}
+        onChange={onSelectFile}
+        style={{ display: "none" }}
+        accept=".jpg,.jpeg,.png"
+      />
+    </>
   );
 }
