@@ -1,3 +1,4 @@
+//This page can be merged
 import { useContext, useEffect, useRef, useState } from "react";
 import {
   Typography,
@@ -122,7 +123,7 @@ export default function PageOne() {
       >
         <Stack>
           <Avatar
-            sx={{ alignSelf: "center" }}
+            sx={{ alignSelf: "center", width: 100, height: 100 }}
             src={user?.image}
             onClick={() => ref.current?.click()}
           />
