@@ -34,7 +34,8 @@ class LearningSpace3 : AppCompatActivity() {
     fun updateCount(){
         var Upvote = findViewById<ImageView>(R.id.Upvote)
         var UpCount = findViewById<TextView>(R.id.upCount)
-        Upvote.setTag(R.id.Upvote)
+        Upvote.setTag(R.drawable.up_image)
+
             val apiService = learningSpace3_patch_content_info_api_call()
             val data = learningSpace3_patch_content_info_send_model(
                 id=content_id,
@@ -49,6 +50,25 @@ class LearningSpace3 : AppCompatActivity() {
                     Log.d("Up vote update failed","")
                 }
             }
+    }
+
+
+    fun updateUpVote(){
+        val apiService = learningSpace3_patch_content_info_api_call()
+        val data = learningSpace3_patch_content_info_send_model(
+            id=content_id,
+            url = "xx"
+        )
+
+        apiService.getInfo(data)  {
+            if(it?.id!=null){
+                var UpCount = findViewById<TextView>(R.id.upCount)
+                UpCount.setText(it.upVoteCount)
+            }
+            else{
+                Log.d("Up vote update failed","")
+            }
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -114,6 +134,7 @@ class LearningSpace3 : AppCompatActivity() {
                     }
                 }
 
+
                 var resource_topic=findViewById<TextView>(R.id.resource_topic)
                 var owner_text=findViewById<TextView>(R.id.owner_text)
                 name_of_content=it.name
@@ -139,6 +160,7 @@ class LearningSpace3 : AppCompatActivity() {
         var Upvote = findViewById<ImageView>(R.id.Upvote)
         var UpCount = findViewById<TextView>(R.id.upCount)
         Log.d("selam",Upvote.getTag().toString()+" "+R.drawable.up_image.toString())
+
         if(Upvote.getTag()==R.drawable.up_image){
 
             var resource=findViewById<EditText>(R.id.Resource)
@@ -151,7 +173,7 @@ class LearningSpace3 : AppCompatActivity() {
 
             apiService.updateVote(data)  {
                 if(it?.id!=null){
-                    UpCount.setText((UpCount.text.toString().toInt()+1).toString())
+                    updateUpVote()
                     Upvote.setImageResource(R.drawable.down_image)
                     Upvote.setTag(R.drawable.down_image)
                     Log.d("Up vote success","down image'a gec")
@@ -172,7 +194,7 @@ class LearningSpace3 : AppCompatActivity() {
 
             apiService.updateVote(data)  {
                 if(it?.id!=null){
-                    UpCount.setText((UpCount.text.toString().toInt()-1).toString())
+                    updateUpVote()
                     Upvote.setImageResource(R.drawable.up_image)
                     Upvote.setTag(R.drawable.up_image)
                 }

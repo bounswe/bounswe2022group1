@@ -130,6 +130,9 @@ class LearningSpace2Menu : AppCompatActivity() {
                     addfavorite_image.setImageResource(R.drawable.add_fav)
                     addfavorite_button.setText("Add Favorite")
                 }
+                else{
+                    Log.d("api call to remove fav","failed!")
+                }
             }
 
         }
