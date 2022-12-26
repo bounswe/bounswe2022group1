@@ -16,15 +16,14 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.viewpager2.widget.ViewPager2
 import com.example.myapplication.R
 import com.example.myapplication.model.ls_members
-import com.example.myapplication.service.favorite_ls_call
-import com.example.myapplication.service.learningSpace2GetContentList_api_call
-import com.example.myapplication.service.learningSpace2ListEveryLearningSpace_api_call
+import com.example.myapplication.service.*
 import com.google.android.material.navigation.NavigationView
 import me.relex.circleindicator.CircleIndicator3
 
 var selectedTAG = ""
 var learningSpaceID_Name=mutableMapOf<Int,String>()
 var learningSpaceName_ID= mutableMapOf<String,Int>()
+var id_of_current_user=-1
 
 class HomeActivity : AppCompatActivity() {
 
@@ -54,9 +53,16 @@ class HomeActivity : AppCompatActivity() {
     lateinit var toggle: ActionBarDrawerToggle
     private lateinit var names: Array<String>
 
+    fun idInit(){
+        val apiService = id_from_username_api_call()
+        apiService.IDfromUsername(user_name) {
+            if(it!=null)id_of_current_user=it.id
+        }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+        idInit()
         initID_Name()
         learningSpaceID = -1
         val context1 = this

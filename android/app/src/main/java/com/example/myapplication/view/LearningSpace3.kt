@@ -66,6 +66,7 @@ class LearningSpace3 : AppCompatActivity() {
         )
 
         apiService.getInfo(data)  {
+            Log.d("updateVoteCount",it?.upVoteCount.toString())
             if(it?.id!=null){
                 var UpCount = findViewById<TextView>(R.id.upCount)
                 UpCount.setText(it.upVoteCount.toString())
@@ -461,7 +462,6 @@ class LearningSpace3 : AppCompatActivity() {
             if(it!=null){
                 Log.d("note get"+content_id.toString(),"success"+it?.toString())
 
-                var id_of_current_user=3
 
 
                 val data =it.data
@@ -506,7 +506,6 @@ class LearningSpace3 : AppCompatActivity() {
             apiService.seeAllNotes(content_id)  {
                 if(it!=null){
                     Log.d("note get"+content_id.toString(),"success"+it?.toString())
-                    var id_of_current_user=3
                     val apiService3 = profile_see_api_call()
                     val data = it.data
                     apiService3.getProfile("Token " + user_token) {

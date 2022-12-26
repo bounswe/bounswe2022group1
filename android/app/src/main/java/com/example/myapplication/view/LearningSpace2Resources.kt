@@ -53,8 +53,6 @@ class LearningSpace2Resources : AppCompatActivity() {
     }
 
     fun ShowContributorsAndTopics(){
-
-
         val apiService = learningSpace2GetContentList_api_call()
         val userInfo = learningSpaceID
 
@@ -66,7 +64,7 @@ class LearningSpace2Resources : AppCompatActivity() {
                 names= arrayOf<String>()
                 for(i in 0..(receivedArr.size-1)){
 
-                    var owner_name="Ömer Özdemir"
+                    var owner_name="fako"
                     learningSpaceMEMBERS.forEach{
                             l->
                         if(l.id==receivedArr[i].owner){
