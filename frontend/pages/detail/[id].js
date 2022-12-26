@@ -30,7 +30,7 @@ const DetailPage = () => {
       setContent(res.data.data);
     };
     const getFavList = async () => {
-      const baseURL = `http://3.89.218.253:8000/app/favorite/?user=6`;
+      const baseURL = `http://3.89.218.253:8000/app/favorite/`;
       const res = await axios.get(baseURL, {
         headers: { Authorization: `token ${localStorage.getItem("token")}` },
       });

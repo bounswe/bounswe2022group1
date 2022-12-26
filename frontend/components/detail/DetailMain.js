@@ -76,8 +76,8 @@ function DetailMain({ space, content, fav }) {
   const username = typeof window !== 'undefined' && localStorage.getItem('user');
   const isMember = space?.members.find((e) => e.username === username);
 
-  {console.log(fav)}
-  const isFav = space?.members.find((e) => e.username === username);
+  const spaceid = typeof window !== 'undefined' && space?.id;
+  const isFav = fav?.find((e) => e.learningSpace.id===spaceid);
 
   return (
     <Grid>
@@ -100,18 +100,8 @@ function DetailMain({ space, content, fav }) {
                 <Box display="flex" justifyContent="space-between">
                   <Button type="submit" component={Link} href={`/addcontent/${space?.id}`} variant="contained" sx={{ mt: 3, mb: 2, borderRadius: "16px" }} className="btn btn-primary">Add Resource</Button>
                   
-
-                    <div style={{ flex: 150 }}></div>
-										<Button
-											type="submit"
-											onClick={() => handleFav(space?.id)}
-                      color="primary" 
-											sx={{ mt: 3, mb: 2, borderRadius: '16px' }}
-											className="btn btn-primary"
-										>
-											<FavoriteBorderIcon/>
-										</Button>
-
+                  {isFav ? (
+									<>
                     <div style={{ flex: 150 }}></div>
 										<Button
 											type="submit"
@@ -122,6 +112,24 @@ function DetailMain({ space, content, fav }) {
 										>
 											<FavoriteIcon/>
 										</Button>
+									</>
+								) : (
+									<>
+                    <div style={{ flex: 150 }}></div>
+										<Button
+											type="submit"
+											onClick={() => handleFav(space?.id)}
+                      color="primary" 
+											sx={{ mt: 3, mb: 2, borderRadius: '16px' }}
+											className="btn btn-primary"
+										>
+											<FavoriteBorderIcon/>
+										</Button>
+									</>
+								)}
+
+
+
                   
                   
                   {isMember ? (
