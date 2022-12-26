@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.myapplication.R
@@ -55,6 +56,15 @@ class LearningSpace2Menu : AppCompatActivity() {
         addfavorite_button= findViewById(R.id.addfavorite_button) as Button
         addfavorite_image = findViewById(R.id.addfavorite_image) as ImageView
 
+        val apiServiceY = favorite_ls_call()
+        apiServiceY.favoriteLSpaces("Token " + user_token) {
+            it?.data?.forEach {
+                if (it.learningSpace.id == learningSpaceID) {
+                    addfavorite_button.setText("Remove Favorite")
+                    addfavorite_image.setImageResource(R.drawable.remove_fav)
+                }
+            }
+        }
         enroll_button = findViewById(R.id.enroll_button) as Button
         enroll_image=findViewById(R.id.enroll_image) as ImageView
 
@@ -124,8 +134,11 @@ class LearningSpace2Menu : AppCompatActivity() {
                 learningSpace= learningSpaceID
             )
 
+            Toast.makeText(this, learningSpaceID.toString(), Toast.LENGTH_SHORT).show()
             val apiService = learningSpace2_remove_fav_api_call()
             apiService.removeFavorite (userInfo) {
+                Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
+
                 if(it!=null){
                     addfavorite_image.setImageResource(R.drawable.add_fav)
                     addfavorite_button.setText("Add Favorite")
