@@ -11,7 +11,7 @@ Content-Type: application/json
 ### Content
 GET http://3.89.218.253:8000/app/content-list/ HTTP/1.1
 Content-Type: application/json
-Authorization: "Token 777eae3eca6e17c9fca50a721e817735f5b442e4dabe22a6ab5976389b6a706f"
+Authorization: "Token 2e4f8786ce9ed497e38b0d252cfcb9c5365b7cfddb2c8d988ea1b0ffab3c2710"
 
 # {
 #     "name" : "Deneme",

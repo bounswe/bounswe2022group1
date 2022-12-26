@@ -1,3 +1,4 @@
+//This page can be merged
 import { useState } from "react";
 import {
   Box,
@@ -13,6 +14,7 @@ import {
   ListItemButton,
 } from "@mui/material";
 import Image from "next/image";
+import NextLink from "next/link";
 
 export default function Sidebar({ menus }) {
   const [page, setPage] = useState(menus[0]);
@@ -26,7 +28,7 @@ export default function Sidebar({ menus }) {
       <Box component="nav" sx={{ width: 240, flexShrink: 0 }}>
         <Drawer variant="permanent" sx={{ display: "block" }}>
           <Toolbar>
-            <Link href="/homepage">
+            <Link component={NextLink} href="/homepage">
               <Image
                 src="/assets/budemi logo2.png"
                 width={210}
