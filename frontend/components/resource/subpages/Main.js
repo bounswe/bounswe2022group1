@@ -19,6 +19,8 @@ import { useRouter } from "next/router";
 import ReactMarkdown from 'react-markdown';
 import "@recogito/recogito-js/dist/recogito.min.css";
 import "@recogito/annotorious/dist/annotorious.min.css";
+import IconButton from "@mui/material/IconButton";
+import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 
 
 export default function Main() {
@@ -175,20 +177,13 @@ export default function Main() {
   
   return (
     <div>
-      {/* <img
-         src="https://www.avatarsinpixels.com/Public/images/previews/minipix4.png"
-         ref={imgEl}
-         width="500"
-         height="500"
-       /> */}
     <Box>
+    <IconButton aria-label="upvote" color="secondary" onClick={handleUpvote}>
+                  <ThumbUpAltIcon />     Upvotes: {resource?.upVoteCount}
+                </IconButton>
       <Typography mb={2} variant="h4" textAlign="center">
         {`${resource?.name}`}
       </Typography>
-      <p> Number of counts: {resource?.upVoteCount}</p>
-      <Button onClick={handleUpvote}>
-          Upvote!
-          </Button>
       <Typography
         mb={2}
         variant="h5"
