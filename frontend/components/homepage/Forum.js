@@ -1,3 +1,4 @@
+//This page can be merged
 import {
   Box,
   Card,
@@ -6,9 +7,9 @@ import {
   Button,
   CardContent,
   Grid,
-  Chip,
-  Link,
   CardMedia,
+  Link,
+  Chip,
 } from "@mui/material";
 import NextLink from "next/link";
 import { useEffect, useState } from "react";
@@ -92,7 +93,7 @@ export default function Forum({ forumList, sx }) {
               </CardContent>
               <CardActions>
                 <Link
-                  href="#"
+                  href={`/detail/${data?.id}`}
                   component={NextLink}
                   sx={{ textDecoration: "none", ml: 2 }}
                 >
@@ -105,57 +106,4 @@ export default function Forum({ forumList, sx }) {
       </Grid>
     </Box>
   );
-
-  // return (
-  //   <List
-  //     sx={{
-  //       width: "100%",
-  //       marginY: 5,
-  //       bgcolor: "background.paper",
-  //       borderRadius: "10px",
-  //       boxShadow: "5",
-  //     }}
-  //   >
-  //     {forumList?.map((data, index) => (
-  //       <Box key={data.id}>
-  //         <ListItem alignItems="flex-start" key={index}>
-  //           <ListItemAvatar fontSize="large">
-  //             <InfoIcon fontSize="large" />
-  //           </ListItemAvatar>
-
-  //           <ListItemText
-  //             primary={
-  //               <>
-  //                 <Typography
-  //                   sx={{ display: "inline", textDecoration: "none" }}
-  //                   component="a"
-  //                   href="#"
-  //                   color="text.primary"
-  //                 >
-  //                   {data?.name}
-  //                 </Typography>
-  //               </>
-  //             }
-  //             secondary={
-  //               <>
-  //                 <Typography
-  //                   sx={{ display: "inline" }}
-  //                   component="a"
-  //                   href={`space/${data.id}`}
-  //                   variant="body2"
-  //                   color="text.primary"
-  //                 >
-  //                   {data.tag}
-  //                 </Typography>
-  //                 {/* {`- ${"Description metni"}`} */}
-  //               </>
-  //             }
-  //           />
-  //         </ListItem>
-
-  //         <Divider variant="inset" component="li" />
-  //       </Box>
-  //     ))}
-  //   </List>
-  // );
 }
