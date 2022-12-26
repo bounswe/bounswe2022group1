@@ -28,6 +28,7 @@ function ResourceEdit({routerQuery}) {
       body: JSON.stringify({
         id: routerQuery.id,
         name: name,
+        url: "xxx",
         type: "text",
         text: text,
       }),
