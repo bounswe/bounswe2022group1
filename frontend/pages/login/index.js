@@ -7,11 +7,13 @@ import {
   Checkbox,
   Button,
   Grid,
+  Paper,
 } from "@mui/material";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
+import { useTheme } from "@mui/material/styles";
 
 export default function Login() {
   const { login } = useContext(AuthContext);
@@ -50,12 +52,11 @@ export default function Login() {
 
   return (
     <Box display="flex" justifyContent="center">
-      <Box
+      <Paper
+        elevation={2}
         sx={{
           padding: 6,
           marginTop: 15,
-          backgroundColor: "#dae7fb",
-          borderRadius: "15px",
         }}
       >
         <Typography
@@ -100,7 +101,7 @@ export default function Login() {
             type="submit"
             fullWidth
             variant="contained"
-            sx={{ mt: 3, mb: 2, borderRadius: "16px" }}
+            sx={{ mt: 3, mb: 5 }}
           >
             Sign In
           </Button>
@@ -117,7 +118,7 @@ export default function Login() {
             </Grid>
           </Grid>
         </Box>
-      </Box>
+      </Paper>
     </Box>
   );
 }
