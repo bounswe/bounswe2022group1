@@ -62,9 +62,9 @@ export default function Sidebar({ menus }) {
         sx={{
           m: 5,
           p: 5,
-          marginTop: 15,
           borderRadius: "16px",
           background: "#dae7fb",
+          height: "87vh",
         }}
       >
         {page.page}
