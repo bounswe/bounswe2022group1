@@ -9,7 +9,7 @@ function Copyright() {
     <Typography variant="body2" color="text.secondary" align="center">
       {"Copyright © "}
       <Link color="inherit" href="https://budemii.space/">
-        budemi.com
+        budemi.space
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -19,6 +19,7 @@ function Copyright() {
 
 function Footer({ description, title }) {
   return (
+
     <>
       <Divider sx={{ mt: 8, mb: 4 }} />
       <Box component="footer" sx={{ bgcolor: "background.paper" }}>
@@ -38,6 +39,7 @@ function Footer({ description, title }) {
         </Container>
       </Box>
     </>
+
   );
 }
 

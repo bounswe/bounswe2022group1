@@ -12,23 +12,34 @@ import {
 import { format } from "date-fns";
 import { AuthContext } from "../../../contexts/AuthContext";
 import React, { useState, useEffect, useCallback } from "react";
+import { useRef } from "react";
+import { Routes, Route, useParams, renderMatches } from "react-router-dom";
 import axios from "axios";
 import { useRouter } from "next/router";
-import ReactMarkdown from "react-markdown";
+import ReactMarkdown from 'react-markdown';
+import "@recogito/recogito-js/dist/recogito.min.css";
+import "@recogito/annotorious/dist/annotorious.min.css";
+import IconButton from "@mui/material/IconButton";
+import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
+
 
 export default function Main() {
-  const router = useRouter();
+    const router = useRouter()
   const { id } = router.query;
   const [resource, setResource] = useState(null);
   const [comments, setComments] = useState(null);
   const [comment, setComment] = useState("");
 
+  const [creator, setCreator] = useState(null);
+  const [showEdit, setShowEdit] = useState(false);
+
+
   const handleChange = (event) => {
     setComment(event.target.value);
   };
 
-  const handleSubmit = () => {
-    event.preventDefault();
+  const handleSubmit = e => {
+    e.preventDefault();
     const { id } = router.query;
     if (!id) return;
     axios
@@ -44,14 +55,58 @@ export default function Main() {
           },
         }
       )
-      .then((response) => {
-        console.log(response.data.data);
-        useEffect();
-      })
+      .then(function (response) {
+        console.log('Success', response);
+        // TODO setComments(eski comment + yeni comments)
+
+        const getResource = async () => {
+          const baseURL = `http://3.89.218.253:8000/app/content/?id=${id}`;
+          const res = await axios.get(baseURL, {
+            headers: { Authorization: `token ${localStorage.getItem("token")}` },
+          });
+          setResource(res.data);
+        };
+        const getComments = async () => {
+          const baseURL = `http://3.89.218.253:8000/app/discussion-list/?content_id=${id}`;
+          const res = await axios.get(baseURL, {
+            headers: { Authorization: `token ${localStorage.getItem("token")}` },
+          });
+          setComments(res.data.data);
+        };
+        
+        getResource();
+        getComments();
+    })
       .catch((error) => {
         console.log(error);
       });
-      location.reload();
+  };
+
+
+  const handleUpvote = e => {
+    e.preventDefault();
+    const { id } = router.query;
+    if (!id) return;
+    axios
+      .patch(
+        `http://3.89.218.253:8000/app/content/`,
+        {
+          id: id,
+          upVoteCount: resource.upVoteCount + 1,
+        },
+        {
+          headers: {
+            Authorization: `token ${localStorage.getItem("token")}`,
+          },
+        }
+      )
+      .then(function (response) {   //TODO ECE
+        console.log('Success', response);
+        setResource(response.data);
+    })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   console.log(comments);
@@ -74,22 +129,92 @@ export default function Main() {
       });
       setComments(res.data.data);
     };
+    const getCreator = async () => {
+      const baseURL = `http://3.89.218.253:8000/app/content/?id=${id}`;
+      const res = await axios.get(baseURL, {
+        headers: { Authorization: `token ${localStorage.getItem("token")}` },
+      });
+
+      const baseURL2 = `http://3.89.218.253:8000/app/user-from-id/?id=${res.data.owner}`;
+      const res2 = await axios.get(baseURL2, {
+        headers: { Authorization: `token ${localStorage.getItem("token")}` },
+      });
+      const str = `Creator: ${res2.data.username}`;
+      setCreator(str);
+      if(res2.data.username == localStorage.getItem("user")){
+        setShowEdit(true);
+      }
+    };
     getResource();
     getComments();
+    getCreator();
   }, [router]);
 
+  const paraEl = useRef();
+  
+
+  const [reco, setReco] = useState();
+  const [anno, setAnno] = useState();
+
+  const [called, setCalled] = useState(false);
+
+  // Current drawing tool name
+  const [tool, setTool] = useState("rect");
+
+  useEffect(() => {
+    if (called) return;
+    setCalled(true);
+    import("@recogito/recogito-js").then((mod) => {
+      const Recogito = mod.Recogito;
+
+      const r = new Recogito({ content: paraEl.current });
+
+      r.setAuthInfo({
+        id: localStorage.getItem("token"),
+        displayName: localStorage.getItem("user"),
+      });
+
+      r.on("createAnnotation", (annotation) => {
+        console.log(annotation);
+      });
+
+      setReco(r);
+    });
+
+  //   import("@recogito/annotorious").then((mod) => {
+  //     const Annotorious = mod.Annotorious;
+
+  //     console.log(mod);
+  //     const a = new Annotorious({ image: imgEl.current });
+
+  //     a.setAuthInfo({
+  //       id: localStorage.getItem("token"),
+  //       displayName: localStorage.getItem("user"),
+  //     });
+  //   });
+   }, []);
+
+
+  
   return (
     <div>
-      <Box>
-        <Typography mb={2} variant="h4" textAlign="center">
-          {`${resource?.name}`}
-        </Typography>
-
-        <Typography mb={2} variant="h5">
-          {<ReactMarkdown>{resource?.text}</ReactMarkdown>}
-        </Typography>
+    <Box>
+    <IconButton aria-label="upvote" color="secondary" onClick={handleUpvote}>
+                  <ThumbUpAltIcon />     Upvotes: {resource?.upVoteCount}
+                </IconButton>
+      <Typography mb={2} variant="h4" textAlign="center">
+        {`${resource?.name}`}
+      </Typography>
+      <Typography
+        mb={2}
+        variant="h5"
+        ref={paraEl}
+      ><ReactMarkdown>{resource?.text}</ReactMarkdown></Typography>
 
         <Divider />
+       
+        { showEdit ? <Button>Edit</Button> : null }
+
       </Box>
       <Box>
         <Typography mb={2} variant="h6" textAlign="center">

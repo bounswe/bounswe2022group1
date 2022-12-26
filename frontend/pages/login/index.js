@@ -13,7 +13,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
-import { useTheme } from "@mui/material/styles";
+import axios from "../../utils/axios";
 
 export default function Login() {
   const { login } = useContext(AuthContext);
@@ -23,6 +23,16 @@ export default function Login() {
   const router = useRouter();
 
   function handleSubmit(event) {
+    /** Axios'u kullanmak için backende CORS ayarı yapılması lazım !!! */
+
+    // axios
+    //   .post("/login", { username, password })
+    //   .then((response) => {
+    //     login(username, response.data.data);
+    //     router.push("/profile");
+    //   })
+    //   .catch((err) => console.log(err));
+
     fetch("http://3.89.218.253:8000/app/login/", {
       method: "POST",
       headers: {
@@ -73,7 +83,6 @@ export default function Login() {
             margin="normal"
             required
             fullWidth
-            id="username"
             label="Username"
             name="username"
             autoFocus
@@ -88,7 +97,6 @@ export default function Login() {
             name="password"
             label="Password"
             type="password"
-            id="password"
             onChange={(e) => {
               setPassword(e.target.value);
             }}
