@@ -30,6 +30,9 @@ export default function Main() {
   const [comments, setComments] = useState(null);
   const [comment, setComment] = useState("");
 
+  const [creator, setCreator] = useState(null);
+  const [showEdit, setShowEdit] = useState(false);
+
 
   const handleChange = (event) => {
     setComment(event.target.value);
@@ -70,6 +73,7 @@ export default function Main() {
           });
           setComments(res.data.data);
         };
+        
         getResource();
         getComments();
     })
@@ -125,8 +129,25 @@ export default function Main() {
       });
       setComments(res.data.data);
     };
+    const getCreator = async () => {
+      const baseURL = `http://3.89.218.253:8000/app/content/?id=${id}`;
+      const res = await axios.get(baseURL, {
+        headers: { Authorization: `token ${localStorage.getItem("token")}` },
+      });
+
+      const baseURL2 = `http://3.89.218.253:8000/app/user-from-id/?id=${res.data.owner}`;
+      const res2 = await axios.get(baseURL2, {
+        headers: { Authorization: `token ${localStorage.getItem("token")}` },
+      });
+      const str = `Creator: ${res2.data.username}`;
+      setCreator(str);
+      if(res2.data.username == localStorage.getItem("user")){
+        setShowEdit(true);
+      }
+    };
     getResource();
     getComments();
+    getCreator();
   }, [router]);
 
   const paraEl = useRef();
@@ -191,6 +212,8 @@ export default function Main() {
       ><ReactMarkdown>{resource?.text}</ReactMarkdown></Typography>
 
         <Divider />
+       
+        { showEdit ? <Button>Edit</Button> : null }
       </Box>
       <Box>
         <Typography mb={2} variant="h6" textAlign="center">
