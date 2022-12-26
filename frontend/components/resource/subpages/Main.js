@@ -333,7 +333,7 @@ export default function Main() {
 
         <Divider />
 
-        {showEdit ? <Button>Edit</Button> : null}
+        {showEdit ? <Button href={`/edit-resource/${resource?.id}`} >Edit</Button> : null}
       </Box>
       <Box>
         <Typography mb={2} variant="h6" textAlign="center">
