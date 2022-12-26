@@ -57,4 +57,4 @@ class DiscussListTest(APITestCase):
 
         response = self.client.get(url, {'content_id': content_id}, format='json')
 
-        self.assertEqual(response.status_code, status.HTTP_200_CREATED)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)

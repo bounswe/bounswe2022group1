@@ -41,26 +41,28 @@ class leaveApiViewTest(APITestCase):
                         }
               
         
-                client.post(url, data, format='json')
-
+                response = client.post(url, data, format='json')
+                learning_space_id = response.data['id']
+                self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+                print(response.data)
                 url = reverse('enroll')
 
                 
                 
                 data = {
-                        "learning_space_id": "1",
+                        "learning_space_id": learning_space_id,
                         }
               
         
-                client.post(url, data, format='json')
-
+                response = client.post(url, data, format='json')
+                self.assertEqual(response.status_code, status.HTTP_200_OK)
                 
                 url = reverse('leave-learning-space')
 
                 
                 
                 data = {
-                        "learning_space_id": "1",
+                        "learning_space_id": learning_space_id,
                         }
               
         
