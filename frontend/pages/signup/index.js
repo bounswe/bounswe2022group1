@@ -1,20 +1,8 @@
 import React, { useState } from "react";
-import {
-  Box,
-  Container,
-  Stack,
-  TextField,
-  Typography,
-  FormControlLabel,
-  Checkbox,
-  Button,
-  Grid,
-} from "@mui/material";
+import { Box, TextField, Typography, Button } from "@mui/material";
 import { useRouter } from "next/router";
-import Link from "next/link";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
-import { LineAxisOutlined } from "@mui/icons-material";
 
 export default function SignUp() {
   const { isAuthenticated, login } = useContext(AuthContext);
@@ -29,10 +17,6 @@ export default function SignUp() {
   const [email, setEmail] = useState("");
 
   function handleSubmit(event) {
-    console.log("username: " + username);
-    console.log("password: " + password);
-    console.log("email: " + email);
-
     fetch("http://3.89.218.253:8000/app/register/", {
       method: "POST",
       headers: {
@@ -68,13 +52,20 @@ export default function SignUp() {
   }
 
   return (
-    <Box display="flex" justifyContent="center">
+    <Box
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      sx={{
+        height: "calc(100vh - 70px)",
+      }}
+    >
       <Box
         sx={{
-          padding: 6,
-          marginTop: 15,
-          backgroundColor: "#dae7fb",
+          paddingY: 4,
+          paddingX: 6,
           borderRadius: "15px",
+          backgroundColor: "#dae7fb",
         }}
       >
         <Typography
@@ -89,17 +80,14 @@ export default function SignUp() {
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           <TextField
             margin="normal"
-            required
             fullWidth
             id="username"
             label="Username"
             name="username"
-            autoFocus
             onChange={(e) => setUsername(e.target.value)}
           />
           <TextField
             margin="normal"
-            required
             fullWidth
             name="email"
             label="Email"
@@ -109,7 +97,6 @@ export default function SignUp() {
           />
           <TextField
             margin="normal"
-            required
             fullWidth
             name="password"
             label="Password"
