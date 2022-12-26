@@ -457,7 +457,23 @@ class profileApiView(APIView):
             return Response(profile, status=status.HTTP_200_OK)
         except LearningSpace.DoesNotExist:
             return Response({"message": "given content id doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
+    def patch(self, request, *args, **kwargs):
+        data = request.data.copy()
 
+        
+       
+        profile = Profile.objects.get(user=request.user.id)
+        
+        if 'about_me' not in data:
+            data['about_me'] = profile.name
+        if 'image' not in data:
+            data['image'] = profile.type
+        
+        serializer = self.serializer_class(profile, data=data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class LearningSpaceListApiView(APIView):
     # add permission to check if user is authenticated
