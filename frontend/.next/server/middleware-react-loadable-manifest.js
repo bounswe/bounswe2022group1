@@ -1,1 +1,0 @@
-self.__REACT_LOADABLE_MANIFEST={"../components/resource/subpages/Main.js -> @recogito/recogito-js":{"id":"../components/resource/subpages/Main.js -> @recogito/recogito-js","files":["static/chunks/node_modules_recogito_recogito-js_dist_recogito_min_js.js"]}}
