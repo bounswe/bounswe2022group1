@@ -426,6 +426,8 @@ class profileApiView(APIView):
         data['user'] = request.user.id
         print(data)
         serializer = self.serializer_class(data=data)
+        
+
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -610,6 +612,10 @@ class favoriteLearningSpaceAPIView(APIView):
         data = request.data.copy()
         data['user'] = request.user.id
         print(data)
+        
+        if Favorite.objects.filter(user=request.user.id, learningSpace=data['learningSpace']).exists():
+            return Response({"message": "Already favorited this learning space"}, status=status.HTTP_400_BAD_REQUEST)
+
         serializer = self.serializer_class_post(data=data)
         if serializer.is_valid():
             serializer.save()
