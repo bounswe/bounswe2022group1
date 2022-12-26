@@ -1,3 +1,4 @@
+//This page can be merged
 import { createContext, useEffect, useState } from "react";
 import axios from "../utils/axios";
 
