@@ -46,6 +46,10 @@ export default function Forum({ forumList, sx }) {
 
   const [filterTag, setFilterTag] = useState(null);
 
+  useEffect(() => {
+    setNewForumList(forumList);
+  }, [forumList]);
+
   const groupBy = function (xs, key) {
     return xs.reduce(function (rv, x) {
       (rv[x[key]] = rv[x[key]] || []).push(x);
