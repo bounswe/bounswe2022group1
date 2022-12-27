@@ -13,6 +13,7 @@ import {
   Paper,
   Chip,
   Button,
+  Grid,
 } from "@mui/material";
 import { AuthContext } from "../../contexts/AuthContext";
 import axios from "../../utils/axios";
@@ -116,34 +117,25 @@ export default function PageOne() {
 
   return (
     <>
-      <Stack
+      <Grid
         spacing={1}
         component={Paper}
-        sx={{ borderRadius: 6, p: 2, flexDirection: "column" }}
+        sx={{ p: 8 }}
+        // sx={{ borderRadius: 6, p: 2, flexDirection: "column" }}
       >
-        <Stack>
-          <Avatar
-            sx={{ alignSelf: "center", width: 100, height: 100 }}
-            src={user?.image}
-            onClick={() => ref.current?.click()}
-          />
-          <Typography mt={1} textAlign="center">
-            {userName}
-          </Typography>
-          <Button
-            size="small"
-            color="info"
-            variant="contained"
-            onClick={handleUpdate}
-            sx={{ alignSelf: "end" }}
-          >
-            Update
-          </Button>
-        </Stack>
+        <Grid container direction="row" sx={{ pb: 4 }} spacing={4}>
+          <Grid item xs={6} justifyContent="center" alignItems="center">
+            <Avatar
+              sx={{ alignSelf: "center", width: 100, height: 100, m: "auto" }}
+              src={user?.image}
+              onClick={() => ref.current?.click()}
+            />
+            <Typography mt={1} textAlign="center">
+              {userName}
+            </Typography>
+          </Grid>
 
-        <Divider />
-        <Stack flexDirection={"row"}>
-          <Box sx={{ minWidth: "50%" }}>
+          <Grid item xs={6}>
             <Box
               display="flex"
               alignItems="center"
@@ -159,19 +151,43 @@ export default function PageOne() {
                 <EditIcon />
               </IconButton>
             </Box>
+            <Box sx={{ minWidth: "50%" }}>
+              <Typography
+                p={1}
+                sx={{ mb: 2 }}
+                style={
+                  isEditable
+                    ? {
+                        border: "1px solid #ccc",
+                        borderRadius: "5px",
+                      }
+                    : {}
+                }
+                suppressContentEditableWarning={true}
+                contentEditable={isEditable}
+                onInput={(e) => setAboutMe(e.currentTarget.textContent)}
+              >
+                {user?.about_me}
+              </Typography>
+            </Box>
+            {isEditable && (
+              <Button
+                size="small"
+                color="primary"
+                variant="contained"
+                onClick={handleUpdate}
+                sx={{ alignSelf: "end" }}
+              >
+                Update
+              </Button>
+            )}
+          </Grid>
+        </Grid>
 
-            <Typography
-              p={1}
-              suppressContentEditableWarning={true}
-              contentEditable={isEditable}
-              onInput={(e) => setAboutMe(e.currentTarget.textContent)}
-            >
-              {user?.about_me}
-            </Typography>
-          </Box>
-
-          <Box sx={{ minWidth: "50%", ml: 2 }}>
-            <Typography color="text.secondary" variant="h6">
+        <Divider />
+        <Stack flexDirection={"row"}>
+          <Box sx={{ minWidth: "50%", mt: 4 }}>
+            <Typography color="text.primary" variant="h4" sx={{ mb: 2 }}>
               My Favorites
             </Typography>
 
@@ -190,7 +206,7 @@ export default function PageOne() {
             })}
           </Box>
         </Stack>
-      </Stack>
+      </Grid>
 
       <input
         type="file"
