@@ -28,15 +28,16 @@
             android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.554"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.613" />
+            app:layout_constraintVertical_bias="0.7" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout2"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="412dp"
-            android:layout_height="89dp"
+            android:layout_height="100dp"
             app:counterEnabled="true"
             app:counterMaxLength="25"
             app:endIconMode="clear_text"
@@ -55,7 +56,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/sign_up_id"
                 android:layout_width="match_parent"
-                android:layout_height="61dp"
+                android:layout_height="75dp"
                 android:height="48dp"
                 android:fontFamily="@font/andika"
                 android:hint="ID"
@@ -68,9 +69,9 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="412dp"
 
-            android:layout_height="102dp"
+            android:layout_height="100dp"
 
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="5dp"
 
             app:counterEnabled="true"
 
@@ -88,7 +89,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/sign_up_password"
                 android:layout_width="match_parent"
-                android:layout_height="73dp"
+                android:layout_height="70dp"
                 android:height="48dp"
                 android:fontFamily="@font/andika"
                 android:hint="Password"
@@ -99,7 +100,7 @@
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="414dp"
-            android:layout_height="96dp"
+            android:layout_height="100dp"
 
             app:counterEnabled="true"
 
@@ -121,7 +122,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/sign_up_email"
                 android:layout_width="match_parent"
-                android:layout_height="71dp"
+                android:layout_height="75dp"
                 android:height="48dp"
                 android:fontFamily="@font/andika"
                 android:hint="E-mail"
@@ -129,30 +130,33 @@
                 android:textSize="20dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
-
-            android:id="@+id/editTextTextPersonName"
-            android:layout_width="340dp"
-            android:layout_height="98dp"
-            android:ems="10"
-            android:fontFamily="@font/walter_turncoat"
-            android:shadowColor="@color/colorPrimary4"
-            android:shadowDx="0.0"
-            android:shadowDy="0.0"
-
-            android:shadowRadius="8"
-            android:text="Sign Up"
-            android:textAlignment="center"
-            android:textColor="@color/colorPrimary1"
-            android:textFontWeight="5"
-            android:textIsSelectable="false"
-            android:textSize="40dp"
-            android:textStyle="bold|italic"
-            app:layout_constraintBottom_toTopOf="@+id/textInputLayout2"
-            app:layout_constraintEnd_toEndOf="@+id/textInputLayout2"
-            app:layout_constraintStart_toStartOf="@+id/textInputLayout2"
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/signUpTitleTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/bold"
+            android:gravity="center"
+            android:text="@string/create_account"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/textsize_28d"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            tools:ignore="SpUsage" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/signUpDescTV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_16"
+            android:fontFamily="@font/regular"
+            android:gravity="center"
+            android:text="@string/sign_up_desc"
+            android:textColor="@color/text_color2"
+            android:textSize="@dimen/textsize_15d"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/signUpTitleTv"
+            tools:ignore="SpUsage" />
 
         <TextView
             android:id="@+id/success_message"
@@ -178,7 +182,7 @@
         <TextView
             android:id="@+id/textView11"
             android:layout_width="323dp"
-            android:layout_height="67dp"
+            android:layout_height="30dp"
             android:layout_marginStart="44dp"
             android:layout_marginEnd="44dp"
             android:fontFamily="@font/walter_turncoat"
