@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import DetailInfoPage from "../../components/detail/DetailInfoPage";
 import { useRouter } from "next/router";
-import {Container} from "@mui/material";
-
+import { Container } from "@mui/material";
 
 const DetailPage = () => {
   const [space, setSpace] = useState(null);
@@ -43,16 +42,10 @@ const DetailPage = () => {
 
   return (
     <div>
-    <Container
-    sx={{
-      borderRadius: "16px",
-      background: "#dae7fb",
-    }}
-  >
-    <DetailInfoPage space={space} content={content} fav={fav}/>
-     </Container>
+      <Container>
+        <DetailInfoPage space={space} content={content} fav={fav} />
+      </Container>
     </div>
-
   );
 };
 

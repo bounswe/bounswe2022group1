@@ -54,8 +54,6 @@ export default function Login() {
         sx={{
           padding: 6,
           marginTop: 15,
-          backgroundColor: "#dae7fb",
-          borderRadius: "15px",
         }}
       >
         <Typography

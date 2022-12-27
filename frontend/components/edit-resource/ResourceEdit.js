@@ -11,7 +11,7 @@ const MDEditor = dynamic(
   { ssr: false }
 );
 
-function ResourceEdit({routerQuery}) {
+function ResourceEdit({ routerQuery }) {
   const router = useRouter();
 
   const [name, setName] = useState("");
@@ -23,7 +23,7 @@ function ResourceEdit({routerQuery}) {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
-        'Authorization': `token ${localStorage.getItem("token")}`,
+        Authorization: `token ${localStorage.getItem("token")}`,
       },
       body: JSON.stringify({
         id: routerQuery.id,
@@ -34,8 +34,7 @@ function ResourceEdit({routerQuery}) {
       }),
     })
       .then((response) => response.json())
-      .then((data) => {
-      })
+      .then((data) => {})
       .catch((err) => {
         console.log(err);
       });
@@ -60,67 +59,64 @@ function ResourceEdit({routerQuery}) {
     getResource();
   }, [router]);
 
-
-
   return (
     <Grid>
-    <Box>
-      <Box
-        sx={{
-          padding: 6,
-          marginTop: 15,
-          backgroundColor: "#dae7fb",
-          borderRadius: "15px",
-        }}
-      >
-        <Typography
-          fontWeight="bold"
-          textAlign="center"
-          component="h1"
-          variant="h5"
+      <Box>
+        <Box
+          sx={{
+            padding: 6,
+            marginTop: 15,
+          }}
         >
-          Edit Resource
-        </Typography>
-
-        <Box component="form" onSubmit={handleText} noValidate sx={{ mt: 1 }}>
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            id="name"
-            name="name"
-            value={name}
-            autoFocus
-            onChange={(e) => {
-              setName(e.target.value);
-            }}
-          />
-
-           <div data-color-mode="light">
-           <hr/>
-           <Typography
-          component="h2"
-          variant="h6"
-        >
-          Text
-        </Typography>
-          <MDEditor height={500} value={text} onChange={(e) => {
-              setText(e);
-            }} />
-          </div>
-          <hr/>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2, borderRadius: "16px" }}
+          <Typography
+            fontWeight="bold"
+            textAlign="center"
+            component="h1"
+            variant="h5"
           >
             Edit Resource
-          </Button>
+          </Typography>
+
+          <Box component="form" onSubmit={handleText} noValidate sx={{ mt: 1 }}>
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="name"
+              name="name"
+              value={name}
+              autoFocus
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
+            />
+
+            <div data-color-mode="light">
+              <hr />
+              <Typography component="h2" variant="h6">
+                Text
+              </Typography>
+              <MDEditor
+                height={500}
+                value={text}
+                onChange={(e) => {
+                  setText(e);
+                }}
+              />
+            </div>
+            <hr />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2, borderRadius: "16px" }}
+            >
+              Edit Resource
+            </Button>
+          </Box>
         </Box>
       </Box>
-    </Box>
-  </Grid>
+    </Grid>
   );
 }
 

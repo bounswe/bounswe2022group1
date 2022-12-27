@@ -14,7 +14,6 @@ import {
 } from "@mui/material";
 import Image from "next/image";
 
-
 export default function ResourceSidebar({ menus }) {
   const [page, setPage] = useState(menus[0]);
 
@@ -64,8 +63,6 @@ export default function ResourceSidebar({ menus }) {
           m: 5,
           p: 5,
           marginTop: 15,
-          borderRadius: "16px",
-          background: "#dae7fb",
         }}
       >
         {page.page}

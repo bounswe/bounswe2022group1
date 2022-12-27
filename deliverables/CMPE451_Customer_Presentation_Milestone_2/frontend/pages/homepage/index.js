@@ -224,12 +224,7 @@ export default function Homepage() {
     getForumList();
   }, []);
   return (
-    <Container
-      sx={{
-        borderRadius: "16px",
-        background: "#dae7fb",
-      }}
-    >
+    <Container>
       <Box sx={{ padding: 4, margin: 4, marginTop: 15 }}>
         {/* 
         <Header title="Welcome!" sections={sections} />
