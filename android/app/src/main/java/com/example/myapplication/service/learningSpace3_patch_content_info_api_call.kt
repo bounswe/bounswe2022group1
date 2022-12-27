@@ -1,5 +1,6 @@
 package com.example.myapplication.service
 
+import android.util.Log
 import com.example.myapplication.model.learningSpace3_patch_content_info_send_model
 import com.example.myapplication.model.learningSpace3_patch_content_receive_model
 import com.example.myapplication.view.user_token
@@ -18,7 +19,6 @@ class learningSpace3_patch_content_info_api_call {
                     call: Call<learningSpace3_patch_content_receive_model>,
                     response: Response<learningSpace3_patch_content_receive_model>
                 ) {
-
                     onResult(response.body())
                 }
 

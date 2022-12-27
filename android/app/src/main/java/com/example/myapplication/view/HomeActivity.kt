@@ -24,6 +24,9 @@ var selectedTAG = ""
 var learningSpaceID_Name=mutableMapOf<Int,String>()
 var learningSpaceName_ID= mutableMapOf<String,Int>()
 var id_of_current_user=-1
+var content_id=-1
+var votedContents= mutableSetOf<Int>()
+
 
 class HomeActivity : AppCompatActivity() {
 
@@ -234,7 +237,7 @@ class HomeActivity : AppCompatActivity() {
 
     fun goToLearningSpace3(position:Int) {
         learningSpaceMEMBERS = checkmembers
-        currentContentID = contentID_ContentName[position]!!
+        content_id = contentID_ContentName[position]!!
         var intent = Intent(applicationContext, LearningSpace3::class.java)
         startActivity(intent)
     }

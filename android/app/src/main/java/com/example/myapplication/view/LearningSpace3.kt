@@ -26,7 +26,7 @@ class LearningSpace3 : AppCompatActivity() {
 
     var name_of_content=""
     var owner_of_content=""
-    var content_id=-1
+
 
     fun makeShorter(){
         val bottomSheetLayout = findViewById<FrameLayout>(R.id.bottom_sheet)
@@ -46,6 +46,7 @@ class LearningSpace3 : AppCompatActivity() {
                 id=content_id,
                 url = "xx"
             )
+        Log.d("content_id",content_id.toString())
 
             apiService.getInfo(data)  {
                 if(it?.id!=null){
@@ -123,7 +124,7 @@ class LearningSpace3 : AppCompatActivity() {
         edit_image.setVisibility(View.VISIBLE)
 
         val apiService = learningSpace3GetContent_api_call()
-        apiService.getContent(currentContentID) {
+        apiService.getContent(content_id) {
             if(it?.id!=null){
                 content_id=it.id
                 var resource = findViewById<EditText>(R.id.Resource)
@@ -264,7 +265,7 @@ class LearningSpace3 : AppCompatActivity() {
 
             val apiService = learningSpace3GetDiscussionList_api_call()
 
-            apiService.getDiscussionList(currentContentID){
+            apiService.getDiscussionList(content_id){
                 if(it?.data!=null){
                     var Chatbox = findViewById<TextView>(R.id.Resource)
                     var temp=""
@@ -299,7 +300,7 @@ class LearningSpace3 : AppCompatActivity() {
                 val apiService = learningSpace3PostDiscussion_api_call()
 
                 val userData = learningSpace3PostDiscussion_send_model(
-                    content=currentContentID,
+                    content=content_id,
                     body = editText.text.toString()
                 )
 
@@ -323,7 +324,7 @@ class LearningSpace3 : AppCompatActivity() {
     fun updateDiscussion(){
         val apiService = learningSpace3GetDiscussionList_api_call()
 
-        apiService.getDiscussionList(currentContentID){
+        apiService.getDiscussionList(content_id){
             if(it?.data!=null){
                 val Chatbox = findViewById<TextView>(R.id.Resource)
                 var temp=""
@@ -364,7 +365,7 @@ class LearningSpace3 : AppCompatActivity() {
             else{
                 //load content
                 val apiService = learningSpace3GetContent_api_call()
-                apiService.getContent(currentContentID) {
+                apiService.getContent(content_id) {
                     if(it?.id!=null){
                         resource.setText(it.text)
                     }
