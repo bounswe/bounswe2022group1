@@ -26,7 +26,7 @@ var learningSpaceName_ID= mutableMapOf<String,Int>()
 var id_of_current_user=-1
 var content_id=-1
 var votedContents= mutableSetOf<Int>()
-var hasProfile=true
+
 
 class HomeActivity : AppCompatActivity() {
 
