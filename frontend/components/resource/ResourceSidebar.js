@@ -62,7 +62,7 @@ export default function ResourceSidebar({ menus }) {
         sx={{
           m: 5,
           p: 5,
-          marginTop: 15,
+          marginTop: 2,
         }}
       >
         {page.page}

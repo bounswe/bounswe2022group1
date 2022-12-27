@@ -62,10 +62,10 @@ export default function Main() {
 
   return (
     <Box>
-      <Typography mb={2} variant="h6" textAlign="center">
+      <Typography mb={4} variant="h3" textAlign="left">
         Contributors
       </Typography>
-      <Card sx={{ p: 1.5, borderRadius: "16px", m: 1 }}>
+      <Card sx={{ p: 2, borderRadius: "16px", m: 1 }}>
         <Typography gutterBottom color="text.secondary">
           {creator}
         </Typography>
@@ -73,7 +73,7 @@ export default function Main() {
 
       {commentors &&
         commentors.map((person) => (
-          <Card sx={{ p: 1.5, borderRadius: "16px", m: 1 }}>
+          <Card sx={{ p: 2, borderRadius: "16px", m: 1 }}>
             <Typography gutterBottom color="text.secondary">
               {person}
             </Typography>

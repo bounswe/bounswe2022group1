@@ -24,7 +24,6 @@ export default function Main() {
   const [note, setNote] = useState(null);
   const [noteBody, setNoteBody] = useState("");
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const { id } = router.query;
@@ -48,22 +47,21 @@ export default function Main() {
         const getNote = async () => {
           const baseURL = `http://3.89.218.253:8000/app/note/?content_id=${id}`;
           const res = await axios.get(baseURL, {
-            headers: { Authorization: `token ${localStorage.getItem("token")}` },
+            headers: {
+              Authorization: `token ${localStorage.getItem("token")}`,
+            },
           });
           console.log(res.data.data);
           var latestNote = "";
-          const len = res.data.data.length
-          if(len > 0){
-            latestNote = res.data.data[len -1];
+          const len = res.data.data.length;
+          if (len > 0) {
+            latestNote = res.data.data[len - 1];
           }
 
           setNote(latestNote);
         };
         getNote();
         //TODO getnotes aynisi
-
-        
-
       })
       .catch((error) => {
         console.log(error);
@@ -74,7 +72,6 @@ export default function Main() {
     const { id } = router.query;
     if (!id) return;
 
-    
     const getNote = async () => {
       const baseURL = `http://3.89.218.253:8000/app/note/?content_id=${id}`;
       const res = await axios.get(baseURL, {
@@ -82,9 +79,9 @@ export default function Main() {
       });
       console.log(res.data.data);
       var latestNote = "";
-      const len = res.data.data.length
-      if(len > 0){
-        latestNote = res.data.data[len -1];
+      const len = res.data.data.length;
+      if (len > 0) {
+        latestNote = res.data.data[len - 1];
       }
       setNote(latestNote);
     };
@@ -93,44 +90,41 @@ export default function Main() {
 
   return (
     <Box>
-      <Typography mb={2} variant="h6" textAlign="center">
+      <Typography mb={4} variant="h3" textAlign="left">
         My Note
       </Typography>
 
+      {note && (
+        <Card sx={{ p: 1.5, borderRadius: "16px", m: 1, mb: 4 }}>
+          <Typography gutterBottom color="text.secondary">
+            {format(new Date(note?.created_on), "d MMMM, yyyy")}
+          </Typography>
 
-            {note && 
-            (<Card sx={{ p: 1.5, borderRadius: "16px", m: 1 }}>
-              <Typography gutterBottom color="text.secondary">
-                
-                {format(new Date(note?.created_on), "d MMMM, yyyy")}
-              </Typography>
+          <Typography gutterBottom sx={{ ml: 8 }}>
+            {`        ${note?.body}`}
+          </Typography>
+        </Card>
+      )}
 
-              <Typography gutterBottom sx={{ ml: 8 }}>
-                {`        ${note?.body}`}
-              </Typography>
-            </Card>)
-}
-          
+      <TextField
+        margin="normal"
+        fullWidth
+        name="note"
+        type="note"
+        id="note"
+        value={noteBody}
+        onChange={(e) => setNoteBody(e.target.value)}
+      />
 
-<TextField
-          margin="normal"
-          fullWidth
-          name="note"
-          type="note"
-          id="note"
-          value={noteBody}
-          onChange={(e) => setNoteBody(e.target.value)}
-        />
-
-        <Button
-          type="submit"
-          fullWidth
-          variant="contained"
-          onClick={handleSubmit}
-          sx={{ mt: 3, mb: 2, borderRadius: "16px" }}
-        >
-          Submit
-        </Button>
+      <Button
+        type="submit"
+        fullWidth
+        variant="contained"
+        onClick={handleSubmit}
+        sx={{ mt: 3, mb: 2, borderRadius: "16px" }}
+      >
+        Submit
+      </Button>
     </Box>
   );
 }

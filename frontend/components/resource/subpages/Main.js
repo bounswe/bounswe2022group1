@@ -8,6 +8,7 @@ import {
   Button,
   Card,
   TextField,
+  Grid,
 } from "@mui/material";
 import { format } from "date-fns";
 import { AuthContext } from "../../../contexts/AuthContext";
@@ -33,6 +34,8 @@ export default function Main() {
   const [showEdit, setShowEdit] = useState(false);
 
   const [annotationsMap, setAnnotationsMap] = useState({});
+
+  const [upvoted, setUpvoted] = useState(false);
 
   const handleChange = (event) => {
     setComment(event.target.value);
@@ -87,6 +90,7 @@ export default function Main() {
   };
 
   const handleUpvote = (e) => {
+    setUpvoted(true);
     e.preventDefault();
     const { id } = router.query;
     if (!id) return;
@@ -97,6 +101,35 @@ export default function Main() {
           id: id,
           url: "xxx",
           upVoteCount: resource.upVoteCount + 1,
+        },
+        {
+          headers: {
+            Authorization: `token ${localStorage.getItem("token")}`,
+          },
+        }
+      )
+      .then(function (response) {
+        //TODO ECE
+        console.log("Success", response);
+        setResource(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handleDownvote = (e) => {
+    setUpvoted(false);
+    e.preventDefault();
+    const { id } = router.query;
+    if (!id) return;
+    axios
+      .patch(
+        `http://3.89.218.253:8000/app/content/`,
+        {
+          id: id,
+          url: "xxx",
+          upVoteCount: resource.upVoteCount - 1,
         },
         {
           headers: {
@@ -318,32 +351,70 @@ export default function Main() {
   return (
     <div>
       <Box>
-        <IconButton
-          aria-label="upvote"
-          color="secondary"
-          onClick={handleUpvote}
+        <Grid
+          container
+          direction="row"
+          justifyContent="space-between"
+          alignContent="center"
         >
-          <ThumbUpAltIcon /> Upvotes: {resource?.upVoteCount}
-        </IconButton>
-        <Typography mb={2} variant="h4" textAlign="center">
-          {`${resource?.name}`}
-        </Typography>
-        <Typography mb={2} variant="h5" ref={paraEl}>
+          <Grid item>
+            <Typography mb={4} variant="h2" textAlign="left">
+              {`${resource?.name}`}
+            </Typography>
+          </Grid>
+          <Grid container item direction="row" width="auto" sx={{ my: 2 }}>
+            <Grid item>
+              {showEdit ? (
+                <Button
+                  variant="outlined"
+                  href={`/edit-resource/${resource?.id}`}
+                  sx={{ mr: 2 }}
+                >
+                  Edit
+                </Button>
+              ) : null}
+            </Grid>
+            <Grid item>
+              {upvoted ? (
+                <Button
+                  aria-label="upvote"
+                  startIcon={<ThumbUpAltIcon />}
+                  color="primary"
+                  onClick={handleDownvote}
+                  variant="contained"
+                >
+                  Upvotes: {resource?.upVoteCount}
+                </Button>
+              ) : (
+                <Button
+                  aria-label="upvote"
+                  startIcon={<ThumbUpAltIcon />}
+                  color="primary"
+                  onClick={handleUpvote}
+                  variant="outlined"
+                >
+                  Upvotes: {resource?.upVoteCount}
+                </Button>
+              )}
+            </Grid>
+          </Grid>
+        </Grid>
+
+        <Typography mb={8} variant="h5" ref={paraEl}>
           <ReactMarkdown includeElementIndex>{resource?.text}</ReactMarkdown>
         </Typography>
-
-        <Divider />
-
-        {showEdit ? <Button href={`/edit-resource/${resource?.id}`} >Edit</Button> : null}
       </Box>
+
+      <Divider />
+
       <Box>
-        <Typography mb={2} variant="h6" textAlign="center">
+        <Typography sx={{ mb: 4, mt: 8 }} variant="h3" textAlign="left">
           Discussion
         </Typography>
 
         {comments &&
           comments.map((comment) => (
-            <Card sx={{ p: 1.5, borderRadius: "16px", m: 1 }}>
+            <Card sx={{ p: 2, borderRadius: "16px", m: 1 }}>
               <Typography gutterBottom color="text.secondary">
                 {comment?.owner.username} |{" "}
                 {format(new Date(comment?.created_on), "d MMMM, yyyy")}
