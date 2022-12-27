@@ -164,6 +164,18 @@ function DetailMain({ space, content, fav }) {
 
             <Divider />
 
+            
+            <Box sx={{ m: 2 }} /> 
+            <Typography
+              variant="subtitle1"
+              color="text.primary"
+              style={{ marginTop: "2", marginBottom: "20" }}
+            >
+              {space?.description}
+            </Typography>
+            <Box sx={{ m: 2 }} /> 
+            <Divider />
+
             <Grid
               container
               direction="row"
