@@ -452,9 +452,8 @@ class LearningSpace3 : AppCompatActivity() {
         val apiService = learningSpace3_see_all_note_api_call()
         apiService.seeAllNotes(content_id)  {
             if(it!=null){
-                Log.d("note get"+content_id.toString(),"success"+it?.toString())
-                var id_of_current_user=3
-                var body = ""
+                //
+                var temp=""
                 it.data.forEach {
                     if( id_of_current_user==it.owner.id){
                         body = it.body
