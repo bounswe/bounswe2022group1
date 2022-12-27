@@ -40,10 +40,9 @@ class LearningSpace2Resources : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_learning_space2_seecontents)
         navMenuHandler()
+        ShowContributorsAndTopics()
         var learning_topic = findViewById(R.id.learning_topic) as TextView
         learning_topic.text= learningSpaceNAME+" Resources"
-
-        ShowContributorsAndTopics()
     }
 
     fun goToLearningSpace3(position:Int) {
