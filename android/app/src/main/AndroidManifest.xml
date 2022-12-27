@@ -18,6 +18,20 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="33">
         <activity
+            android:name=".ui.SplashScreenActivity"
+            android:exported="true"
+            android:screenOrientation="fullSensor">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.OnboardingActivity"
+            android:exported="false"
+            android:screenOrientation="fullSensor" />
+        <activity
             android:name=".view.LearningSpace2Menu"
             android:exported="false">
             <meta-data
