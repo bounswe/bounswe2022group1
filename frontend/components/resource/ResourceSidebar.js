@@ -29,10 +29,10 @@ export default function ResourceSidebar({ menus }) {
           <Toolbar>
             <Link href="/homepage">
               <Image
-                src="/assets/BUdemi.svg"
+                src="/assets/budemi logo2.png"
                 width={200}
                 height={150}
-                alt="budemi.svg"
+                alt="budemi logo2.png"
               />
             </Link>
           </Toolbar>
