@@ -12,5 +12,5 @@ dependencyResolutionManagement {
         jcenter()
     }
 }
-rootProject.name = "My Application"
+rootProject.name = "Budemi"
 include ':app'
