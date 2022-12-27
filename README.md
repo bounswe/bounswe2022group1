@@ -66,32 +66,26 @@ expected to learn how to effectively use them
 
 Now, your app shoould be running. Note that, if the docker app's ports are already taken, then you should update the ports in docker-compose.yml. Also, you should have a .env file in the same directory where your docker-compose.yml file is located. In this file, you need e-mail and password specifications, which we didn't publish here. So, for learning them, please communicate with us. 
 
-
-
 ### For Running Frontend App in Development Mode
+
+-> Checkout master branch
 
 -> Enter into the directory "frontend". 
 
--> npm i
+-> Install dependencies with following commands: 
+`npm i`
+`npm install next-remove-imports`
+`npm install @uiw/react-markdown-preview --save`
+`npm install --save moment`
+`npm i @uiw/react-md-editor`
+`npm install sw`
 
--> npm run dev
-
-
-
-### For Running Frontend App in Development Mode
-
--> Enter into the directory "frontend". 
-
--> npm i
-
--> npm run build
-
--> npm run start (starts to serve)
+-> npm run dev (starts to serve)
 
 You can install npm via https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
 
 
-##For Building Android App
+### For Building Android App
 
 -> Checkout master branch
 
