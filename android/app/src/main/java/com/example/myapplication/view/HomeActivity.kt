@@ -8,7 +8,6 @@ import android.view.MenuItem
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
@@ -16,17 +15,15 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.viewpager2.widget.ViewPager2
 import com.example.myapplication.R
 import com.example.myapplication.model.ls_members
-import com.example.myapplication.service.*
+import com.example.myapplication.service.favorite_ls_call
+import com.example.myapplication.service.learningSpace2GetContentList_api_call
+import com.example.myapplication.service.learningSpace2ListEveryLearningSpace_api_call
 import com.google.android.material.navigation.NavigationView
 import me.relex.circleindicator.CircleIndicator3
 
 var selectedTAG = ""
 var learningSpaceID_Name=mutableMapOf<Int,String>()
 var learningSpaceName_ID= mutableMapOf<String,Int>()
-var id_of_current_user=-1
-var content_id=-1
-var votedContents= mutableSetOf<Int>()
-var hasProfile=true
 
 class HomeActivity : AppCompatActivity() {
 
@@ -56,18 +53,11 @@ class HomeActivity : AppCompatActivity() {
     lateinit var toggle: ActionBarDrawerToggle
     private lateinit var names: Array<String>
 
-    fun idInit(){
-        val apiService = id_from_username_api_call()
-        apiService.IDfromUsername(user_name) {
-            if(it!=null)id_of_current_user=it.id
-        }
-    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        idInit()
         initID_Name()
-        learningSpaceID = -1
+
         val context1 = this
         Log.d("user_token", user_token)
 
@@ -82,7 +72,7 @@ class HomeActivity : AppCompatActivity() {
             searchView.clearFocus()
         }
 
-        names = arrayOf()
+        names = arrayOf("Osman", "fehmi")
         navMenuHandler()
 
         var names = ArrayList<String>()
@@ -109,65 +99,32 @@ class HomeActivity : AppCompatActivity() {
 
             val view_pager2 = findViewById<ViewPager2>(R.id.viewPager2)
             val context = applicationContext
-            if(names.size == 0) {
-                view_pager2.adapter = HomeViewPager(
-                    listOf("Empty"),
-                    listOf("There are no favourite learning spaces"),
-                    listOf(""),
-                    listOf(),
-                    mutableListOf(),
-                    context
-                )
-                val indicator = findViewById<CircleIndicator3>(R.id.indicator)
-                indicator.setViewPager(view_pager2)
-                view_pager2.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
-                    override fun onPageScrolled(
-                        position: Int,
-                        positionOffset: Float,
-                        positionOffsetPixels: Int
-                    ) {
-                        super.onPageScrolled(position, positionOffset, positionOffsetPixels)
-                    }
 
-                    override fun onPageSelected(position: Int) {
-                        super.onPageSelected(position)
-                    }
+            view_pager2.adapter = HomeViewPager(names, descs, creators, ids, membersList, context)
+            //view_pager2.adapter = ViewPager2.ORIENTATION_HORIZONTAL
 
-                    override fun onPageScrollStateChanged(state: Int) {
-                        super.onPageScrollStateChanged(state)
-                    }
-                })
-                ShowContributorsAndTopics()
+            val indicator = findViewById<CircleIndicator3>(R.id.indicator)
+            indicator.setViewPager(view_pager2)
+            view_pager2.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
+                override fun onPageScrolled(
+                    position: Int,
+                    positionOffset: Float,
+                    positionOffsetPixels: Int
+                ) {
+                    super.onPageScrolled(position, positionOffset, positionOffsetPixels)
+                }
 
-            }
-            else {
-                view_pager2.adapter = HomeViewPager(names, descs, creators, ids, membersList, context)
-                //view_pager2.adapter = ViewPager2.ORIENTATION_HORIZONTAL
+                override fun onPageSelected(position: Int) {
+                    super.onPageSelected(position)
+                    learningSpaceID = ids[position]
+                    learningSpaceMEMBERS = checkmembers
+                    ShowContributorsAndTopics()
+                }
 
-                val indicator = findViewById<CircleIndicator3>(R.id.indicator)
-                indicator.setViewPager(view_pager2)
-                view_pager2.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
-                    override fun onPageScrolled(
-                        position: Int,
-                        positionOffset: Float,
-                        positionOffsetPixels: Int
-                    ) {
-                        super.onPageScrolled(position, positionOffset, positionOffsetPixels)
-                    }
-
-                    override fun onPageSelected(position: Int) {
-                        super.onPageSelected(position)
-                        learningSpaceID = ids[position]
-                        learningSpaceMEMBERS = checkmembers
-                        ShowContributorsAndTopics()
-                    }
-
-                    override fun onPageScrollStateChanged(state: Int) {
-                        super.onPageScrollStateChanged(state)
-                    }
-                })
-            }
-
+                override fun onPageScrollStateChanged(state: Int) {
+                    super.onPageScrollStateChanged(state)
+                }
+            })
         }
 
 
@@ -205,7 +162,6 @@ class HomeActivity : AppCompatActivity() {
                 setContributorsAndTopics()
             }
             else{ // showing contributors is unsucess
-                setContributorsAndTopics()
 
             }
 
@@ -214,30 +170,21 @@ class HomeActivity : AppCompatActivity() {
 
     fun setContributorsAndTopics(){
         val namesListView = findViewById<ListView>(R.id.resources)
-        if(names.size == 0) {
-            var namesAdapter: ArrayAdapter<String> = ArrayAdapter(
-                this, R.layout.adapter_background, listOf("There are no resource")
-            )
 
-            namesListView.adapter=namesAdapter
+        var namesAdapter: ArrayAdapter<String> = ArrayAdapter(
+            this, R.layout.adapter_background,names
+        )
+
+        namesListView.adapter=namesAdapter
+
+        namesListView.setOnItemClickListener { parent, view, position, id ->
+            goToLearningSpace3(position)
         }
-        else {
-            var namesAdapter: ArrayAdapter<String> = ArrayAdapter(
-                this, R.layout.adapter_background,names
-            )
-
-            namesListView.adapter=namesAdapter
-
-            namesListView.setOnItemClickListener { parent, view, position, id ->
-                goToLearningSpace3(position)
-            }
-        }
-
     }
 
     fun goToLearningSpace3(position:Int) {
         learningSpaceMEMBERS = checkmembers
-        content_id = contentID_ContentName[position]!!
+        currentContentID = contentID_ContentName[position]!!
         var intent = Intent(applicationContext, LearningSpace3::class.java)
         startActivity(intent)
     }
