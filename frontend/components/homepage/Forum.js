@@ -64,7 +64,7 @@ export default function Forum({ forumList, sx }) {
 
   return (
     <Box sx={sx}>
-      <Box m={1}>
+      <Box mt={2} mb={6}>
         {tagNames.map((data) => (
           <Chip
             sx={{ p: 1, mr: 1 }}
@@ -77,7 +77,7 @@ export default function Forum({ forumList, sx }) {
       <Grid container spacing={2} flexDirection="row">
         {newForumList?.map((data, index) => (
           <Grid item xs={4} key={index}>
-            <Card sx={{ boxShadow: 10 }}>
+            <Card sx={{ p: 2 }}>
               <CardMedia component="image"></CardMedia>
               <CardContent>
                 <Typography

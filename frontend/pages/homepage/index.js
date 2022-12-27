@@ -116,16 +116,10 @@ export default function Homepage() {
   }
 
   return (
-    <Container
-      sx={{
-        borderRadius: "16px",
-        //background: "#dae7fb",
-      }}
-    >
+    <Container>
       <Box
         sx={{
           padding: 2,
-          mt: "20px",
           marginTop: 10,
         }}
       >
@@ -135,7 +129,7 @@ export default function Homepage() {
         />
 
         {forumList.length > 0 && (
-          <Forum forumList={forumList} sx={{ marginTop: 2 }} />
+          <Forum forumList={forumList} sx={{ marginTop: 0 }} />
         )}
         <Footer title="BUDEMI" description="a company of bogazici university" />
       </Box>

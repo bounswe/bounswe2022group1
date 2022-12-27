@@ -65,8 +65,6 @@ export default function Sidebar({ menus }) {
           m: 5,
           p: 5,
           marginTop: 15,
-          //borderRadius: "16px",
-          //background: "#dae7fb",
         }}
       >
         {page.page}

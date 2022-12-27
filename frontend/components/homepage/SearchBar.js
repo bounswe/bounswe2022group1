@@ -2,13 +2,11 @@ import { Box, Stack, Button, TextField } from "@mui/material";
 
 export default function SearchBar({ handleSearch, handleOpenModal }) {
   return (
-    <Stack
+    <Box
+      display="flex"
       flexDirection="row"
       sx={{
-        p: 2,
-        background: "white",
-        borderRadius: "16px",
-        boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+        py: 0,
       }}
     >
       <Box flexGrow={0.25}>
@@ -32,6 +30,6 @@ export default function SearchBar({ handleSearch, handleOpenModal }) {
       >
         Add a Learning Space
       </Button>
-    </Stack>
+    </Box>
   );
 }
