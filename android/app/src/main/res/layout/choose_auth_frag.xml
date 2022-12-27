@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/signInImg"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:adjustViewBounds="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.1"
+        app:srcCompat="@drawable/learning" />
+
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/signInLottie"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/margin_32"
+        android:layout_marginEnd="@dimen/margin_32"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.18"
+        app:lottie_rawRes="@raw/login"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/signInTitleTv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/bold"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/margin_32"
+        android:text="@string/start_learning_now"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/textsize_23d"
+        app:layout_constraintEnd_toEndOf="@+id/signInLottie"
+        app:layout_constraintStart_toStartOf="@+id/signInLottie"
+        app:layout_constraintTop_toBottomOf="@+id/signInLottie"
+        tools:ignore="SpUsage" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/signInDescTV"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/regular"
+        android:gravity="center"
+        android:text="@string/sign_in_up_page_desc"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/text_color2"
+        android:textSize="@dimen/textsize_15d"
+        app:layout_constraintEnd_toEndOf="@+id/signInLottie"
+        app:layout_constraintStart_toStartOf="@+id/signInLottie"
+        app:layout_constraintTop_toBottomOf="@+id/signInTitleTv"
+        tools:ignore="SpUsage" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/signUpBtn"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/btn_height"
+        android:layout_marginStart="@dimen/margin_8"
+        android:layout_marginTop="@dimen/margin_16"
+        android:layout_marginEnd="@dimen/margin_16"
+        android:fontFamily="@font/regular"
+        android:minWidth="170dp"
+        android:text="@string/sign_up"
+        android:textColor="@color/accent"
+        android:textSize="@dimen/textsize_15d"
+        app:backgroundTint="@color/white"
+        app:cornerRadius="@dimen/btn_corner_radius"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/signInBtn"
+        app:layout_constraintTop_toBottomOf="@+id/signInDescTV"
+        app:layout_constraintVertical_bias="0.3"
+        app:strokeColor="@color/accent"
+        app:strokeWidth="1dp"
+        tools:ignore="SpUsage" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/signInBtn"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/btn_height"
+        android:layout_marginStart="@dimen/margin_16"
+        android:layout_marginTop="@dimen/margin_16"
+        android:layout_marginEnd="@dimen/margin_16"
+        android:fontFamily="@font/regular"
+        android:minWidth="170dp"
+        android:text="@string/login"
+        android:textColor="@color/white"
+        android:textSize="@dimen/textsize_15d"
+        app:backgroundTint="@color/accent"
+        app:cornerRadius="@dimen/btn_corner_radius"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/signUpBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signInDescTV"
+        app:layout_constraintVertical_bias="0.3"
+        tools:ignore="SpUsage" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/skipLoginBtn"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_8"
+        android:layout_marginBottom="@dimen/margin_8"
+        android:fontFamily="@font/regular"
+        android:text="@string/skip_login"
+        android:textColor="@color/text_color2"
+        android:textSize="@dimen/textsize_15d"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/signUpBtn"
+        tools:ignore="SpUsage" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
