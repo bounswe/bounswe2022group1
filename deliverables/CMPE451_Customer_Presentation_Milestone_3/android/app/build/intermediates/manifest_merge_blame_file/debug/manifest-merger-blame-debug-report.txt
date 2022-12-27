@@ -1,0 +1,357 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.budemi.app"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="29"
+8-->C:\m3\android\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="33" />
+9-->C:\m3\android\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->C:\m3\android\app\src\main\AndroidManifest.xml:5:5-67
+11-->C:\m3\android\app\src\main\AndroidManifest.xml:5:22-64
+12    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+12-->C:\m3\android\app\src\main\AndroidManifest.xml:6:5-80
+12-->C:\m3\android\app\src\main\AndroidManifest.xml:6:22-77
+13
+14    <permission
+14-->[androidx.core:core:1.9.0] C:\Users\user\.gradle\caches\transforms-3\f3889f18d4f26e70cef4e17d11226053\transformed\core-1.9.0\AndroidManifest.xml:22:5-24:47
+15        android:name="com.budemi.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+15-->[androidx.core:core:1.9.0] C:\Users\user\.gradle\caches\transforms-3\f3889f18d4f26e70cef4e17d11226053\transformed\core-1.9.0\AndroidManifest.xml:23:9-81
+16        android:protectionLevel="signature" />
+16-->[androidx.core:core:1.9.0] C:\Users\user\.gradle\caches\transforms-3\f3889f18d4f26e70cef4e17d11226053\transformed\core-1.9.0\AndroidManifest.xml:24:9-44
+17
+18    <uses-permission android:name="com.budemi.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+18-->[androidx.core:core:1.9.0] C:\Users\user\.gradle\caches\transforms-3\f3889f18d4f26e70cef4e17d11226053\transformed\core-1.9.0\AndroidManifest.xml:26:5-97
+18-->[androidx.core:core:1.9.0] C:\Users\user\.gradle\caches\transforms-3\f3889f18d4f26e70cef4e17d11226053\transformed\core-1.9.0\AndroidManifest.xml:26:22-94
+19
+20    <application
+20-->C:\m3\android\app\src\main\AndroidManifest.xml:8:5-138:19
+21        android:allowBackup="true"
+21-->C:\m3\android\app\src\main\AndroidManifest.xml:9:9-35
+22        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+22-->[androidx.core:core:1.9.0] C:\Users\user\.gradle\caches\transforms-3\f3889f18d4f26e70cef4e17d11226053\transformed\core-1.9.0\AndroidManifest.xml:28:18-86
+23        android:dataExtractionRules="@xml/data_extraction_rules"
+23-->C:\m3\android\app\src\main\AndroidManifest.xml:10:9-65
+24        android:debuggable="true"
+25        android:extractNativeLibs="false"
+26        android:fontFamily="@font/walter_turncoat"
+26-->C:\m3\android\app\src\main\AndroidManifest.xml:11:9-51
+27        android:fullBackupContent="@xml/backup_rules"
+27-->C:\m3\android\app\src\main\AndroidManifest.xml:12:9-54
+28        android:icon="@mipmap/ic_launcher"
+28-->C:\m3\android\app\src\main\AndroidManifest.xml:13:9-43
+29        android:label="Budemi"
+29-->C:\m3\android\app\src\main\AndroidManifest.xml:14:9-31
+30        android:roundIcon="@mipmap/ic_launcher_round"
+30-->C:\m3\android\app\src\main\AndroidManifest.xml:15:9-54
+31        android:supportsRtl="true"
+31-->C:\m3\android\app\src\main\AndroidManifest.xml:16:9-35
+32        android:testOnly="true"
+33        android:theme="@style/AppTheme"
+33-->C:\m3\android\app\src\main\AndroidManifest.xml:17:9-40
+34        android:usesCleartextTraffic="true" >
+34-->C:\m3\android\app\src\main\AndroidManifest.xml:18:9-44
+35        <activity
+35-->C:\m3\android\app\src\main\AndroidManifest.xml:20:9-26:20
+36            android:name="com.example.myapplication.view.LearningSpace2Menu"
+36-->C:\m3\android\app\src\main\AndroidManifest.xml:21:13-52
+37            android:exported="false" >
+37-->C:\m3\android\app\src\main\AndroidManifest.xml:22:13-37
+38            <meta-data
+38-->C:\m3\android\app\src\main\AndroidManifest.xml:23:13-25:36
+39                android:name="android.app.lib_name"
+39-->C:\m3\android\app\src\main\AndroidManifest.xml:24:17-52
+40                android:value="" />
+40-->C:\m3\android\app\src\main\AndroidManifest.xml:25:17-33
+41        </activity>
+42        <activity
+42-->C:\m3\android\app\src\main\AndroidManifest.xml:27:9-33:20
+43            android:name="com.example.myapplication.view.LearningSpace2Resources"
+43-->C:\m3\android\app\src\main\AndroidManifest.xml:28:13-57
+44            android:exported="false" >
+44-->C:\m3\android\app\src\main\AndroidManifest.xml:29:13-37
+45            <meta-data
+45-->C:\m3\android\app\src\main\AndroidManifest.xml:23:13-25:36
+46                android:name="android.app.lib_name"
+46-->C:\m3\android\app\src\main\AndroidManifest.xml:24:17-52
+47                android:value="" />
+47-->C:\m3\android\app\src\main\AndroidManifest.xml:25:17-33
+48        </activity>
+49        <activity
+49-->C:\m3\android\app\src\main\AndroidManifest.xml:34:9-40:20
+50            android:name="com.example.myapplication.view.LearningSpace2Members"
+50-->C:\m3\android\app\src\main\AndroidManifest.xml:35:13-55
+51            android:exported="false" >
+51-->C:\m3\android\app\src\main\AndroidManifest.xml:36:13-37
+52            <meta-data
+52-->C:\m3\android\app\src\main\AndroidManifest.xml:23:13-25:36
+53                android:name="android.app.lib_name"
+53-->C:\m3\android\app\src\main\AndroidManifest.xml:24:17-52
+54                android:value="" />
+54-->C:\m3\android\app\src\main\AndroidManifest.xml:25:17-33
+55        </activity>
+56        <activity
+56-->C:\m3\android\app\src\main\AndroidManifest.xml:42:9-48:20
+57            android:name="com.example.myapplication.view.LsSearchActivity"
+57-->C:\m3\android\app\src\main\AndroidManifest.xml:43:13-50
+58            android:exported="false" >
+58-->C:\m3\android\app\src\main\AndroidManifest.xml:44:13-37
+59            <meta-data
+59-->C:\m3\android\app\src\main\AndroidManifest.xml:23:13-25:36
+60                android:name="android.app.lib_name"
+60-->C:\m3\android\app\src\main\AndroidManifest.xml:24:17-52
+61                android:value="" />
+61-->C:\m3\android\app\src\main\AndroidManifest.xml:25:17-33
+62        </activity>
+63        <activity
+63-->C:\m3\android\app\src\main\AndroidManifest.xml:49:9-55:20
+64            android:name="com.example.myapplication.view.ForgotPasswordActivity"
+64-->C:\m3\android\app\src\main\AndroidManifest.xml:50:13-56
+65            android:exported="false" >
+65-->C:\m3\android\app\src\main\AndroidManifest.xml:51:13-37
+66            <meta-data
+66-->C:\m3\android\app\src\main\AndroidManifest.xml:23:13-25:36
+67                android:name="android.app.lib_name"
+67-->C:\m3\android\app\src\main\AndroidManifest.xml:24:17-52
+68                android:value="" />
+68-->C:\m3\android\app\src\main\AndroidManifest.xml:25:17-33
+69        </activity>
+70        <activity
+70-->C:\m3\android\app\src\main\AndroidManifest.xml:56:9-62:20
+71            android:name="com.example.myapplication.view.AddContent"
+71-->C:\m3\android\app\src\main\AndroidManifest.xml:57:13-44
+72            android:exported="false" >
+72-->C:\m3\android\app\src\main\AndroidManifest.xml:58:13-37
+73            <meta-data
+73-->C:\m3\android\app\src\main\AndroidManifest.xml:23:13-25:36
+74                android:name="android.app.lib_name"
+74-->C:\m3\android\app\src\main\AndroidManifest.xml:24:17-52
+75                android:value="" />
+75-->C:\m3\android\app\src\main\AndroidManifest.xml:25:17-33
+76        </activity>
+77        <activity
+77-->C:\m3\android\app\src\main\AndroidManifest.xml:63:9-71:20
+78            android:name="com.example.myapplication.view.LearningSpace3"
+78-->C:\m3\android\app\src\main\AndroidManifest.xml:64:13-48
+79            android:configChanges="keyboardHidden|orientation"
+79-->C:\m3\android\app\src\main\AndroidManifest.xml:65:13-63
+80            android:exported="false"
+80-->C:\m3\android\app\src\main\AndroidManifest.xml:66:13-37
+81            android:windowSoftInputMode="adjustPan" >
+81-->C:\m3\android\app\src\main\AndroidManifest.xml:67:13-52
+82            <meta-data
+82-->C:\m3\android\app\src\main\AndroidManifest.xml:23:13-25:36
+83                android:name="android.app.lib_name"
+83-->C:\m3\android\app\src\main\AndroidManifest.xml:24:17-52
+84                android:value="" />
+84-->C:\m3\android\app\src\main\AndroidManifest.xml:25:17-33
+85        </activity>
+86        <activity
+86-->C:\m3\android\app\src\main\AndroidManifest.xml:72:9-78:20
+87            android:name="com.example.myapplication.view.ProfilePageActivity"
+87-->C:\m3\android\app\src\main\AndroidManifest.xml:73:13-53
+88            android:exported="false" >
+88-->C:\m3\android\app\src\main\AndroidManifest.xml:74:13-37
+89            <meta-data
+89-->C:\m3\android\app\src\main\AndroidManifest.xml:23:13-25:36
+90                android:name="android.app.lib_name"
+90-->C:\m3\android\app\src\main\AndroidManifest.xml:24:17-52
+91                android:value="" />
+91-->C:\m3\android\app\src\main\AndroidManifest.xml:25:17-33
+92        </activity>
+93        <activity
+93-->C:\m3\android\app\src\main\AndroidManifest.xml:79:9-91:20
+94            android:name="com.example.myapplication.view.LandingActivity"
+94-->C:\m3\android\app\src\main\AndroidManifest.xml:80:13-49
+95            android:exported="true" >
+95-->C:\m3\android\app\src\main\AndroidManifest.xml:81:13-36
+96            <intent-filter>
+96-->C:\m3\android\app\src\main\AndroidManifest.xml:82:13-86:29
+97                <action android:name="android.intent.action.MAIN" />
+97-->C:\m3\android\app\src\main\AndroidManifest.xml:83:17-69
+97-->C:\m3\android\app\src\main\AndroidManifest.xml:83:25-66
+98
+99                <category android:name="android.intent.category.LAUNCHER" />
+99-->C:\m3\android\app\src\main\AndroidManifest.xml:85:17-77
+99-->C:\m3\android\app\src\main\AndroidManifest.xml:85:27-74
+100            </intent-filter>
+101
+102            <meta-data
+102-->C:\m3\android\app\src\main\AndroidManifest.xml:23:13-25:36
+103                android:name="android.app.lib_name"
+103-->C:\m3\android\app\src\main\AndroidManifest.xml:24:17-52
+104                android:value="" />
+104-->C:\m3\android\app\src\main\AndroidManifest.xml:25:17-33
+105        </activity>
+106        <activity
+106-->C:\m3\android\app\src\main\AndroidManifest.xml:92:9-98:20
+107            android:name="com.example.myapplication.view.HomeActivity"
+107-->C:\m3\android\app\src\main\AndroidManifest.xml:93:13-46
+108            android:exported="false" >
+108-->C:\m3\android\app\src\main\AndroidManifest.xml:94:13-37
+109            <meta-data
+109-->C:\m3\android\app\src\main\AndroidManifest.xml:23:13-25:36
+110                android:name="android.app.lib_name"
+110-->C:\m3\android\app\src\main\AndroidManifest.xml:24:17-52
+111                android:value="" />
+111-->C:\m3\android\app\src\main\AndroidManifest.xml:25:17-33
+112        </activity>
+113        <activity
+113-->C:\m3\android\app\src\main\AndroidManifest.xml:99:9-105:20
+114            android:name="com.example.myapplication.view.SignUpActivity"
+114-->C:\m3\android\app\src\main\AndroidManifest.xml:100:13-48
+115            android:exported="false" >
+115-->C:\m3\android\app\src\main\AndroidManifest.xml:101:13-37
+116            <meta-data
+116-->C:\m3\android\app\src\main\AndroidManifest.xml:23:13-25:36
+117                android:name="android.app.lib_name"
+117-->C:\m3\android\app\src\main\AndroidManifest.xml:24:17-52
+118                android:value="" />
+118-->C:\m3\android\app\src\main\AndroidManifest.xml:25:17-33
+119        </activity>
+120        <activity
+120-->C:\m3\android\app\src\main\AndroidManifest.xml:106:9-112:20
+121            android:name="com.example.myapplication.view.ChangePasswordActivity"
+121-->C:\m3\android\app\src\main\AndroidManifest.xml:107:13-56
+122            android:exported="false" >
+122-->C:\m3\android\app\src\main\AndroidManifest.xml:108:13-37
+123            <meta-data
+123-->C:\m3\android\app\src\main\AndroidManifest.xml:23:13-25:36
+124                android:name="android.app.lib_name"
+124-->C:\m3\android\app\src\main\AndroidManifest.xml:24:17-52
+125                android:value="" />
+125-->C:\m3\android\app\src\main\AndroidManifest.xml:25:17-33
+126        </activity>
+127        <activity
+127-->C:\m3\android\app\src\main\AndroidManifest.xml:113:9-119:20
+128            android:name="com.example.myapplication.view.SignInActivity"
+128-->C:\m3\android\app\src\main\AndroidManifest.xml:114:13-48
+129            android:exported="false" >
+129-->C:\m3\android\app\src\main\AndroidManifest.xml:115:13-37
+130            <meta-data
+130-->C:\m3\android\app\src\main\AndroidManifest.xml:23:13-25:36
+131                android:name="android.app.lib_name"
+131-->C:\m3\android\app\src\main\AndroidManifest.xml:24:17-52
+132                android:value="" />
+132-->C:\m3\android\app\src\main\AndroidManifest.xml:25:17-33
+133        </activity>
+134        <activity
+134-->C:\m3\android\app\src\main\AndroidManifest.xml:120:9-126:20
+135            android:name="com.example.myapplication.view.LearningSpace1"
+135-->C:\m3\android\app\src\main\AndroidManifest.xml:121:13-48
+136            android:exported="false" >
+136-->C:\m3\android\app\src\main\AndroidManifest.xml:122:13-37
+137            <meta-data
+137-->C:\m3\android\app\src\main\AndroidManifest.xml:23:13-25:36
+138                android:name="android.app.lib_name"
+138-->C:\m3\android\app\src\main\AndroidManifest.xml:24:17-52
+139                android:value="" />
+139-->C:\m3\android\app\src\main\AndroidManifest.xml:25:17-33
+140        </activity>
+141        <activity
+141-->C:\m3\android\app\src\main\AndroidManifest.xml:127:9-133:20
+142            android:name="com.example.myapplication.view.ProfileCreateActivity"
+142-->C:\m3\android\app\src\main\AndroidManifest.xml:128:13-55
+143            android:exported="false" >
+143-->C:\m3\android\app\src\main\AndroidManifest.xml:129:13-37
+144            <meta-data
+144-->C:\m3\android\app\src\main\AndroidManifest.xml:23:13-25:36
+145                android:name="android.app.lib_name"
+145-->C:\m3\android\app\src\main\AndroidManifest.xml:24:17-52
+146                android:value="" />
+146-->C:\m3\android\app\src\main\AndroidManifest.xml:25:17-33
+147        </activity>
+148
+149        <meta-data
+149-->C:\m3\android\app\src\main\AndroidManifest.xml:135:9-137:57
+150            android:name="preloaded_fonts"
+150-->C:\m3\android\app\src\main\AndroidManifest.xml:136:13-43
+151            android:resource="@array/preloaded_fonts" />
+151-->C:\m3\android\app\src\main\AndroidManifest.xml:137:13-54
+152
+153        <activity
+153-->[androidx.compose.ui:ui-tooling:1.3.0] C:\Users\user\.gradle\caches\transforms-3\f1e9a465461a891a66c18192d11d5e94\transformed\ui-tooling-1.3.0\AndroidManifest.xml:23:9-25:39
+154            android:name="androidx.compose.ui.tooling.PreviewActivity"
+154-->[androidx.compose.ui:ui-tooling:1.3.0] C:\Users\user\.gradle\caches\transforms-3\f1e9a465461a891a66c18192d11d5e94\transformed\ui-tooling-1.3.0\AndroidManifest.xml:24:13-71
+155            android:exported="true" />
+155-->[androidx.compose.ui:ui-tooling:1.3.0] C:\Users\user\.gradle\caches\transforms-3\f1e9a465461a891a66c18192d11d5e94\transformed\ui-tooling-1.3.0\AndroidManifest.xml:25:13-36
+156        <activity
+156-->[androidx.compose.ui:ui-test-manifest:1.3.0] C:\Users\user\.gradle\caches\transforms-3\0cc381461a91d93b637a49c03f9bd3b6\transformed\ui-test-manifest-1.3.0\AndroidManifest.xml:23:9-25:39
+157            android:name="androidx.activity.ComponentActivity"
+157-->[androidx.compose.ui:ui-test-manifest:1.3.0] C:\Users\user\.gradle\caches\transforms-3\0cc381461a91d93b637a49c03f9bd3b6\transformed\ui-test-manifest-1.3.0\AndroidManifest.xml:24:13-63
+158            android:exported="true" />
+158-->[androidx.compose.ui:ui-test-manifest:1.3.0] C:\Users\user\.gradle\caches\transforms-3\0cc381461a91d93b637a49c03f9bd3b6\transformed\ui-test-manifest-1.3.0\AndroidManifest.xml:25:13-36
+159
+160        <uses-library
+160-->[androidx.window:window:1.0.0] C:\Users\user\.gradle\caches\transforms-3\e65b8465f5bac02dec998c398cfe1021\transformed\window-1.0.0\AndroidManifest.xml:25:9-27:40
+161            android:name="androidx.window.extensions"
+161-->[androidx.window:window:1.0.0] C:\Users\user\.gradle\caches\transforms-3\e65b8465f5bac02dec998c398cfe1021\transformed\window-1.0.0\AndroidManifest.xml:26:13-54
+162            android:required="false" />
+162-->[androidx.window:window:1.0.0] C:\Users\user\.gradle\caches\transforms-3\e65b8465f5bac02dec998c398cfe1021\transformed\window-1.0.0\AndroidManifest.xml:27:13-37
+163        <uses-library
+163-->[androidx.window:window:1.0.0] C:\Users\user\.gradle\caches\transforms-3\e65b8465f5bac02dec998c398cfe1021\transformed\window-1.0.0\AndroidManifest.xml:28:9-30:40
+164            android:name="androidx.window.sidecar"
+164-->[androidx.window:window:1.0.0] C:\Users\user\.gradle\caches\transforms-3\e65b8465f5bac02dec998c398cfe1021\transformed\window-1.0.0\AndroidManifest.xml:29:13-51
+165            android:required="false" />
+165-->[androidx.window:window:1.0.0] C:\Users\user\.gradle\caches\transforms-3\e65b8465f5bac02dec998c398cfe1021\transformed\window-1.0.0\AndroidManifest.xml:30:13-37
+166
+167        <provider
+167-->[androidx.emoji2:emoji2:1.2.0] C:\Users\user\.gradle\caches\transforms-3\412372332f980a5c4ef0364c55a99af0\transformed\emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
+168            android:name="androidx.startup.InitializationProvider"
+168-->[androidx.emoji2:emoji2:1.2.0] C:\Users\user\.gradle\caches\transforms-3\412372332f980a5c4ef0364c55a99af0\transformed\emoji2-1.2.0\AndroidManifest.xml:25:13-67
+169            android:authorities="com.budemi.app.androidx-startup"
+169-->[androidx.emoji2:emoji2:1.2.0] C:\Users\user\.gradle\caches\transforms-3\412372332f980a5c4ef0364c55a99af0\transformed\emoji2-1.2.0\AndroidManifest.xml:26:13-68
+170            android:exported="false" >
+170-->[androidx.emoji2:emoji2:1.2.0] C:\Users\user\.gradle\caches\transforms-3\412372332f980a5c4ef0364c55a99af0\transformed\emoji2-1.2.0\AndroidManifest.xml:27:13-37
+171            <meta-data
+171-->[androidx.emoji2:emoji2:1.2.0] C:\Users\user\.gradle\caches\transforms-3\412372332f980a5c4ef0364c55a99af0\transformed\emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+172                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+172-->[androidx.emoji2:emoji2:1.2.0] C:\Users\user\.gradle\caches\transforms-3\412372332f980a5c4ef0364c55a99af0\transformed\emoji2-1.2.0\AndroidManifest.xml:30:17-75
+173                android:value="androidx.startup" />
+173-->[androidx.emoji2:emoji2:1.2.0] C:\Users\user\.gradle\caches\transforms-3\412372332f980a5c4ef0364c55a99af0\transformed\emoji2-1.2.0\AndroidManifest.xml:31:17-49
+174            <meta-data
+174-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\user\.gradle\caches\transforms-3\a8199b6bb025d711471524267dd78014\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:31:13-33:52
+175                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+175-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\user\.gradle\caches\transforms-3\a8199b6bb025d711471524267dd78014\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:32:17-78
+176                android:value="androidx.startup" />
+176-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\user\.gradle\caches\transforms-3\a8199b6bb025d711471524267dd78014\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:33:17-49
+177            <meta-data
+177-->[androidx.profileinstaller:profileinstaller:1.2.0] C:\Users\user\.gradle\caches\transforms-3\29296c99ccc981f425f4bedabc39524a\transformed\profileinstaller-1.2.0\AndroidManifest.xml:30:13-32:52
+178                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+178-->[androidx.profileinstaller:profileinstaller:1.2.0] C:\Users\user\.gradle\caches\transforms-3\29296c99ccc981f425f4bedabc39524a\transformed\profileinstaller-1.2.0\AndroidManifest.xml:31:17-85
+179                android:value="androidx.startup" />
+179-->[androidx.profileinstaller:profileinstaller:1.2.0] C:\Users\user\.gradle\caches\transforms-3\29296c99ccc981f425f4bedabc39524a\transformed\profileinstaller-1.2.0\AndroidManifest.xml:32:17-49
+180        </provider>
+181
+182        <receiver
+182-->[androidx.profileinstaller:profileinstaller:1.2.0] C:\Users\user\.gradle\caches\transforms-3\29296c99ccc981f425f4bedabc39524a\transformed\profileinstaller-1.2.0\AndroidManifest.xml:35:9-47:20
+183            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+183-->[androidx.profileinstaller:profileinstaller:1.2.0] C:\Users\user\.gradle\caches\transforms-3\29296c99ccc981f425f4bedabc39524a\transformed\profileinstaller-1.2.0\AndroidManifest.xml:36:13-76
+184            android:directBootAware="false"
+184-->[androidx.profileinstaller:profileinstaller:1.2.0] C:\Users\user\.gradle\caches\transforms-3\29296c99ccc981f425f4bedabc39524a\transformed\profileinstaller-1.2.0\AndroidManifest.xml:37:13-44
+185            android:enabled="true"
+185-->[androidx.profileinstaller:profileinstaller:1.2.0] C:\Users\user\.gradle\caches\transforms-3\29296c99ccc981f425f4bedabc39524a\transformed\profileinstaller-1.2.0\AndroidManifest.xml:38:13-35
+186            android:exported="true"
+186-->[androidx.profileinstaller:profileinstaller:1.2.0] C:\Users\user\.gradle\caches\transforms-3\29296c99ccc981f425f4bedabc39524a\transformed\profileinstaller-1.2.0\AndroidManifest.xml:39:13-36
+187            android:permission="android.permission.DUMP" >
+187-->[androidx.profileinstaller:profileinstaller:1.2.0] C:\Users\user\.gradle\caches\transforms-3\29296c99ccc981f425f4bedabc39524a\transformed\profileinstaller-1.2.0\AndroidManifest.xml:40:13-57
+188            <intent-filter>
+188-->[androidx.profileinstaller:profileinstaller:1.2.0] C:\Users\user\.gradle\caches\transforms-3\29296c99ccc981f425f4bedabc39524a\transformed\profileinstaller-1.2.0\AndroidManifest.xml:41:13-43:29
+189                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+189-->[androidx.profileinstaller:profileinstaller:1.2.0] C:\Users\user\.gradle\caches\transforms-3\29296c99ccc981f425f4bedabc39524a\transformed\profileinstaller-1.2.0\AndroidManifest.xml:42:17-91
+189-->[androidx.profileinstaller:profileinstaller:1.2.0] C:\Users\user\.gradle\caches\transforms-3\29296c99ccc981f425f4bedabc39524a\transformed\profileinstaller-1.2.0\AndroidManifest.xml:42:25-88
+190            </intent-filter>
+191            <intent-filter>
+191-->[androidx.profileinstaller:profileinstaller:1.2.0] C:\Users\user\.gradle\caches\transforms-3\29296c99ccc981f425f4bedabc39524a\transformed\profileinstaller-1.2.0\AndroidManifest.xml:44:13-46:29
+192                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+192-->[androidx.profileinstaller:profileinstaller:1.2.0] C:\Users\user\.gradle\caches\transforms-3\29296c99ccc981f425f4bedabc39524a\transformed\profileinstaller-1.2.0\AndroidManifest.xml:45:17-85
+192-->[androidx.profileinstaller:profileinstaller:1.2.0] C:\Users\user\.gradle\caches\transforms-3\29296c99ccc981f425f4bedabc39524a\transformed\profileinstaller-1.2.0\AndroidManifest.xml:45:25-82
+193            </intent-filter>
+194        </receiver>
+195    </application>
+196
+197</manifest>
