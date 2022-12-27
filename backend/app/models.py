@@ -5,8 +5,15 @@ from django.contrib.auth.models import User
 class LearningSpace(models.Model):
     name = models.CharField(max_length=30)
     members = models.ManyToManyField(User, related_name='members')
-    
+    #owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='owner')
     tag = models.CharField(max_length=30)
+    image = models.ImageField(upload_to='uploads/', default='uploads/default.png',null=True)
+    ls_owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    description = models.TextField(null=True)
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['created_on']
 
 
     # TODO: add contributors field
@@ -47,6 +54,7 @@ class Discussion(models.Model):
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
 
+
     class Meta:
         ordering = ['created_on']
 
@@ -55,5 +63,22 @@ class Discussion(models.Model):
 class Profile(models.Model):
     about_me = models.CharField(max_length=100)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    learningspaces = models.ManyToManyField(LearningSpace, related_name='learningspaces',blank=True)
-    image = models.ImageField(upload_to='uploads/', default='uploads/default.png')
+    image = models.TextField()
+
+class Note(models.Model):
+    content = models.ForeignKey(Content,on_delete=models.CASCADE, related_name='note')
+    #name = models.CharField(max_length=30)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    body = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+
+
+    class Meta:
+        ordering = ['created_on']
+
+
+
+class Favorite(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    learningSpace = models.ForeignKey(LearningSpace, on_delete=models.CASCADE)
+

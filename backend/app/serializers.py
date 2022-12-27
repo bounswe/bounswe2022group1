@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from .models import LearningSpace, Content, Discussion, Profile
+from .models import LearningSpace, Content, Discussion, Profile,Note, Favorite
 
 # User Serializer
 class UserSerializer(serializers.ModelSerializer):
@@ -28,12 +28,26 @@ class ChangePasswordSerializer(serializers.Serializer):
 
     new_pass = serializers.CharField(required=True)
 
+
 class LearningSpaceSerializer(serializers.ModelSerializer):
+    members = UserSerializer(many=True, read_only=True)
+    ls_owner=UserSerializer(read_only=True)
+    
+    
     class Meta:
         model = LearningSpace
-        fields = ["id", "name", "members", "tag"]
-    
+        fields = ["id", "name", "members", "tag", "image", "ls_owner", "description","created_on"]
+
+class LearningSpacePostSerializer(serializers.ModelSerializer):
     members = UserSerializer(many=True, read_only=True)
+    
+    
+    
+    class Meta:
+        model = LearningSpace
+        fields = ["id", "name", "members", "tag", "image", "ls_owner", "description","created_on"]
+    
+ 
 
 
 class ContentSerializer(serializers.ModelSerializer):
@@ -50,6 +64,8 @@ class ContentSerializer(serializers.ModelSerializer):
         instance.type = validated_data.get('type', instance.type)
         instance.text = validated_data.get('text', instance.text)
         instance.url = validated_data.get('url', instance.url)
+        instance.upVoteCount = validated_data.get('upVoteCount', instance.url)
+
         instance.save()
         return instance
 
@@ -57,22 +73,15 @@ class ContentSerializer(serializers.ModelSerializer):
     def validate(self, data):
         # TODO: fill each condition with the correct validations (whether it is really a video, image, etc.)
         if data['type'] == "text":
-            if data.get("text", "") == "" or data.get("url", "") != "":
+            if data.get("text", "") == "":
                 raise serializers.ValidationError("Type doesn't match the content")
         elif data['type'] == "video":
-            if data.get("url", "") == "" or data.get("text", "") != "":
+            if data.get("url", "") == "":
                 raise serializers.ValidationError("Type doesn't match the content")
         elif data['type'] == "image":
-            if data.get("url", "") == "" or data.get("text", "") != "":
+            if data.get("url", "") == "":
                 raise serializers.ValidationError("Type doesn't match the content")
-        elif data['type'] == "discussion":
-            if data.get("url", "") != "" or data.get("text", "") != "":
-                raise serializers.ValidationError("Type doesn't match the content")
-        elif data['type'] == "meeting":
-            if data.get("url", "") != "" or data.get("text", "") == "":
-                raise serializers.ValidationError("Type doesn't match the content")
-        else:
-            raise serializers.ValidationError("Invalid type value")
+   
         return data
 
 
@@ -90,22 +99,28 @@ class DiscussionPostSerializer(serializers.ModelSerializer):
         #fields = '__all__'
         fields = ["id", "content", "owner", "body", "created_on"]
 
+class NoteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Note
+        #fields = '__all__'
+        fields = ["id", "content", "owner", "body", "created_on"]
+    owner =  UserSerializer()
+
+
+class NotePostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Note
+        #fields = '__all__'
+        fields = ["id", "content", "owner", "body", "created_on"]
+
+
+
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
         #fields = '_all_'
-        fields = ["id", "about_me", "user","learningspaces","image"]
-    user =  UserSerializer()
-    image = serializers.FileField()
-    #learningspaces = LearningSpaceSerializer(many=True, read_only=True)
-
-
-class ProfilePostSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Profile
-        #fields = '_all_'
         fields = ["id", "about_me", "user", "image"]  
-    image = serializers.FileField()
+    #image = serializers.FileField()
     #learningspaces = LearningSpaceSerializer(many=True, read_only=True)
 class ResetSerializer(serializers.Serializer):
     email = serializers.CharField(required=True)
@@ -113,7 +128,17 @@ class ResetSerializer(serializers.Serializer):
 
 
 
+class FavoriteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Favorite
+        fields = ["id", "user", "learningSpace"]
+    learningSpace = LearningSpaceSerializer()
 
+
+class FavoritePostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Favorite
+        fields = ["id", "user", "learningSpace"]
 
     
 

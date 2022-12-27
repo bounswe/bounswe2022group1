@@ -3,14 +3,13 @@ from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
 
-
-class DiscussListTest(APITestCase):
+class ContentTestEdit(APITestCase):
     def setUp(self):
         url = reverse('register')
         data = {
-            "username": "ege.taga",
-            "email": "ege.taga@boun.edu.tr",
-            "password": "ege123"
+            "username": "mustafa.atay",
+            "email": "mustafa.atay@boun.edu.tr",
+            "password": "mustafa1234"
         }
         response = self.client.post(url, data, format='json')
 
@@ -18,8 +17,8 @@ class DiscussListTest(APITestCase):
 
         self.client.credentials(HTTP_AUTHORIZATION='Token ' + self.token)
 
-    def test_discuss_list(self):
-
+    def test_edit_content(self):
+        # create learning space first
         url = reverse('learning-space')
         data = {
             "name": 'Guitar',
@@ -36,25 +35,23 @@ class DiscussListTest(APITestCase):
             "text": "this is a testing content",
             "type": "text",
         }
-
         response = self.client.post(url, data, format='json')
-        content_id = response.data['id']
+    
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(response.data['name'], 'Content About Guitar')
+        self.assertEqual(response.data['text'], 'this is a testing content')
+        self.assertEqual(response.data['url'], '')
+        self.assertEqual(response.data['type'], 'text')
         data = {
-            "content": content_id,
-            "body": "I really like the discussion here.",
+            "id": response.data['id'],
+            "name": "Content About Guitars",
+            "text": "this is a testing content",
+            "type": "text",
+            "url": "xxx",
         }
-
-        url = reverse('discussion')
-        response = self.client.post(url, data, format='json')
-
-        data = {
-            "content": content_id,
-            "body": "I really like the discussion here.",
-        }
-        response = self.client.post(url, data, format='json')
-
-        url = reverse('discussion-list')
-
-        response = self.client.get(url, {'content_id': content_id}, format='json')
-
+        response = self.client.patch(url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+
+
+

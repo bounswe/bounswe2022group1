@@ -3,14 +3,13 @@ from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
 
-
-class DiscussListTest(APITestCase):
+class FavoriteUnfavorite(APITestCase):
     def setUp(self):
         url = reverse('register')
         data = {
             "username": "ege.taga",
             "email": "ege.taga@boun.edu.tr",
-            "password": "ege123"
+            "password": "123123"
         }
         response = self.client.post(url, data, format='json')
 
@@ -18,43 +17,32 @@ class DiscussListTest(APITestCase):
 
         self.client.credentials(HTTP_AUTHORIZATION='Token ' + self.token)
 
-    def test_discuss_list(self):
-
+    def test_favorite_unfavorite(self):
+        # create learning space first
         url = reverse('learning-space')
         data = {
             "name": 'Guitar',
             "tag": "music",
         }
         response = self.client.post(url, data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+
         learning_space_id = response.data['id']
 
-        # create content
-        url = reverse('content')
+
         data = {
             "learningSpace": learning_space_id,
-            "name": "Content About Guitar",
-            "text": "this is a testing content",
-            "type": "text",
         }
-
-        response = self.client.post(url, data, format='json')
-        content_id = response.data['id']
-        data = {
-            "content": content_id,
-            "body": "I really like the discussion here.",
-        }
-
-        url = reverse('discussion')
+        url = reverse('favorite')
         response = self.client.post(url, data, format='json')
 
-        data = {
-            "content": content_id,
-            "body": "I really like the discussion here.",
-        }
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+
+        url = reverse('unfavorite')
         response = self.client.post(url, data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK
+)
 
-        url = reverse('discussion-list')
+     
 
-        response = self.client.get(url, {'content_id': content_id}, format='json')
 
-        self.assertEqual(response.status_code, status.HTTP_200_OK)

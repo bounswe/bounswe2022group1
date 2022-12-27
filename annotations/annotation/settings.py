@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'knox',
     'rest_framework.authtoken',
     'corsheaders',
 ]
@@ -66,7 +65,7 @@ MIDDLEWARE = [
 CORS_ALLOW_ALL_ORIGINS = True
 
 
-ROOT_URLCONF = 'budemi.urls'
+ROOT_URLCONF = 'annotation.urls'
 
 TEMPLATES = [
     {
@@ -84,13 +83,12 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'budemi.wsgi.application'
+WSGI_APPLICATION = 'annotation.wsgi.application'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         # 'rest_framework.authentication.BasicAuthentication',
         # 'rest_framework.authentication.SessionAuthentication',
-        'knox.auth.TokenAuthentication',
     ]
 }
 
@@ -101,11 +99,11 @@ REST_FRAMEWORK = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': env('MYSQL_DATABASE'),
-        'USER': env('MYSQL_USER'),
-        'PASSWORD': env('MYSQL_PASSWORD'),
-        'HOST': 'db',
-        'PORT': '3306',
+        'NAME': 'django_start',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'HOST': 'db_annotation',
+        'PORT': '3307',
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
         }
@@ -154,12 +152,6 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_USE_TLS = True
-EMAIL_PORT = 587
-EMAIL_HOST_USER = env('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 
 # For image upload
 MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')

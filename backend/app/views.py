@@ -4,12 +4,13 @@ from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth import login
 from django.contrib.auth.models import User
 from knox.models import AuthToken
+from rest_framework.views import APIView
 from knox.views import LoginView as KnoxLoginView
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from .serializers import ContentSerializer, UserSerializer, RegisterSerializer, DiscussionPostSerializer
-from .serializers import ChangePasswordSerializer, LearningSpaceSerializer, DiscussionSerializer, ProfileSerializer,ProfilePostSerializer,ResetSerializer
+from .serializers import ChangePasswordSerializer, LearningSpaceSerializer, DiscussionSerializer, ProfileSerializer,ResetSerializer,LearningSpacePostSerializer
 from .models import Content, LearningSpace, Discussion, Profile
-
+from .serializers import *
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
 
@@ -109,6 +110,7 @@ class LearningSpaceApiView(APIView):
     # add permission to check if user is authenticated
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = LearningSpaceSerializer
+    serializer_class2=LearningSpacePostSerializer
     
     
     def get(self, request, *args, **kwargs):
@@ -131,18 +133,19 @@ class LearningSpaceApiView(APIView):
         '''
         Create the Todo with given todo data
         '''
-        data = {
-            'name': request.data.get('name'),
-            'tag' : request.data.get('tag')
-        }
-    
+      
+        data = request.data.copy()
+        data['ls_owner'] = request.user.id
 
-        serializer = self.serializer_class(data=data)
+
+
+        serializer = self.serializer_class2(data=data)
         if serializer.is_valid():
             serializer.save()
             ls = LearningSpace.objects.get(id=serializer.data['id'])
             ls.members.add(request.user)
-            serializer = self.serializer_class(ls)
+         
+            serializer = self.serializer_class2(ls)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -202,15 +205,24 @@ class contentApiView(APIView):
             return Response({"error": "you are not the owner of this content"}, status=status.HTTP_400_BAD_REQUEST)       
 
         # Those fields are needed to validate data because Content exceptionally has a custom validate() function.
+        
+        if 'name' not in data:
+            data['name'] = content.name
         if 'type' not in data:
             data['type'] = content.type
         if 'text' not in data:
             data['text'] = content.text
         if 'url' not in data:
             data['url'] = content.url
+        if 'upVoteCount' not in data:
+            data['upVoteCount'] = content.upVoteCount
+        
+        
+
+        print(data)
+
 
         serializer = self.serializer_class(content, data=data, partial=True)
-
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
@@ -255,10 +267,6 @@ class enrollApiView(APIView):
             ls.members.add(request.user)
             serializer = self.serializer_class(ls)
 
-            if (Profile.objects.filter(user=request.user).exists()):
-                profile_obj=Profile.objects.get(user=request.user)
-                new_learningspaces = LearningSpace.objects.filter(members__id=request.user.id)
-                profile_obj.learningspaces.set(new_learningspaces)
             return Response(serializer.data, status=status.HTTP_200_OK)
         except LearningSpace.DoesNotExist:
             return Response({"message": "given learning space id doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
@@ -326,11 +334,86 @@ class discussionApiListView(APIView):
             return Response({"message": "given content id doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
 
 
+
+
+
+
+
+class noteApiView(APIView):
+    # add permission to check if user is authenticated
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = NoteSerializer
+    serializer_class_post = NotePostSerializer
+
+    def post(self, request, *args, **kwargs):
+        
+        data = request.data.copy()
+
+        data['owner'] = request.user.id
+       
+
+        # TODO: check wheter the given learning space id exists and user is a member of it
+
+        serializer = self.serializer_class_post(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    def get(self, request, *args, **kwargs):
+        try:
+            content_id = int(request.GET.get('content_id'))
+        except ValueError:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+        try:  
+            note = Note.objects.filter(owner=request.user.id, content= content_id)
+            serializer = self.serializer_class(note, many=True)
+            return Response({"data": serializer.data}, status=status.HTTP_200_OK)
+        except LearningSpace.DoesNotExist:
+            return Response({"message": "given content id doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
+    
+    def patch(self, request, *args, **kwargs):
+        data = request.data.copy()
+
+        try:
+            note_id = int(data['id'])
+        except ValueError:
+            return Response({"error": "given id is not an integer"}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            note = Note.objects.get(id=note_id)
+        except Note.DoesNotExist:
+            return Response({"error": "given id doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
+
+        if note.owner != request.user: 
+            return Response({"error": "you are not the owner of this note"}, status=status.HTTP_400_BAD_REQUEST)       
+
+        # Those fields are needed to validate data because Content exceptionally has a custom validate() function.
+        
+        content_id=note.content.id
+        data['content'] = content_id
+        data['owner'] = note.owner
+        data['created_on'] = note.created_on
+
+      
+
+        serializer = self.serializer_class(note, data=data, partial=True)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    
+
+
+
 class profileApiView(APIView):
     # add permission to check if user is authenticated
     permission_classes = [permissions.IsAuthenticated]
-    serializer_class = ProfilePostSerializer
-    serializer_class1 = ProfileSerializer
+    serializer_class = ProfileSerializer
 
     def post(self, request, *args, **kwargs):
         
@@ -338,18 +421,10 @@ class profileApiView(APIView):
         
 
         data['user'] = request.user.id
-        learningspaces=LearningSpace.objects.filter(members__id=request.user.id)
-        list=[]
-        for i in learningspaces:
-            list.append(i.id)
-
-        data["learningspaces"] = list
-        print(list)
-       
-
-        # TODO: check wheter the given learning space id exists and user is a member of it
-
+        print(data)
         serializer = self.serializer_class(data=data)
+        
+
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -365,12 +440,39 @@ class profileApiView(APIView):
 
         try:
             profile = Profile.objects.get(user=user_id)
-            
-            serializer = self.serializer_class1(profile)
-            return Response(serializer.data, status=status.HTTP_200_OK)
+            profile = self.serializer_class(profile).data
+
+            learningspaces=LearningSpace.objects.filter(members__id=request.user.id)
+            list=[]
+            for i in learningspaces:
+                list.append(i.id)
+
+            profile["learningspaces"] = list
+            print(profile)
+
+
+
+            #serializer = self.serializer_class1(profile)
+            return Response(profile, status=status.HTTP_200_OK)
         except LearningSpace.DoesNotExist:
             return Response({"message": "given content id doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
+    def patch(self, request, *args, **kwargs):
+        data = request.data.copy()
 
+        
+       
+        profile = Profile.objects.get(user=request.user.id)
+        
+        if 'about_me' not in data:
+            data['about_me'] = profile.about_me
+        if 'image' not in data:
+            data['image'] = profile.image
+        
+        serializer = self.serializer_class(profile, data=data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class LearningSpaceListApiView(APIView):
     # add permission to check if user is authenticated
@@ -469,7 +571,98 @@ class forgetpasswordApiView(APIView):
             send_forget_password_mail(get_email, new_pass )
             return Response({"message": "your password is sent to your email"}, status=status.HTTP_200_OK)
 
+class getuseridAPIView(APIView):
+    # add permission to check if user is authenticated
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = UserSerializer
+    def get(self, request, *args, **kwargs):
+        try:
+            username = request.GET.get('username')
+            user = User.objects.filter(username=username)[0]
+            serializer = self.serializer_class(user)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except:
+            return Response({"message": "User with given username doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
 
+class userNamefromIDAPIView(APIView):
+    # add permission to check if user is authenticated
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = UserSerializer
+    
+    
+    def get(self, request, *args, **kwargs):
+        try:
+            id = request.GET.get('id')
+            user = User.objects.filter(id=id)[0]
+            print(user)
+            serializer = self.serializer_class(user)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except:
+            return Response({"message": "User with given id doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
+
+
+class favoriteLearningSpaceAPIView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = FavoriteSerializer
+    serializer_class_post = FavoritePostSerializer
+
+    def get(self, request, *args, **kwargs):
+        try:
+            user_id = int(request.GET.get('user', request.user.id))
+
+        except ValueError:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            favorite_ls = Favorite.objects.filter(user__id=user_id)
+            serializer = self.serializer_class(favorite_ls, many=True)
+            return Response({"data": serializer.data}, status=status.HTTP_200_OK)
+        except:
+            return Response({"message": "given user id doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
+
+    
+    def post(self, request, *args, **kwargs):
+        data = request.data.copy()
+        data['user'] = request.user.id
+        print(data)
+        
+        if Favorite.objects.filter(user=request.user.id, learningSpace=data['learningSpace']).exists():
+            return Response({"message": "Already favorited this learning space"}, status=status.HTTP_400_BAD_REQUEST)
+
+        serializer = self.serializer_class_post(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        
+        
+    
+class disFavoriteAPIView(APIView):
+    # add permission to check if user is authenticated
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = FavoriteSerializer
+
+    def post(self, request, *args, **kwargs):
+        try:
+            learning_space_id = int(request.data.get('learningSpace'))
+        except ValueError:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            favorite_record = Favorite.objects.get(learningSpace__id=learning_space_id)
+            favorite_record.delete()
+            serializer = self.serializer_class(favorite_record)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except:
+            return Response({"message": "given learning space id doesn't exist"}, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+
+
+
+
+
+    
 
 
        
