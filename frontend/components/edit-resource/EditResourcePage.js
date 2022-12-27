@@ -9,10 +9,10 @@ import Footer from "../detail/Footer";
 
 export default function EditResourcePage({ routerQuery }) {
   return (
-      <Grid container maxWidth="xl" ml={2} mr={2}>
-        <Grid item xs={12}>
-          <ResourceEdit routerQuery={routerQuery}/>
-        </Grid>
+    <Grid container maxWidth="xl" sx={{ margin: "auto" }}>
+      <Grid item xs={12}>
+        <ResourceEdit routerQuery={routerQuery} />
       </Grid>
+    </Grid>
   );
 }

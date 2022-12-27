@@ -46,14 +46,15 @@ function ContentAdd({ routerQuery }) {
         <Box
           sx={{
             padding: 6,
-            marginTop: 15,
+            marginTop: 2,
           }}
         >
           <Typography
             fontWeight="bold"
-            textAlign="center"
+            textAlign="left"
             component="h1"
-            variant="h5"
+            variant="h3"
+            sx={{ mb: 4 }}
           >
             Add Resource
           </Typography>
@@ -70,13 +71,10 @@ function ContentAdd({ routerQuery }) {
               onChange={(e) => {
                 setName(e.target.value);
               }}
+              sx={{ mb: 4 }}
             />
 
             <div data-color-mode="light">
-              <hr />
-              <Typography component="h2" variant="h6">
-                Text
-              </Typography>
               <MDEditor
                 height={500}
                 value={text}
