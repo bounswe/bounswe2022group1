@@ -52,7 +52,7 @@ export default function PageOne() {
 
   const [favorite, setFavorite] = useState({});
 
-  // console.log(favorite);
+  const [userAlreadyCreated, setUserAlreadyCreated] = useState(false);
 
   const getFileToBase64 = (file) => {
     return new Promise((resolve) => {
@@ -78,22 +78,37 @@ export default function PageOne() {
   };
 
   const handleUpdate = () => {
-    axios
-      .patch("/profile/", {
-        about_me: aboutMe,
-        image: selectedFile || user.image,
-      })
-      .then((data) => {
-        enqueueSnackbar("Success ", { variant: "success" });
-      })
-      .catch((err) => console.log(err));
+    if (userAlreadyCreated) {
+      axios
+        .patch("/profile/", {
+          about_me: aboutMe,
+          image: selectedFile || user.image,
+        })
+        .then((data) => {
+          enqueueSnackbar("Success ", { variant: "success" });
+        })
+        .catch((err) => console.log(err));
+    } else {
+      axios
+        .post("/profile/", {
+          about_me: aboutMe,
+          image: selectedFile || user.image,
+        })
+        .then((data) => {
+          enqueueSnackbar("Success ", { variant: "success" });
+          setUserAlreadyCreated(true);
+        })
+        .catch((err) => console.log(err));
+    }
   };
 
   useEffect(() => {
     if (!userName) return;
     axios
       .get("/user_id_from_username/?username=" + userName)
-      .then((data) => setId(data.data.id))
+      .then((data) => {
+        setId(data.data.id);
+      })
       .catch((err) => console.log(err));
   }, []);
 
@@ -104,6 +119,7 @@ export default function PageOne() {
       .then((data) => {
         console.log(data.data);
         setUser(data.data);
+        setUserAlreadyCreated(true);
         setAboutMe(data.data.about_me);
       })
       .catch((err) => console.log(err));
