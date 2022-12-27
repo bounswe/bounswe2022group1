@@ -469,7 +469,6 @@ class LearningSpace3 : AppCompatActivity() {
         val apiService = learningSpace3_see_all_note_api_call()
         apiService.seeAllNotes(content_id)  {
             if(it!=null){
-                //
                 var temp=""
                 it.data.forEach {
                     temp=(it.body)
