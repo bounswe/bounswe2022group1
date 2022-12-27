@@ -1,19 +1,24 @@
 package com.example.myapplication.view
 
+import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.media.Image
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.view.View
 import android.webkit.WebView
 import android.widget.*
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.marginLeft
+import androidx.drawerlayout.widget.DrawerLayout
 import com.example.myapplication.R
 import com.example.myapplication.model.*
 import com.example.myapplication.service.*
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.navigation.NavigationView
 import org.markdownj.MarkdownProcessor
 
 
@@ -21,7 +26,6 @@ class LearningSpace3 : AppCompatActivity() {
 
     var name_of_content=""
     var owner_of_content=""
-    var content_id=-1
 
     fun makeShorter(){
         val bottomSheetLayout = findViewById<FrameLayout>(R.id.bottom_sheet)
@@ -34,13 +38,21 @@ class LearningSpace3 : AppCompatActivity() {
     fun updateCount(){
         var Upvote = findViewById<ImageView>(R.id.Upvote)
         var UpCount = findViewById<TextView>(R.id.upCount)
-        Upvote.setTag(R.drawable.up_image)
+        if(votedContents.contains(content_id)){
+            Upvote.setTag(R.drawable.down_image)
+            Upvote.setImageResource(R.drawable.down_image)
+        }
+        else{
+            Upvote.setTag(R.drawable.up_image)
+            Upvote.setImageResource(R.drawable.up_image)
+        }
 
             val apiService = learningSpace3_patch_content_info_api_call()
             val data = learningSpace3_patch_content_info_send_model(
                 id=content_id,
                 url = "xx"
             )
+        Log.d("content_id",content_id.toString())
 
             apiService.getInfo(data)  {
                 if(it?.id!=null){
@@ -61,6 +73,7 @@ class LearningSpace3 : AppCompatActivity() {
         )
 
         apiService.getInfo(data)  {
+            Log.d("updateVoteCount",it?.upVoteCount.toString())
             if(it?.id!=null){
                 var UpCount = findViewById<TextView>(R.id.upCount)
                 UpCount.setText(it.upVoteCount.toString())
@@ -71,12 +84,14 @@ class LearningSpace3 : AppCompatActivity() {
         }
     }
 
+    private lateinit var toggle: ActionBarDrawerToggle
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_learning_space3)
 
         updateCount()
         switchToRead()
+        navMenuHandler()
     }
 
 
@@ -115,7 +130,7 @@ class LearningSpace3 : AppCompatActivity() {
         edit_image.setVisibility(View.VISIBLE)
 
         val apiService = learningSpace3GetContent_api_call()
-        apiService.getContent(currentContentID) {
+        apiService.getContent(content_id) {
             if(it?.id!=null){
                 content_id=it.id
                 var resource = findViewById<EditText>(R.id.Resource)
@@ -172,11 +187,12 @@ class LearningSpace3 : AppCompatActivity() {
             )
 
             apiService.updateVote(data)  {
-                if(it?.id!=null){
+                if(it?.id!=null && !votedContents.contains(content_id)){
                     updateUpVote()
                     Upvote.setImageResource(R.drawable.down_image)
                     Upvote.setTag(R.drawable.down_image)
                     Log.d("Up vote success","down image'a gec")
+                    votedContents.add(content_id)
                 }
                 else{
                     Log.d("Up vote failed","")
@@ -193,10 +209,11 @@ class LearningSpace3 : AppCompatActivity() {
             )
 
             apiService.updateVote(data)  {
-                if(it?.id!=null){
+                if(it?.id!=null && votedContents.contains(content_id)){
                     updateUpVote()
                     Upvote.setImageResource(R.drawable.up_image)
                     Upvote.setTag(R.drawable.up_image)
+                    votedContents.remove(content_id)
                 }
                 else{
                     Log.d("Up vote failed","")
@@ -256,7 +273,7 @@ class LearningSpace3 : AppCompatActivity() {
 
             val apiService = learningSpace3GetDiscussionList_api_call()
 
-            apiService.getDiscussionList(currentContentID){
+            apiService.getDiscussionList(content_id){
                 if(it?.data!=null){
                     var Chatbox = findViewById<TextView>(R.id.Resource)
                     var temp=""
@@ -291,7 +308,7 @@ class LearningSpace3 : AppCompatActivity() {
                 val apiService = learningSpace3PostDiscussion_api_call()
 
                 val userData = learningSpace3PostDiscussion_send_model(
-                    content=currentContentID,
+                    content=content_id,
                     body = editText.text.toString()
                 )
 
@@ -315,7 +332,7 @@ class LearningSpace3 : AppCompatActivity() {
     fun updateDiscussion(){
         val apiService = learningSpace3GetDiscussionList_api_call()
 
-        apiService.getDiscussionList(currentContentID){
+        apiService.getDiscussionList(content_id){
             if(it?.data!=null){
                 val Chatbox = findViewById<TextView>(R.id.Resource)
                 var temp=""
@@ -356,7 +373,7 @@ class LearningSpace3 : AppCompatActivity() {
             else{
                 //load content
                 val apiService = learningSpace3GetContent_api_call()
-                apiService.getContent(currentContentID) {
+                apiService.getContent(content_id) {
                     if(it?.id!=null){
                         resource.setText(it.text)
                     }
@@ -452,23 +469,16 @@ class LearningSpace3 : AppCompatActivity() {
         val apiService = learningSpace3_see_all_note_api_call()
         apiService.seeAllNotes(content_id)  {
             if(it!=null){
-                Log.d("note get"+content_id.toString(),"success"+it?.toString())
-                var id_of_current_user=3
-                var body = ""
+                var temp=""
                 it.data.forEach {
-                    if( id_of_current_user==it.owner.id){
-                        body = it.body
-                    }
+                    temp=(it.body)
                 }
-                var resource=findViewById<EditText>(R.id.Resource)
-                resource.setText(body)
+                resource.setText(temp)
             }
             else{
                 Log.d("note get","unsuccess")
             }
-            if(resource.text.toString().equals("")) {
-                resource.setText("My notes will be here.")
-            }
+
             resource.setEnabled(false)
         }
 
@@ -477,20 +487,16 @@ class LearningSpace3 : AppCompatActivity() {
     fun notesClicked(view:View){
         makeShorter()
         var notes_text=findViewById<TextView>(R.id.notes_text)
+        var resource=findViewById<EditText>(R.id.Resource)
         if(notes_text.text.equals("Notes:")){
             val apiService = learningSpace3_see_all_note_api_call()
             apiService.seeAllNotes(content_id)  {
                 if(it!=null){
-                    Log.d("note get"+content_id.toString(),"success"+it?.toString())
-                    var id_of_current_user=3
-                    var body = ""
+                    var temp=""
                     it.data.forEach {
-                        if( id_of_current_user==it.owner.id){
-                            body = it.body
-                        }
+                        temp=(it.body)
                     }
-                    var resource=findViewById<EditText>(R.id.Resource)
-                    resource.setText(body)
+                    resource.setText(temp)
                 }
                 else{
                     Log.d("note get","unsuccess")
@@ -503,5 +509,73 @@ class LearningSpace3 : AppCompatActivity() {
             switchToRead()
         }
     }
+    fun logoffToLanding() {
+        user_token=""
+        var intent= Intent(applicationContext, LandingActivity::class.java)
+        startActivity(intent)
+    }
+    fun toProfile() {
+        var intent= Intent(applicationContext, ProfilePageActivity::class.java)
+        startActivity(intent)
+    }
+    fun goToLearningSpace1() {
+        var intent= Intent(applicationContext, LearningSpace1::class.java)
+        startActivity(intent)
+    }
 
+    fun goToHomePage() {
+        var intent= Intent(applicationContext, HomeActivity::class.java)
+        startActivity(intent)
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(toggle.onOptionsItemSelected(item)) {
+            return true
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    fun navMenuHandler() {
+        val string = findViewById<DrawerLayout>(R.id.drawerLayout)
+        toggle = ActionBarDrawerToggle(this, string, R.string.open, R.string.close)
+
+        string.addDrawerListener(toggle)
+        toggle.syncState()
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        val string2 = findViewById<NavigationView>(R.id.navView)
+
+        string2.setNavigationItemSelectedListener {
+            when(it.itemId) {
+                R.id.profileButton -> toProfile()
+                R.id.miItem1 -> goToHomePage()
+                R.id.miItem2 -> {
+                    selectedTAG = "Art"
+                    goToLearningSpace1()
+                }
+                R.id.miItem3 -> {
+                    selectedTAG = "Science"
+                    goToLearningSpace1()
+                }
+                R.id.miItem4 -> {
+                    selectedTAG = "Math"
+                    goToLearningSpace1()
+                }
+                R.id.miItem5 -> {
+                    selectedTAG = "Technology"
+                    goToLearningSpace1()
+                }
+                R.id.miItem6 -> {
+                    selectedTAG = "Engineering"
+                    goToLearningSpace1()
+                }
+                R.id.signOut -> {
+                    logoffToLanding()
+                }
+            }
+            true
+        }
+    }
 }

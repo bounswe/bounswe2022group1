@@ -85,9 +85,11 @@ class ProfilePageActivity : AppCompatActivity() {
         val apiService = profile_see_api_call()
         apiService.getProfile("Token " + user_token) {
             if(it == null) {
+                hasProfile=false
                 editProfileButton()
             }
             else {
+                hasProfile=true
                 //Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
                 var _about_me = findViewById(R.id.seeAboutMe) as TextView
                 _about_me.text=it?.about_me
@@ -176,6 +178,11 @@ class ProfilePageActivity : AppCompatActivity() {
     }
 
     fun editProfileButton() {
+        var intent= Intent(applicationContext, ProfileCreateActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun editProfileButton(view: View) {
         var intent= Intent(applicationContext, ProfileCreateActivity::class.java)
         startActivity(intent)
     }
