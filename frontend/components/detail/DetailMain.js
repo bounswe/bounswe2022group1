@@ -209,7 +209,7 @@ function DetailMain({ space, content, fav }) {
                     <>
                       <Button
                         type="submit"
-                        onClick={() => handleLeave(space?.id)}
+                        onClick={() => handleLeave(space.id)}
                         variant="outlined"
                         color="error"
                         sx={{ borderRadius: "16px" }}
@@ -223,7 +223,7 @@ function DetailMain({ space, content, fav }) {
                       <div style={{ flex: 1 }}></div>
                       <Button
                         type="submit"
-                        onClick={() => handleJoin(space?.id)}
+                        onClick={() => handleJoin(space.id)}
                         variant="contained"
                         color="primary"
                         sx={{ borderRadius: "16px" }}
