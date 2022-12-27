@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { Box, TextField, Typography, Button } from "@mui/material";
 import { useRouter } from "next/router";
+import Paper from "@mui/material/Paper";
 
 export default function SignUp() {
   const [email, setEmail] = useState("");
