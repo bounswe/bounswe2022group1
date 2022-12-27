@@ -30,8 +30,8 @@ export default function ResourceSidebar({ menus }) {
             <Link href="/homepage">
               <Image
                 src="/assets/budemi logo2.png"
-                width={200}
-                height={150}
+                width={210}
+                height={70}
                 alt="budemi logo2.png"
               />
             </Link>
