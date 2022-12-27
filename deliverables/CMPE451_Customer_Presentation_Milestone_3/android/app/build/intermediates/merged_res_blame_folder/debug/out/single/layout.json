@@ -1,0 +1,94 @@
+[
+    {
+        "merged": "com.example.myapplication.app-mergeDebugResources-74:/layout/activity_forgot_password.xml",
+        "source": "com.example.myapplication.app-main-77:/layout/activity_forgot_password.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-mergeDebugResources-74:/layout/activity_profilepage.xml",
+        "source": "com.example.myapplication.app-main-77:/layout/activity_profilepage.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-mergeDebugResources-74:/layout/nav_header.xml",
+        "source": "com.example.myapplication.app-main-77:/layout/nav_header.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-mergeDebugResources-74:/layout/activity_learning_space2_seecontents.xml",
+        "source": "com.example.myapplication.app-main-77:/layout/activity_learning_space2_seecontents.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-mergeDebugResources-74:/layout/toolbar.xml",
+        "source": "com.example.myapplication.app-main-77:/layout/toolbar.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-mergeDebugResources-74:/layout/activity_sign_up.xml",
+        "source": "com.example.myapplication.app-main-77:/layout/activity_sign_up.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-mergeDebugResources-74:/layout/activity_learning_space2_members.xml",
+        "source": "com.example.myapplication.app-main-77:/layout/activity_learning_space2_members.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-mergeDebugResources-74:/layout/activity_add_content.xml",
+        "source": "com.example.myapplication.app-main-77:/layout/activity_add_content.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-mergeDebugResources-74:/layout/ls_list_item.xml",
+        "source": "com.example.myapplication.app-main-77:/layout/ls_list_item.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-mergeDebugResources-74:/layout/activity_landing.xml",
+        "source": "com.example.myapplication.app-main-77:/layout/activity_landing.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-mergeDebugResources-74:/layout/activity_profilecreate.xml",
+        "source": "com.example.myapplication.app-main-77:/layout/activity_profilecreate.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-mergeDebugResources-74:/layout/activity_sign_in.xml",
+        "source": "com.example.myapplication.app-main-77:/layout/activity_sign_in.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-mergeDebugResources-74:/layout/activity_change_password.xml",
+        "source": "com.example.myapplication.app-main-77:/layout/activity_change_password.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-mergeDebugResources-74:/layout/adapter_background.xml",
+        "source": "com.example.myapplication.app-main-77:/layout/adapter_background.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-mergeDebugResources-74:/layout/activity_learning_space2_menu.xml",
+        "source": "com.example.myapplication.app-main-77:/layout/activity_learning_space2_menu.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-mergeDebugResources-74:/layout/favorite_ls_item.xml",
+        "source": "com.example.myapplication.app-main-77:/layout/favorite_ls_item.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-mergeDebugResources-74:/layout/add_learning_space.xml",
+        "source": "com.example.myapplication.app-main-77:/layout/add_learning_space.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-mergeDebugResources-74:/layout/activity_ls_search.xml",
+        "source": "com.example.myapplication.app-main-77:/layout/activity_ls_search.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-mergeDebugResources-74:/layout/activity_landing_items.xml",
+        "source": "com.example.myapplication.app-main-77:/layout/activity_landing_items.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-mergeDebugResources-74:/layout/add_discussion_post.xml",
+        "source": "com.example.myapplication.app-main-77:/layout/add_discussion_post.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-mergeDebugResources-74:/layout/activity_home.xml",
+        "source": "com.example.myapplication.app-main-77:/layout/activity_home.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-mergeDebugResources-74:/layout/learning_space_1.xml",
+        "source": "com.example.myapplication.app-main-77:/layout/learning_space_1.xml"
+    },
+    {
+        "merged": "com.example.myapplication.app-mergeDebugResources-74:/layout/activity_learning_space3.xml",
+        "source": "com.example.myapplication.app-main-77:/layout/activity_learning_space3.xml"
+    }
+]

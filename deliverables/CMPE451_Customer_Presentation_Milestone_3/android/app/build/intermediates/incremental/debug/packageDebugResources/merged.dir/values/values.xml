@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="com_google_android_gms_fonts_certs">
+        <item>@array/com_google_android_gms_fonts_certs_dev</item>
+        <item>@array/com_google_android_gms_fonts_certs_prod</item>
+    </array>
+    <string-array name="com_google_android_gms_fonts_certs_dev">
+        <item>
+            MIIEqDCCA5CgAwIBAgIJANWFuGx90071MA0GCSqGSIb3DQEBBAUAMIGUMQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNTW91bnRhaW4gVmlldzEQMA4GA1UEChMHQW5kcm9pZDEQMA4GA1UECxMHQW5kcm9pZDEQMA4GA1UEAxMHQW5kcm9pZDEiMCAGCSqGSIb3DQEJARYTYW5kcm9pZEBhbmRyb2lkLmNvbTAeFw0wODA0MTUyMzM2NTZaFw0zNTA5MDEyMzM2NTZaMIGUMQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNTW91bnRhaW4gVmlldzEQMA4GA1UEChMHQW5kcm9pZDEQMA4GA1UECxMHQW5kcm9pZDEQMA4GA1UEAxMHQW5kcm9pZDEiMCAGCSqGSIb3DQEJARYTYW5kcm9pZEBhbmRyb2lkLmNvbTCCASAwDQYJKoZIhvcNAQEBBQADggENADCCAQgCggEBANbOLggKv+IxTdGNs8/TGFy0PTP6DHThvbbR24kT9ixcOd9W+EaBPWW+wPPKQmsHxajtWjmQwWfna8mZuSeJS48LIgAZlKkpFeVyxW0qMBujb8X8ETrWy550NaFtI6t9+u7hZeTfHwqNvacKhp1RbE6dBRGWynwMVX8XW8N1+UjFaq6GCJukT4qmpN2afb8sCjUigq0GuMwYXrFVee74bQgLHWGJwPmvmLHC69EH6kWr22ijx4OKXlSIx2xT1AsSHee70w5iDBiK4aph27yH3TxkXy9V89TDdexAcKk/cVHYNnDBapcavl7y0RiQ4biu8ymM8Ga/nmzhRKya6G0cGw8CAQOjgfwwgfkwHQYDVR0OBBYEFI0cxb6VTEM8YYY6FbBMvAPyT+CyMIHJBgNVHSMEgcEwgb6AFI0cxb6VTEM8YYY6FbBMvAPyT+CyoYGapIGXMIGUMQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNTW91bnRhaW4gVmlldzEQMA4GA1UEChMHQW5kcm9pZDEQMA4GA1UECxMHQW5kcm9pZDEQMA4GA1UEAxMHQW5kcm9pZDEiMCAGCSqGSIb3DQEJARYTYW5kcm9pZEBhbmRyb2lkLmNvbYIJANWFuGx90071MAwGA1UdEwQFMAMBAf8wDQYJKoZIhvcNAQEEBQADggEBABnTDPEF+3iSP0wNfdIjIz1AlnrPzgAIHVvXxunW7SBrDhEglQZBbKJEk5kT0mtKoOD1JMrSu1xuTKEBahWRbqHsXclaXjoBADb0kkjVEJu/Lh5hgYZnOjvlba8Ld7HCKePCVePoTJBdI4fvugnL8TsgK05aIskyY0hKI9L8KfqfGTl1lzOv2KoWD0KWwtAWPoGChZxmQ+nBli+gwYMzM1vAkP+aayLe0a1EQimlOalO762r0GXO0ks+UeXde2Z4e+8S/pf7pITEI/tP+MxJTALw9QUWEv9lKTk+jkbqxbsh8nfBUapfKqYn0eidpwq2AzVp3juYl7//fKnaPhJD9gs=
+        </item>
+    </string-array>
+    <string-array name="com_google_android_gms_fonts_certs_prod">
+        <item>
+            MIIEQzCCAyugAwIBAgIJAMLgh0ZkSjCNMA0GCSqGSIb3DQEBBAUAMHQxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtHb29nbGUgSW5jLjEQMA4GA1UECxMHQW5kcm9pZDEQMA4GA1UEAxMHQW5kcm9pZDAeFw0wODA4MjEyMzEzMzRaFw0zNjAxMDcyMzEzMzRaMHQxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MRQwEgYDVQQKEwtHb29nbGUgSW5jLjEQMA4GA1UECxMHQW5kcm9pZDEQMA4GA1UEAxMHQW5kcm9pZDCCASAwDQYJKoZIhvcNAQEBBQADggENADCCAQgCggEBAKtWLgDYO6IIrgqWbxJOKdoR8qtW0I9Y4sypEwPpt1TTcvZApxsdyxMJZ2JORland2qSGT2y5b+3JKkedxiLDmpHpDsz2WCbdxgxRczfey5YZnTJ4VZbH0xqWVW/8lGmPav5xVwnIiJS6HXk+BVKZF+JcWjAsb/GEuq/eFdpuzSqeYTcfi6idkyugwfYwXFU1+5fZKUaRKYCwkkFQVfcAs1fXA5V+++FGfvjJ/CxURaSxaBvGdGDhfXE28LWuT9ozCl5xw4Yq5OGazvV24mZVSoOO0yZ31j7kYvtwYK6NeADwbSxDdJEqO4k//0zOHKrUiGYXtqw/A0LFFtqoZKFjnkCAQOjgdkwgdYwHQYDVR0OBBYEFMd9jMIhF1Ylmn/Tgt9r45jk14alMIGmBgNVHSMEgZ4wgZuAFMd9jMIhF1Ylmn/Tgt9r45jk14aloXikdjB0MQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNTW91bnRhaW4gVmlldzEUMBIGA1UEChMLR29vZ2xlIEluYy4xEDAOBgNVBAsTB0FuZHJvaWQxEDAOBgNVBAMTB0FuZHJvaWSCCQDC4IdGZEowjTAMBgNVHRMEBTADAQH/MA0GCSqGSIb3DQEBBAUAA4IBAQBt0lLO74UwLDYKqs6Tm8/yzKkEu116FmH4rkaymUIE0P9KaMftGlMexFlaYjzmB2OxZyl6euNXEsQH8gjwyxCUKRJNexBiGcCEyj6z+a1fuHHvkiaai+KL8W1EyNmgjmyy8AW7P+LLlkR+ho5zEHatRbM/YAnqGcFh5iZBqpknHf1SKMXFh4dd239FJ1jWYfbMDMy3NS5CTMQ2XFI1MvcyUTdZPErjQfTbQe3aDQsQcafEQPD+nqActifKZ0Np0IS9L9kR/wbNvyz6ENwPiTrjV2KRkEjH78ZMcUQXg0L3BYHJ3lc69Vs5Ddf9uUGGMYldX3WfMBEmh/9iFBDAaTCK
+        </item>
+    </string-array>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/advent_pro_bold</item>
+        <item>@font/aladin</item>
+        <item>@font/andika</item>
+        <item>@font/rubik_bold</item>
+        <item>@font/rubik_medium</item>
+        <item>@font/walter_turncoat</item>
+    </array>
+    <string-array name="type_choice">
+        <item>text</item>
+        <item>video</item>
+        <item>image</item>
+        <item>discussion</item>
+        <item>meeting</item>
+    </string-array>
+    <color name="accent">#43D477</color>
+    <color name="black">#FF000000</color>
+    <color name="black_overlay">#66000000</color>
+    <color name="blue">#5090FE</color>
+    <color name="bottom_nav_end_color">#43D477</color>
+    <color name="bottom_nav_gradient_end">#43D477</color>
+    <color name="bottom_nav_gradient_start">#218F48</color>
+    <color name="bottom_nav_start_color">#218F48</color>
+    <color name="chartLightGreen">#7DE9A4</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="colorPrimary1">#FF597B</color>
+    <color name="colorPrimary2">#FF8E9E</color>
+    <color name="colorPrimary3">#F9B5D0</color>
+    <color name="colorPrimary4">#EEEEEE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="darkBlue">#1F3B64</color>
+    <color name="darkBlue2">#2849A4</color>
+    <color name="dark_green">#00BA63</color>
+    <color name="default_status_bar_color">@color/gray</color>
+    <color name="gold">#FFCD4C</color>
+    <color name="gray">#E7E7E7</color>
+    <color name="gray81">#CFCFCF</color>
+    <color name="green">#43D477</color>
+    <color name="gull_gray">#A9AEB2</color>
+    <color name="home_icon_bg_gradient">#FF9EFFC1</color>
+    <color name="home_icon_gradient_end">#43D477</color>
+    <color name="home_icon_gradient_start">#9EFFC1</color>
+    <color name="lightGray">#F8F8F8</color>
+    <color name="lightGray2">#A5A5A5</color>
+    <color name="lightGreen2">#50BF9D</color>
+    <color name="lightRed">#FE7950</color>
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="light_blue_900">#FF01579B</color>
+    <color name="light_blue_A200">#FF40C4FF</color>
+    <color name="light_blue_A400">#FF00B0FF</color>
+    <color name="light_green">#8FBF50</color>
+    <color name="nav_drawer_icon_bg_gradient">#FF9EFFC1</color>
+    <color name="orange">#FFC529</color>
+    <color name="pageBg">#FAFAFA</color>
+    <color name="primary_status_bar_color">@color/accent</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="red">#FF4949</color>
+    <color name="rippleColor">@color/lightGray</color>
+    <color name="splash_main_gradient_end">#24EF9C</color>
+    <color name="splash_main_gradient_start">#43D477</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="text_color">#2f3133</color>
+    <color name="text_color2">#5E5E5E</color>
+    <color name="text_color3">#A5A5A5</color>
+    <color name="text_color4">#404243</color>
+    <color name="text_color5">#1D2D3A</color>
+    <color name="toolbar_drawer_open_color">#24EF9C</color>
+    <color name="white">#FFFFFF</color>
+    <color name="white_opacity_30">#40FFFFFF</color>
+    <dimen name="back_size">40dp</dimen>
+    <dimen name="bottom_sheet_handle_height">5dp</dimen>
+    <dimen name="bottom_sheet_handle_top_margin">8dp</dimen>
+    <dimen name="bottom_sheet_handle_width">30dp</dimen>
+    <dimen name="btn_corner_radius">20dp</dimen>
+    <dimen name="btn_height">58dp</dimen>
+    <dimen name="btn_height2">55dp</dimen>
+    <dimen name="btn_height_no_inset">55dp</dimen>
+    <dimen name="card_corner_radius">20dp</dimen>
+    <dimen name="clickable_ic_padding">15dp</dimen>
+    <dimen name="clickable_ic_size">50dp</dimen>
+    <dimen name="clickable_ic_size_big">55dp</dimen>
+    <dimen name="edtx_corner_size">10dp</dimen>
+    <dimen name="edtx_height_size">58dp</dimen>
+    <dimen name="fab_img_size">25dp</dimen>
+    <dimen name="icon_default_size">30dp</dimen>
+    <dimen name="icon_size">25dp</dimen>
+    <dimen name="img_header_size">250dp</dimen>
+    <dimen name="margin_10">10dp</dimen>
+    <dimen name="margin_100">100dp</dimen>
+    <dimen name="margin_16">16dp</dimen>
+    <dimen name="margin_200">200dp</dimen>
+    <dimen name="margin_24">24dp</dimen>
+    <dimen name="margin_32">32dp</dimen>
+    <dimen name="margin_4">4dp</dimen>
+    <dimen name="margin_40">40dp</dimen>
+    <dimen name="margin_50">50dp</dimen>
+    <dimen name="margin_8">8dp</dimen>
+    <dimen name="padding_10">10dp</dimen>
+    <dimen name="padding_16">16dp</dimen>
+    <dimen name="padding_30">30dp</dimen>
+    <dimen name="padding_40">40dp</dimen>
+    <dimen name="padding_horizontal_btn">10dp</dimen>
+    <dimen name="textsize_11d">11dp</dimen>
+    <dimen name="textsize_12d">12dp</dimen>
+    <dimen name="textsize_13d">13dp</dimen>
+    <dimen name="textsize_14d">14dp</dimen>
+    <dimen name="textsize_15d">15dp</dimen>
+    <dimen name="textsize_16d">16dp</dimen>
+    <dimen name="textsize_18d">18dp</dimen>
+    <dimen name="textsize_20d">20dp</dimen>
+    <dimen name="textsize_23d">23dp</dimen>
+    <dimen name="textsize_28d">28dp</dimen>
+    <dimen name="textsize_35d">35dp</dimen>
+    <dimen name="textsize_9d">9dp</dimen>
+    <dimen name="zero">0dp</dimen>
+    <string name="app_name">Budemi</string>
+    <string name="best_rated">Best Rated</string>
+    <string name="best_selling">Best Selling</string>
+    <string name="by_spending_points">By spending points</string>
+    <string name="close">Close</string>
+    <string name="discounted_classes">Discounted Contents</string>
+    <string name="featured_contents">Featured Contents</string>
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="free_classes">Free Contents</string>
+    <string name="lorem_ipsum">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
+        volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
+        dui nec risus. Maecenas non sodales nisi, vel dictum dolor. Class aptent taciti sociosqu ad
+        litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse blandit eleifend
+        diam, vel rutrum tellus vulputate quis. Aliquam eget libero aliquet, imperdiet nisl a,
+        ornare ex. Sed rhoncus est ut libero porta lobortis. Fusce in dictum tellus.\n\n
+        Suspendisse interdum ornare ante. Aliquam nec cursus lorem. Morbi id magna felis. Vivamus
+        egestas, est a condimentum egestas, turpis nisl iaculis ipsum, in dictum tellus dolor sed
+        neque. Morbi tellus erat, dapibus ut sem a, iaculis tincidunt dui. Interdum et malesuada
+        fames ac ante ipsum primis in faucibus. Curabitur et eros porttitor, ultricies urna vitae,
+        molestie nibh. Phasellus at commodo eros, non aliquet metus. Sed maximus nisl nec dolor
+        bibendum, vel congue leo egestas.\n\n
+        Sed interdum tortor nibh, in sagittis risus mollis quis. Curabitur mi odio, condimentum sit
+        amet auctor at, mollis non turpis. Nullam pretium libero vestibulum, finibus orci vel,
+        molestie quam. Fusce blandit tincidunt nulla, quis sollicitudin libero facilisis et. Integer
+        interdum nunc ligula, et fermentum metus hendrerit id. Vestibulum lectus felis, dictum at
+        lacinia sit amet, tristique id quam. Cras eu consequat dui. Suspendisse sodales nunc ligula,
+        in lobortis sem porta sed. Integer id ultrices magna, in luctus elit. Sed a pellentesque
+        est.\n\n
+        Aenean nunc velit, lacinia sed dolor sed, ultrices viverra nulla. Etiam a venenatis nibh.
+        Morbi laoreet, tortor sed facilisis varius, nibh orci rhoncus nulla, id elementum leo dui
+        non lorem. Nam mollis ipsum quis auctor varius. Quisque elementum eu libero sed commodo. In
+        eros nisl, imperdiet vel imperdiet et, scelerisque a mauris. Pellentesque varius ex nunc,
+        quis imperdiet eros placerat ac. Duis finibus orci et est auctor tincidunt. Sed non viverra
+        ipsum. Nunc quis augue egestas, cursus lorem at, molestie sem. Morbi a consectetur ipsum, a
+        placerat diam. Etiam vulputate dignissim convallis. Integer faucibus mauris sit amet finibus
+        convallis.\n\n
+        Phasellus in aliquet mi. Pellentesque habitant morbi tristique senectus et netus et
+        malesuada fames ac turpis egestas. In volutpat arcu ut felis sagittis, in finibus massa
+        gravida. Pellentesque id tellus orci. Integer dictum, lorem sed efficitur ullamcorper,
+        libero justo consectetur ipsum, in mollis nisl ex sed nisl. Donec maximus ullamcorper
+        sodales. Praesent bibendum rhoncus tellus nec feugiat. In a ornare nulla. Donec rhoncus
+        libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
+        vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
+    </string>
+    <string name="newest_bundles">Newest Bundles</string>
+    <string name="newest_classes">Newest Contents</string>
+    <string name="next">Next</string>
+    <string name="open">Open</string>
+    <string name="previous">Previous</string>
+    <string name="reward_contents_mark">Reward Contents!</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="start_learning">Let\'s start learning!</string>
+    <string name="title_activity_jetpack_deneme">jetpackDeneme</string>
+    <string name="todo">TODO</string>
+    <string name="type_menu">dropDownMenuExample</string>
+    <string name="view">View</string>
+    <string name="view_all">View All</string>
+    <string name="what_are_u_going_to_find">What are you going to find?</string>
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.Bridge">
+        
+
+        <item name="android:fontFamily">@font/walter_turncoat</item>
+        <item name="colorPrimary">@color/colorPrimary1</item>
+        <item name="colorPrimaryDark">@color/colorPrimary1</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+
+    </style>
+    <style name="SpinnerTheme">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/walter_turncoat</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+</resources>

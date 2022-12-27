@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_general"
+    tools:context=".view.AddContent">
+
+    <EditText
+        android:id="@+id/NameEditText"
+        android:layout_width="313dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="60dp"
+        android:background="@drawable/textview_background"
+        android:ems="10"
+        android:fontFamily="@font/andika"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.352"
+        app:layout_constraintStart_toEndOf="@+id/name"
+        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="78dp"
+        android:layout_height="39dp"
+        android:fontFamily="@font/walter_turncoat"
+        android:text="Name:"
+        android:textColor="@color/colorPrimary1"
+        android:textSize="26sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.045"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.087" />
+
+    <TextView
+        android:id="@+id/textOrUrl"
+        android:layout_width="63dp"
+        android:layout_height="39dp"
+        android:layout_marginBottom="548dp"
+        android:fontFamily="@font/walter_turncoat"
+        android:text="Text:"
+        android:textColor="@color/colorPrimary1"
+        android:textSize="26sp"
+        app:layout_constraintBottom_toBottomOf="@+id/SubmitButton"
+        app:layout_constraintEnd_toStartOf="@+id/SubmitButton"
+        app:layout_constraintHorizontal_bias="0.122"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="134dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="134dp"
+        android:layout_marginBottom="24dp"
+        android:fontFamily="@font/walter_turncoat"
+        android:text="Add Content"
+        android:textColor="@color/colorPrimary1"
+        android:textSize="26sp"
+        app:layout_constraintBottom_toTopOf="@+id/NameEditText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/textEditText"
+        android:layout_width="313dp"
+        android:layout_height="500dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="31dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="18dp"
+        android:background="@drawable/textview_background"
+        android:ems="10"
+        android:fontFamily="@font/andika"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        android:selectAllOnFocus="false"
+        android:singleLine="false"
+        android:textAlignment="viewStart"
+        app:layout_constraintBottom_toTopOf="@+id/SubmitButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textOrUrl"
+        app:layout_constraintTop_toBottomOf="@+id/NameEditText" />
+
+    <Button
+        android:id="@+id/SubmitButton"
+        android:layout_width="122dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="194dp"
+        android:layout_marginEnd="116dp"
+        android:background="@drawable/button_background"
+        android:focusable="true"
+        android:fontFamily="@font/walter_turncoat"
+        android:onClick="submitButtonClicked"
+        android:paddingStart="25dp"
+        android:paddingTop="15dp"
+        android:paddingEnd="25dp"
+        android:paddingBottom="15dp"
+        android:text="Submit"
+        android:textAllCaps="false"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.975" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
