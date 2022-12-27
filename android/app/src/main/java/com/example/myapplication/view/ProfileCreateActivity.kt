@@ -19,7 +19,9 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import com.example.myapplication.R
+import com.example.myapplication.model.patch_profile_send_model
 import com.example.myapplication.model.profile_edit_post_send_model
+import com.example.myapplication.service.patch_profile_api_call
 import com.example.myapplication.service.profile_edit_api_call
 import java.io.ByteArrayOutputStream
 
@@ -28,7 +30,7 @@ class ProfileCreateActivity : AppCompatActivity() {
 
     lateinit var pickMedia: ActivityResultLauncher<PickVisualMediaRequest>
     lateinit var imageView: ImageView
-    lateinit var imageFinal: String
+    var imageFinal: String=""
     lateinit var about_me: TextView
     // change here for api's - post
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,14 +66,58 @@ class ProfileCreateActivity : AppCompatActivity() {
 
     fun editAboutMe(view: View){
         about_me = findViewById<TextView>(R.id.about_me)
-        var apiService = profile_edit_api_call()
-        var data = profile_edit_post_send_model(
-            about_me = about_me.text.toString(),
-            image = imageFinal
-        )
-        apiService.createProfile(data) {
-            goToProfile()
+
+        if(imageFinal.equals("") && about_me.text.length==0){
+                Log.d("call first","update nothing")
         }
+        else if(imageFinal.equals("") && about_me.text.length!=0){
+            Log.d("call second","update about me")
+            var apiService = patch_profile_api_call()
+            var data = patch_profile_send_model(
+                about_me = about_me.text.toString(),
+            )
+            apiService.editProfile(data) {
+                goToProfile()
+            }
+        }
+        else if(!imageFinal.equals("") && about_me.text.length==0){
+            Log.d("call third","update image")
+            var apiService = patch_profile_api_call()
+            var data = patch_profile_send_model(
+                image = imageFinal
+            )
+            apiService.editProfile(data) {
+                goToProfile()
+            }
+        }
+        else{
+            Log.d("call fourth","update everything")
+
+            if(hasProfile==false){
+                var apiService = profile_edit_api_call()
+                var data = profile_edit_post_send_model(
+                    about_me = about_me.text.toString(),
+                    image = imageFinal
+                )
+                apiService.createProfile(data) {
+                    goToProfile()
+                }
+            }
+            else{ // modify profile
+                Log.d("modify profile","yes")
+                var apiService = patch_profile_api_call()
+                var data = patch_profile_send_model(
+                    about_me = about_me.text.toString(),
+                    image = imageFinal
+                )
+                apiService.editProfile(data) {
+                    goToProfile()
+                }
+
+            }
+
+        }
+
     }
 
     fun uploadImg(view: View) {
@@ -81,26 +127,4 @@ class ProfileCreateActivity : AppCompatActivity() {
         imageView.setImageResource(R.drawable.blank_profile)
         imageFinal = ""
     }
-
-    /*
-    fun editAboutMe(view: View){
-
-        val _about_me = findViewById(R.id.about_me) as EditText
-        val apiService = profile_edit_api_call()
-        val userInfo = profile_edit_post_send_model(
-            about_me = _about_me.text.toString())
-
-        apiService.createProfile(userInfo) {
-
-            val success_message_profile=findViewById(R.id.success_message_profile) as TextView
-            success_message_profile.setVisibility(View.VISIBLE)
-            success_message_profile.text="Edit is successful!\n You are redirected to profile page"
-            success_message_profile.postDelayed({success_message_profile.setVisibility(View.INVISIBLE)},2000)
-            success_message_profile.postDelayed({goToProfile()},2000)
-
-
-        }
-
-    }
-    */
 }
