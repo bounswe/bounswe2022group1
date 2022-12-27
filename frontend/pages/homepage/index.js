@@ -33,6 +33,8 @@ export default function Homepage() {
 
   const [tag, setTag] = useState(null);
 
+  const [description, setDescription] = useState(null);
+
   const [openModal, setOpenModal] = useState(false);
 
   const [error, setError] = useState(false);
@@ -67,7 +69,7 @@ export default function Homepage() {
           "content-type": "application/json",
           Authorization: "Token " + localStorage.getItem("token"),
         },
-        body: JSON.stringify({ name, tag }),
+        body: JSON.stringify({ name, tag, description }),
       })
         .then((response) => {
           if (response.ok) return response.json();
@@ -98,6 +100,7 @@ export default function Homepage() {
   const handleOpenModal = () => {
     setTag(null);
     setName(null);
+    setDescription(null);
     setError(false);
     setOpenModal(true);
   };
@@ -159,6 +162,17 @@ export default function Homepage() {
             label="Tag Name"
             onChange={(e) => {
               setTag(e.target.value);
+            }}
+          />
+          <TextField
+            error={error && !description}
+            helperText={error && !description && "Please in this field."}
+            margin="normal"
+            required
+            fullWidth
+            label="Description"
+            onChange={(e) => {
+              setDescription(e.target.value);
             }}
           />
 
