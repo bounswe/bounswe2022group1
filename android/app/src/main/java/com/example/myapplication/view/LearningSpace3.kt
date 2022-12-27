@@ -27,7 +27,6 @@ class LearningSpace3 : AppCompatActivity() {
     var name_of_content=""
     var owner_of_content=""
 
-
     fun makeShorter(){
         val bottomSheetLayout = findViewById<FrameLayout>(R.id.bottom_sheet)
         BottomSheetBehavior.from(bottomSheetLayout).apply{
@@ -39,7 +38,14 @@ class LearningSpace3 : AppCompatActivity() {
     fun updateCount(){
         var Upvote = findViewById<ImageView>(R.id.Upvote)
         var UpCount = findViewById<TextView>(R.id.upCount)
-        Upvote.setTag(R.drawable.up_image)
+        if(votedContents.contains(content_id)){
+            Upvote.setTag(R.drawable.down_image)
+            Upvote.setImageResource(R.drawable.down_image)
+        }
+        else{
+            Upvote.setTag(R.drawable.up_image)
+            Upvote.setImageResource(R.drawable.up_image)
+        }
 
             val apiService = learningSpace3_patch_content_info_api_call()
             val data = learningSpace3_patch_content_info_send_model(
@@ -181,11 +187,12 @@ class LearningSpace3 : AppCompatActivity() {
             )
 
             apiService.updateVote(data)  {
-                if(it?.id!=null){
+                if(it?.id!=null && !votedContents.contains(content_id)){
                     updateUpVote()
                     Upvote.setImageResource(R.drawable.down_image)
                     Upvote.setTag(R.drawable.down_image)
                     Log.d("Up vote success","down image'a gec")
+                    votedContents.add(content_id)
                 }
                 else{
                     Log.d("Up vote failed","")
@@ -202,10 +209,11 @@ class LearningSpace3 : AppCompatActivity() {
             )
 
             apiService.updateVote(data)  {
-                if(it?.id!=null){
+                if(it?.id!=null && votedContents.contains(content_id)){
                     updateUpVote()
                     Upvote.setImageResource(R.drawable.up_image)
                     Upvote.setTag(R.drawable.up_image)
+                    votedContents.remove(content_id)
                 }
                 else{
                     Log.d("Up vote failed","")
