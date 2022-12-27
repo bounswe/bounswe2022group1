@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/splashContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_green"
+    android:fitsSystemWindows="false"
+    tools:context=".ui.SplashScreenActivity">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/splashToolbar"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:background="@color/pageBg"
+        android:elevation="0dp"
+        android:outlineSpotShadowColor="@color/gray"
+        android:visibility="gone"
+        app:contentInsetEnd="0dp"
+        app:contentInsetStart="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/splashToolbarMargin"
+        tools:ignore="UnknownId">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/splashToolbarTitleTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_100"
+                android:layout_marginEnd="@dimen/margin_100"
+                android:ellipsize="end"
+                android:fontFamily="@font/medium"
+                android:maxLines="1"
+                android:textColor="@color/text_color5"
+                android:textSize="@dimen/textsize_15d"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="SpUsage" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/splashToolbarBackImg"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="@dimen/margin_16"
+                android:background="@drawable/round_view_white_corner20"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="@drawable/ripple_effect_circular"
+                android:padding="@dimen/clickable_ic_padding"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_arrow_left_black" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/splashScreenContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/splashToolbar">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="0dp"
+            android:layout_height="300dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/map" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/splashScreenGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintGuide_percent="0.45"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/splashScreenImgContainer"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:background="@drawable/circle_dash"
+            app:layout_constraintBottom_toTopOf="@+id/splashScreenGuideline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:background="@drawable/circle_white"
+            android:padding="52dp"
+            app:layout_constraintBottom_toBottomOf="@+id/splashScreenImgContainer"
+            app:layout_constraintEnd_toEndOf="@id/splashScreenImgContainer"
+            app:layout_constraintStart_toStartOf="@id/splashScreenImgContainer"
+            app:layout_constraintTop_toTopOf="@+id/splashScreenImgContainer"
+            app:srcCompat="@drawable/splash_logo" />
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/splashScreenTitleTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_32"
+            android:fontFamily="@font/bold"
+            android:text="@string/brand"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textsize_23d"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/splashScreenImgContainer"
+            tools:ignore="SpUsage" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/splashScreenDescTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/regular"
+            android:text="@string/easiest_way_to_learn"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textsize_15d"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/splashScreenTitleTv"
+            tools:ignore="SpUsage" />
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="0dp"
+            android:layout_height="300dp"
+            android:layout_marginBottom="-40dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/sidemenu" />
+
+        <com.wang.avi.AVLoadingIndicatorView
+            style="@style/AVLoadingIndicatorView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="70dp"
+            app:indicatorColor="@color/white"
+            app:indicatorName="BallPulseIndicator"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingClass" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
