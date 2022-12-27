@@ -469,34 +469,11 @@ class LearningSpace3 : AppCompatActivity() {
         val apiService = learningSpace3_see_all_note_api_call()
         apiService.seeAllNotes(content_id)  {
             if(it!=null){
-                Log.d("note get"+content_id.toString(),"success"+it?.toString())
-
-
-
-                val data =it.data
-                val apiService3 = profile_see_api_call()
-                apiService3.getProfile("Token " + user_token) {
-                    id_of_current_user = it?.user!!
-                    var body = ""
-                    data.forEach {
-                        if( id_of_current_user==it.owner.id){
-                            body = it.body
-                        }
-                    }
-                    var resource=findViewById<EditText>(R.id.Resource)
-                    resource.setText(body)
-                    if(resource.text.toString().equals("")) {
-                        resource.setText("My notes will be here.")
-                    }
+                var temp=""
+                it.data.forEach {
+                    temp=(it.body)
                 }
-                /*
-                val apiService2 = user_from_id_api_call()
-                apiService2.userFromID(user_name) {
-                    var _email = findViewById(R.id.seeEmail) as TextView
-                    _email.text=it?.email
-                }
-*/
-
+                resource.setText(temp)
             }
             else{
                 Log.d("note get","unsuccess")
@@ -510,25 +487,16 @@ class LearningSpace3 : AppCompatActivity() {
     fun notesClicked(view:View){
         makeShorter()
         var notes_text=findViewById<TextView>(R.id.notes_text)
+        var resource=findViewById<EditText>(R.id.Resource)
         if(notes_text.text.equals("Notes:")){
             val apiService = learningSpace3_see_all_note_api_call()
             apiService.seeAllNotes(content_id)  {
                 if(it!=null){
-                    Log.d("note get"+content_id.toString(),"success"+it?.toString())
-                    val apiService3 = profile_see_api_call()
-                    val data = it.data
-                    apiService3.getProfile("Token " + user_token) {
-                        id_of_current_user = it?.user!!
-                        var body = ""
-                        data.forEach {
-                            if( id_of_current_user==it.owner.id){
-                                body = it.body
-                            }
-                        }
-                        var resource=findViewById<EditText>(R.id.Resource)
-                        resource.setText(body)
+                    var temp=""
+                    it.data.forEach {
+                        temp=(it.body)
                     }
-
+                    resource.setText(temp)
                 }
                 else{
                     Log.d("note get","unsuccess")
