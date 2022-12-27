@@ -19,9 +19,7 @@ import com.example.myapplication.ui.widget.onboarding.onboarding.OnBoardingPager
 import com.example.myapplication.ui.widget.onboarding.onboarding.entity.OnBoardingPage
 import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
 import com.example.myapplication.ui.widget.onboarding.core.setParallaxTransformation
-import com.example.myapplication.view.HomeActivity
 import com.example.myapplication.view.LandingActivity
-import com.example.myapplication.view.LandingViewPager
 
 import java.util.*
 
