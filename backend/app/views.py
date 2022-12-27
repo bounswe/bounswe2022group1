@@ -348,7 +348,6 @@ class noteApiView(APIView):
     def post(self, request, *args, **kwargs):
         
         data = request.data.copy()
-        
 
         data['owner'] = request.user.id
        
@@ -368,10 +367,8 @@ class noteApiView(APIView):
             content_id = int(request.GET.get('content_id'))
         except ValueError:
             return Response(status=status.HTTP_400_BAD_REQUEST)
-
-        try:
-            content = Content.objects.get(id=content_id)
-            note = content.note.all()
+        try:  
+            note = Note.objects.filter(owner=request.user.id, content= content_id)
             serializer = self.serializer_class(note, many=True)
             return Response({"data": serializer.data}, status=status.HTTP_200_OK)
         except LearningSpace.DoesNotExist:
