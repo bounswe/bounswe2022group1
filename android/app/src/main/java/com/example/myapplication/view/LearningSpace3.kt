@@ -26,7 +26,6 @@ class LearningSpace3 : AppCompatActivity() {
 
     var name_of_content=""
     var owner_of_content=""
-    var content_id=-1
 
     fun makeShorter(){
         val bottomSheetLayout = findViewById<FrameLayout>(R.id.bottom_sheet)
@@ -39,13 +38,21 @@ class LearningSpace3 : AppCompatActivity() {
     fun updateCount(){
         var Upvote = findViewById<ImageView>(R.id.Upvote)
         var UpCount = findViewById<TextView>(R.id.upCount)
-        Upvote.setTag(R.drawable.up_image)
+        if(votedContents.contains(content_id)){
+            Upvote.setTag(R.drawable.down_image)
+            Upvote.setImageResource(R.drawable.down_image)
+        }
+        else{
+            Upvote.setTag(R.drawable.up_image)
+            Upvote.setImageResource(R.drawable.up_image)
+        }
 
             val apiService = learningSpace3_patch_content_info_api_call()
             val data = learningSpace3_patch_content_info_send_model(
                 id=content_id,
                 url = "xx"
             )
+        Log.d("content_id",content_id.toString())
 
             apiService.getInfo(data)  {
                 if(it?.id!=null){
@@ -66,6 +73,7 @@ class LearningSpace3 : AppCompatActivity() {
         )
 
         apiService.getInfo(data)  {
+            Log.d("updateVoteCount",it?.upVoteCount.toString())
             if(it?.id!=null){
                 var UpCount = findViewById<TextView>(R.id.upCount)
                 UpCount.setText(it.upVoteCount.toString())
@@ -122,7 +130,7 @@ class LearningSpace3 : AppCompatActivity() {
         edit_image.setVisibility(View.VISIBLE)
 
         val apiService = learningSpace3GetContent_api_call()
-        apiService.getContent(currentContentID) {
+        apiService.getContent(content_id) {
             if(it?.id!=null){
                 content_id=it.id
                 var resource = findViewById<EditText>(R.id.Resource)
@@ -179,11 +187,12 @@ class LearningSpace3 : AppCompatActivity() {
             )
 
             apiService.updateVote(data)  {
-                if(it?.id!=null){
+                if(it?.id!=null && !votedContents.contains(content_id)){
                     updateUpVote()
                     Upvote.setImageResource(R.drawable.down_image)
                     Upvote.setTag(R.drawable.down_image)
                     Log.d("Up vote success","down image'a gec")
+                    votedContents.add(content_id)
                 }
                 else{
                     Log.d("Up vote failed","")
@@ -200,10 +209,11 @@ class LearningSpace3 : AppCompatActivity() {
             )
 
             apiService.updateVote(data)  {
-                if(it?.id!=null){
+                if(it?.id!=null && votedContents.contains(content_id)){
                     updateUpVote()
                     Upvote.setImageResource(R.drawable.up_image)
                     Upvote.setTag(R.drawable.up_image)
+                    votedContents.remove(content_id)
                 }
                 else{
                     Log.d("Up vote failed","")
@@ -263,7 +273,7 @@ class LearningSpace3 : AppCompatActivity() {
 
             val apiService = learningSpace3GetDiscussionList_api_call()
 
-            apiService.getDiscussionList(currentContentID){
+            apiService.getDiscussionList(content_id){
                 if(it?.data!=null){
                     var Chatbox = findViewById<TextView>(R.id.Resource)
                     var temp=""
@@ -298,7 +308,7 @@ class LearningSpace3 : AppCompatActivity() {
                 val apiService = learningSpace3PostDiscussion_api_call()
 
                 val userData = learningSpace3PostDiscussion_send_model(
-                    content=currentContentID,
+                    content=content_id,
                     body = editText.text.toString()
                 )
 
@@ -322,7 +332,7 @@ class LearningSpace3 : AppCompatActivity() {
     fun updateDiscussion(){
         val apiService = learningSpace3GetDiscussionList_api_call()
 
-        apiService.getDiscussionList(currentContentID){
+        apiService.getDiscussionList(content_id){
             if(it?.data!=null){
                 val Chatbox = findViewById<TextView>(R.id.Resource)
                 var temp=""
@@ -363,7 +373,7 @@ class LearningSpace3 : AppCompatActivity() {
             else{
                 //load content
                 val apiService = learningSpace3GetContent_api_call()
-                apiService.getContent(currentContentID) {
+                apiService.getContent(content_id) {
                     if(it?.id!=null){
                         resource.setText(it.text)
                     }
@@ -459,35 +469,11 @@ class LearningSpace3 : AppCompatActivity() {
         val apiService = learningSpace3_see_all_note_api_call()
         apiService.seeAllNotes(content_id)  {
             if(it!=null){
-                Log.d("note get"+content_id.toString(),"success"+it?.toString())
-
-                var id_of_current_user=3
-
-
-                val data =it.data
-                val apiService3 = profile_see_api_call()
-                apiService3.getProfile("Token " + user_token) {
-                    id_of_current_user = it?.user!!
-                    var body = ""
-                    data.forEach {
-                        if( id_of_current_user==it.owner.id){
-                            body = it.body
-                        }
-                    }
-                    var resource=findViewById<EditText>(R.id.Resource)
-                    resource.setText(body)
-                    if(resource.text.toString().equals("")) {
-                        resource.setText("My notes will be here.")
-                    }
+                var temp=""
+                it.data.forEach {
+                    temp=(it.body)
                 }
-                /*
-                val apiService2 = user_from_id_api_call()
-                apiService2.userFromID(user_name) {
-                    var _email = findViewById(R.id.seeEmail) as TextView
-                    _email.text=it?.email
-                }
-*/
-
+                resource.setText(temp)
             }
             else{
                 Log.d("note get","unsuccess")
@@ -501,26 +487,16 @@ class LearningSpace3 : AppCompatActivity() {
     fun notesClicked(view:View){
         makeShorter()
         var notes_text=findViewById<TextView>(R.id.notes_text)
+        var resource=findViewById<EditText>(R.id.Resource)
         if(notes_text.text.equals("Notes:")){
             val apiService = learningSpace3_see_all_note_api_call()
             apiService.seeAllNotes(content_id)  {
                 if(it!=null){
-                    Log.d("note get"+content_id.toString(),"success"+it?.toString())
-                    var id_of_current_user=3
-                    val apiService3 = profile_see_api_call()
-                    val data = it.data
-                    apiService3.getProfile("Token " + user_token) {
-                        id_of_current_user = it?.user!!
-                        var body = ""
-                        data.forEach {
-                            if( id_of_current_user==it.owner.id){
-                                body = it.body
-                            }
-                        }
-                        var resource=findViewById<EditText>(R.id.Resource)
-                        resource.setText(body)
+                    var temp=""
+                    it.data.forEach {
+                        temp=(it.body)
                     }
-
+                    resource.setText(temp)
                 }
                 else{
                     Log.d("note get","unsuccess")

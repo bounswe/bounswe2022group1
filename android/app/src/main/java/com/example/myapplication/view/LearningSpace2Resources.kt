@@ -15,7 +15,7 @@ import com.example.myapplication.service.*
 import com.google.android.material.navigation.NavigationView
 
 
-var currentContentID=0
+
 var contentID_ContentName: HashMap<Int, Int> = HashMap<Int, Int>()
 
 class LearningSpace2Resources : AppCompatActivity() {
@@ -47,14 +47,12 @@ class LearningSpace2Resources : AppCompatActivity() {
     }
 
     fun goToLearningSpace3(position:Int) {
-            currentContentID = contentID_ContentName[position]!!
+            content_id = contentID_ContentName[position]!!
             var intent = Intent(applicationContext, LearningSpace3::class.java)
             startActivity(intent)
     }
 
     fun ShowContributorsAndTopics(){
-
-
         val apiService = learningSpace2GetContentList_api_call()
         val userInfo = learningSpaceID
 
@@ -66,7 +64,7 @@ class LearningSpace2Resources : AppCompatActivity() {
                 names= arrayOf<String>()
                 for(i in 0..(receivedArr.size-1)){
 
-                    var owner_name="Ömer Özdemir"
+                    var owner_name="fako"
                     learningSpaceMEMBERS.forEach{
                             l->
                         if(l.id==receivedArr[i].owner){
