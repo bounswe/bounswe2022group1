@@ -1,5 +1,3 @@
-We originally prepared this document on: https://github.com/bounswe/bounswe2022group1/wiki/Customer-Milestone-3-Group-Review
-
 # Executive summary
 
 **Summary:** As of now, our backend, frontend, and android are all functioning and able to communicate with each other. We have implemented all of the required functionalities but events and semantic searching. After experiencing issues with our product during the second milestone, the team decided that it was more important to focus on implementing annotations and refining existing functionalities related to learning space and resources rather than adding new ones. The backend team successfully implemented annotations according to W3C standards, improved existing functionalities, and created the endpoints requested by the frontend and android teams. The frontend team also made significant progress, implementing numerous functionalities including image and text annotations. The android team made substantial improvements as well, including a significant change in style and the creation of a user-friendly app with a nice design. 
@@ -255,6 +253,40 @@ Milestone3:
 
 #### Harun ERKURT
 
+<details>
+<summary>
+Milestone1:
+</summary>
+
+  |Issue Title|Link|
+  |-----|:--------:|
+  | Defining and Creating New Branches For Android App | [Issue #334](https://github.com/bounswe/bounswe2022group1/issues/334) |
+  | Creating First Android Project and Branch | [Issue #335](https://github.com/bounswe/bounswe2022group1/issues/335) |
+  | Organized our Kotlin Project folder | [Issue #341](https://github.com/bounswe/bounswe2022group1/issues/341) |
+  | Android team meeting - Kotlin backend connection | [Issue #385](https://github.com/bounswe/bounswe2022group1/issues/385) |
+  | Initialization of Android Studio | [Issue #406](https://github.com/bounswe/bounswe2022group1/issues/406) |
+  | Learning Android Studio and Kotlin | [Issue #409](https://github.com/bounswe/bounswe2022group1/issues/409) |
+  | Sign in page for Android App | [Issue #439](https://github.com/bounswe/bounswe2022group1/issues/439) |
+  | Meeting with the Android team for milestone1 | [Issue #440](https://github.com/bounswe/bounswe2022group1/issues/440) |
+  | Signin Page Backend Connection and Design | [Issue #442](https://github.com/bounswe/bounswe2022group1/issues/442) |
+  | Group meeting with the Android Team | [Issue #445](https://github.com/bounswe/bounswe2022group1/issues/445) |
+  | Preparation of milestone 1 | [Issue #446](https://github.com/bounswe/bounswe2022group1/issues/446) |
+  |Android mockup and scenario for milestone1 |[Issue Link](https://github.com/bounswe/bounswe2022group1/issues/455)|
+
+
+  | Pull Request Title                                  |                              Link                               |
+  | --------------------------------------------------- | :-------------------------------------------------------------: |
+  | Android main - Branch pull request testing         | [PR#420](https://github.com/bounswe/bounswe2022group1/pull/420) |
+  | Adding Android Latest Files to Master               | [PR#436](https://github.com/bounswe/bounswe2022group1/pull/436) |
+  | Updating budemi_android_main from Android main | [PR#427](https://github.com/bounswe/bounswe2022group1/pull/427) |
+
+</details>
+
+<details>
+<summary>
+Milestone2:
+</summary>
+
 | Issue Title                                                                 |                              Link                              |
 | --------------------------------------------------------------------------- | :------------------------------------------------------------: |
 | Customer meeting evaluation.                                                | [503](https://github.com/bounswe/bounswe2022group1/issues/503) |
@@ -266,6 +298,47 @@ Milestone3:
 
 | Pull Request Title                                                            |                             Link                             |
 | ----------------------------------------------------------------------------- | :----------------------------------------------------------: |
+
+</details>
+
+<details>
+<summary>
+Final Milestone:
+</summary>
+
+  |Issue Title|Link|
+  |-----|:--------:|
+  | Creating Splash Screen | [Issue #919](https://github.com/bounswe/bounswe2022group1/issues/919) |
+  | Searching for 3rd party libraries to make the application interface look more modern | [Issue #922](https://github.com/bounswe/bounswe2022group1/issues/922) |
+  | Design and Creation of Landing Page | [Issue #925](https://github.com/bounswe/bounswe2022group1/issues/925) |
+  | Redesign sign in page | [Issue #927](https://github.com/bounswe/bounswe2022group1/issues/927) |
+  | Redesign sign up page | [Issue #928](https://github.com/bounswe/bounswe2022group1/issues/928) |
+  | Fix landing page | [Issue #929](https://github.com/bounswe/bounswe2022group1/issues/929) |
+  | Fix linking error, set AndroidManifest configurations | [Issue #930](https://github.com/bounswe/bounswe2022group1/issues/930) |
+  | Development of Onboarding Activity | [Issue #932](https://github.com/bounswe/bounswe2022group1/issues/932) |
+  | Set application settings | [Issue #934](https://github.com/bounswe/bounswe2022group1/issues/934) |
+  | Reviewing Android app for bugs | [Issue #937](https://github.com/bounswe/bounswe2022group1/issues/937) |
+  | Creating Mock Data |[Issue #939](https://github.com/bounswe/bounswe2022group1/issues/939)|
+  | Objectives of Android Team for Milestone3 |[Issue #941](https://github.com/bounswe/bounswe2022group1/issues/941)|
+  | Individiual Report | [Issue #963](https://github.com/bounswe/bounswe2022group1/issues/963) |
+  | Researching and Developing codes for animation files | [Issue #964](https://github.com/bounswe/bounswe2022group1/issues/964) |
+  | Editing android part for final milestone | [Issue #965](https://github.com/bounswe/bounswe2022group1/issues/965) |
+
+
+
+  | Pull Request Title                                  |                              Link                               |
+  | --------------------------------------------------- | :-------------------------------------------------------------: |
+  | Adding Android Latest Filest to Master for final milestone        | [PR#943](https://github.com/bounswe/bounswe2022group1/pull/943) |
+  | Add App Icon to Android              | [PR#826](https://github.com/bounswe/bounswe2022group1/pull/826) |
+  | Set application configuration settings | [PR#829](https://github.com/bounswe/bounswe2022group1/pull/829) |
+  | Add Splash Screen and Onboarding Activity        | [PR#885](https://github.com/bounswe/bounswe2022group1/pull/885) |
+  | Fix linking error, set AndroidManifest configurations              | [PR#895](https://github.com/bounswe/bounswe2022group1/pull/895) |
+  | Change Design of Sign in page | [PR#907](https://github.com/bounswe/bounswe2022group1/pull/907) |
+  | Change Design of Sign Up Page              | [PR#908](https://github.com/bounswe/bounswe2022group1/pull/908) |
+  | Add Landing Page | [PR#912](https://github.com/bounswe/bounswe2022group1/pull/912) |
+
+</details>
+
 
 #### Kadir Kalkan
   | Isuue Title                                                            |                             Link                             |
@@ -337,6 +410,7 @@ Milestone3:
 
 
 #### Hüseyin Seyyid Kaplan
+
 <details>
 <summary>Milestone 1</summary>
 
@@ -910,7 +984,7 @@ Milestone3:
 
 ## Progress according to requirements
 
-We have implemented the following requirements. Note: annotations are missing in android.
+We have implemented the following requirements. Note: annotations are missing in frontend.
 
 - authentication with email: sign up, sign in, login, logout
 - profile with profile image and interests
@@ -3730,3 +3804,7 @@ I have took on additional responsibilities throughout the project for work distr
 I have took on additional responsibilities throughout the project for work distribution and 1v1's with professor. Peer learning with my group mates.
 
 </details>
+
+
+
+
