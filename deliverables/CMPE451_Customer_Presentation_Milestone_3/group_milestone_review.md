@@ -852,7 +852,7 @@ Milestone3:
 
 ## Progress according to requirements
 
-We have implemented the following requirements. Note: annotations are missing in frontend.
+We have implemented the following requirements. Note: annotations are missing in android.
 
 - authentication with email: sign up, sign in, login, logout
 - profile with profile image and interests
