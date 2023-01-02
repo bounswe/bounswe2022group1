@@ -1,5 +1,3 @@
-We originally prepared this document on: https://github.com/bounswe/bounswe2022group1/wiki/Customer-Milestone-3-Group-Review
-
 # Executive summary
 
 **Summary:** As of now, our backend, frontend, and android are all functioning and able to communicate with each other. We have implemented all of the required functionalities but events and semantic searching. After experiencing issues with our product during the second milestone, the team decided that it was more important to focus on implementing annotations and refining existing functionalities related to learning space and resources rather than adding new ones. The backend team successfully implemented annotations according to W3C standards, improved existing functionalities, and created the endpoints requested by the frontend and android teams. The frontend team also made significant progress, implementing numerous functionalities including image and text annotations. The android team made substantial improvements as well, including a significant change in style and the creation of a user-friendly app with a nice design. 
@@ -337,19 +335,78 @@ Milestone3:
 
 
 #### Hüseyin Seyyid Kaplan
+
+<details>
+<summary>Milestone 1</summary>
+
   |Issue Title|Link|
   |-----|:--------:|
-  |Checking the Pull Request of react-authentication-page| [#466](https://github.com/bounswe/bounswe2022group1/issues/466)
-  |Meeting for Learning Space Page Design| [#522](https://github.com/bounswe/bounswe2022group1/issues/522)
-  |Addition of New Branches| [#523](https://github.com/bounswe/bounswe2022group1/issues/523)
-  |Learning Space Detail Page Design| [#530](https://github.com/bounswe/bounswe2022group1/issues/530)
-  |Backend API Documents View| [#617](https://github.com/bounswe/bounswe2022group1/issues/617)
-  |Meeting for Milestone 2 Tasks| [#626](https://github.com/bounswe/bounswe2022group1/issues/626)
-  |Group Review (Milestone 2) Responsibilities and Summary of Individual Work| [#672](https://github.com/bounswe/bounswe2022group1/issues/672)
+  |Creating an Authentication Page with React.js|[#336](https://github.com/bounswe/bounswe2022group1/issues/336)|
+  |Request to use Issue Panel|[#361](https://github.com/bounswe/bounswe2022group1/issues/361)|
+  |Permission Request for Pushing Commits to GitHub|[#363](https://github.com/bounswe/bounswe2022group1/issues/363)|
+  |We need a label named 'Meeting'|[#390](https://github.com/bounswe/bounswe2022group1/issues/390)|
+  |Reorganizing Code Structure According to Last Changes|[#392](https://github.com/bounswe/bounswe2022group1/issues/392)|
+  |Reviewing the Issues|[#463](https://github.com/bounswe/bounswe2022group1/issues/463)|
+  |Checking the Pull Request of react-authentication-page|[#466](https://github.com/bounswe/bounswe2022group1/issues/466)|
+  |Group Review (Milestone 1) - Evaluation of Tools and Processes: Discord, GitHub|[#493](https://github.com/bounswe/bounswe2022group1/issues/493)|
+  |Group Review (Milestone 1) - Responsibilities and Summary of Individual Work|[#498](https://github.com/bounswe/bounswe2022group1/issues/498)|
+  |Group Review (Milestone 1) - Evaluation of Deliverables|[#499](https://github.com/bounswe/bounswe2022group1/issues/499)|
 
   |Pull Request Title|Link|
   |-----|:--------:|
-  |Adding addcontent dropdown and join button|[PR#612](https://github.com/bounswe/bounswe2022group1/pull/612)
+  |React authentication page|[PR#395](https://github.com/bounswe/bounswe2022group1/pull/395)|
+  |Update Customer_Milestone_1.md|[PR#481](https://github.com/bounswe/bounswe2022group1/pull/481)|
+</details>
+
+<details>
+<summary>Milestone 2</summary>
+
+  |Issue Title|Link|
+  |-----|:--------:|
+  |Checking the Pull Request of react-authentication-page| [#466](https://github.com/bounswe/bounswe2022group1/issues/466)|
+  |Meeting for Learning Space Page Design| [#522](https://github.com/bounswe/bounswe2022group1/issues/522)|
+  |Addition of New Branches| [#523](https://github.com/bounswe/bounswe2022group1/issues/523)|
+  |Learning Space Detail Page Design| [#530](https://github.com/bounswe/bounswe2022group1/issues/530)|
+  |Backend API Documents View| [#617](https://github.com/bounswe/bounswe2022group1/issues/617)|
+  |Meeting for Milestone 2 Tasks| [#626](https://github.com/bounswe/bounswe2022group1/issues/626)|
+  |Group Review (Milestone 2) Responsibilities and Summary of Individual Work| [#672](https://github.com/bounswe/bounswe2022group1/issues/672)|
+
+  |Pull Request Title|Link|
+  |-----|:--------:|
+  |Adding addcontent dropdown and join button|[PR#612](https://github.com/bounswe/bounswe2022group1/pull/612)|
+</details>
+
+<details>
+<summary>Milestone 3</summary>
+
+  |Issue Title|Link|
+  |-----|:--------:|
+  |Completing Missing Tasks After Milestone 2| [#681](https://github.com/bounswe/bounswe2022group1/issues/681)|
+  |Meeting with Kamil to Shape Our Roadmap| [#682](https://github.com/bounswe/bounswe2022group1/issues/682)|
+  |Reviewing & Merging Pull Request| [#685](https://github.com/bounswe/bounswe2022group1/issues/685)|
+  |Reviewing & Merging Pull Request| [#688](https://github.com/bounswe/bounswe2022group1/issues/688)|
+  |Creating Learning Space| [#765](https://github.com/bounswe/bounswe2022group1/issues/765)|
+  |Reviewing and Merging Pull Request| [#797](https://github.com/bounswe/bounswe2022group1/issues/797)|
+  |Adding 'upvote' Feature for a Learning Space| [#798](https://github.com/bounswe/bounswe2022group1/issues/798)|
+  |Fixing 'join' Button for a Learning Space| [#801](https://github.com/bounswe/bounswe2022group1/issues/801)|
+  |Reviewing Issues| [#802](https://github.com/bounswe/bounswe2022group1/issues/802)|
+  |Updating README File for Instructions of Installing Dependencies| [#881](https://github.com/bounswe/bounswe2022group1/issues/881)|
+  |Testing Latest Version of Frontend App| [#926](https://github.com/bounswe/bounswe2022group1/issues/926)|
+  |Fixing 'Undefined' Bug in Resource Page| [#935](https://github.com/bounswe/bounswe2022group1/issues/935)|
+  |Checking PR and Merging Frontend Branch to Master| [#938](https://github.com/bounswe/bounswe2022group1/issues/938)|
+  |Editing Wikipage for Weekly Individual Works| [#946](https://github.com/bounswe/bounswe2022group1/issues/946)|
+
+  |Pull Request Title|Link|
+  |-----|:--------:|
+  |Update group_milestone_review.md| [#677](https://github.com/bounswe/bounswe2022group1/pull/677)|
+  |Summary of work in tabular format is added| [#678](https://github.com/bounswe/bounswe2022group1/pull/678)|
+  |GitHub Issue Templates| [#680](https://github.com/bounswe/bounswe2022group1/pull/680)|
+  |Some of Missing Functionalities Added to Space's Detail Page| [#700](https://github.com/bounswe/bounswe2022group1/pull/700)|
+  |Revert "Some of Missing Functionalities Added to Space's Detail Page"| [#701](https://github.com/bounswe/bounswe2022group1/pull/701)|
+  |Clicking Twice Bug Resolved| [#933](https://github.com/bounswe/bounswe2022group1/pull/933)|
+  |Instructions of Frontend App Dependencies Updated| [#889](https://github.com/bounswe/bounswe2022group1/pull/889)|
+
+</details>
 
 #### Kamil Korkut
 ##### Milestone 1
@@ -852,7 +909,7 @@ Milestone3:
 
 ## Progress according to requirements
 
-We have implemented the following requirements. Note: annotations are missing in android.
+We have implemented the following requirements. Note: annotations are missing in frontend.
 
 - authentication with email: sign up, sign in, login, logout
 - profile with profile image and interests
@@ -3672,3 +3729,7 @@ I have took on additional responsibilities throughout the project for work distr
 I have took on additional responsibilities throughout the project for work distribution and 1v1's with professor. Peer learning with my group mates.
 
 </details>
+
+
+
+
