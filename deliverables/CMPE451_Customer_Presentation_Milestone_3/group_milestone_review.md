@@ -1568,6 +1568,8 @@ Our frontend software is deployed at http://budemii.space/  an the backend softw
 ## Final Release
 The final release is accessible from there: https://github.com/bounswe/bounswe2022group1/releases/tag/customer-presentation-3
 
+In the link above, there is no frontend, since frontend had merge conflicts. They merged their code 2 days ago. Here is our updated final release with the inclusion of frontend: https://github.com/bounswe/bounswe2022group1/releases/tag/customer-presentation-3-update . Since it is an update, the tag name is customer-presentation-3-update and release is v0.9.1 instead of v.0.9.0
+
 ## Instructions for building
 
 ### For Building Backend App
